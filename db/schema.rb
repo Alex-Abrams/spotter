@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_193729) do
+ActiveRecord::Schema.define(version: 2020_10_15_222251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,25 @@ ActiveRecord::Schema.define(version: 2020_10_04_193729) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "lifts", force: :cascade do |t|
+    t.integer "body_part_id", null: false
+    t.string "exercise", null: false
+    t.integer "workout_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["body_part_id"], name: "index_lifts_on_body_part_id"
+    t.index ["workout_id"], name: "index_lifts_on_workout_id"
+  end
+
+  create_table "sets", force: :cascade do |t|
+    t.integer "reps", null: false
+    t.integer "weight", null: false
+    t.integer "lift_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lift_id"], name: "index_sets_on_lift_id"
   end
 
   create_table "users", force: :cascade do |t|
