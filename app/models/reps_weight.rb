@@ -1,0 +1,3 @@
+class RepsWeight < ApplicationRecord
+  
+end
