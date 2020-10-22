@@ -20,7 +20,7 @@ const INITIAL_STATE = {
 const _nullUser = Object.freeze({
   loggedIn: false,
   auth_token: null,
-  user_email: null,
+  email: null,
   splash_screen: false,
 });
 
@@ -41,7 +41,7 @@ const authReducer = (state = { loggedIn: false }, action) => {
       return merge({}, state, { user: action.currentUser });
 
     case REQUEST_EMAIL:
-      return merge({}, state, { user_email: action.email });
+      return merge({}, state, { email: action.email });
 
     case LOAD_SPLASH_SCREEN:
       return merge({}, state, { splash_screen: action.splash_screen });

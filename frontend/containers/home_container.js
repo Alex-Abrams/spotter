@@ -4,7 +4,8 @@ import * as authActions from '../actions/auth_actions';
 import Home from '../screens/home_screen';
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn,
+  // loggedIn: state.loggedIn,
+  loggedIn: state.authentication.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
