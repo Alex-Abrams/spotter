@@ -66,7 +66,6 @@ export function getUserInfo(email, auth_token) {
         }
     });
 
-
     return request.then(
       response => { response.status == 200 ? dispatch(isLoggedIn(true)) : dispatch(isLoggedIn(false))},
       err => console.log('get userinfo error ', err)
@@ -97,7 +96,6 @@ export function getThatToken(email, password) {
       response => response.json(),
     )
     .then(
-
       json => dispatch(receiveAuthToken(json)),
       err => console.log("jsonerror ", json)
     );
