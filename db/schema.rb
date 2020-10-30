@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_224401) do
+ActiveRecord::Schema.define(version: 2020_10_30_230207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "body_parts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_body_parts_on_user_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -27,12 +35,10 @@ ActiveRecord::Schema.define(version: 2020_10_22_224401) do
   end
 
   create_table "lifts", force: :cascade do |t|
-    t.integer "body_part_id", null: false
     t.string "exercise", null: false
     t.integer "workout_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["body_part_id"], name: "index_lifts_on_body_part_id"
     t.index ["workout_id"], name: "index_lifts_on_workout_id"
   end
 
@@ -56,10 +62,10 @@ ActiveRecord::Schema.define(version: 2020_10_22_224401) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_workouts_on_user_id"
+    t.integer "body_part_id", null: false
+    t.index ["body_part_id"], name: "index_workouts_on_body_part_id"
   end
 
 end
