@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
   def index
     #going to be shown based on user id
-    @workouts = Workout.all
+    # @workouts = Workout.all
+    @workouts = Workout.where("body_part_id = ?", params[:body_part_id])
     render json: @workouts
   end
 
@@ -27,6 +28,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:user_id, :body_part_id)
+    params.require(:workout).permit(:body_part_id)
   end
 end

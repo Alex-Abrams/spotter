@@ -9,9 +9,17 @@ Rails.application.routes.draw do
   #   resources :reps_weights, only: [:index, :create]
   # end
 
-  resources :workouts do
-    resources :lifts, only: [:index, :create] do
-      resources :reps_weights, only: [:index, :create]
+  # resources :workouts do
+  #   resources :lifts, only: [:index, :create] do
+  #     resources :reps_weights, only: [:index, :create]
+  #   end
+  # end
+
+  resources :body_parts do
+    resources :workouts, only: [:index, :create] do
+      resources :lifts, only: [:index, :create] do
+        resources :reps_weights, only: [:index, :create]
+      end
     end
   end
 

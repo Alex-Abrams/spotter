@@ -28,6 +28,6 @@ class LiftsController < ApplicationController
   private
 
   def lift_params
-    params.require(:lift).permit(:body_part_id, :excercise, :workout_id)
+    params.require(:lift).permit(:excercise, :workout_id)
   end
 end
