@@ -1,6 +1,7 @@
 class BodyPartsController < ApplicationController
   def index
-    @body_parts = BodyPart.all
+    # @body_parts = BodyPart.all
+    @body_parts = BodyPart.where("user_id = ?", params[:user_id])
     render json: @body_parts
   end
 
@@ -24,3 +25,6 @@ class BodyPartsController < ApplicationController
   end
 
 end
+
+
+# curl -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDQ2MjIyMDd9.Ck9K199une3c-6UNJID9Kc05QlriN400NhLacvsbN-o" http://localhost:3000/users/2/body_parts/2/workouts/2/lifts/2/reps_weights

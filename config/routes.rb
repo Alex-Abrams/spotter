@@ -15,12 +15,22 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :body_parts do
-    resources :workouts, only: [:index, :create] do
-      resources :lifts, only: [:index, :create] do
-        resources :reps_weights, only: [:index, :create]
+  # resources :body_parts do
+  #   resources :workouts, only: [:index, :create] do
+  #     resources :lifts, only: [:index, :create] do
+  #       resources :reps_weights, only: [:index, :create]
+  #     end
+  #   end
+  # end
+
+  resources :users do
+      resources :body_parts, only: [:index, :create] do
+        resources :workouts, only: [:index, :create] do
+          resources :lifts, only: [:index, :create] do
+            resources :reps_weights, only: [:index, :create]
+          end
+        end
       end
-    end
   end
 
   resources :lifts, except: [:index, :create]

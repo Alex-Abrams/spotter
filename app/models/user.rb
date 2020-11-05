@@ -7,4 +7,9 @@ class User < ApplicationRecord
   # def to_param
   #   email
   # end
+
+  has_many :body_parts,
+    primary_key: :user_id,
+    foreign_key: :id,
+    class_name: :User
 end
