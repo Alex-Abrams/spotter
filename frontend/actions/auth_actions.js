@@ -1,8 +1,7 @@
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_AUTH_TOKEN = "RECEIVE_AUTH_TOKEN";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const LOGOUT_USER = "LOGOUT_USER";
-export const REQEUST_USER_INFO = "REQEUST_USER_INFO";
+// export const REQEUST_USER_INFO = "REQEUST_USER_INFO";
 export const REQUEST_EMAIL = "REQUEST_EMAIL";
 export const LOAD_SPLASH_SCREEN = "LOAD_SPLASH_SCREEN";
 export const RECEIVE_AUTH_TOKEN_SPINNER = "RECEIVE_AUTH_TOKEN_SPINNER";
@@ -20,10 +19,10 @@ export const logoutCurrentUser = () => ({
   type: LOGOUT_USER,
 }); // the new stuff
 
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-});
+// export const receiveCurrentUser = currentUser => ({
+//   type: RECEIVE_CURRENT_USER,
+//   currentUser
+// });
 
 export const receiveAuthToken = auth_token => ({
   type: RECEIVE_AUTH_TOKEN,
@@ -41,10 +40,11 @@ export const isLoggedIn = loggedIn => ({
   loggedIn
 });
 
-export const requestUserInfo = currentUser => ({
-  type: REQEUST_USER_INFO,
-  currentUser
-});
+// delete later not used
+// export const requestUserInfo = currentUser => ({
+//   type: REQEUST_USER_INFO,
+//   currentUser
+// });
 
 export const requestEmail = email => ({
   type: REQUEST_EMAIL,
@@ -67,9 +67,14 @@ export function getUserInfo(email, auth_token) {
     });
 
     return request.then(
-      response => { response.status == 200 ? dispatch(isLoggedIn(true)) : dispatch(isLoggedIn(false))},
+      // response => { response.status == 200 ? dispatch(isLoggedIn(true)) : dispatch(isLoggedIn(false))},
+      response => {if (response.status == 200) {
+        dispatch(isLoggedIn(true));
+      } else {
+        dispatch(isLoggedIn(false));
+      }},
       err => console.log('get userinfo error ', err)
-    );
+    ); // oringal
   }
 }
 
@@ -94,6 +99,7 @@ export function getThatToken(email, password) {
 
      return request.then(
       response => response.json(),
+      // response => console.log("zzzzz", response.json()),
     )
     .then(
       json => dispatch(receiveAuthToken(json)),
@@ -123,7 +129,9 @@ export function signupUser(email, password, password_confirmation) {
 
 
     return request.then(
-      response => {if (response.status !== 200) { dispatch(receiveError("An error occured"))}},
+      response => {if (response.status !== 200) {
+        dispatch(receiveError("An error occured"))};
+      },
       err => console.log("singupUser test failed")
     );
   }

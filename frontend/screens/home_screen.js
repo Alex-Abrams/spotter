@@ -10,6 +10,12 @@ class Home extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token);
+    console.log("helzzziio");
+  }
+
+
   userLogout = async () => {
     try {
       let keys = ['token', 'email'];
