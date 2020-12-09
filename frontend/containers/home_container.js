@@ -7,7 +7,8 @@ import Home from '../screens/home_screen';
 const mapStateToProps = state => ({
   loggedIn: state.authentication.loggedIn,
   email: state.authentication.email,
-  auth_token: state.authentication.auth_token,
+  // email: state.entities.users.email,
+  auth_token: state.authentication.auth_token
 });
 
 const mapDispatchToProps = dispatch => ({
