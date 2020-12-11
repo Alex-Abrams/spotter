@@ -8,7 +8,7 @@ import LoginContainer from './login_screen_container';
 import HomeContainer from '../containers/home_container';
 import SignupContainer from './signup_container';
 import SplashScreen from '../screens/splash_screen';
-import newWorkoutForm from '../screens/workout_forms/new_workout_form';
+import newWorkoutForm from '../screens/select_workout';
 
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
@@ -59,18 +59,19 @@ class FarStack extends React.Component {
 
 
 // above is for the stuff between the stack navigators....
+// initialRouteName="login"
 
   render() {
     const Stack = createStackNavigator();
     const { loggedIn, splash_screen } = this.props;
 
     return (
-      <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator>
 
         {(loggedIn == true) ? (
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Workout Form" component={newWorkoutForm} navigation={this.props.navigation} />
+          <Stack.Screen name="Workouts" component={newWorkoutForm} navigation={this.props.navigation} />
           </>
         ) : (
           <>

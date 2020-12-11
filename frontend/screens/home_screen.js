@@ -45,7 +45,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="New Workout"
-          onPress={() => this.props.navigation.navigate('Workout Form')}>
+          onPress={() => this.props.navigation.navigate('Workouts')}>
         </Button>
       </View>
     );
