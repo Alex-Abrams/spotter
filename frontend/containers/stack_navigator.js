@@ -8,7 +8,8 @@ import LoginContainer from './login_screen_container';
 import HomeContainer from '../containers/home_container';
 import SignupContainer from './signup_container';
 import SplashScreen from '../screens/splash_screen';
-import newWorkoutForm from '../screens/select_workout';
+import newWorkoutForm from '../screens/select_workout'; // select workout body part
+import WorkoutForm from '../screens/workout_forms/workout_form'; // actual imput forms
 
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
@@ -72,6 +73,7 @@ class FarStack extends React.Component {
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Workouts" component={newWorkoutForm} navigation={this.props.navigation} />
+          <Stack.Screen name="WorkoutForm" component={WorkoutForm} navigation={this.props.navigation} />
           </>
         ) : (
           <>

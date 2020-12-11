@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
 
 class selectWorkout extends React.Component {
   constructor(props) {
@@ -16,7 +17,11 @@ class selectWorkout extends React.Component {
   toBodyPart(array) {
     const bodyList = array.map((part, i) =>
     <View key={i} style={styles.buttonContainer}>
-      <Button raised key={i} title={part} buttonStyle={styles.button}></Button>
+      <Button
+        raised
+        key={i}
+        title={part}
+        buttonStyle={styles.button}></Button>
     </View>
     );
     return(
@@ -26,22 +31,16 @@ class selectWorkout extends React.Component {
     );
   }
 
-  testButton() {
-    const test = "SIMP";
-    return(
-
-        <Button raised buttonStyle={styles.testButton} title={test}></Button>
-
-    );
-  }
-
 
   render() {
     let bodyArray = ["Chest", "Legs", "Back", "Shoulders", "Arms"];
 
     return(
       <View style={styles.container}>
-        <Text>Bodyparts List</Text>
+        <View style={styles.container}>
+          <Text style={styles.text}>Bodyparts List</Text>
+          <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
+        </View>
         {this.toBodyPart(bodyArray)}
       </View>
 
@@ -67,10 +66,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#0497A9",
     // borderRadius: 50,
   },
-  testButton: {
-    // padding: 20,
-    margin: 0,
-    borderRadius: 50,
+  text: {
+    fontSize: 20,
+    paddingLeft: 60,
+    color: "#0497A9",
+    flexDirection: 'column',
+    justifyContent: 'center',
   }
 });
 

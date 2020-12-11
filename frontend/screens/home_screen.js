@@ -12,7 +12,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token);
-    console.log("helzzziio");
   }
 
 
