@@ -14,14 +14,19 @@ class selectWorkout extends React.Component {
 
 
 
-  toBodyPart(array) {
+  toBodyPart({navigation}, array) {
     const bodyList = array.map((part, i) =>
     <View key={i} style={styles.buttonContainer}>
       <Button
         raised
         key={i}
         title={part}
-        buttonStyle={styles.button}></Button>
+        buttonStyle={styles.button}
+        onPress={() => {
+           this.props.navigation.navigate('WorkoutForm', {
+             bodyPartName: part,
+           });
+          }}></Button>
     </View>
     );
     return(
@@ -41,7 +46,7 @@ class selectWorkout extends React.Component {
           <Text style={styles.text}>Bodyparts List</Text>
           <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         </View>
-        {this.toBodyPart(bodyArray)}
+        {this.toBodyPart(this.props.navigation, bodyArray)}
       </View>
 
     );
