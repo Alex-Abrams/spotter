@@ -12,7 +12,21 @@ class selectWorkout extends React.Component {
     };
   }
 
+  // this one is getting error
+  // onPress={() => {
+  //   this.props.navigation.navigate('WorkoutNav', {
+  //     screen: 'Chest',
+  //     params: { bodyPartName: part }
+  //   });
+// }}
 
+
+  // original below
+  // onPress={() => {
+  //   this.props.navigation.navigate('Chest', {
+  //     bodyPartName: part,
+  //   });
+// }}
 
   toBodyPart({navigation}, array) {
     const bodyList = array.map((part, i) =>
@@ -22,13 +36,11 @@ class selectWorkout extends React.Component {
         key={i}
         title={part}
         buttonStyle={styles.button}
-        onPress={() => {
-           this.props.navigation.navigate('WorkoutForm', {
-             bodyPartName: part,
-           });
-          }}></Button>
+        onPress={() => this.props.navigation.navigate('WorkoutNav', { screen: `${part}`})}
+          ></Button>
     </View>
     );
+
     return(
       <View>
         {bodyList}

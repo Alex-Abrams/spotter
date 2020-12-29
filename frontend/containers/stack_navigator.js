@@ -10,7 +10,7 @@ import SignupContainer from './signup_container';
 import SplashScreen from '../screens/splash_screen';
 import newWorkoutForm from '../screens/select_workout'; // select workout body part
 import WorkoutForm from '../screens/workout_forms/workout_form'; // actual imput forms
-
+import WorkoutNav from './workout_navigator';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -59,8 +59,12 @@ class FarStack extends React.Component {
   }
 
 
+
 // above is for the stuff between the stack navigators....
 // initialRouteName="login"
+
+//below goes on bottom
+// <Stack.Screen name="WorkoutForm" component={WorkoutForm} navigation={this.props.navigation} />
 
   render() {
     const Stack = createStackNavigator();
@@ -73,7 +77,7 @@ class FarStack extends React.Component {
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Workouts" component={newWorkoutForm} navigation={this.props.navigation} />
-          <Stack.Screen name="WorkoutForm" component={WorkoutForm} navigation={this.props.navigation} />
+          <Stack.Screen name="WorkoutNav" component={WorkoutNav} navigation={this.props.navigation} />
           </>
         ) : (
           <>

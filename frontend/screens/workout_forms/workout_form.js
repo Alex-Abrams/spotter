@@ -38,11 +38,11 @@ class WorkoutForm extends React.Component {
 
   render() {
 
-    console.log(this.props.route.params.bodyPartName); // {hashs}
+    // console.log(this.props.route.params.bodyPartName); // {hashs}
 
     return(
       <View>
-        <Text>Hello alex its me your computer</Text>
+        <Text>LEEEEEEEEEEEEEEEEEEEEEEEEGS</Text>
       </View>
     );
   }
