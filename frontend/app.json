@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "rn_testapp",
-    "slug": "rn_testapp",
+    "name": "spotter",
+    "slug": "spotter",
     "privacy": "public",
     "platforms": [
       "ios",
-      "android",
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",

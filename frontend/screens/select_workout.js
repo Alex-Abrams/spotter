@@ -7,10 +7,12 @@ class selectWorkout extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    // this.state = {
+    //
+    // };
   }
+
+  // npm install -g expo-cli
 
   // this one is getting error
   // onPress={() => {
