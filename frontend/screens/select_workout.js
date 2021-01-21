@@ -38,7 +38,10 @@ class selectWorkout extends React.Component {
         key={i}
         title={part}
         buttonStyle={styles.button}
-        onPress={() => this.props.navigation.navigate('WorkoutNav', { screen: `${part}`})}
+        onPress={() => this.props.navigation.navigate('WorkoutNav',
+         { screen: `${part}`, params: { partType: `${part}` },
+       }
+       )}
           ></Button>
     </View>
     );

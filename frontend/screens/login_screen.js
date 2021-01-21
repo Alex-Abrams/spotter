@@ -136,7 +136,6 @@ userLogout = async () => {  //
 
 
   render() {
-
     return(
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         {this.renderError()}

@@ -33,7 +33,8 @@ class WorkoutForm extends React.Component {
 
   }
 
-
+  // all the things in common:
+  // submitform, state,
 
 
   render() {
