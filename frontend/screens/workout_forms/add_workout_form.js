@@ -4,13 +4,18 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Button } from '@react-navigation/native';
 import {Picker} from '@react-native-picker/picker';
 
+// import Picker from 'react-native-input-picker';
+
 class AddWorkoutForm extends React.Component {
   constructor(props) {
     super(props);
     // something like
     // worksoutsArray.filter(workout => workoutArray(workout[0... this.state.length] === the ight one ))
-  }
+
 }
+}
+
+
 
 // var options ={
 //     "1": "Home",
