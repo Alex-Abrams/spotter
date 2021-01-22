@@ -60,10 +60,8 @@ class ChestWorkoutPicker extends React.Component {
 
     return(
       <View style={styles.container}>
-        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}}>
-        </View>
       <FlatList
-          style={{marginTop:40}}
+          style={styles.flatlist}
           data={this.state.data}
           renderItem={({item})=>(
           <View style={{justifyContent:'center',marginBottom:10}}>
@@ -89,15 +87,24 @@ export function ChestWorkoutForm({ route, navigation }) {
   const { partType } = route.params;
 
   return(
-    <View>
-      <Text>howdy</Text>
+    <View style={styles.container}>
       <ChestWorkoutPicker />
+        <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
+        </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 40,
+  },
+  flatcontainer: {
+    width: "100%",
+  },
+  flatlist: {
+    width: "100%",
   }
 });
