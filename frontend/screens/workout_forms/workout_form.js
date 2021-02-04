@@ -21,6 +21,11 @@ class WorkoutForm extends React.Component {
   // perhaps a stack navigator?
   // but if else <Container /> might make the most sense, each carry its on actions.... yep thats the play
 
+  // while there can only be one and only one so sayeth the great queen spider
+  // the rules cannot be changed so sayeth the spider
+  // as if there was no more the actions that bloind ius set out on this jounry
+  // 
+
   componentDidMount() {
     // this should request tto store based on chest/legs/etc....
   }

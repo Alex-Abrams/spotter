@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack'; // apparently not working?, ok now working apaprently SafeAreaView was problem
-// it was in the long import from react-native above
-// if you need safeareaview its goes like: import SafeAreaView from 'react-native-safe-view';
+import { createStackNavigator } from '@react-navigation/stack';
 // import { createStackNavigator } from 'react-navigation-stack';
 import StackNavigatorContainer from './containers/stack_navigator_container';
 
@@ -37,7 +35,6 @@ function configureStore(initialState = {}) {
   const middlewares = [thunk, logger];
 
   store = createStore(
-    // authReducer,
     rootReducer,
     initialState,
     compose(applyMiddleware(...middlewares))
