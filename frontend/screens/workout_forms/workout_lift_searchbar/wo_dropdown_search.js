@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
-import {Picker} from '@react-native-picker/picker';
+// import {Picker} from '@react-native-picker/picker';
 
 import DropDownSearch from './dropdown_testing';
 
 import { List, ListItem } from "react-native-elements";
 
-class ChestWorkoutPicker extends React.Component {
+class LiftSearchInput extends React.Component {
   constructor(props) {
     super(props);
 
@@ -74,14 +74,14 @@ class ChestWorkoutPicker extends React.Component {
 }
 
 //
-// export default ChestWorkoutPicker;
+// export default LiftSearchInput;
 
-export function ChestWorkoutForm({ route, navigation }) {
+export function LiftSearchContainer({ route, navigation }) {
   const { partType } = route.params;
 
   return(
     <View style={styles.container}>
-      <ChestWorkoutPicker />
+      <LiftSearchInput />
         <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
         </View>
     </View>
