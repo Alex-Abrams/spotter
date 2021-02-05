@@ -1,4 +1,11 @@
-
+// This file contains keywordSearch() which organizes and formats my dropdown menu on some text inut and select screens 
+const EXERCISES = [
+  "Chest",
+  "Legs",
+  "Shoulders",
+  "Back",
+  "Arms",
+];
 
 let chestArray = [
   "Bench Chest Press",
@@ -42,7 +49,7 @@ let shouldersArray = [
   "Dumbell Flies",
   "Clean And Press",
   "Shrugs",
-]
+];
 
 let backArray = [
   "DeadLift",
@@ -72,38 +79,32 @@ let armsArray = [
   "Tricep Dips",
   "Overhead Extension (Cable)",
   "Overhead Extension (Dumbell)",
-  
-]
+];
 
 
-function keywordSearch(keyword) {
-  let searchList = null;
-  if (keyword === "Chest") {
-    searchList = [{name: "Bench Press"}, {name: "Dumbbell Press"}, {name: "Dumbbell Flies"}, {name: "Incline Press"}, {name: "Decline Press"},
-        {name: "Butterflies"}, {name: "Chest Dips"}, {name: "Dumbbell Incline"}, {name: "Dumbbell Decline"}];
-    return searchList;
+let exerciseArray = [chestArray, legsArray, shouldersArray, backArray, armsArray];
+  // set them in array
+let exerciseHash = {};
 
-  } else if (keyword === "Legs") {
-    searchList = [{name: "Squat"}, {name: "Machine Squats"},];
-    return searchList;
+function changeToArrayInHash() { // change the array of arrays into an array of organized hashes
+  for(i = 0; i < exerciseArray.length; i++) {
 
-  } else if (keyword === "Shoulders") {
-    searchList = [{name: "3"}];
-    return searchList;
+    exerciseArray[i] = exerciseArray[i].sort(); // sort them each so they are alphabetized
 
-  } else if (keyword === "Back") {
-    searchList = [{name: "4"}];
-    return searchList;
+    let exerciseHashesInArray = [];
 
-  } else if (keyword === "Arms") {
-    searchList = [{name: "5"}];
-    return searchList;
+    for(n = 0; n < exerciseArray[i].length; n++) { // pushes the name: format for my search bar
+      exerciseHashesInArray.push({name: exerciseArray[i][n]});
+    };
+
+    exerciseHash = Object.assign({}, exerciseHash, { [EXERCISES[i]]: exerciseHashesInArray }); // creates [{ chest: {}, arms: {}, ...etc}]
+    exerciseHashesInArray = [];
   };
+
+  return exerciseHash;
 };
 
-// console.log(keywordSearch("Chest"));
-
-
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.sort();
-console.log(fruits);
+// keywordSearch(); is the main function ill be using whenever i need a search bar for lift related choices
+export function keywordSearch(keyword) {
+  return changeToArrayInHash()[keyword];
+};
