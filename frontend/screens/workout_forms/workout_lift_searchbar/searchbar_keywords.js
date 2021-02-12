@@ -1,4 +1,4 @@
-// This file contains keywordSearch() which organizes and formats my dropdown menu on some text inut and select screens 
+// This file contains keywordSearch() which organizes and formats my dropdown menu on some text inut and select screens
 const EXERCISES = [
   "Chest",
   "Legs",
@@ -87,13 +87,13 @@ let exerciseArray = [chestArray, legsArray, shouldersArray, backArray, armsArray
 let exerciseHash = {};
 
 function changeToArrayInHash() { // change the array of arrays into an array of organized hashes
-  for(i = 0; i < exerciseArray.length; i++) {
+  for(let i = 0; i < exerciseArray.length; i++) {
 
     exerciseArray[i] = exerciseArray[i].sort(); // sort them each so they are alphabetized
 
     let exerciseHashesInArray = [];
 
-    for(n = 0; n < exerciseArray[i].length; n++) { // pushes the name: format for my search bar
+    for(let n = 0; n < exerciseArray[i].length; n++) { // pushes the name: format for my search bar
       exerciseHashesInArray.push({name: exerciseArray[i][n]});
     };
 

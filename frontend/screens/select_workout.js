@@ -12,25 +12,8 @@ class selectWorkout extends React.Component {
     // };
   }
 
-  // npm install -g expo-cli
-
-  // this one is getting error
-  // onPress={() => {
-  //   this.props.navigation.navigate('WorkoutNav', {
-  //     screen: 'Chest',
-  //     params: { bodyPartName: part }
-  //   });
-// }}
-
-
-  // original below
-  // onPress={() => {
-  //   this.props.navigation.navigate('Chest', {
-  //     bodyPartName: part,
-  //   });
-// }}
-
   toBodyPart({navigation}, array) {
+    // takes aray of body parts and makes a button that redirects to that form
     const bodyList = array.map((part, i) =>
     <View key={i} style={styles.buttonContainer}>
       <Button
