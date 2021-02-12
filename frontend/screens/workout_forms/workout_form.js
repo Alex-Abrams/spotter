@@ -15,9 +15,7 @@ export function WorkoutForm({ route, navigation }) {
 
   return(
     <View style={styles.container}>
-      <WorkoutDropdownSearch  keywordPart={partType} />
-        <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
-        </View>
+      <WorkoutDropdownSearch keywordPart={partType} />
     </View>
   );
 }
@@ -35,3 +33,8 @@ const styles = StyleSheet.create({
     width: "100%",
   }
 });
+
+
+// // that blue sqaure i started with that i no longer want, holding onto just in case tho for now
+// <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
+// </View>

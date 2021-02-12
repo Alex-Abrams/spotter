@@ -2,9 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from '@react-navigation/native';
-import {Picker} from '@react-native-picker/picker';
 
 // import Picker from 'react-native-input-picker';
+// this one will probably hv to be the add wokout modal
 
 class AddWorkoutForm extends React.Component {
   constructor(props) {
@@ -12,9 +12,19 @@ class AddWorkoutForm extends React.Component {
     // something like
     // worksoutsArray.filter(workout => workoutArray(workout[0... this.state.length] === the ight one ))
 
-}
+  }
+
+  render() {
+    return(
+      <View>
+        <Text>WHAT THE FUCK</Text>
+      </View>
+    );
+  }
 }
 
+
+export default AddWorkoutForm;
 
 
 // var options ={

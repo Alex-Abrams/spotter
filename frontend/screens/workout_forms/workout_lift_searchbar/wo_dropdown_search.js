@@ -41,7 +41,7 @@ class WorkoutDropdownSearch extends React.Component {
     // text input uses searchItems text to filter out the array as its typed
     return (
     <TextInput
-      style={{ height: 60, borderColor: '#000', borderWidth: 1 }}
+      style={{ height: 60, borderColor: '#000', borderWidth: 1, margin: 20 }}
       placeholder="   Type Here...Key word"
       onChangeText={text => this.searchItems(text)}
       value={this.state.value}
@@ -76,18 +76,6 @@ class WorkoutDropdownSearch extends React.Component {
 
 //
 export default WorkoutDropdownSearch;
-
-// export function LiftSearchContainer({ route, navigation }) {
-//   const { partType } = route.params;
-//
-//   return(
-//     <View style={styles.container}>
-//       <LiftSearchInput keywordPart={partType} />
-//         <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
-//         </View>
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
