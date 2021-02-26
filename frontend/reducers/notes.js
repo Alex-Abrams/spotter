@@ -45,3 +45,36 @@ entities: {
 
 
 }
+
+// this is just for submitting the new workout form
+entities : {
+  users: {
+    9: {id: 9, email: "tomhardy"}
+  }
+  new_workout_entity: {  //action receiveWorkout({user_id: 1, type:chest})
+    chest: {
+      id: 1,
+      user_id: 9,
+      type: "chest",
+      // user_id: 9, dont think i need this because i can get it from store
+    } ,// end chest 1
+    lifts: { // receiveLift
+      1: {
+        id: 1, ///no id
+        type: "chest",
+        name: "bench press",
+        reps: 15,
+        weight: 50,
+        body_part_id: 1,
+      },
+      2: {
+        id: 2,
+        type: "chest",
+        name: "bench press",
+        reps: 12,
+        weight: 5,
+        body_part_id: 1,
+      }
+    }
+  }
+}
