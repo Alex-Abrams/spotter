@@ -6,6 +6,7 @@ import { Button } from '@react-navigation/native';
 // import Picker from 'react-native-input-picker';
 // this one will probably hv to be the add wokout modal
 
+
 class AddWorkoutForm extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +18,7 @@ class AddWorkoutForm extends React.Component {
   render() {
     return(
       <View>
+
         <Text>WHAT THE FUCK</Text>
       </View>
     );

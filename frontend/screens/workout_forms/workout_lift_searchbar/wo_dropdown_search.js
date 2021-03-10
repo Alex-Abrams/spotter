@@ -20,7 +20,7 @@ class WorkoutDropdownSearch extends React.Component {
 
     this.arrayNew = keywordSearch(this.props.keywordPart); // keywordPart comes from the route param passsed from select_workout.js
 
-    console.log("in workoutform ", this.props);
+    console.log("in dropdown search ", this.props);
   };
 
 
