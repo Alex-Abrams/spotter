@@ -25,7 +25,7 @@ class WorkoutNav extends React.Component {
 
     return(
       <Stack.Navigator>
-        <Stack.Screen name={'Chest'} component={WorkoutForm} navigation={this.props.navigation} />
+        <Stack.Screen name={'Chest'} component={ChestScreen} navigation={this.props.navigation} />
         <Stack.Screen name={`Legs`} component={LegsScreen} navigation={this.props.navigation} />
         <Stack.Screen name={'Shoulders'} component={ShouldersScreen} navigation={this.props.navigation} />
         <Stack.Screen name={'Back'} component={BackScreen} navigation={this.props.navigation} />

@@ -32,6 +32,8 @@
 
 import React, { Component } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
+
 
 class ModalTest extends Component {
   state = {
@@ -44,6 +46,8 @@ class ModalTest extends Component {
 
   render() {
     const { modalVisible } = this.state;
+
+    const partType = "Chest";
     return (
       <View style={styles.centeredView}>
         <Modal
@@ -55,6 +59,8 @@ class ModalTest extends Component {
             this.setModalVisible(!modalVisible);
           }}
         >
+          <WorkoutDropdownSearch />
+
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Hello World!</Text>
@@ -86,10 +92,10 @@ const styles = StyleSheet.create({
     marginTop: 22
   },
   modalView: {
-    margin: 20,
+    // margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 110,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -102,8 +108,9 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
-    padding: 10,
-    elevation: 2
+    padding: 15,
+    // marginBottom: 10,
+    elevation: 16,
   },
   buttonOpen: {
     backgroundColor: "#F194FF",

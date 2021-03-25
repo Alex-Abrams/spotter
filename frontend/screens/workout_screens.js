@@ -9,72 +9,89 @@ import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dro
 import AddWorkoutForm from './workout_forms/add_workout_form';
 // import MainWorkoutScreen from './main_workout_screen';
 /// testing
-import ModalTest from './main_workout_screen';
+// import ModalTest from './main_workout_screen';
 
-// <WorkoutForm keywordPart={partType} fart={"titties"} />
 
-export function ChestScreen({ route, navigation }) {
-  const { partType } = route.params;
-  console.log(partType);
-  return(
-    <View style={{flex: 1, flexDirection: "column"}}>
-
-        <WorkoutDropdownSearch keywordPart={partType} />
-
-        <View style={{ padding: 100}}>
-          <Text>
-            Tittiesd
-          </Text>
-        </View>
-    </View>
-
-  );
-}
-
-export function BackScreen({ route, navigation }) {
-  const { partType } = route.params;
-  console.log(partType);
-  return(
-    <View style={styles.container}>
-      <WorkoutDropdownSearch keywordPart={partType} />
-    </View>
-  );
-}
-
-export function LegsScreen({ route, navigation }) {
-  const { partType } = route.params;
-  console.log(partType);
-  return(
-    <View>
-      <AddWorkoutForm />
-    </View>
-  );
-}
-
-// export function ShouldersScreen({ route, navigation }) {
-//   const { partType } = route.params;
-//   console.log(partType);
-//   return(
-//     <View>
-//       <Text>
-//         SHOULDERS
-//       </Text>
-//     </View>
-//   );
-// }
-
-//////// the rest are gunna look like ths once i get the modal working
-export class ShouldersScreen extends React.Component {
+export class BackScreen extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    // console.log("TESTYSHOULDERS PROPS ", this.props);
+    const { partType } = this.props.route.params;
+    console.log("CLASS PARTYPE: ", partType);
+    return(
+      <View style={{ backgroundColor: "#7EE8F5" }}>
+        <View>
+          <WorkoutDropdownSearch keywordPart={partType} />
+        </View>
+        <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
+        <View style={{ backgroundColor: "#7EE8F5", marginTop: 15 }}>
+          <Text>baaaaaaaaaaack screeeeeeen</Text>
+          <Text>baaaaaaaaaaack screeeeeeen</Text>
+        </View>
+      </View>
+    );
+  }
+}
+
+///////////////////////////////
+
+export class LegsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     const { partType } = this.props.route.params;
     console.log("CLASS PARTYPE: ", partType);
     return(
       <View>
-        <ModalTest />
+        <View>
+          <Text>leeeeegs screeeeen</Text>
+        </View>
+        <WorkoutDropdownSearch keywordPart={partType} />
+      </View>
+    );
+  }
+}
+
+//////////////////////////////////////////////
+
+export class ChestScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { partType } = this.props.route.params;
+    console.log("CLASS PARTYPE: ", partType);
+    return(
+      <View>
+        <View>
+          <Text>cheeeeest screen</Text>
+        </View>
+        <WorkoutDropdownSearch keywordPart={partType} />
+      </View>
+    );
+  }
+}
+
+////////
+export class ShouldersScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { partType } = this.props.route.params;
+    console.log("CLASS PARTYPE: ", partType);
+    return(
+      <View>
+        <View>
+          <Text>shulders screeeeen</Text>
+        </View>
+        <WorkoutDropdownSearch keywordPart={partType} />
       </View>
     );
   }
@@ -82,18 +99,25 @@ export class ShouldersScreen extends React.Component {
 
 //////////////
 
-export function ArmsScreen({ route, navigation }) {
-  const { partType } = route.params;
-  console.log(partType);
-  return(
-    <View>
-      <Text>
-        ARMS
-      </Text>
-    </View>
+export class ArmsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  );
+  render() {
+    const { partType } = this.props.route.params;
+    console.log("CLASS PARTYPE: ", partType);
+    return(
+      <View>
+        <View>
+          <Text>arrrrms screeeeen</Text>
+        </View>
+        <WorkoutDropdownSearch keywordPart={partType} />
+      </View>
+    );
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
