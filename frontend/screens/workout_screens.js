@@ -11,6 +11,8 @@ import AddWorkoutForm from './workout_forms/add_workout_form';
 /// testing
 // import ModalTest from './main_workout_screen';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export class BackScreen extends React.Component {
   constructor(props) {
@@ -25,6 +27,10 @@ export class BackScreen extends React.Component {
         <View>
           <WorkoutDropdownSearch keywordPart={partType} />
         </View>
+
+          
+
+
         <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         <View style={{ backgroundColor: "#7EE8F5", marginTop: 15 }}>
           <Text>baaaaaaaaaaack screeeeeeen</Text>
@@ -43,8 +49,11 @@ export class LegsScreen extends React.Component {
   }
 
   render() {
+
     const { partType } = this.props.route.params;
-    console.log("CLASS PARTYPE: ", partType);
+    // console.log("CLASS PARTYPE: ", partType);
+    // this.props.workoutActions.whateverAction()
+    console.log("legs props: ", this.props);
     return(
       <View>
         <View>

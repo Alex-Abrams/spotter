@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import ArmsScreen from '../screens/workout_screens';
-import * as authActions from '../actions/auth_actios';
-import * as workoutActions from '../actions/worout_actions';
+import {ArmsScreen} from '../screens/workout_screens';
+import * as authActions from '../actions/auth_actions';
+import * as workoutActions from '../actions/workout_actions';
 
 const mapStateToProps = state => ({
   current_user_id: state.entities.users.id,

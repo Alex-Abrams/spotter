@@ -45,7 +45,6 @@ function configureStore(initialState = {}) {
 let teststore = configureStore();
 
 
-
 const App = () => {
   return (
     <Provider store={teststore}>

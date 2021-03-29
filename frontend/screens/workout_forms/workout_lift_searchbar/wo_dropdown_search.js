@@ -3,6 +3,8 @@ import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, Safe
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from './searchbar_keywords';
+// import { Icon } from "react-native-vector-icons";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // testing modal stuff
 import { Alert, Modal, Pressable} from "react-native";
@@ -71,7 +73,7 @@ class WorkoutDropdownSearch extends React.Component {
           style={[styles.button, styles.buttonOpen]}
           onPress={() => this.setModalVisible(true)}
           >
-          <Text style={{marginTop: 10}}>Show Modal</Text>
+          <Text style={{marginTop: 10}}>Add Workout</Text>
         </Pressable>
         <Modal
           visible={this.state.modalVisible}

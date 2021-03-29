@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import screen name
 // import actions
-import LegsScreen from '../screens/workout_screens';
+import {LegsScreen} from '../screens/workout_screens';
 import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
 // import WorkoutScreens from "../screens/workout_screens";

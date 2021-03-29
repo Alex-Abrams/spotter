@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import BackScreen from '../screens/workout_screens';
-import * as authActions from '../actions/auth_actions'; 
+import {BackScreen} from '../screens/workout_screens';
+import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
 
 const mapStateToProps = state => ({
