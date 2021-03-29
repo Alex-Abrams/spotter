@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Hoshi } from 'react-native-textinput-effects';
 import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -137,6 +137,8 @@ userLogout = async () => {  //
 
   render() {
     return(
+
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
         {this.renderError()}
         {this.renderSpinner()}
@@ -173,6 +175,8 @@ userLogout = async () => {  //
         {this.toSignup(this.props.navigation)}
 
       </View>
+    </TouchableWithoutFeedback>
+
     );
   }
 }

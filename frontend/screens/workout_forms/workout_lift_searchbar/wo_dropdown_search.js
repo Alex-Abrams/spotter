@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from './searchbar_keywords';
@@ -43,8 +43,8 @@ class WorkoutDropdownSearch extends React.Component {
     // text input uses searchItems text to filter out the array as its typed
     return (
       <TextInput
-        style={{ height: 60, borderColor: '#000', borderWidth: 1, margin: 20 }}
-        placeholder="   Type Here...Key word"
+        style={styles.input}
+        placeholder="   Type Exercise"
         onChangeText={text => this.searchItems(text)}
         value={this.state.value}
       />
@@ -52,7 +52,6 @@ class WorkoutDropdownSearch extends React.Component {
   };
 
   setModalVisible = (visible) => {
-    console.log("pog");
     this.setState({ modalVisible: visible });
   }
 
@@ -64,6 +63,9 @@ class WorkoutDropdownSearch extends React.Component {
     console.log("the stateboooi: ", this.state);
 
     return(
+      <ScrollView>
+        <KeyboardAvoidingView
+          behavior="margin">
       <View style={{ backgroundColor: "yellow" }}>
         <Pressable
           style={[styles.button, styles.buttonOpen]}
@@ -79,7 +81,7 @@ class WorkoutDropdownSearch extends React.Component {
               style={styles.flatlist}
               data={this.state.data}
               renderItem={({item})=>(
-                <View style={{justifyContent:'center',marginBottom:10}}>
+                <View style={styles.listItem}>
                   <Text onPress={() => this.setState({data: [], value: item.name})} style={{backgroundColor:'blue',color:'white',padding:10}}>
                     {item.name}
                   </Text>
@@ -89,16 +91,32 @@ class WorkoutDropdownSearch extends React.Component {
               ListHeaderComponent={this.renderHeader()}
               />
 
-            <Pressable
+
+          <View style={styles.buttons}>
+            <Button
+              style={styles.buttonSingle}
+              title={"Submit"}
               onPress={() => this.setModalVisible(!this.state.modalVisible)}
               >
-              <Text>Hide Modal</Text>
-            </Pressable>
+            </Button>
+
+
+            <Button
+              style={styles.buttonSingle}
+              title={"Cancel"}
+              onPress={() => this.setModalVisible(!this.state.modalVisible)}
+              >
+            </Button>
+
+          </View>
 
           </View>
         </Modal>
       </View>
 
+
+    </KeyboardAvoidingView>
+    </ScrollView>
     );
   }
 }
@@ -109,13 +127,36 @@ export default WorkoutDropdownSearch;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    marginTop: 40,
+    flexDirection: 'column',
+    marginTop: 12,
+  },
+  input: {
+    // { height: 60, borderColor: '#000', borderWidth: 1, margin: 10 }
+    height: 40,
+    borderColor: '#000',
+    borderWidth: 1,
+    margin: 10,
   },
   flatcontainer: {
     width: "100%",
   },
   flatlist: {
     width: "100%",
+  },
+  // {{justifyContent:'center',marginBottom: 2, marginLeft: 10}
+  listItem : {
+    justifyContent: 'center',
+    marginBottom: 2,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  buttons: {
+    justifyContent: 'flex-end',
+  },
+  buttonSingle: {
+    // elevation: 3,
+    marginTop: 15,
+    paddingTop: 60,
+    backgroundColor: "purple",
   }
 });
