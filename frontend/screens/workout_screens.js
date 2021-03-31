@@ -14,6 +14,7 @@ import AddWorkoutForm from './workout_forms/add_workout_form';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
+
 export class BackScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,10 @@ export class BackScreen extends React.Component {
           <WorkoutDropdownSearch keywordPart={partType} />
         </View>
 
-          
+
+      <Icon name="md-checkmark-circle" size={32} color="green" />
+
+
 
 
         <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>

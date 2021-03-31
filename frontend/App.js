@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -44,6 +44,28 @@ function configureStore(initialState = {}) {
 
 let teststore = configureStore();
 
+// below works but cant actually get componentDidMount in there
+//
+// export default class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   };
+//
+//   testyo() { // ? works but compondndtDidMount wont
+//     console.log("heyeye");
+//   };
+//
+//   render() {
+//
+//   return (
+//     <Provider store={teststore}>
+//       <NavigationContainer>
+//         <StackNavigatorContainer />
+//       </NavigationContainer>
+//     </Provider>
+//   );
+// }
+// };
 
 const App = () => {
   return (
