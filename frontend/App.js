@@ -22,8 +22,9 @@ import rootReducer from './reducers/root_reducer';
 import LoginContainer from './containers/login_screen_container';
 import Home from './screens/home_screen';
 
-import FarStack from './containers/stack_navigator';
-
+import SplashScreen from './screens/splash_screen';  // loading screen
+// import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import * as Font from 'expo-font';
 
 let store = null;
 
@@ -46,17 +47,53 @@ let teststore = configureStore();
 
 // below works but cant actually get componentDidMount in there
 //
-// export default class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   };
-//
-//   testyo() { // ? works but compondndtDidMount wont
-//     console.log("heyeye");
-//   };
-//
-//   render() {
-//
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontsAreLoaded: false,
+    };
+  };
+
+  testyo() { // ? works but compondndtDidMount wont
+    console.log("heyeye");
+  };
+
+  // async componentDidMount () {
+  //   await Expo.Font.loadAsync({
+  //       Ionicons: require('./android/src/main/fonts/Ionicons.ttf'),
+  //   });
+  // };
+
+  // /android/app/src/main/assets/fonts/SimpleLineIcons.ttf
+
+  async componentDidMount() {
+    console.log("COPONENT DID MOUNT");
+    try {
+      await Font.loadAsync({
+        // 'SimpleLineIcons': require('@expo/vector-icons/fonts/SimpleLineIcons.ttf'),
+        'SimpleLineIcons': require('./android/app/src/main/assets/fonts/SimpleLineIcons.ttf'),
+      });
+      this.setState({ fontsAreLoaded: true });
+    } catch(error) {
+      console.log(error);
+      return;
+    }
+  }
+
+  render() {
+    const { fontsAreLoaded } = this.state;
+    return (
+      <Provider store={teststore}>
+        <NavigationContainer>
+          <StackNavigatorContainer />
+        </NavigationContainer>
+      </Provider>
+    );
+  }
+};
+
+// const App = () => {
 //   return (
 //     <Provider store={teststore}>
 //       <NavigationContainer>
@@ -64,17 +101,6 @@ let teststore = configureStore();
 //       </NavigationContainer>
 //     </Provider>
 //   );
-// }
 // };
-
-const App = () => {
-  return (
-    <Provider store={teststore}>
-      <NavigationContainer>
-        <StackNavigatorContainer />
-      </NavigationContainer>
-    </Provider>
-  );
-};
-
-export default App;
+//
+// export default App;

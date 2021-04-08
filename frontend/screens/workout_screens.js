@@ -7,12 +7,9 @@ import { List, ListItem } from "react-native-elements";
 import { WorkoutForm } from './workout_forms/workout_form';
 import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
 import AddWorkoutForm from './workout_forms/add_workout_form';
-// import MainWorkoutScreen from './main_workout_screen';
-/// testing
-// import ModalTest from './main_workout_screen';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+// /android/app/src/main/assets/fonts/SimpleLineIcons.ttf
 
 
 export class BackScreen extends React.Component {
@@ -30,7 +27,7 @@ export class BackScreen extends React.Component {
         </View>
 
 
-      <Icon name="md-checkmark-circle" size={32} color="green" />
+      <SimpleLineIcons name="logout" size={30} color="red" />
 
 
 
