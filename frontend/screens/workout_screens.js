@@ -8,8 +8,12 @@ import { WorkoutForm } from './workout_forms/workout_form';
 import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
 import AddWorkoutForm from './workout_forms/add_workout_form';
 
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-// /android/app/src/main/assets/fonts/SimpleLineIcons.ttf
+// import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+
 
 
 export class BackScreen extends React.Component {
@@ -17,26 +21,41 @@ export class BackScreen extends React.Component {
     super(props);
   }
 
+
   render() {
+    ////// testing this\
+    ////// So this sorta works just maybe done use fontAwesome but Evil should wor
+    ///// button works just need to style is nice and pretty
+    const myButton = (
+      <EvilIcons.Button
+        name="plus"
+        backgroundColor="purple"
+      >
+        Add New Workout
+      </EvilIcons.Button>
+    );
+
+    const customTextButton = (
+      <FontAwesome.Button name="facebook" backgroundColor="#3b5998">
+        <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>
+          Login with Facebook
+        </Text>
+      </FontAwesome.Button>
+    );
+    ////
+
     const { partType } = this.props.route.params;
     console.log("CLASS PARTYPE: ", partType);
     return(
-      <View style={{ backgroundColor: "#7EE8F5" }}>
+      <View>
         <View>
           <WorkoutDropdownSearch keywordPart={partType} />
         </View>
 
-
-      <SimpleLineIcons name="logout" size={30} color="red" />
-
-
-
-
-        <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
-        <View style={{ backgroundColor: "#7EE8F5", marginTop: 15 }}>
-          <Text>baaaaaaaaaaack screeeeeeen</Text>
-          <Text>baaaaaaaaaaack screeeeeeen</Text>
+        <View>
+          {myButton}
         </View>
+
       </View>
     );
   }
@@ -58,7 +77,7 @@ export class LegsScreen extends React.Component {
     return(
       <View>
         <View>
-          <Text>leeeeegs screeeeen</Text>
+
         </View>
         <WorkoutDropdownSearch keywordPart={partType} />
       </View>
@@ -79,7 +98,6 @@ export class ChestScreen extends React.Component {
     return(
       <View>
         <View>
-          <Text>cheeeeest screen</Text>
         </View>
         <WorkoutDropdownSearch keywordPart={partType} />
       </View>

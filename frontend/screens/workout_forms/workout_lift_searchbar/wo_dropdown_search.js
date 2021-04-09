@@ -4,7 +4,9 @@ import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from './searchbar_keywords';
 // import { Icon } from "react-native-vector-icons";
-import Icon from 'react-native-vector-icons/Ionicons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
+
 
 // testing modal stuff
 import { Alert, Modal, Pressable} from "react-native";
@@ -65,16 +67,21 @@ class WorkoutDropdownSearch extends React.Component {
     console.log("the stateboooi: ", this.state);
 
     return(
-      <ScrollView>
+      <ScrollView style={styles.topScrollView}>
         <KeyboardAvoidingView
           behavior="margin">
-      <View style={{ backgroundColor: "yellow" }}>
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => this.setModalVisible(true)}
-          >
-          <Text style={{marginTop: 10}}>Add Workout</Text>
-        </Pressable>
+      <View style={{backgroundColor: "yellow"}}>
+        {/* change to style addWorkoutPressable  */}
+        <View style={styles.addWorkoutPressable}>
+          <Pressable
+            style={{flexDirection: "row"}}
+            onPress={() => this.setModalVisible(true)}
+            >
+            <EvilIcons name="plus" size={30} color="blue" />
+            <Text style={{marginTop: 10}}>Add Workout</Text>
+          </Pressable>
+        </View>
+
         <Modal
           visible={this.state.modalVisible}
           >
@@ -131,6 +138,18 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     marginTop: 12,
+  },
+  topScrollView: {
+
+  },
+  addWorkoutPressable: {
+    elevation: 2,
+    backgroundColor: "yellow",
+    flexDirection: 'row',
+    padding: 10,
+  },
+  addWorkoutText : {
+    paddingLeft: 20,
   },
   input: {
     // { height: 60, borderColor: '#000', borderWidth: 1, margin: 10 }

@@ -23,7 +23,7 @@ import LoginContainer from './containers/login_screen_container';
 import Home from './screens/home_screen';
 
 import SplashScreen from './screens/splash_screen';  // loading screen
-// import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+
 import * as Font from 'expo-font';
 
 let store = null;
@@ -45,8 +45,7 @@ function configureStore(initialState = {}) {
 
 let teststore = configureStore();
 
-// below works but cant actually get componentDidMount in there
-//
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -55,24 +54,14 @@ export default class App extends React.Component {
     };
   };
 
-  testyo() { // ? works but compondndtDidMount wont
-    console.log("heyeye");
-  };
 
-  // async componentDidMount () {
-  //   await Expo.Font.loadAsync({
-  //       Ionicons: require('./android/src/main/fonts/Ionicons.ttf'),
-  //   });
-  // };
-
-  // /android/app/src/main/assets/fonts/SimpleLineIcons.ttf
-
-  async componentDidMount() {
-    console.log("COPONENT DID MOUNT");
+  async componentDidMount() {  // retrieves the fonts and icons from fonts folders before app loads
     try {
       await Font.loadAsync({
         // 'SimpleLineIcons': require('@expo/vector-icons/fonts/SimpleLineIcons.ttf'),
         'SimpleLineIcons': require('./android/app/src/main/assets/fonts/SimpleLineIcons.ttf'),
+        'EvilIcons': require('./android/app/src/main/assets/fonts/EvilIcons.ttf'),
+        'FontAwesome.ttf': require('./android/app/src/main/assets/fonts/FontAwesome.ttf'),
       });
       this.setState({ fontsAreLoaded: true });
     } catch(error) {
@@ -83,6 +72,11 @@ export default class App extends React.Component {
 
   render() {
     const { fontsAreLoaded } = this.state;
+
+    if (!this.state.fontsAreLoaded) {  // splash screen is my loading screen, loads screen during font load
+      return <SplashScreen />
+    };
+
     return (
       <Provider store={teststore}>
         <NavigationContainer>
