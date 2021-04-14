@@ -26,7 +26,6 @@ class WorkoutDropdownSearch extends React.Component {
 
     this.arrayNew = keywordSearch(this.props.keywordPart); // keywordPart comes from the route param passsed from select_workout.js
 
-    console.log("in dropdown search ", this.props);
   };
 
 
@@ -60,7 +59,9 @@ class WorkoutDropdownSearch extends React.Component {
   }
 
   submitForm() {
-
+    // / workoutFunc
+    // RESUME + line 123 or 4
+    this.props.workoutFunc({id: 1, workout_id: 3, type: "temp chest", name: "bench press", weight: 150, reps: 12})
   }
 
 
@@ -120,7 +121,7 @@ class WorkoutDropdownSearch extends React.Component {
             <Button
               style={styles.buttonSingle}
               title={"Submit"}
-              onPress={() => this.setModalVisible(!this.state.modalVisible)}
+              onPress={() => this.setModalVisible(!this.state.modalVisible); this.submitForm();}
               >
             </Button>
 

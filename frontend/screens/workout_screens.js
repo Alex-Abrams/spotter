@@ -79,7 +79,7 @@ export class LegsScreen extends React.Component {
     console.log("legs props: ", this.props);
     return(
       <View>
-        <WorkoutDropdownSearch keywordPart={partType} />
+        <WorkoutDropdownSearch keywordPart={partType} workoutFunc={this.props.workoutActions.receiveLift()} />
       </View>
     );
   }

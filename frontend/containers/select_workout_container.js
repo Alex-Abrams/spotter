@@ -6,8 +6,7 @@ import * as workoutActions from '../actions/workout_actions';
 import * as authActions from '../actions/auth_actions';
 
 const mapStateToProps = state => ({
-  current_user_id: state.entities.users.id,
-  current_user_email: state.entities.users.email,
+  current_user: Object.values(state.entities.users)[0],
 });
 
 const mapDispatchToProps = dispatch => ({

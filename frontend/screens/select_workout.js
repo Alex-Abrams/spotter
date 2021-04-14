@@ -13,6 +13,7 @@ class SelectWorkout extends React.Component {
     //
     // };
   }
+  // {type: "chest", user_id: 5}
 
   toBodyPart({navigation}, array) {
     // takes aray of body parts and makes a button that redirects to that form
@@ -25,7 +26,7 @@ class SelectWorkout extends React.Component {
         buttonStyle={styles.button}
         onPress={() => {this.props.navigation.navigate('WorkoutNav',
            { screen: `${part}`, params: { partType: `${part}` }});
-            console.log("hi");}}
+            this.props.workoutActions.receiveWorkout({type: `${part}`, user_id: this.props.current_user.id});}}
         ></Button>
       {/*
       <Button
@@ -53,6 +54,10 @@ class SelectWorkout extends React.Component {
 
   render() {
     let bodyArray = ["Chest", "Legs", "Back", "Shoulders", "Arms"];
+    // console.log("PROPS: ", this.props);
+    // // console.log("CU ID: ", Object.values(this.props.current_user_id));
+    // console.log("values ", this.props.current_user.id);
+
 
     return(
       <View style={styles.container}>

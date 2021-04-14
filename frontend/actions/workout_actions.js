@@ -8,5 +8,6 @@ export const receiveWorkout = (workout) => ({
 
 export const receiveLift = (lift) => ({
   type: RECEIVE_LIFT,
-  lift // action will look like: {workout_id: (from the above one), type: "chest", name: "bench press", weight: 150, reps: 12, sets: 3}
+  lift // action will look like: {workout_id: (from the above one),
+    // type: "chest", name: "bench press", weight: 150, reps: 12, sets: 3}
 });

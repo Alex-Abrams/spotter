@@ -76,7 +76,7 @@ class FarStack extends React.Component {
         {(loggedIn == true) ? (
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Workouts" component={SelectWorkout} navigation={this.props.navigation} />
+          <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           </>
         ) : (
