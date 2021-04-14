@@ -31,16 +31,18 @@ export class BackScreen extends React.Component {
         name="plus"
         backgroundColor="purple"
       >
+      <Text style={{ color: "#98653b" }}>
         Add New Workout
+      </Text>
       </EvilIcons.Button>
     );
 
     const customTextButton = (
-      <FontAwesome.Button name="facebook" backgroundColor="#3b5998">
-        <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>
+      <EvilIcons.Button name="plus" backgroundColor="#3b983b">
+        <Text style={{ fontFamily: 'Roboto', fontSize: 15 }}>
           Login with Facebook
         </Text>
-      </FontAwesome.Button>
+      </EvilIcons.Button>
     );
     ////
 
@@ -54,6 +56,7 @@ export class BackScreen extends React.Component {
 
         <View>
           {myButton}
+          {customTextButton}
         </View>
 
       </View>
@@ -76,9 +79,6 @@ export class LegsScreen extends React.Component {
     console.log("legs props: ", this.props);
     return(
       <View>
-        <View>
-
-        </View>
         <WorkoutDropdownSearch keywordPart={partType} />
       </View>
     );

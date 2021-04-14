@@ -63,23 +63,27 @@ class WorkoutDropdownSearch extends React.Component {
 
   }
 
-  render() { // {value: item.name}
-    console.log("the stateboooi: ", this.state);
+
+  render() {
+
+    const addButton = (
+      <EvilIcons.Button
+        name="plus"
+        backgroundColor="blue"
+        size={50}
+        onPress={() => this.setModalVisible(true)}>
+        <Text style ={{ color: "#dce4e8", width: "80%", fontSize: 20, paddingTop: 7, paddingBottom: 7, paddingRight: 33, elevation: 3, textAlign: 'center' }}>Add Exercise</Text>
+      </EvilIcons.Button>
+    );
 
     return(
       <ScrollView style={styles.topScrollView}>
         <KeyboardAvoidingView
           behavior="margin">
-      <View style={{backgroundColor: "yellow"}}>
+      <View style={{backgroundColor: "green"}}>
         {/* change to style addWorkoutPressable  */}
         <View style={styles.addWorkoutPressable}>
-          <Pressable
-            style={{flexDirection: "row"}}
-            onPress={() => this.setModalVisible(true)}
-            >
-            <EvilIcons name="plus" size={30} color="blue" />
-            <Text style={{marginTop: 10}}>Add Workout</Text>
-          </Pressable>
+          {addButton}
         </View>
 
         <Modal
@@ -143,10 +147,20 @@ const styles = StyleSheet.create({
 
   },
   addWorkoutPressable: {
-    elevation: 2,
-    backgroundColor: "yellow",
+    // elevation: 2,
+    backgroundColor: "green",
     flexDirection: 'row',
-    padding: 10,
+    // padding: 10,
+  },
+  evilIconButton: {
+    color: "#dce4e8",
+    width: "80%",
+    fontSize: 20,
+    paddingTop: 7,
+    paddingBottom: 7,
+    paddingRight: 33,
+    elevation: 3,
+    textAlign: 'center'
   },
   addWorkoutText : {
     paddingLeft: 20,
