@@ -96,7 +96,7 @@ export class ChestScreen extends React.Component {
     const { partType } = this.props.route.params;
     console.log("CLASS PARTYPE: ", partType);
     return(
-      <View>
+      <View style={{ backgroundColor: "#7EE8F5", height: "100%" }}>
         <View>
         </View>
         <WorkoutDropdownSearch keywordPart={partType} />

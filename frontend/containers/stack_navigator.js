@@ -8,7 +8,8 @@ import LoginContainer from './login_screen_container';
 import HomeContainer from '../containers/home_container';
 import SignupContainer from './signup_container';
 import SplashScreen from '../screens/splash_screen';
-import newWorkoutForm from '../screens/select_workout'; // select workout body part
+import SelectWorkout from '../screens/select_workout'; // select workout body part
+import SelectWorkoutContainer from './select_workout_container';
 import WorkoutNav from './workout_navigator';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
@@ -75,7 +76,7 @@ class FarStack extends React.Component {
         {(loggedIn == true) ? (
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Workouts" component={newWorkoutForm} navigation={this.props.navigation} />
+          <Stack.Screen name="Workouts" component={SelectWorkout} navigation={this.props.navigation} />
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           </>
         ) : (

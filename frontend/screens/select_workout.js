@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 
-class selectWorkout extends React.Component {
+class SelectWorkout extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,11 +23,22 @@ class selectWorkout extends React.Component {
         key={i}
         title={part}
         buttonStyle={styles.button}
+        onPress={() => {this.props.navigation.navigate('WorkoutNav',
+           { screen: `${part}`, params: { partType: `${part}` }});
+            console.log("hi");}}
+        ></Button>
+      {/*
+      <Button
+        raised
+        key={i}
+        title={part}
+        buttonStyle={styles.button}
         onPress={() => this.props.navigation.navigate('WorkoutNav',
          { screen: `${part}`, params: { partType: `${part}` },
        }
        )}
           ></Button>
+          */}
     </View>
     );
 
@@ -37,6 +48,7 @@ class selectWorkout extends React.Component {
       </View>
     );
   }
+
 
 
   render() {
@@ -82,4 +94,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default selectWorkout;
+export default SelectWorkout;

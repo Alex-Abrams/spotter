@@ -66,24 +66,35 @@ class WorkoutDropdownSearch extends React.Component {
 
   render() {
 
-    const addButton = (
-      <EvilIcons.Button
-        name="plus"
-        backgroundColor="blue"
-        size={50}
-        onPress={() => this.setModalVisible(true)}>
-        <Text style ={{ color: "#dce4e8", width: "80%", fontSize: 20, paddingTop: 7, paddingBottom: 7, paddingRight: 33, elevation: 3, textAlign: 'center' }}>Add Exercise</Text>
-      </EvilIcons.Button>
+
+    const addExerButton = (
+      <Button
+        raised
+        icon={
+          <EvilIcons
+            name="plus"
+            size={50}
+            color="white"
+             />
+        }
+        title="Add Exercise"
+        buttonStyle={{ backgroundColor: "#0497A9"}}
+        titleStyle={{fontSize: 24}}
+        onPress={() => this.setModalVisible(true)}
+        iconRight
+        />
     );
+    // <EvilIcons name="plus" size={20} />
 
     return(
       <ScrollView style={styles.topScrollView}>
         <KeyboardAvoidingView
           behavior="margin">
-      <View style={{backgroundColor: "green"}}>
+      <View>
         {/* change to style addWorkoutPressable  */}
-        <View style={styles.addWorkoutPressable}>
-          {addButton}
+
+        <View style={styles.addExerciseButtonView}>
+          {addExerButton}
         </View>
 
         <Modal
@@ -144,16 +155,16 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   topScrollView: {
-
+    // backgroundColor: "#7EE8F5",
   },
-  addWorkoutPressable: {
+  addExerciseButtonView: {
     // elevation: 2,
-    backgroundColor: "green",
-    flexDirection: 'row',
-    // padding: 10,
+    // backgroundColor: "#0497A9",
+    // flexDirection: 'row',
+    padding: 10,
   },
-  evilIconButton: {
-    color: "#dce4e8",
+  evilIconButtonText: {
+    color: "white",
     width: "80%",
     fontSize: 20,
     paddingTop: 7,
@@ -161,9 +172,6 @@ const styles = StyleSheet.create({
     paddingRight: 33,
     elevation: 3,
     textAlign: 'center'
-  },
-  addWorkoutText : {
-    paddingLeft: 20,
   },
   input: {
     // { height: 60, borderColor: '#000', borderWidth: 1, margin: 10 }
