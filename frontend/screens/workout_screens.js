@@ -6,7 +6,9 @@ import { List, ListItem } from "react-native-elements";
 
 import { WorkoutForm } from './workout_forms/workout_form';
 import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
+import WorkoutDropdownSearchContainer from '../containers/drop_down_container';
 import AddWorkoutForm from './workout_forms/add_workout_form';
+
 
 // import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -51,7 +53,7 @@ export class BackScreen extends React.Component {
     return(
       <View>
         <View>
-          <WorkoutDropdownSearch keywordPart={partType} />
+          <WorkoutDropdownSearchContainer keywordPart={partType} />
         </View>
 
         <View>
@@ -79,7 +81,7 @@ export class LegsScreen extends React.Component {
     console.log("legs props: ", this.props);
     return(
       <View>
-        <WorkoutDropdownSearch keywordPart={partType} workoutFunc={this.props.workoutActions.receiveLift()} />
+        <WorkoutDropdownSearchContainer keywordPart={partType} />
       </View>
     );
   }

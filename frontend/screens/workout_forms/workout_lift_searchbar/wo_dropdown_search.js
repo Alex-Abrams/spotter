@@ -3,7 +3,6 @@ import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, Safe
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from './searchbar_keywords';
-// import { Icon } from "react-native-vector-icons";
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 
@@ -22,6 +21,7 @@ class WorkoutDropdownSearch extends React.Component {
       data: [],
       value: '',
       modalVisible: false,
+      temp_id: 1,
     };
 
     this.arrayNew = keywordSearch(this.props.keywordPart); // keywordPart comes from the route param passsed from select_workout.js
@@ -59,14 +59,12 @@ class WorkoutDropdownSearch extends React.Component {
   }
 
   submitForm() {
-    // / workoutFunc
-    // RESUME + line 123 or 4
-    this.props.workoutFunc({id: 1, workout_id: 3, type: "temp chest", name: "bench press", weight: 150, reps: 12})
+    this.props.workoutActions.receiveLift({id: this.state.temp_id, workout_id: 3, type: this.props.keywordPart, name: this.state.value });
+    this.setState({ temp_id: this.state.temp_id + 1});
   }
 
 
   render() {
-
 
     const addExerButton = (
       <Button
@@ -121,7 +119,7 @@ class WorkoutDropdownSearch extends React.Component {
             <Button
               style={styles.buttonSingle}
               title={"Submit"}
-              onPress={() => this.setModalVisible(!this.state.modalVisible); this.submitForm();}
+              onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
               >
             </Button>
 

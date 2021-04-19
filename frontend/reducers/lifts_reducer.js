@@ -14,6 +14,7 @@ const liftsReducer = (state = {}, action) => {
       //   // this id will not be POSTed to the backend
        // {workout_id: 3, type: "chest", name: "bench press", weight: 150, reps: 12, sets: 3}
        return merge({}, state, { [action.lift.id]: action.lift });
+       // return merge({}, state, action.lift);
     default:
       return state;
   }
