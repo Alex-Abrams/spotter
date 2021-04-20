@@ -7,7 +7,7 @@ import { List, ListItem } from "react-native-elements";
 import { WorkoutForm } from './workout_forms/workout_form';
 import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
 import WorkoutDropdownSearchContainer from '../containers/drop_down_container';
-import AddWorkoutForm from './workout_forms/add_workout_form';
+import LiftsShow from './workout_forms/lifts_show';
 
 
 // import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -25,28 +25,6 @@ export class BackScreen extends React.Component {
 
 
   render() {
-    ////// testing this\
-    ////// So this sorta works just maybe done use fontAwesome but Evil should wor
-    ///// button works just need to style is nice and pretty
-    const myButton = (
-      <EvilIcons.Button
-        name="plus"
-        backgroundColor="purple"
-      >
-      <Text style={{ color: "#98653b" }}>
-        Add New Workout
-      </Text>
-      </EvilIcons.Button>
-    );
-
-    const customTextButton = (
-      <EvilIcons.Button name="plus" backgroundColor="#3b983b">
-        <Text style={{ fontFamily: 'Roboto', fontSize: 15 }}>
-          Login with Facebook
-        </Text>
-      </EvilIcons.Button>
-    );
-    ////
 
     const { partType } = this.props.route.params;
     console.log("CLASS PARTYPE: ", partType);
@@ -54,11 +32,6 @@ export class BackScreen extends React.Component {
       <View>
         <View>
           <WorkoutDropdownSearchContainer keywordPart={partType} />
-        </View>
-
-        <View>
-          {myButton}
-          {customTextButton}
         </View>
 
       </View>
@@ -76,12 +49,26 @@ export class LegsScreen extends React.Component {
   render() {
 
     const { partType } = this.props.route.params;
+    const { lifts } = this.props;
+    const revLifts = lifts.reverse(); // i want the newest exercise addition to be at the top
+    // console.log("FUUUCKING LIFTS", lifts);
+
+    const liftsDisplay = (
+      <View>
+      {revLifts.map(lift =>
+        <LiftsShow
+        key={lift.id}
+        lift={lift} />)}
+      </View>
+    );
     // console.log("CLASS PARTYPE: ", partType);
     // this.props.workoutActions.whateverAction()
-    console.log("legs props: ", this.props);
+    // console.log("legs props: ", this.props);
     return(
       <View>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
+        <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
+        {liftsDisplay}
       </View>
     );
   }

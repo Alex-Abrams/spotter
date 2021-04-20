@@ -2,14 +2,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import screen name
 // import actions
-import {LegsScreen} from '../screens/workout_screens';
+import { LegsScreen } from '../screens/workout_screens';
 import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
+import { selectAllLifts } from './selectors';
 // import WorkoutScreens from "../screens/workout_screens";
 
 const mapStateToProps = state => ({
-  current_user_id: state.entities.users.id,
-  current_user_email: state.entities.users.email,
+  // current_user_id: state.entities.users.id,
+  // current_user_email: state.entities.users.email,
+  current_user: Object.values(state.entities.users)[0],
+  lifts: selectAllLifts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
