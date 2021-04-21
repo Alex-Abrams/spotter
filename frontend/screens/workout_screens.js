@@ -65,11 +65,11 @@ export class LegsScreen extends React.Component {
     // this.props.workoutActions.whateverAction()
     // console.log("legs props: ", this.props);
     return(
-      <View>
+      <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         {liftsDisplay}
-      </View>
+      </ScrollView>
     );
   }
 }
