@@ -61,9 +61,7 @@ export class LegsScreen extends React.Component {
         lift={lift} />)}
       </View>
     );
-    // console.log("CLASS PARTYPE: ", partType);
-    // this.props.workoutActions.whateverAction()
-    // console.log("legs props: ", this.props);
+
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />

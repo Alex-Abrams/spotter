@@ -9,6 +9,9 @@ import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, S
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { Button } from 'react-native-elements';
 import SetForm from './set_form';
+import SetFormContainer from '../../containers/set_form_container';
+import SetShowContainer from '../../containers/set_show_container';
+
 
 class LiftsShow extends React.Component {
   constructor(props) {
@@ -42,6 +45,8 @@ class LiftsShow extends React.Component {
     )
   }
 
+
+
   render() {
     const { lift } = this.props;
 
@@ -49,11 +54,14 @@ class LiftsShow extends React.Component {
     // const displayLiftItem = (this.state.isMinimized) ? liftItemMax : liftItemMin;
     const displayLiftItem = (this.state.isMinimized) ? this.minOrMaxLiftItem("arrow-up") : this.minOrMaxLiftItem("arrow-down");
 
-    const displaySetForm = (!this.state.isMinimized) ? null : ( <SetForm /> ) ;
+    const displaySetForm = (!this.state.isMinimized) ? null : ( <SetFormContainer liftId={lift.id} /> ) ;
+
+    const displaySetShowItem = (!this.state.isMinimized) ? null : ( <SetShowContainer liftId={lift.id}/> ) ;
 
     return(
       <View>
         {displayLiftItem}
+        <View>{displaySetShowItem}</View>
         {displaySetForm}
       </View>
     );
