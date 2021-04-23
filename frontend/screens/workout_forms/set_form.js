@@ -45,7 +45,8 @@ class SetForm extends React.Component {
 
   submitForm() {
     // state sends to store
-    // this.props.workoutActions.RECEIVE_WORKOUT
+    // needss a temp set id
+    this.props.workoutActions.receiveSet({lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
   }
 
   render() {
@@ -75,7 +76,8 @@ class SetForm extends React.Component {
 
       <View>
         <Button
-          title="Confirm">
+          title="Confirm"
+          onPress={() => this.submitForm()}>
         </Button>
       </View>
 

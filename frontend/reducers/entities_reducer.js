@@ -5,11 +5,13 @@ import { combineReducers } from 'redux';
 import workoutReducer from './workout_reducer';
 import usersReducer from './users_reducer';
 import liftsReducer from './lifts_reducer';
+import setsReducer from './sets_reducer';
 //
 const entitiesReducer = combineReducers({
   users: usersReducer,
   workout: workoutReducer,
   lifts: liftsReducer,
+  sets: setsReducer,
 });
 
 export default entitiesReducer;
