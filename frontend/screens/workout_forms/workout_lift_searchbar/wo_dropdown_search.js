@@ -21,7 +21,7 @@ class WorkoutDropdownSearch extends React.Component {
       data: [],
       value: '',
       modalVisible: false,
-      temp_id: 1,
+      // temp_id: 1,
     };
 
     this.arrayNew = keywordSearch(this.props.keywordPart); // keywordPart comes from the route param passsed from select_workout.js

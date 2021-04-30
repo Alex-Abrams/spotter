@@ -9,7 +9,8 @@ const setsReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_SET:
-      return merge({}, state, action.set);
+      // return merge({}, state, action.set);
+      return merge({}, state, { [action.set.id]: action.set });
     default:
       return state;
   }

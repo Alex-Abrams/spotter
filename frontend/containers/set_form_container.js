@@ -2,11 +2,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as workoutActions from '../actions/workout_actions';
 import SetForm from '../screens/workout_forms/set_form';
-import { selectAllLifts } from './selectors';
+import { selectAllLifts, selectAllSets, selectSetsPerLift } from './selectors';
 
 
 const mapStateToProps = state => ({
-  lifts: selectAllLifts,
+  // lifts: selectAllLifts,
+  sets: selectAllSets(state),
+  // setsPerLift: selectSetsPerLift(state, liftId)
 });
 
 const mapDispatchToProps = dispatch => ({

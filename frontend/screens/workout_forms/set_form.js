@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import { List, ListItem } from "react-native-elements";
+import SetShow from './set_show';
 
 class SetForm extends React.Component {
   constructor(props) {
@@ -15,13 +16,9 @@ class SetForm extends React.Component {
       repsNumeric: null,
     };
   }
-  // this basically will have the 2 inputs for reps(repetitions) and weight
-  // two inputs, and a "submit form...ish" type of button to solidify the sets
-  // once the button is entered either have a button for adding set or just make the next input form visible
-
 
   updateForm(input, section) {
-
+    // sets and wieghts should only be numeric valuess
     const num = /^[0-9]+$/;
     if (input.match(num)) {
       // if the input only contains numbers update input and set numeric to true
@@ -45,33 +42,66 @@ class SetForm extends React.Component {
 
   submitForm() {
     // state sends to store
+    const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
     // needss a temp set id
-    this.props.workoutActions.receiveSet({lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+    this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
   }
 
+
   render() {
-    // console.log("after render", this.state.onlyNumeric);
-    console.log("SET FORM ID", this.props.liftId);
-    // console.log("this.state.weight", this.state.weight);
+    const { liftId, sets } = this.props;
+
+    const setsPerLift = () => {
+      let selectSets = [];
+      sets.forEach(set => {
+        if (liftId === set.lift_id) {
+          selectSets.push(set);
+        };
+      });
+      return selectSets;
+    };
+
+    const setsLiftArray = setsPerLift();
+
+    const setsDisplay = (
+      <View>
+      {setsLiftArray.map(set =>
+        <SetShow
+        key={set.id}
+        set={set}
+        weight={set.weight}
+        reps={set.reps}
+        setId={set.id} />)}
+      </View>
+    );
+
+    // console.log("sets: ", sets);
+    // console.log("setsPerLift: ", setsPerLift());
+
     return(
       <View style={{paddingLeft: 16, paddingRight: 16}}>
-        <Text>Set # oi m8</Text>
 
-      <View style={{ paddingTop: 8 }}>
-        <TextInput
-          placeholder="weight"
-          onChangeText={input => this.updateForm(input, "weight")}
-          value={this.state.weight}
-          style={{borderWidth: 1, width: "30%", height: 32}}
-          />
-      </View>
+      {setsDisplay}
 
-      <View style={{ paddingTop: 8}}>
-        <TextInput
-        placeholder="# of reps"
-        style={{borderWidth: 1, width: "30%", height: 32}}
-        onChangeText={input => this.updateForm(input, "reps")}
-        />
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+
+        <View style={{ paddingTop: 8 }}>
+          <TextInput
+            placeholder="weight"
+            onChangeText={input => this.updateForm(input, "weight")}
+            value={this.state.weight}
+            style={{borderWidth: 1, width: 100, height: 32}}
+            />
+        </View>
+
+        <View style={{ paddingTop: 8, paddingLeft: 20 }}>
+          <TextInput
+            placeholder="# of reps"
+            style={{borderWidth: 1, width: 100, height: 32}}
+            onChangeText={input => this.updateForm(input, "reps")}
+            />
+        </View>
+
       </View>
 
       <View>
