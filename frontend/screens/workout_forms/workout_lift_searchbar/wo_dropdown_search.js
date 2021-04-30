@@ -50,6 +50,7 @@ class WorkoutDropdownSearch extends React.Component {
         placeholder="   Type Exercise"
         onChangeText={text => this.searchItems(text)}
         value={this.state.value}
+        ref={input => { this.textInput = input }}
       />
     );
   };
@@ -62,6 +63,8 @@ class WorkoutDropdownSearch extends React.Component {
     const temp_id = (this.props.lifts.length === 0) ? 1 : (this.props.lifts[this.props.lifts.length -1].id) + 1;
     // temp_id is for the store only, POSTing only occur after the entire workout(all the lifts are complete)
     this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, type: this.props.keywordPart, name: this.state.value });
+
+    this.setState({ value: '' });
   }
 
 

@@ -45,6 +45,11 @@ class SetForm extends React.Component {
     const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
     // needss a temp set id
     this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+
+    this.textInput.clear(); // clear in the inputs after submiting
+
+    this.setState({ weight: ''}); // for someone reason .clear only ceared one input at a time
+                                  // and setState also only clered one at a time
   }
 
 
@@ -65,10 +70,11 @@ class SetForm extends React.Component {
 
     const setsDisplay = (
       <View>
-      {setsLiftArray.map(set =>
+      {setsLiftArray.map((set, i) =>
         <SetShow
         key={set.id}
         set={set}
+        number={i}
         weight={set.weight}
         reps={set.reps}
         setId={set.id} />)}
@@ -91,6 +97,7 @@ class SetForm extends React.Component {
             onChangeText={input => this.updateForm(input, "weight")}
             value={this.state.weight}
             style={{borderWidth: 1, width: 100, height: 32}}
+            ref={input => { this.textInput = input }}
             />
         </View>
 
@@ -99,6 +106,7 @@ class SetForm extends React.Component {
             placeholder="# of reps"
             style={{borderWidth: 1, width: 100, height: 32}}
             onChangeText={input => this.updateForm(input, "reps")}
+            ref={input => { this.textInput = input }}
             />
         </View>
 

@@ -13,15 +13,23 @@ class SetShow extends React.Component {
 
     // console.log("setsghow", this.props.lifts);
     // console.log("liftID:", this.props.liftId);
-    const { set, setId, weight, reps } = this.props;
+    const { set, setId, weight, reps, number } = this.props;
     // {id: 3, lift_id: 2, weight: "444", reps: "555"}
 
     const showDisplay = (typeof setId !== "undefined") ? (
-      <View>
-        <Text>Set #</Text>
-        <Text>Weight: {weight}</Text>
-        <Text>Reps: {reps}</Text>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: "space-between" }}>
+        <Text>Set # {number + 1}</Text>
+        <Text style={{paddingLeft: 12}}>Weight: {weight} lbs</Text>
+        <Text style={{paddingLeft: 12}}>Reps: {reps}</Text>
+        <View>
+        </View>
       </View>
+    ) : (
+      null
+    );
+
+    const border = (typeof setId !== "undefined") ? (
+      <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1, paddingBottom: 5, paddingRight: 16}}></View>
     ) : (
       null
     );
@@ -29,6 +37,7 @@ class SetShow extends React.Component {
     return(
       <View style={{paddingLeft: 16}}>
         { showDisplay }
+        { border }
       </View>
     );
   }
