@@ -6,9 +6,7 @@ import { selectAllLifts, selectAllSets, selectSetsPerLift } from './selectors';
 
 
 const mapStateToProps = state => ({
-  // lifts: selectAllLifts,
   sets: selectAllSets(state),
-  // setsPerLift: selectSetsPerLift(state, liftId)
 });
 
 const mapDispatchToProps = dispatch => ({

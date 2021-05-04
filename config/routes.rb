@@ -23,19 +23,29 @@ Rails.application.routes.draw do
   #   end
   # end
 
+  # resources :users do
+  #     resources :body_parts, only: [:index, :create] do
+  #       resources :workouts, only: [:index, :create] do
+  #         resources :lifts, only: [:index, :create] do
+  #           resources :reps_weights, only: [:index, :create]
+  #         end
+  #       end
+  #     end
+  # end
+
+  # Newest one, only for creating and indexing to display
   resources :users do
-      resources :body_parts, only: [:index, :create] do
-        resources :workouts, only: [:index, :create] do
-          resources :lifts, only: [:index, :create] do
-            resources :reps_weights, only: [:index, :create]
-          end
-        end
-      end
+    resources :workouts, only: [:index, :create] do
+      resources :lifts, only: [:index, :create]
+    end
   end
 
   resources :lifts, except: [:index, :create]
 
-  resources :reps_weights, except: [:index, :create]
+  resources :workouts, except: [:index, :create]
+
+  # resources :reps_weights, except: [:index, :create]
+
 
   # resources :sets, except: [:index, :create]
   # resources :lifts

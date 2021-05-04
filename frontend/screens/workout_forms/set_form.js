@@ -81,8 +81,6 @@ class SetForm extends React.Component {
       </View>
     );
 
-    // console.log("sets: ", sets);
-    // console.log("setsPerLift: ", setsPerLift());
 
     return(
       <View style={{paddingLeft: 16, paddingRight: 16}}>
