@@ -17,3 +17,8 @@ export const receiveSet = (set) => ({
   type: RECEIVE_SET,
   set
 });
+
+export function postEntireWorkoutSession() {
+  let promises = [];
+
+}

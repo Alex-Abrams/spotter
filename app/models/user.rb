@@ -8,8 +8,8 @@ class User < ApplicationRecord
   #   email
   # end
 
-  has_many :body_parts,
-    primary_key: :user_id,
-    foreign_key: :id,
-    class_name: :User
+  has_many :workouts,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Workout
 end

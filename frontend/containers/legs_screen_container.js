@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { LegsScreen } from '../screens/workout_screens';
 import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
-import { selectAllLifts } from './selectors';
+import { selectAllLifts, selectAllSets } from './selectors';
 // import WorkoutScreens from "../screens/workout_screens";
 
 const mapStateToProps = state => ({
@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   // current_user_email: state.entities.users.email,
   current_user: Object.values(state.entities.users)[0],
   lifts: selectAllLifts(state),
+  sets: selectAllSets(state),
 });
 
 const mapDispatchToProps = dispatch => ({

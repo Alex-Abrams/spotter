@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, S
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { List, ListItem } from "react-native-elements";
+import merge from 'lodash/merge';
 
 import { WorkoutForm } from './workout_forms/workout_form';
 import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dropdown_search';
@@ -46,6 +47,29 @@ export class LegsScreen extends React.Component {
     super(props);
   }
 
+  submitWorkout() {
+    // need to make a new object... or array
+    // console.log('lifts: ', this.props.lifts);
+    // console.log('sets: ', this.props.sets);
+    let liftsSets = [];
+    // liftsSets.push(this.props.sets[0].weight);
+    // console.log("liftsSets: ", liftsSets);
+    const liftsArray = this.props.lifts;
+    const setsArray = this.props.sets;
+
+    setsArray.forEach(set => {
+      liftsArray.forEach(lift => {
+        if (set.lift_id === lift.id) {
+          let merged = merge({}, set, lift);
+          liftsSets.push(merged);
+          return;
+        };
+
+      });
+    });
+    console.log("LIFTSSETS: ", liftsSets);
+  }
+
   render() {
 
     const { partType } = this.props.route.params;
@@ -67,6 +91,14 @@ export class LegsScreen extends React.Component {
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         {liftsDisplay}
+
+        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18}}>
+          <Button
+            title={"Confirm Workout"}
+            onPress={() => this.submitWorkout()}>
+          </Button>
+        </View>
+
       </ScrollView>
     );
   }
