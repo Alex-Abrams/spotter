@@ -11,9 +11,9 @@ class SetForm extends React.Component {
     this.state = {
       weight: '',
       reps: '',
-      // onlyNumeric: null,
-      weightNumeric: null,
-      repsNumeric: null,
+      disableButton: true,
+      weightNumeric: true,
+      repsNumeric: true,
     };
   }
 
@@ -38,11 +38,28 @@ class SetForm extends React.Component {
       };
 
     };
+
+    console.log("leeength", this.state.reps.length);
+
+    if(this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length >= 0) && (this.state.reps.length >= 0)) {
+        // console.log("shit happening top");
+        this.setState({ disableButton: false });
+      } else {
+        // console.log("shit happening bot");
+        this.setState({ disableButton: true });
+      };
+
   }
 
   submitForm() {
-    // state sends to store
-    /// IF weightNumeric && repsNumeric !== true then alert that it needs to be numeric
+
+    if (this.state.weightNumeric && this.state.repsNumeric) {
+      console.log("you may Confirm");
+      // this.setState({ disableButton})
+    } else {
+      console.log("you may not confirm");
+    };
+
     const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
     // needss a temp set id
     this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
@@ -56,6 +73,25 @@ class SetForm extends React.Component {
 
   render() {
     const { liftId, sets } = this.props;
+    // console.log("disabled button", this.state.disableButton);
+    // console.log("leeength", this.state.reps.length);
+                                    // weightNumeric(if true then the input contains only numbers)
+    const errorDisplayWeight = (this.state.weightNumeric === true) ? (
+      null
+    ) : (
+      <View>
+        <Text style={{color: 'red'}}>Numbers Only</Text>
+      </View>
+    );
+
+    const errorDisplayReps = (this.state.repsNumeric === true) ? (
+      null
+    ) : (
+      <View>
+        <Text style={{color: 'red'}}>Numbers Only</Text>
+      </View>
+    );
+
 
     const setsPerLift = () => {
       let selectSets = [];
@@ -90,23 +126,25 @@ class SetForm extends React.Component {
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
 
-        <View style={{ paddingTop: 8 }}>
+        <View style={{ paddingTop: 8, paddingBottom: 6 }}>
           <TextInput
             placeholder="weight   lbs"
             onChangeText={input => this.updateForm(input, "weight")}
             value={this.state.weight}
-            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8}}
+            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8, borderColor: "#0497A9"}}
             ref={input => { this.textInput = input }}
             />
+          {errorDisplayWeight}
         </View>
 
-        <View style={{ paddingTop: 8, paddingLeft: 20 }}>
+        <View style={{ paddingTop: 8, paddingLeft: 20, paddingBottom: 6 }}>
           <TextInput
             placeholder="# of reps"
-            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8}}
+            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8, borderColor: "#0497A9"}}
             onChangeText={input => this.updateForm(input, "reps")}
             ref={input => { this.textInput = input }}
             />
+          {errorDisplayReps}
         </View>
 
       </View>
@@ -114,6 +152,7 @@ class SetForm extends React.Component {
       <View>
         <Button
           title="Confirm"
+          disabled={this.state.disableButton}
           onPress={() => this.submitForm()}>
         </Button>
       </View>
