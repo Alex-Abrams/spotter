@@ -11,7 +11,7 @@ class SetForm extends React.Component {
     this.state = {
       weight: '',
       reps: '',
-      onlyNumeric: null,
+      // onlyNumeric: null,
       weightNumeric: null,
       repsNumeric: null,
     };
@@ -42,6 +42,7 @@ class SetForm extends React.Component {
 
   submitForm() {
     // state sends to store
+    /// IF weightNumeric && repsNumeric !== true then alert that it needs to be numeric
     const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
     // needss a temp set id
     this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
@@ -91,10 +92,10 @@ class SetForm extends React.Component {
 
         <View style={{ paddingTop: 8 }}>
           <TextInput
-            placeholder="weight"
+            placeholder="weight   lbs"
             onChangeText={input => this.updateForm(input, "weight")}
             value={this.state.weight}
-            style={{borderWidth: 1, width: 100, height: 32}}
+            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8}}
             ref={input => { this.textInput = input }}
             />
         </View>
@@ -102,7 +103,7 @@ class SetForm extends React.Component {
         <View style={{ paddingTop: 8, paddingLeft: 20 }}>
           <TextInput
             placeholder="# of reps"
-            style={{borderWidth: 1, width: 100, height: 32}}
+            style={{borderWidth: 1, width: 100, height: 32, paddingLeft: 8}}
             onChangeText={input => this.updateForm(input, "reps")}
             ref={input => { this.textInput = input }}
             />

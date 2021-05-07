@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { List, ListItem } from "react-native-elements";
@@ -47,13 +47,11 @@ export class LegsScreen extends React.Component {
     super(props);
   }
 
+  //jest testing
+
   submitWorkout() {
-    // need to make a new object... or array
-    // console.log('lifts: ', this.props.lifts);
-    // console.log('sets: ', this.props.sets);
     let liftsSets = [];
-    // liftsSets.push(this.props.sets[0].weight);
-    // console.log("liftsSets: ", liftsSets);
+
     const liftsArray = this.props.lifts;
     const setsArray = this.props.sets;
 
@@ -68,7 +66,23 @@ export class LegsScreen extends React.Component {
       });
     });
     console.log("LIFTSSETS: ", liftsSets);
+    this.props.submitActions.receiveLiftsAndSets(liftsSets);
   }
+
+  createTwoButtonAlert = () =>
+  Alert.alert(
+    "Submit Workout?",
+    "",
+    [
+      {
+        text: "Cancel",
+        onPress: () => this.props.submitActions.resetLiftsAndSets(),
+        style: "cancel"
+      },
+      { cancelable: true},
+      { text: "OK", onPress: () => console.log("OK Pressed") }
+    ]
+  );
 
   render() {
 
@@ -89,13 +103,13 @@ export class LegsScreen extends React.Component {
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
-        <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
+        <View style={{ borderBottomColor: '#0497A9', borderBottomWidth: 1 }}></View>
         {liftsDisplay}
 
-        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18}}>
+        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             title={"Confirm Workout"}
-            onPress={() => this.submitWorkout()}>
+            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
           </Button>
         </View>
 

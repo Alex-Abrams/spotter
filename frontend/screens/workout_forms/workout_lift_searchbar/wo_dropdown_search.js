@@ -120,20 +120,23 @@ class WorkoutDropdownSearch extends React.Component {
 
 
           <View style={styles.buttons}>
-            <Button
-              style={styles.buttonSingle}
-              title={"Submit"}
-              onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
-              >
-            </Button>
+            <View>
+              <Button
+                style={styles.buttonSingle}
+                title={"Submit"}
+                onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
+                >
+              </Button>
+            </View>
 
-
-            <Button
-              style={styles.buttonSingle}
-              title={"Cancel"}
-              onPress={() => this.setModalVisible(!this.state.modalVisible)}
-              >
-            </Button>
+            <View style={{ paddingTop: 12 }}>
+              <Button
+                style={styles.buttonSingle}
+                title={"Cancel"}
+                onPress={() => this.setModalVisible(!this.state.modalVisible)}
+                >
+              </Button>
+            </View>
 
           </View>
 
@@ -198,6 +201,8 @@ const styles = StyleSheet.create({
   },
   buttons: {
     justifyContent: 'flex-end',
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   buttonSingle: {
     // elevation: 3,
