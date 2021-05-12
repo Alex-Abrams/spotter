@@ -14,7 +14,7 @@ const workoutSubmitReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_LIFTS_AND_SETS:
-      return merge({}, state, {liftsandSets: action.liftsAndSets});
+      return merge({}, state, {liftsAndSets: action.liftsAndSets});
 
     case RESET_LIFTS_AND_SETS:
       return _nullSubmit;

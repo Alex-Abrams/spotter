@@ -15,6 +15,8 @@ const mapStateToProps = state => ({
   current_user: Object.values(state.entities.users)[0],
   lifts: selectAllLifts(state),
   sets: selectAllSets(state),
+  auth_token: state.authentication.auth_token,
+  workout: state.entities.workout,
 });
 
 const mapDispatchToProps = dispatch => ({

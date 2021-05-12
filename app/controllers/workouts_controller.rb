@@ -28,6 +28,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:user_id, :type)
+    params.require(:workout).permit(:user_id, :exercise_section)
   end
 end

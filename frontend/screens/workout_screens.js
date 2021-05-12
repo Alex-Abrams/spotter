@@ -47,9 +47,8 @@ export class LegsScreen extends React.Component {
     super(props);
   }
 
-  //jest testing
 
-  submitWorkout() {
+  submitWorkout() { // this function combines sets into lifts into a arge array to post to backend
     let liftsSets = [];
 
     const liftsArray = this.props.lifts;
@@ -67,9 +66,11 @@ export class LegsScreen extends React.Component {
     });
     console.log("LIFTSSETS: ", liftsSets);
     this.props.submitActions.receiveLiftsAndSets(liftsSets);
-  }
 
-  createTwoButtonAlert = () =>
+  }
+  ////////
+
+  createTwoButtonAlert = (workout, auth_token) =>
   Alert.alert(
     "Submit Workout?",
     "",
@@ -80,16 +81,18 @@ export class LegsScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => console.log("OK Pressed") }
+      { text: "OK", onPress: () => this.props.submitActions.postWorkout(workout, auth_token) }
     ]
   );
-
+    // this.props.submitActions.postWorkout(workout, auth_token)
+    // console.log("button alert workoutuserid", workout /// works!
   render() {
 
     const { partType } = this.props.route.params;
-    const { lifts } = this.props;
+    const { lifts, auth_token, workout } = this.props;
     const revLifts = lifts.reverse(); // i want the newest exercise addition to be at the top
-    // console.log("FUUUCKING LIFTS", lifts);
+
+    // console.log("workout: ", workout);
 
     const liftsDisplay = (
       <View>
@@ -109,7 +112,7 @@ export class LegsScreen extends React.Component {
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             title={"Confirm Workout"}
-            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
+            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert(this.props.workout, auth_token)}}>
           </Button>
         </View>
 
