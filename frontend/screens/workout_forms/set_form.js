@@ -11,7 +11,7 @@ class SetForm extends React.Component {
     this.state = {
       weight: '',
       reps: '',
-      disableButton: true,
+      // disableButton: true,
       weightNumeric: true,
       repsNumeric: true,
     };
@@ -39,35 +39,39 @@ class SetForm extends React.Component {
 
     };
 
-    console.log("leeength", this.state.reps.length);
+      // keeping this for now, but it seems like useless code for the most part
+    // if(this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length > 0) && (this.state.reps.length > 0)) {
+    //   // console.log("shit happening top");
+    //   this.setState({ disableButton: false });
+    // } else {
+    //   // console.log("shit happening bot");
+    //   this.setState({ disableButton: true });
+    // };
+    //
+    // console.log("reps leeength", this.state.reps.length);
+    // console.log("weight length", this.state.weight.length);
 
-    if(this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length >= 0) && (this.state.reps.length >= 0)) {
-        // console.log("shit happening top");
-        this.setState({ disableButton: false });
-      } else {
-        // console.log("shit happening bot");
-        this.setState({ disableButton: true });
-      };
 
   }
 
   submitForm() {
 
-    if (this.state.weightNumeric && this.state.repsNumeric) {
+    if (this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length > 0) && (this.state.reps.length > 0)) {
       console.log("you may Confirm");
+      const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
+      // needss a temp set id
+      this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+
+      this.textInput.clear(); // clear in the inputs after submiting
+
+      this.setState({ weight: '' }); // for someone reason .clear only ceared one input at a time
+      // and setState also only clered one at a time
+      this.setState({ reps: '' });
       // this.setState({ disableButton})
     } else {
-      console.log("you may not confirm");
+      return null;
     };
 
-    const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
-    // needss a temp set id
-    this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
-
-    this.textInput.clear(); // clear in the inputs after submiting
-
-    this.setState({ weight: ''}); // for someone reason .clear only ceared one input at a time
-                                  // and setState also only clered one at a time
   }
 
 
@@ -152,7 +156,6 @@ class SetForm extends React.Component {
       <View>
         <Button
           title="Confirm"
-          disabled={this.state.disableButton}
           onPress={() => this.submitForm()}>
         </Button>
       </View>
