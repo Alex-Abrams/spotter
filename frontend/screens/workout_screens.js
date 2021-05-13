@@ -45,6 +45,7 @@ export class BackScreen extends React.Component {
 export class LegsScreen extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
 
@@ -64,13 +65,20 @@ export class LegsScreen extends React.Component {
 
       });
     });
-    console.log("LIFTSSETS: ", liftsSets);
+    // console.log("LIFTSSETS: ", liftsSets);
     this.props.submitActions.receiveLiftsAndSets(liftsSets);
+    // console.log("length: ", Object.values(this.props.workout).length);
 
   }
   ////////
 
-  createTwoButtonAlert = (workout, auth_token) =>
+  // postLiftSets(liftsAndSets) {
+  //   if (this.props.liftsAndSets !== null) {
+  //     this.props.submitActions.postLiftsAndSets(liftsAndSets);
+  //   };
+  // }
+
+  createTwoButtonAlert = (liftsAndSets) =>
   Alert.alert(
     "Submit Workout?",
     "",
@@ -81,18 +89,27 @@ export class LegsScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => this.props.submitActions.postWorkout(workout, auth_token) }
+      { text: "OK", onPress: () => console.log("this aint working") }
     ]
   );
+
+  // Object.values(this.props.workout).length
     // this.props.submitActions.postWorkout(workout, auth_token)
     // console.log("button alert workoutuserid", workout /// works!
+    // this.props.submitActions.postWorkout(workout, auth_token)
+
   render() {
 
     const { partType } = this.props.route.params;
     const { lifts, auth_token, workout } = this.props;
     const revLifts = lifts.reverse(); // i want the newest exercise addition to be at the top
 
-    // console.log("workout: ", workout);
+    // let testArray = [];
+    // testArray.push(this.props.liftsAndSets);
+    // // console.log("liftsets [zz1z]", testArray[0]);
+    //
+    // if (this.props.liftsAndSets !== null) {console.log("pp", this.props.liftsAndSets[1])};
+
 
     const liftsDisplay = (
       <View>
@@ -112,7 +129,7 @@ export class LegsScreen extends React.Component {
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             title={"Confirm Workout"}
-            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert(this.props.workout, auth_token)}}>
+            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert(this.props.liftsAndSets)}}>
           </Button>
         </View>
 
