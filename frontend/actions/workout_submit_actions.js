@@ -11,13 +11,43 @@ export const resetLiftsAndSets = () => ({
   type: RESET_LIFTS_AND_SETS,
 });
 
-export function fartTest(fart) {
-  console.log("fart?", fart);
-}
+// /users/:user_id/workouts/:workout_id/lifts
+// promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
+
+ function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) {
+    // this function takes the nely combined lifts and sets (submit reducer) and pushes them into an array
+    // the array of promises is then all posted at once when submit workout button is pressed
+    // this function is used in postWorkout below
+    let promises = [];
+    liftsAndSets.forEach(set => {
+      console.log("SET!");
+      promises.push(fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
+        method: 'POST',
+        headers: {
+          "Authorization": auth_token,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${set.name}`,
+          reps: `${set.reps}`,
+          weight: `${set.weight}`,
+          exercise_section: `${set.type}`,
+          workout_id: `${workout_id}`
+        })
+      }));
+
+      Promise.all(promises)
+        .then(
+          response => console.log("sucess", response),
+          err => console.log("not success", err)
+        );
+    });
+  }
 
 // /users/:user_id/workouts(.:format)
 // exercise_section ==> type
-export function postWorkout(workout, auth_token) {
+export function postWorkout(workout, auth_token, liftsAndSets) {
   return function action(dispatch) {
     const request = fetch(`http://10.0.2.2:3000/users/${workout.user_id}/workouts`, {
       method: 'POST',
@@ -34,32 +64,18 @@ export function postWorkout(workout, auth_token) {
 
     return request.then(
       response => response.json(),
+      err => console.log("response.json erro ><", err)
     )
     .then(
-      json => console.log("great post Workout Success"),
-      err => console.log("postWorkout post error :(")
+      // postLiftsAndSets(liftsAndSets, workout_id, auth_token)
+      // json => console.log("great post Workout Success", json.id),
+        // so the postLiftsAndSets needs to happen here with Promiseall
+        // which means postWorkout will need to take the liftsAndSets argument
+      json => {
+        postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
+      },
+      err => console.log("postWorkout post error :()", err)
     );
 
   }
-}
-
-// /users/:user_id/workouts/:workout_id/lifts
-                                                //(workout, auth_token)
-export function postLiftsAndSets(liftsAndSets) {
-  // i think for testing just use an actual user id and workout id
-  // console.log(Object.values(liftsAndSets));
-  console.log(liftsAndSets);
-  // console.log("hello!");
-  // let promises = [];
-  // liftsAndSets.forEach(set => {
-  //   console.log("SET!");
-  //   // promises.push(fetch(`http://10.0.2.2:3000/users/${workout.user_id}/workouts/${workout.id}/lifts`));
-  //   // promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
-  // });
-
-  // console.log(promises);
-
-  // return function action(dispatch) {
-  //
-  // }
 }

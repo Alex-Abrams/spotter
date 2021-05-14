@@ -10,11 +10,9 @@ import WorkoutDropdownSearch from './workout_forms/workout_lift_searchbar/wo_dro
 import WorkoutDropdownSearchContainer from '../containers/drop_down_container';
 import LiftsShow from './workout_forms/lifts_show';
 
-
-// import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 
 
@@ -78,7 +76,7 @@ export class LegsScreen extends React.Component {
   //   };
   // }
 
-  createTwoButtonAlert = (liftsAndSets) =>
+  createTwoButtonAlert = () =>
   Alert.alert(
     "Submit Workout?",
     "",
@@ -89,9 +87,11 @@ export class LegsScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => console.log("this aint working") }
+      { text: "OK", onPress: () => this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets) }
     ]
   );
+
+  //this.props.submitActions.postWorkout(this.props.workout)
 
   // Object.values(this.props.workout).length
     // this.props.submitActions.postWorkout(workout, auth_token)
@@ -101,7 +101,7 @@ export class LegsScreen extends React.Component {
   render() {
 
     const { partType } = this.props.route.params;
-    const { lifts, auth_token, workout } = this.props;
+    const { lifts, auth_token, workout, liftsAndSets } = this.props;
     const revLifts = lifts.reverse(); // i want the newest exercise addition to be at the top
 
     // let testArray = [];
@@ -129,7 +129,7 @@ export class LegsScreen extends React.Component {
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             title={"Confirm Workout"}
-            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert(this.props.liftsAndSets)}}>
+            onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
           </Button>
         </View>
 
