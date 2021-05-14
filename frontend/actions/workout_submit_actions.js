@@ -73,6 +73,8 @@ export function postWorkout(workout, auth_token, liftsAndSets) {
         // which means postWorkout will need to take the liftsAndSets argument
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
+        //needs to reset the store
+        resetLiftsAndSets();
       },
       err => console.log("postWorkout post error :()", err)
     );

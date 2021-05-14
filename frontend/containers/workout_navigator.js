@@ -24,11 +24,11 @@ class WorkoutNav extends React.Component {
 
     return(
       <Stack.Navigator>
-        <Stack.Screen name={'Chest'} component={ChestScreen} navigation={this.props.navigation} />
+        <Stack.Screen name={'Chest'} component={ChestScreenContainer} navigation={this.props.navigation} />
         <Stack.Screen name={`Legs`} component={LegsScreenContainer} navigation={this.props.navigation} />
-        <Stack.Screen name={'Shoulders'} component={ShouldersScreen} navigation={this.props.navigation} />
-        <Stack.Screen name={'Back'} component={BackScreen} navigation={this.props.navigation} />
-        <Stack.Screen name={'Arms'} component={ArmsScreen} navigation={this.props.navigation} />
+        <Stack.Screen name={'Shoulders'} component={ShouldersScreenContainer} navigation={this.props.navigation} />
+        <Stack.Screen name={'Back'} component={BackScreenContainer} navigation={this.props.navigation} />
+        <Stack.Screen name={'Arms'} component={ArmsScreenContainer} navigation={this.props.navigation} />
       </Stack.Navigator>
     );
   }

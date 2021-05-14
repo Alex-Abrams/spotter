@@ -1,6 +1,8 @@
 export const RECEIVE_WORKOUT = "RECEIVE_WORKOUT";
 export const RECEIVE_LIFT = "RECEIVE_LIFT";
 export const RECEIVE_SET = "RECEIVE_SET";
+export const RESET_SETS = "RESET_SETS";
+export const RESET_LIFTS = "RESET_LIFTS";
 
 export const receiveWorkout = (workout) => ({
   type: RECEIVE_WORKOUT,
@@ -18,7 +20,10 @@ export const receiveSet = (set) => ({
   set
 });
 
-export function postEntireWorkoutSession() {
-  let promises = [];
+export const resetSets = () => ({
+  type: RESET_SETS
+});
 
-}
+export const resetLifts = () => ({
+  type: RESET_LIFTS
+});
