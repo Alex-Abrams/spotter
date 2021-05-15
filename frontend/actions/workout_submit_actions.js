@@ -1,5 +1,6 @@
 export const RECEIVE_LIFTS_AND_SETS = "RECEIVE_LIFTS_AND_SETS";
 export const RESET_LIFTS_AND_SETS = "RESET_LIFTS_AND_SETS";
+export const CLEAR_ALL_LIFTS_AND_SETS = "CLEAR_ALL_LIFTS_AND_SETS";
 import fetch from 'cross-fetch';
 
 export const receiveLiftsAndSets = (liftsAndSets) => ({
@@ -11,11 +12,15 @@ export const resetLiftsAndSets = () => ({
   type: RESET_LIFTS_AND_SETS,
 });
 
+export const clearAllLiftsAndSets = () => ({
+  type: CLEAR_ALL_LIFTS_AND_SETS,
+});
+
 // /users/:user_id/workouts/:workout_id/lifts
 // promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
 
  function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) {
-    // this function takes the nely combined lifts and sets (submit reducer) and pushes them into an array
+    // this function takes the newly combined lifts and sets (submit reducer) and pushes them into an array
     // the array of promises is then all posted at once when submit workout button is pressed
     // this function is used in postWorkout below
     let promises = [];
@@ -74,7 +79,8 @@ export function postWorkout(workout, auth_token, liftsAndSets) {
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
         //needs to reset the store
-        resetLiftsAndSets();
+        dispatch(resetLiftsAndSets());
+        dispatch(clearAllLiftsAndSets());
       },
       err => console.log("postWorkout post error :()", err)
     );

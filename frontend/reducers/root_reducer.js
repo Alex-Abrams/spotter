@@ -3,6 +3,7 @@ import entitiesReducer from './entities_reducer';
 // import errorsReducer from './errors_reducer';
 import authReducer from './auth_reducer';
 import { CLEAR_ALL_LIFTS_AND_SETS } from '../actions/workout_submit_actions';
+import merge from 'lodash/merge';
 
 const appReducer = combineReducers({ // was root
   authentication: authReducer,
