@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
-import { View, Button, Text, StyleSheet } from 'react-native';
-import { Hoshi } from 'react-native-textinput-effects';
+import { Button } from 'react-native-elements';
+import { View, Text, StyleSheet } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -22,13 +21,14 @@ class Home extends React.Component {
       this.props.authActions.logoutCurrentUser();
     } catch (error) {
       // Error saving data
-      console.log("userLogout: ", error);
+      // console.log("userLogout: ", error); //
+      return null;
     }
   };
 
 
 
-  logoutButton() {
+  logoutButton() { // this needs to look sleaker, with an evilicon or something
     return(
       <View style={styles.buttons}>
         <Button
@@ -50,12 +50,34 @@ class Home extends React.Component {
     );
   }
 
+  toPreviousWorkouts({ navigation }) {
+    return(
+      <View style={styles.buttons}>
+        <Button
+          title="Previous Workouts"
+          onPress={() => {this.props.navigation.navigate("Previous Workouts")}}>
+        </Button>
+      </View>
+    )
+  }
+
   toCalendar() {
     return(
       <View style={styles.buttons}>
         <Button
           title="Calendar"
           onPress={() => {console.log("calendar!!")}}>
+        </Button>
+      </View>
+    )
+  }
+
+  toProgressCharts() {
+    return(
+      <View style={styles.buttons}>
+        <Button
+          title="Progess Charts"
+          onPress={() => {console.log("progress charts")}}>
         </Button>
       </View>
     )
@@ -69,7 +91,9 @@ class Home extends React.Component {
         <Text>CITYPATOWN, WELCOME HOME</Text>
         <Text>{this.props.email}</Text>
         {this.toWorkoutForm(this.props.navigation)}
+        {this.toPreviousWorkouts(this.props.navigation)}
         {this.toCalendar()}
+        {this.toProgressCharts()}
         {this.logoutButton()}
       </View>
     );

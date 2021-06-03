@@ -68,10 +68,8 @@ userLogout = async () => {  //
       this.setState({ token: auth_token.auth_token.auth_token });
     })
     .then(() => this.props.authActions.requestEmail(this.state.email))
-    // .then(auth_token => this._storeData(auth_token.auth_token.auth_token)) //oringal
-    // .then(() => this.props.authActions.isLoggedIn(true)); //orginal
+
     .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token));
-    // .then(() => this.props.authActions.loadSplashScreen(false));
 
     this.props.authActions.loadSplashScreen(false);
 

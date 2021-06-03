@@ -11,6 +11,7 @@ import SplashScreen from '../screens/splash_screen';
 import SelectWorkout from '../screens/select_workout'; // select workout body part
 import SelectWorkoutContainer from './select_workout_container';
 import WorkoutNav from './workout_navigator';
+import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -78,6 +79,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
+          <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreen} navigation={this.props.navigation} />
           </>
         ) : (
           <>
