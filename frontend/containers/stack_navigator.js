@@ -12,6 +12,7 @@ import SelectWorkout from '../screens/select_workout'; // select workout body pa
 import SelectWorkoutContainer from './select_workout_container';
 import WorkoutNav from './workout_navigator';
 import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
+import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
