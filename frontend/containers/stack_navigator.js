@@ -80,7 +80,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
-          <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreen} navigation={this.props.navigation} />
+          <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
           </>
         ) : (
           <>

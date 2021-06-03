@@ -26,7 +26,7 @@ export function requestAllWorkouts(user_id, auth_token) {
       err => console.log("errrr", err),
     )
     .then(
-      json => console.log("all workouts json", json),
+      json => dispatch(receiveAllWorkouts(json)),
       err => console.log("all owrkouts json error", err),
     );
   }

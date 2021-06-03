@@ -2,25 +2,28 @@ import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { requestAllWorkouts } from '../../actions/prev_workout_actions';
+// import { requestAllWorkouts } from '../../actions/prev_workout_actions';
 
 class PrevWorkoutScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
+
   testRequestButton() {
+    const { auth_token, current_user } = this.props;
     return(
       <View>
         <Button
           title="Test Request Workouts"
-          onPress={() => {console.log("progress charts")}}>
+          onPress={() => {this.props.prevWorkoutActions.requestAllWorkouts(current_user.id, auth_token)}}>
         </Button>
       </View>
     )
   }
 
   render() {
+    console.log(this.props.workouts_list);
     return(
       <View>
       <Text>this is the previous workoutscreen ayyy</Text>

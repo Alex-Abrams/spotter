@@ -10,7 +10,7 @@ const prevWorkoutReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_ALL_WORKOUTS:
-      return mrge({}, state, { [action.workout.id]: action.workout });
+      return merge({}, state, action.workouts);
     // case RECEIVE_WORKOUT_LIFTS:
 
     default:
