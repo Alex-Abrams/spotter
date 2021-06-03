@@ -23,7 +23,10 @@ class PrevWorkoutScreen extends React.Component {
   }
 
   render() {
-    console.log(this.props.workouts_list);
+    // console.log(this.props.workouts_list);
+    const days = ["Sun", "Mon", "Tues", "Thur", "Fri", "Sat"];
+    const dt = new Date("2021-05-16T18:46:31.571Z"); // works gives a numeral
+    console.log("getdatday", days[dt.getDay()]);
     return(
       <View>
       <Text>this is the previous workoutscreen ayyy</Text>
