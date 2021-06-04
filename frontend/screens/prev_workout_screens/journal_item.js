@@ -13,7 +13,24 @@ class JournalItem extends React.Component {
   }
 
   render() {
+    const { user_id, created_at, exercise_section, auth_token } = this.props;
+    const days = ["Sun", "Mon", "Tues", "Thur", "Fri", "Sat"];
+    const dt = new Date(created_at);
+    const the_day = days[dt.getDay()];
+    //5 - 9
+    const the_date = created_at.substring(5, 10);
+
+    console.log("bussy", user_id);
+    console.log("bussy", created_at);
+    console.log("bussy", exercise_section);
+    console.log("bussy", auth_token);
+
     return(
+      <View>
+        <Text>{exercise_section}</Text>
+        <Text>{the_day}</Text>
+        <Text>{the_date}</Text>
+      </View>
 
     );
   }
