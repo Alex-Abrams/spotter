@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
 import JournalItem from './journal_item';
 
 // import { requestAllWorkouts } from '../../actions/prev_workout_actions';
@@ -44,11 +44,12 @@ class PrevWorkoutScreen extends React.Component {
     );
 
     return(
-      <View>
-      <Text>this is the previous workoutscreen ayyy</Text>
+      <ScrollView>
       {this.testRequestButton()}
-      {journal_list}
+      <View>
+        {journal_list}
       </View>
+    </ScrollView>
 
     )
   }
