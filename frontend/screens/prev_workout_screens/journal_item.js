@@ -3,18 +3,18 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-
+import TouchableJournalItem from './touchable_journal_item';
 // function TestChildren() {
 //   return(
-//     <View>
+//     <View style={styles.container}>
 //       <View>
-//         <Text style={{ fontSize: 30 }}>{this.props.exercise_section}</Text>
+//         <Text style={{ fontSize: 30 }}>blarg</Text>
 //       </View>
 //       <View>
-//         <Text style={{ fontSize: 30 }}>{this.props.the_day}</Text>
+//         <Text style={{ fontSize: 30 }}>blarg</Text>
 //       </View>
 //       <View>
-//         <Text style={{ fontSize: 30 }}>{this.props.the_date}</Text>
+//         <Text style={{ fontSize: 30 }}>barg</Text>
 //       </View>
 //     </View>
 //   );
@@ -29,7 +29,7 @@ class JournalItem extends React.Component {
 
   render() {
     const { user_id, created_at, exercise_section, auth_token } = this.props;
-    const days = ["Sun", "Mon", "Tues", "Thur", "Fri", "Sat"];
+    const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
     const dt = new Date(created_at);
     const the_day = days[dt.getDay()];
     //5 - 9
@@ -37,17 +37,21 @@ class JournalItem extends React.Component {
 
     return(
       <View style={styles.container}>
-        {/*
         <TouchableHighlight
           underlayColor="white"
           onPress={() => console.log("ehhh touchable highlight")}>
-          <TestChildren
-            exercise_section={exercise_section}
-            the_day={the_day}
-            the_date={the_date}/>
-            </TouchableHighlight>
-            */}
+          <View style={{paddingTop: 15}}>
+            <TouchableJournalItem
+              user_id={user_id}
+              day={the_day}
+              the_date={the_date}
+              exercise_section={exercise_section} />
 
+          </View>
+            </TouchableHighlight>
+
+            {/*
+              <TestChildren/>
           <View>
             <Text style={{ fontSize: 30 }}>{exercise_section}</Text>
           </View>
@@ -57,6 +61,7 @@ class JournalItem extends React.Component {
           <View>
             <Text style={{ fontSize: 30 }}>{the_date}</Text>
           </View>
+          */}
 
 
       </View>
@@ -83,7 +88,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between", // spaces them all very eveenly, 1 left 1 mid 1 right
     height: 80,
-    paddingTop: 15,
+    // width: "90%",
+    // paddingTop: 15,
     paddingLeft: 16,
   }
 });

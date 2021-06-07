@@ -3,6 +3,7 @@ import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
 import JournalItem from './journal_item';
 
+
 // import { requestAllWorkouts } from '../../actions/prev_workout_actions';
 
 class PrevWorkoutScreen extends React.Component {
