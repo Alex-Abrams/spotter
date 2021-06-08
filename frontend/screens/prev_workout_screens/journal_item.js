@@ -4,21 +4,6 @@ import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import TouchableJournalItem from './touchable_journal_item';
-// function TestChildren() {
-//   return(
-//     <View style={styles.container}>
-//       <View>
-//         <Text style={{ fontSize: 30 }}>blarg</Text>
-//       </View>
-//       <View>
-//         <Text style={{ fontSize: 30 }}>blarg</Text>
-//       </View>
-//       <View>
-//         <Text style={{ fontSize: 30 }}>barg</Text>
-//       </View>
-//     </View>
-//   );
-// }
 
 class JournalItem extends React.Component {
   constructor(props) {
@@ -38,6 +23,7 @@ class JournalItem extends React.Component {
     return(
       <View style={styles.container}>
         <TouchableHighlight
+          style={{ height: 80 }}
           underlayColor="white"
           onPress={() => console.log("ehhh touchable highlight")}>
           <View style={{paddingTop: 15}}>
@@ -50,33 +36,11 @@ class JournalItem extends React.Component {
           </View>
             </TouchableHighlight>
 
-            {/*
-              <TestChildren/>
-          <View>
-            <Text style={{ fontSize: 30 }}>{exercise_section}</Text>
-          </View>
-          <View>
-            <Text style={{ fontSize: 30 }}>{the_day}</Text>
-          </View>
-          <View>
-            <Text style={{ fontSize: 30 }}>{the_date}</Text>
-          </View>
-          */}
-
-
       </View>
 
     );
   }
 }
-
-// <TouchableHighlight
-//   underlayColor="white"
-//   onPress={() => console.log("ehhh touchable highlight")}>
-// </TouchableHighlight>
-
-
-
 
 
 const styles = StyleSheet.create({
@@ -85,12 +49,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between", // spaces them all very eveenly, 1 left 1 mid 1 right
+    // flexDirection: "row",
+    // justifyContent: "space-between", // spaces them all very eveenly, 1 left 1 mid 1 right
     height: 80,
     // width: "90%",
     // paddingTop: 15,
-    paddingLeft: 16,
+    // paddingLeft: 16,
   }
 });
 
