@@ -1,3 +1,4 @@
+//USELESS THIS HAS BEEN MOVED TO SEPERATE FILES GET RID OF IT
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Alert} from 'react-native';
 import { Button } from 'react-native-elements';

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between", // spaces them all very eveenly, 1 left 1 mid 1 right
     height: 80,
     width: "80%",
-    // paddingTop: 15,
+    paddingTop: 5,
     paddingLeft: 16,
   },
   date: {

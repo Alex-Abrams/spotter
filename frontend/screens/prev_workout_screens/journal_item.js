@@ -13,7 +13,7 @@ class JournalItem extends React.Component {
   }
 
   render() {
-    const { user_id, created_at, exercise_section, auth_token } = this.props;
+    const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
     const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
     const dt = new Date(created_at);
     const the_day = days[dt.getDay()];
@@ -26,6 +26,7 @@ class JournalItem extends React.Component {
           style={{ height: 80 }}
           underlayColor="white"
           onPress={() => console.log("ehhh touchable highlight")}>
+          {/* onPress sends to the new journal item thing with approiate nav */}
           <View style={{paddingTop: 15}}>
             <TouchableJournalItem
               user_id={user_id}
@@ -48,13 +49,9 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderColor: "black",
+    backgroundColor: "#7EE8F5",
     flex: 1,
-    // flexDirection: "row",
-    // justifyContent: "space-between", // spaces them all very eveenly, 1 left 1 mid 1 right
     height: 80,
-    // width: "90%",
-    // paddingTop: 15,
-    // paddingLeft: 16,
   }
 });
 

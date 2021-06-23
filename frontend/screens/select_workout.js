@@ -28,18 +28,7 @@ class SelectWorkout extends React.Component {
            { screen: `${part}`, params: { partType: `${part}` }});
             this.props.workoutActions.receiveWorkout({type: `${part}`, user_id: this.props.current_user.id});}}
         ></Button>
-      {/*
-      <Button
-        raised
-        key={i}
-        title={part}
-        buttonStyle={styles.button}
-        onPress={() => this.props.navigation.navigate('WorkoutNav',
-         { screen: `${part}`, params: { partType: `${part}` },
-       }
-       )}
-          ></Button>
-          */}
+
     </View>
     );
 
@@ -54,10 +43,6 @@ class SelectWorkout extends React.Component {
 
   render() {
     let bodyArray = ["Chest", "Legs", "Back", "Shoulders", "Arms"];
-    // console.log("PROPS: ", this.props);
-    // // console.log("CU ID: ", Object.values(this.props.current_user_id));
-    // console.log("values ", this.props.current_user.id);
-
 
     return(
       <View style={styles.container}>

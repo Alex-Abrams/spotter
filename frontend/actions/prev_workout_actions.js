@@ -6,9 +6,9 @@ export const receiveAllWorkouts = (workouts) => ({
   workouts
 });
 
-export const receiveWorkoutLifts = (lifts) => ({
+export const receiveWorkoutExercises = (exercises) => ({
   type: "RECEIVE_WORKOUT_LIFTS",
-  lifts
+  exercises
 });
 
 // /users/:user_id/workouts
@@ -28,6 +28,28 @@ export function requestAllWorkouts(user_id, auth_token) {
     .then(
       json => dispatch(receiveAllWorkouts(json)),
       err => console.log("all owrkouts json error", err),
+    );
+  }
+}
+
+// users/:user_id/workouts/:workout_id/lifts(.:format)
+
+export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
+  return function action(dispatch) {
+    const request = fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
+      method: 'GET',
+        header: {
+          "Authorization": auth_token
+        }
+    });
+
+    return request.then(
+      response => response.json(),
+      err => console.log("top requestAllWorkoutExercises error", err),
+    )
+    .then(
+      json => console.log("json response", json),
+      err => console.log("bottom requestAllWorkoutExercises", err),
     );
   }
 }
