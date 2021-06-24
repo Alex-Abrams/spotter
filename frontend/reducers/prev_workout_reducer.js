@@ -1,6 +1,5 @@
 import {
   RECEIVE_ALL_WORKOUTS,
-  RECEIVE_WORKOUT_LIFTS,
 } from '../actions/prev_workout_actions';
 
 import merge from 'lodash/merge';

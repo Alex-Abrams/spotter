@@ -11,7 +11,7 @@ class ExercisesList extends React.Component {
 
   render() {
     return(
-      <View></View>
+      <View>exercises list</View>
     );
   }
 }

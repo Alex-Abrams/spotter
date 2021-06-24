@@ -12,6 +12,11 @@ class JournalItem extends React.Component {
 
   }
 
+
+  touchableNavToExercises({navigation}) {
+    // basically all  the things below neeed to go in here
+  }
+
   render() {
     const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
     const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];

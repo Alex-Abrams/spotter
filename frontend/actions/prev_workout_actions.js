@@ -1,5 +1,5 @@
 export const RECEIVE_ALL_WORKOUTS = "RECEIVE_ALL_WORKOUTS";
-export const RECEIVE_WORKOUT_LIFTS = "RECEIVE_WORKOUT_LIFTS";
+export const RECEIVE_EXERCISES = "RECEIVE_EXERCISES";
 
 export const receiveAllWorkouts = (workouts) => ({
   type: "RECEIVE_ALL_WORKOUTS",
@@ -7,7 +7,7 @@ export const receiveAllWorkouts = (workouts) => ({
 });
 
 export const receiveWorkoutExercises = (exercises) => ({
-  type: "RECEIVE_WORKOUT_LIFTS",
+  type: "RECEIVE_EXERCISES",
   exercises
 });
 

@@ -11,8 +11,9 @@ import SplashScreen from '../screens/splash_screen';
 import SelectWorkout from '../screens/select_workout'; // select workout body part
 import SelectWorkoutContainer from './select_workout_container';
 import WorkoutNav from './workout_navigator';
-import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
+// import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
 import PrevWorkoutScreenContainer from './prev_workout_screen_container';
+import ExercisesListContainer from './exercises_list_container';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -82,6 +83,7 @@ class FarStack extends React.Component {
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
+          <Stact.Screen name="Previous Exercises" component={ExercisesListContainer} navigation={this.props.navigation} />
           </>
         ) : (
           <>
