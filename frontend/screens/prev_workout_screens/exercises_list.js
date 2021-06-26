@@ -8,10 +8,14 @@ class ExercisesList extends React.Component {
 
   }
 
+  // now this jst needs all the displayed information and a mount
+
 
   render() {
     return(
-      <View>exercises list</View>
+      <View>
+        <Text>exerciess list ay</Text>
+      </View>
     );
   }
 }

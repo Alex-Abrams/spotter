@@ -83,7 +83,7 @@ class FarStack extends React.Component {
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
-          <Stact.Screen name="Previous Exercises" component={ExercisesListContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} navigation={this.props.navigation} />
           </>
         ) : (
           <>

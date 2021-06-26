@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import TouchableJournalItem from './touchable_journal_item';
+import { NavigationContainer } from '@react-navigation/native';
+
 
 class JournalItem extends React.Component {
   constructor(props) {
@@ -15,9 +17,6 @@ class JournalItem extends React.Component {
 
   touchableNavToExercises({navigation}) {
     // basically all  the things below neeed to go in here
-  }
-
-  render() {
     const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
     const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
     const dt = new Date(created_at);
@@ -25,13 +24,18 @@ class JournalItem extends React.Component {
     //5 - 9
     const the_date = created_at.substring(5, 10);
 
+
+
     return(
-      <View style={styles.container}>
         <TouchableHighlight
           style={{ height: 80 }}
           underlayColor="white"
-          onPress={() => console.log("ehhh touchable highlight")}>
-          {/* onPress sends to the new journal item thing with approiate nav */}
+          onPress={() => {this.props.navigation.navigate("Previous Exercises", {
+            workout_id: workout_id,
+            user_id: user_id,
+          });
+        }}>
+
           <View style={{paddingTop: 15}}>
             <TouchableJournalItem
               user_id={user_id}
@@ -41,6 +45,38 @@ class JournalItem extends React.Component {
 
           </View>
             </TouchableHighlight>
+    );
+  }
+
+  // {/* onPress sends to the new journal item thing with approiate nav
+  //   onPress={() => console.log("ehhh touchable highlight")}> */}
+  render() {
+    // const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
+    // const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
+    // const dt = new Date(created_at);
+    // const the_day = days[dt.getDay()];
+    // //5 - 9
+    // const the_date = created_at.substring(5, 10);
+
+    return(
+      <View style={styles.container}>
+        {this.touchableNavToExercises(this.props.navigation)}
+        {/*
+        <TouchableHighlight
+          style={{ height: 80 }}
+          underlayColor="white"
+          onPress={() => console.log("ehhh touchable highlight")}>
+
+          <View style={{paddingTop: 15}}>
+            <TouchableJournalItem
+              user_id={user_id}
+              day={the_day}
+              the_date={the_date}
+              exercise_section={exercise_section} />
+
+          </View>
+            </TouchableHighlight>
+            */}
 
       </View>
 

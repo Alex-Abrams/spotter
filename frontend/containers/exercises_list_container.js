@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import ExercisesList from '../screens/prev_workout_screens/exercises_list';
 import * as prevWorkoutActions from '../actions/prev_workout_actions';
-import journal_exercises from './selectors';
+import { selectAllPrevExercises } from './selectors';
 
 const mapStateToProps = state => ({
   journal_exercises: selectAllPrevExercises(state),

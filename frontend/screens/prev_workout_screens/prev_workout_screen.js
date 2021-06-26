@@ -28,6 +28,7 @@ class PrevWorkoutScreen extends React.Component {
         <JournalItem
           key={i}
           user_id={current_user.id}
+          navigation={this.props.navigation}
           workout_id={workout.id}
           auth_token={auth_token}
           created_at={workout.created_at}
