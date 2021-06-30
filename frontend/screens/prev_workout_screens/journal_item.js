@@ -12,7 +12,7 @@ class JournalItem extends React.Component {
     super(props);
 
 
-  }
+  } //406-375-0004 luckys bail bond
 
 
   touchableNavToExercises({navigation}) {
@@ -23,9 +23,10 @@ class JournalItem extends React.Component {
     const the_day = days[dt.getDay()];
     //5 - 9
     const the_date = created_at.substring(5, 10);
+    //the above code turns created_at into a useable date to display
 
-
-
+    // using a touchebale highlight instead of a button, on press sends to display the exercise_section
+    //   for tha particular workout
     return(
         <TouchableHighlight
           style={{ height: 80 }}
@@ -48,36 +49,13 @@ class JournalItem extends React.Component {
     );
   }
 
-  // {/* onPress sends to the new journal item thing with approiate nav
-  //   onPress={() => console.log("ehhh touchable highlight")}> */}
+
   render() {
-    // const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
-    // const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
-    // const dt = new Date(created_at);
-    // const the_day = days[dt.getDay()];
-    // //5 - 9
-    // const the_date = created_at.substring(5, 10);
+
 
     return(
       <View style={styles.container}>
         {this.touchableNavToExercises(this.props.navigation)}
-        {/*
-        <TouchableHighlight
-          style={{ height: 80 }}
-          underlayColor="white"
-          onPress={() => console.log("ehhh touchable highlight")}>
-
-          <View style={{paddingTop: 15}}>
-            <TouchableJournalItem
-              user_id={user_id}
-              day={the_day}
-              the_date={the_date}
-              exercise_section={exercise_section} />
-
-          </View>
-            </TouchableHighlight>
-            */}
-
       </View>
 
     );

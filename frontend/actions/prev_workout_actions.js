@@ -38,7 +38,7 @@ export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
   return function action(dispatch) {
     const request = fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
       method: 'GET',
-        header: {
+        headers: {
           "Authorization": auth_token
         }
     });
