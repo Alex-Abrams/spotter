@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
 
+// this is to display every excercise for a workout when tapped from "prev_workout_screen"
+
 class ExercisesList extends React.Component {
   constructor(props) {
     super(props);

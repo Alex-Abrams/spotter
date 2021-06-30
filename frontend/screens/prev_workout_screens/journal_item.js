@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "black", // there may be a problem here with different emulators
     backgroundColor: "#7EE8F5",
     flex: 1,
     height: 80,

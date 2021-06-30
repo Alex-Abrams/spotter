@@ -25,7 +25,7 @@ export const clearAllLiftsAndSets = () => ({
     // this function is used in postWorkout below
     let promises = [];
     liftsAndSets.forEach(set => {
-      console.log("SET!");
+      console.log("SET!!!", set);
       promises.push(fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
         method: 'POST',
         headers: {
@@ -37,14 +37,14 @@ export const clearAllLiftsAndSets = () => ({
           name: `${set.name}`,
           reps: `${set.reps}`,
           weight: `${set.weight}`,
-          exercise_section: `${set.type}`,
+          exercise_section: `${set.exercise_section}`,
           workout_id: `${workout_id}`
         })
       }));
 
       Promise.all(promises)
         .then(
-          response => console.log("sucess", response),
+          response => console.log("sucess ayy", response),
           err => console.log("not success", err)
         );
     });

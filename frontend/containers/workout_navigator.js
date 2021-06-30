@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
 import { Navigator } from 'react-native';
 
-import { LegsScreen, ArmsScreen, BackScreen, ShouldersScreen, ChestScreen} from '../screens/workout_screens';
 import LegsScreenContainer from './legs_screen_container';
 import ChestScreenContainer from './chest_screen_container';
 import ArmsScreenContainer from './arms_screen_container';

@@ -33,8 +33,3 @@ const styles = StyleSheet.create({
     width: "100%",
   }
 });
-
-
-// // that blue sqaure i started with that i no longer want, holding onto just in case tho for now
-// <View style={{width: 50, height: 60, backgroundColor: 'powderblue', marginTop: 40}}>
-// </View>
