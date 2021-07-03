@@ -33,6 +33,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="logout"
+          raised
           onPress={() => { this.userLogout() }}>
         </Button>
       </View>
@@ -44,6 +45,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="New Workout"
+          raised
           onPress={() => this.props.navigation.navigate('Workouts')}>
         </Button>
       </View>
@@ -55,6 +57,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="Previous Workouts"
+          raised
           onPress={() => {this.props.navigation.navigate("Previous Workouts")}}>
         </Button>
       </View>
@@ -66,6 +69,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="Calendar"
+          raised
           onPress={() => {console.log("calendar!!")}}>
         </Button>
       </View>
@@ -77,6 +81,7 @@ class Home extends React.Component {
       <View style={styles.buttons}>
         <Button
           title="Progess Charts"
+          raised
           onPress={() => {console.log("progress charts")}}>
         </Button>
       </View>
@@ -88,8 +93,6 @@ class Home extends React.Component {
     // <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
     return(
       <View style={styles.container}>
-        <Text>CITYPATOWN, WELCOME HOME</Text>
-        <Text>{this.props.email}</Text>
         {this.toWorkoutForm(this.props.navigation)}
         {this.toPreviousWorkouts(this.props.navigation)}
         {this.toCalendar()}

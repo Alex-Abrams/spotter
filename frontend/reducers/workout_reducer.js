@@ -12,14 +12,6 @@ const workoutReducer = (state = {}, action) => {
     case RECEIVE_WORKOUT:
       // return merge({}, state, { [action.workout.type]: action.workout });
       return merge({}, state, action.workout );
-
-    // case RECEIVE_LIFT:
-    //   // the id for action.lift.id will be generated for store use only
-    //   // this id will not be POSTed to the backend
-    //   return merge({}, state, { [action.lift.id]: action.lift });
-
-    //case for edit lift
-    //case for delet lift
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
+import ExerciseItem from './exercise_item';
 
 // this is to display every excercise for a workout when tapped from "prev_workout_screen"
 
@@ -14,24 +15,33 @@ class ExercisesList extends React.Component {
   // this works just need to get the actual display stuff going
   // whille this is good to go
 
-
-  render() {
+  componentDidMount() {
     const { auth_token } = this.props;
     const { workout_id, user_id } = this.props.route.params;
+    this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token);
+  }
 
-    // console.log("auth_token ", auth_token);
-    console.log("params user_id", user_id); // == {workout_id: 2, user_id: "fart"}
-    console.log("params workout_id", workout_id);
-    // requestAllWorkoutExercises(user_id, workout_id, auth_token)
-    // console.log
+
+
+  render() {
+    const { auth_token, journal_exercises } = this.props;
+    const { workout_id, user_id, the_day, the_date } = this.props.route.params;
+
+    const list_exercises = (
+      <View>
+        {journal_exercises.map((exercise, i) =>
+        <ExerciseItem
+          key={i}
+          name={exercise.name}
+          weight={exercise.weight}
+          reps={exercise.reps}
+        />)}
+      </View>
+    );
+
     return(
       <View>
-        <Text>exerciess list ay</Text>
-          <Button
-            raised
-            title={"hello"}
-            onPress={() => this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token)}
-            ></Button>
+        {list_exercises}
       </View>
     );
   }

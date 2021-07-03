@@ -6,7 +6,7 @@ export const receiveAllWorkouts = (workouts) => ({
   workouts
 });
 
-export const receiveWorkoutExercises = (exercises) => ({
+export const receiveExercises = (exercises) => ({
   type: "RECEIVE_EXERCISES",
   exercises
 });
@@ -48,7 +48,7 @@ export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
       err => console.log("top requestAllWorkoutExercises error", err),
     )
     .then(
-      json => console.log("json response", json),
+      json => dispatch(receiveExercises(json)),
       err => console.log("bottom requestAllWorkoutExercises", err),
     );
   }

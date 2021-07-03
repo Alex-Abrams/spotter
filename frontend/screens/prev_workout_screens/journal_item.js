@@ -34,6 +34,9 @@ class JournalItem extends React.Component {
           onPress={() => {this.props.navigation.navigate("Previous Exercises", {
             workout_id: workout_id,
             user_id: user_id,
+            the_day: the_day,
+            the_date: the_date,
+            name: `           ${exercise_section}              ${the_day} ${the_date}`,
           });
         }}>
 
