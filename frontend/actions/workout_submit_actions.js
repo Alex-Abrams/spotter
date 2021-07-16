@@ -1,6 +1,9 @@
 export const RECEIVE_LIFTS_AND_SETS = "RECEIVE_LIFTS_AND_SETS";
 export const RESET_LIFTS_AND_SETS = "RESET_LIFTS_AND_SETS";
 export const CLEAR_ALL_LIFTS_AND_SETS = "CLEAR_ALL_LIFTS_AND_SETS";
+
+import { resetSets, resetLifts } from './workout_actions';
+
 import fetch from 'cross-fetch';
 
 export const receiveLiftsAndSets = (liftsAndSets) => ({
@@ -16,6 +19,7 @@ export const clearAllLiftsAndSets = () => ({
   type: CLEAR_ALL_LIFTS_AND_SETS,
 });
 
+
 // /users/:user_id/workouts/:workout_id/lifts
 // promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
 
@@ -25,7 +29,7 @@ export const clearAllLiftsAndSets = () => ({
     // this function is used in postWorkout below
     let promises = [];
     liftsAndSets.forEach(set => {
-      console.log("SET!!!", set);
+    
       promises.push(fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
         method: 'POST',
         headers: {
@@ -49,7 +53,6 @@ export const clearAllLiftsAndSets = () => ({
         );
     });
   }
-
 // /users/:user_id/workouts(.:format)
 // exercise_section ==> type
 export function postWorkout(workout, auth_token, liftsAndSets) {
@@ -79,11 +82,16 @@ export function postWorkout(workout, auth_token, liftsAndSets) {
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
         //needs to reset the store
-        dispatch(resetLiftsAndSets());
-        dispatch(clearAllLiftsAndSets());
+        // dispatch(resetLiftsAndSets());
+        dispatch(resetSets());
+        // // dispatch(resetLifts());
+        // // dispatch(/)
+        // dispatch(clearAllLiftsAndSets());
       },
       err => console.log("postWorkout post error :()", err)
     );
 
   }
 }
+
+// function clear

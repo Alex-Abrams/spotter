@@ -13,7 +13,7 @@ class ExerciseItem extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.exercise}>
-          <View style={{paddingTop: 12, width: "30%"}}>
+          <View style={{paddingTop: 12, width: '53%'}}>
             <Text>{name}</Text>
           </View>
 

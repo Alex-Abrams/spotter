@@ -65,7 +65,7 @@ export default class App extends React.Component {
       });
       this.setState({ fontsAreLoaded: true });
     } catch(error) {
-      console.log(error);
+      console.log("app.js componentDidMount error", error);
       return;
     }
   }

@@ -26,7 +26,8 @@ const appReducer = combineReducers({ // was root
 
 const rootReducer = (state, action) => {
   if (action.type === CLEAR_ALL_LIFTS_AND_SETS) {
-    return merge({}, state, {lifts: null, sets: null});
+    console.log("hello frm rootytooty");
+    return merge({}, state, { sets: null });
   }
   return appReducer(state, action);
 };

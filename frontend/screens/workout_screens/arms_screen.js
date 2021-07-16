@@ -55,6 +55,25 @@ export class ArmsScreen extends React.Component {
     ]
   );
 
+  // renderLiftsDisplay() {
+  //   const { lifts } = this.props;
+  //   const revLifts = lifts.lifts.reverse();
+  //   console.log("fooking lifts", lifts);
+  //
+  //   return(
+  //     (revLifts.length !== 0) ? (
+  //       <View>
+  //         {revLifts.map(lift =>
+  //           <LiftsShow
+  //           key={lift.id}
+  //           lift={lift} />)}
+  //       </View>
+  //     ) : (
+  //       null
+  //     )
+  //   );
+  // }
+
 
   render() {
 
@@ -70,6 +89,7 @@ export class ArmsScreen extends React.Component {
         lift={lift} />)}
       </View>
     );
+
 
     return(
       <ScrollView>

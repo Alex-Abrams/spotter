@@ -38,20 +38,6 @@ class SetForm extends React.Component {
       };
 
     };
-
-      // keeping this for now, but it seems like useless code for the most part
-    // if(this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length > 0) && (this.state.reps.length > 0)) {
-    //   // console.log("shit happening top");
-    //   this.setState({ disableButton: false });
-    // } else {
-    //   // console.log("shit happening bot");
-    //   this.setState({ disableButton: true });
-    // };
-    //
-    // console.log("reps leeength", this.state.reps.length);
-    // console.log("weight length", this.state.weight.length);
-
-
   }
 
   submitForm() {
@@ -71,6 +57,44 @@ class SetForm extends React.Component {
       return null;
     };
 
+  }
+
+  //testing new return
+  displaySets() {
+    const { sets, liftId } = this.props;
+
+    if (sets.length === 0 || sets[0] === null) {
+      return null;
+    } else {
+
+    const setsPerLift = () => {
+
+      let selectSets = [];
+      sets.forEach(set => {
+        if (liftId === set.lift_id) {
+          selectSets.push(set);
+        };
+      });
+      return selectSets;
+    };
+
+    const setsLiftArray = setsPerLift();
+
+    const setsDisplay = (
+      <View>
+      {setsLiftArray.map((set, i) =>
+        <SetShow
+        key={set.id}
+        set={set}
+        number={i}
+        weight={set.weight}
+        reps={set.reps}
+        setId={set.id} />)}
+      </View>
+    );
+
+      return setsDisplay;
+    };
   }
 
 
@@ -96,36 +120,39 @@ class SetForm extends React.Component {
     );
 
 
-    const setsPerLift = () => {
-      let selectSets = [];
-      sets.forEach(set => {
-        if (liftId === set.lift_id) {
-          selectSets.push(set);
-        };
-      });
-      return selectSets;
-    };
-
-    const setsLiftArray = setsPerLift();
-
-    const setsDisplay = (
-      <View>
-      {setsLiftArray.map((set, i) =>
-        <SetShow
-        key={set.id}
-        set={set}
-        number={i}
-        weight={set.weight}
-        reps={set.reps}
-        setId={set.id} />)}
-      </View>
-    );
+    // const setsPerLift = () => {
+    //   let selectSets = [];
+    //   sets.forEach(set => {
+    //     if (liftId === set.lift_id) {
+    //       selectSets.push(set);
+    //     };
+    //   });
+    //   return selectSets;
+    // };
+    //
+    // const setsLiftArray = setsPerLift();
+    //
+    // const setsDisplay = (
+    //   <View>
+    //   {setsLiftArray.map((set, i) =>
+    //     <SetShow
+    //     key={set.id}
+    //     set={set}
+    //     number={i}
+    //     weight={set.weight}
+    //     reps={set.reps}
+    //     setId={set.id} />)}
+    //   </View>
+    // );
 
 
     return(
       <View style={{paddingLeft: 16, paddingRight: 16}}>
 
-      {setsDisplay}
+        {/*
+        {setsDisplay}
+        */}
+        {this.displaySets()}
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
 

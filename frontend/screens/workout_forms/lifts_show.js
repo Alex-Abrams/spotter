@@ -25,6 +25,11 @@ class LiftsShow extends React.Component {
 
   minOrMaxLiftItem(arrowIcon) {
     return(
+      (this.props.lift[0] === null) ? (
+        null
+      ) : (
+
+
       <View style={{paddingTop: 5, paddingRight: 16, paddingLeft: 16,  flex: 1}}>
         <Button
           raised
@@ -43,6 +48,7 @@ class LiftsShow extends React.Component {
           />
       </View>
     )
+  );
   }
 
 

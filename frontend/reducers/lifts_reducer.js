@@ -6,8 +6,8 @@ import {
 import merge from 'lodash/merge';
 
 const _nullLifts = Object.freeze({
-
-})
+  lifts: null,
+});
 
 const liftsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -18,9 +18,9 @@ const liftsReducer = (state = {}, action) => {
       //   // this id will not be POSTed to the backend
        // {workout_id: 3, type: "chest", name: "bench press", weight: 150, reps: 12, sets: 3}
        return merge({}, state, { [action.lift.id]: action.lift });
-       // return merge({}, state, action.lift);
+       // return merge({}, state, { lifts: action.lift });
     case RESET_LIFTS:
-      return state = undefined;
+      return _nullLifts;
     default:
       return state;
   }

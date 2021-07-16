@@ -9,6 +9,8 @@ import setsReducer from './sets_reducer';
 import workoutSubmitReducer from './workout_submit_reducer';
 import prevWorkoutReducer from './prev_workout_reducer';
 import prevExercisesReducer from './prev_exercises_reducer';
+// import liftsAndSetsReducer from './lifts_and_sets_reducer';
+
 //
 const entitiesReducer = combineReducers({
   users: usersReducer,
@@ -18,6 +20,7 @@ const entitiesReducer = combineReducers({
   submit: workoutSubmitReducer,
   journal: prevWorkoutReducer,
   journal_exercises: prevExercisesReducer,
+  // liftsAndSets: liftsAndSetsReducer,
 });
 
 export default entitiesReducer;

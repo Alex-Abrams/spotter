@@ -9,7 +9,6 @@ import * as submitActions from '../actions/workout_submit_actions';
 
 
 const mapStateToProps = state => ({
-
   current_user: Object.values(state.entities.users)[0],
   lifts: selectAllLifts(state),
   sets: selectAllSets(state),
