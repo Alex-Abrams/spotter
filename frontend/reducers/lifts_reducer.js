@@ -5,9 +5,9 @@ import {
 
 import merge from 'lodash/merge';
 
-const _nullLifts = Object.freeze({
-  lifts: null,
-});
+// const _nullLifts = Object.freeze({
+//   lifts: null,
+// });
 
 const liftsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -20,7 +20,7 @@ const liftsReducer = (state = {}, action) => {
        return merge({}, state, { [action.lift.id]: action.lift });
        // return merge({}, state, { lifts: action.lift });
     case RESET_LIFTS:
-      return _nullLifts;
+      return {};
     default:
       return state;
   }

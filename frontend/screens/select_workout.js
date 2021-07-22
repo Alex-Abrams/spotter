@@ -47,7 +47,7 @@ class SelectWorkout extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.container}>
-          <Text style={styles.text}>Bodyparts List</Text>
+          <Text style={styles.text}>Select Workout</Text>
           <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         </View>
         {this.toBodyPart(this.props.navigation, bodyArray)}

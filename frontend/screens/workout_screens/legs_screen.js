@@ -17,7 +17,7 @@ export class LegsScreen extends React.Component {
   }
 
 
-  submitWorkout() { // this function combines sets into lifts into a arge array to post to backend
+  submitWorkout() { // this function combines sets into lifts into a arge array to send to store, does not send to the backend
     let liftsSets = [];
 
     const liftsArray = this.props.lifts;
@@ -40,6 +40,12 @@ export class LegsScreen extends React.Component {
   }
   ////////
 
+  postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
+    const { workout, auth_token, liftsAndSets } = this.props;
+    this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);
+    this.props.navigation.navigate('Previous Workouts');
+  }
+
 
   createTwoButtonAlert = () =>
   Alert.alert(
@@ -52,9 +58,11 @@ export class LegsScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets) }
+      { text: "OK", onPress: () => this.postWorkoutAndRedirectToPrevWorkouts(this.props.navigation) }
     ]
   );
+
+  // this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets)
 
 
   render() {

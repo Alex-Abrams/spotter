@@ -40,6 +40,13 @@ export class ChestScreen extends React.Component {
   ////////
 
 
+  postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
+    const { workout, auth_token, liftsAndSets } = this.props;
+    this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);
+    this.props.navigation.navigate('Previous Workouts');
+  }
+
+
   createTwoButtonAlert = () =>
   Alert.alert(
     "Submit Workout?",
@@ -51,7 +58,7 @@ export class ChestScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets) }
+      { text: "OK", onPress: () => this.postWorkoutAndRedirectToPrevWorkouts(this.props.navigation) }
     ]
   );
 

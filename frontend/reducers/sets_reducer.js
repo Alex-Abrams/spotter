@@ -5,9 +5,9 @@ import {
 
 import merge from 'lodash/merge';
 
-const _nullSets = Object.freeze({
-  sets: {},
-});
+// const _nullSets = Object.freeze({
+//   sets: {},
+// });
 
 const setsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -15,11 +15,16 @@ const setsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_SET:
       // return merge({}, state, action.set);
-      // return merge({}, state, { [action.set.id]: action.set });
-      return merge({}, state, { sets: action.set });
+      // console.log("duh state", [state][1]);
+      // console.log("duh state", [state]);
+      let testState = state;
+      console.log("fartypoopoo", testState);
+      console.log("fartypoopoo222", testState.length);
+      return merge({}, state, { [action.set.id]: action.set });
+      // return merge({}, state, { sets: action.set });
     case RESET_SETS:
       // console.log("HELLO FROM THE SETSREDUCER");
-      return _nullSets;
+      return {};
       // return {
       //   ...state,
       // }

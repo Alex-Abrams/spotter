@@ -40,6 +40,13 @@ export class ArmsScreen extends React.Component {
   ////////
 
 
+  postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
+    const { workout, auth_token, liftsAndSets } = this.props;
+    this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);
+    this.props.navigation.navigate('Previous Workouts');
+  }
+
+
   createTwoButtonAlert = () =>
   Alert.alert(
     "Submit Workout?",
@@ -51,28 +58,9 @@ export class ArmsScreen extends React.Component {
         style: "cancel"
       },
       { cancelable: true},
-      { text: "OK", onPress: () => this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets) }
+      { text: "OK", onPress: () => this.postWorkoutAndRedirectToPrevWorkouts(this.props.navigation) }
     ]
   );
-
-  // renderLiftsDisplay() {
-  //   const { lifts } = this.props;
-  //   const revLifts = lifts.lifts.reverse();
-  //   console.log("fooking lifts", lifts);
-  //
-  //   return(
-  //     (revLifts.length !== 0) ? (
-  //       <View>
-  //         {revLifts.map(lift =>
-  //           <LiftsShow
-  //           key={lift.id}
-  //           lift={lift} />)}
-  //       </View>
-  //     ) : (
-  //       null
-  //     )
-  //   );
-  // }
 
 
   render() {
