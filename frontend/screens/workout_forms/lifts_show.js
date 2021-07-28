@@ -5,7 +5,7 @@ import React from 'react';
 // it will be abe to be expanded when they click on( gotta figure out)
 // for now you need to make it so when they submit their workout a single line apears with the workout name or something
 import { List, ListItem } from "react-native-elements";
-import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { Button } from 'react-native-elements';
 import SetForm from './set_form';
@@ -23,7 +23,7 @@ class LiftsShow extends React.Component {
   }
 
 
-  minOrMaxLiftItem(arrowIcon) {
+  minOrMaxLiftItem(arrowIcon) { // also displays the name of lift as a button
     return(
       (this.props.lift[0] === null) ? (
         null
@@ -67,7 +67,9 @@ class LiftsShow extends React.Component {
     return(
       <View>
         {displayLiftItem}
-        <View>{displaySetShowItem}</View>
+          <View>
+            {displaySetShowItem}
+          </View>
         {displaySetForm}
       </View>
     );

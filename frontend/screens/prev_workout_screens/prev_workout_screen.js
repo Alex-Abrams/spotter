@@ -22,9 +22,11 @@ class PrevWorkoutScreen extends React.Component {
 
     const { auth_token, current_user, workouts_list } = this.props;
 
+    const reversed_workouts_list = workouts_list.reverse();
+
     const journal_list = (
       <View>
-        {workouts_list.map((workout, i) =>
+        {reversed_workouts_list.map((workout, i) =>
         <JournalItem
           key={i}
           user_id={current_user.id}
