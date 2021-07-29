@@ -3,6 +3,7 @@ export const RECEIVE_LIFT = "RECEIVE_LIFT";
 export const RECEIVE_SET = "RECEIVE_SET";
 export const RESET_SETS = "RESET_SETS";
 export const RESET_LIFTS = "RESET_LIFTS";
+export const EDIT_SET = "EDIT_SET";
 
 export const receiveWorkout = (workout) => ({
   type: RECEIVE_WORKOUT,
@@ -26,4 +27,9 @@ export const resetSets = () => ({
 
 export const resetLifts = () => ({
   type: RESET_LIFTS
+});
+
+export const editSet = (set) => ({
+  type: EDIT_SET,
+  set
 });

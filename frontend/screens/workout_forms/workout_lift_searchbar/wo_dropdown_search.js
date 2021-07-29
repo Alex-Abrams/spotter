@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
-import { Button } from 'react-native-elements';
+import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Modal} from 'react-native';
+import { Button, List, ListItem } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from './searchbar_keywords';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-
-
-// testing modal stuff
-import { Alert, Modal, Pressable} from "react-native";
-
-import { List, ListItem } from "react-native-elements";
-// LiftSearchInput
 
 class WorkoutDropdownSearch extends React.Component {
   constructor(props) {
@@ -94,7 +87,6 @@ class WorkoutDropdownSearch extends React.Component {
         <KeyboardAvoidingView
           behavior="margin">
       <View>
-        {/* change to style addWorkoutPressable  */}
 
         <View style={styles.addExerciseButtonView}>
           {addExerButton}
