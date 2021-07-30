@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
-import { List, ListItem } from "react-native-elements";
+// import { List, ListItem } from "react-native-elements";
 import SetShow from './set_show';
 
 class SetForm extends React.Component {
@@ -118,32 +118,6 @@ class SetForm extends React.Component {
         <Text style={{color: 'red'}}>Numbers Only</Text>
       </View>
     );
-
-
-    // const setsPerLift = () => {
-    //   let selectSets = [];
-    //   sets.forEach(set => {
-    //     if (liftId === set.lift_id) {
-    //       selectSets.push(set);
-    //     };
-    //   });
-    //   return selectSets;
-    // };
-    //
-    // const setsLiftArray = setsPerLift();
-    //
-    // const setsDisplay = (
-    //   <View>
-    //   {setsLiftArray.map((set, i) =>
-    //     <SetShow
-    //     key={set.id}
-    //     set={set}
-    //     number={i}
-    //     weight={set.weight}
-    //     reps={set.reps}
-    //     setId={set.id} />)}
-    //   </View>
-    // );
 
 
     return(
