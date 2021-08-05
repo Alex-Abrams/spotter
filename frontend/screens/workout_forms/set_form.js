@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 // import { List, ListItem } from "react-native-elements";
+
 import SetShow from './set_show';
+import SetShowContainer from '../../containers/set_show_container';
 
 class SetForm extends React.Component {
   constructor(props) {
@@ -83,7 +85,7 @@ class SetForm extends React.Component {
     const setsDisplay = (
       <View>
       {setsLiftArray.map((set, i) =>
-        <SetShow
+        <SetShowContainer
         key={set.id}
         set={set}
         number={i}

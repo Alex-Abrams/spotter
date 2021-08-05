@@ -15,12 +15,13 @@ class SetShow extends React.Component {
     super(props);
     //needs a modal state
     this.state = {
-      edit_popup_visible: false,
-      is_edit_modal_visible: false,
       edit_dialog_box_visible: false,
       weight: '',
       reps: '',
     };
+
+    this.tryingToSubmit = this.tryingToSubmit.bind(this);
+    // this.props.workoutActions.editSet = this.props.workoutActions.editSet.bind(this);
   }
 
   /////keepers below
@@ -35,10 +36,15 @@ class SetShow extends React.Component {
   toggleDialogBox = (visible) => {
     this.setState({ edit_dialog_box_visible: visible });
   }
-  /// tsting out the view thing again
+
+
+  tryingToSubmit() {
+    this.props.workoutActions.editSet({id: this.props.setId, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+  }
 
   reactNativeDialog() {
-    const { set, setId, weight, reps, number } = this.props;
+    const { set, setId, weight, reps, number, liftId } = this.props;
+    // console.log("setid?!", setId);
     return(
       <View>
         <Dialog.Container
@@ -56,21 +62,18 @@ class SetShow extends React.Component {
             onChangeText={(input)=> this.updateReps(input)}></Dialog.Input>
 
           <Dialog.Button label="Cancel" onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)} />
-          <Dialog.Button label="Delete" onPress={() => console.log("delete")}/>
+          <Dialog.Button label="Submit" onPress={() => {this.tryingToSubmit(); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
         </Dialog.Container>
       </View>
     );
   }
 
-  submitChanges() {
-    // this.props.workoutActions.editSet()
-  }
 
   render() {
 
     const { set, setId, weight, reps, number } = this.props;
-    // console.log("popup", this.state.edit_popup_visible);
 
+    console.log("PROPS???", this.props);
     return(
       <View>
         <TouchableHighlight
@@ -86,6 +89,7 @@ class SetShow extends React.Component {
         </TouchableHighlight>
 
   {this.reactNativeDialog()}
+
 
       </View>
     );
