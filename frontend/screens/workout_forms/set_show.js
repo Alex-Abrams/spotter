@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, SafeAreaView, ScrollView, TouchableHighlight } from 'react-native';
+//
+
 // import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, TouchableHighlight, Modal} from 'react-native';
 import { Button } from 'react-native-elements';
 import { List, ListItem } from "react-native-elements";
 import TouchableSetItem from './touchable_set_item';
-import SetShowEditPopup from './set_show_edit_popup';
+
+//
+import Dialog from "react-native-dialog";
 
 class SetShow extends React.Component {
   constructor(props){
@@ -12,40 +16,67 @@ class SetShow extends React.Component {
     //needs a modal state
     this.state = {
       edit_popup_visible: false,
+      is_edit_modal_visible: false,
+      edit_dialog_box_visible: false,
+      weight: '',
+      reps: '',
     };
   }
 
-  // makes a view pop up for deleting/editing sets
-  setEditPopupVisible = (visible) => {
-    this.setState({ edit_popup_visible: visible });
+  /////keepers below
+  updateWeight(input) {
+    this.setState({ weight: input })
   }
 
+  updateReps(input) {
+    this.setState({ reps: input });
+  }
+
+  toggleDialogBox = (visible) => {
+    this.setState({ edit_dialog_box_visible: visible });
+  }
+  /// tsting out the view thing again
+
+  reactNativeDialog() {
+    const { set, setId, weight, reps, number } = this.props;
+    return(
+      <View>
+        <Dialog.Container
+          visible={this.state.edit_dialog_box_visible}
+          onBackdropPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)}>
+          <Dialog.Title>this the title?</Dialog.Title>
+          <Dialog.Description>
+            This is the dialog description
+          </Dialog.Description>
+          <Dialog.Input
+            label={"weight"}
+            onChangeText={(input)=> this.updateWeight(input)}></Dialog.Input>
+          <Dialog.Input
+            label={"sets"}
+            onChangeText={(input)=> this.updateReps(input)}></Dialog.Input>
+
+          <Dialog.Button label="Cancel" onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)} />
+          <Dialog.Button label="Delete" onPress={() => console.log("delete")}/>
+        </Dialog.Container>
+      </View>
+    );
+  }
+
+  submitChanges() {
+    // this.props.workoutActions.editSet()
+  }
 
   render() {
 
     const { set, setId, weight, reps, number } = this.props;
     // console.log("popup", this.state.edit_popup_visible);
 
-    const display_edit_popup = (this.state.edit_popup_visible) ? (
-      <View style={{position: "absolute", right: 60, top: -50, backgroundColor: "yellow", height: 220, width: 220, elevation: 5}}>
-        <SetShowEditPopup />
-        <View>
-          <Button
-            title={"click Me"}
-            onPress={() => this.setEditPopupVisible(!this.state.edit_popup_visible)} />
-        </View>
-      </View>
-
-    ) : (
-      null
-    );
-
     return(
       <View>
         <TouchableHighlight
           underlayColor="white"
           onLongPress={() => console.log("LOOOONG TOUCH")}
-          onPress={() => this.setEditPopupVisible(!this.state.edit_popup_visible)}>
+          onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)}>
           <TouchableSetItem
             set={set}
             setId={setId}
@@ -54,7 +85,7 @@ class SetShow extends React.Component {
             number={number} />
         </TouchableHighlight>
 
-      {display_edit_popup}
+  {this.reactNativeDialog()}
 
       </View>
     );
@@ -64,10 +95,14 @@ class SetShow extends React.Component {
 const styles = StyleSheet.create({
   modal_view: {
     // height: 50, // this made the set thing bigger
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 0,
+    height: 400,
+    width: 300,
   },
   modal: {
-    // backgroundColor: "yellow"
-    // animationType="slide"
+
   }
 });
 
