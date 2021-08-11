@@ -18,51 +18,94 @@ class SetShow extends React.Component {
       edit_dialog_box_visible: false,
       weight: '',
       reps: '',
+      weightNumeric: true,
+      repsNumeric: true,
     };
 
-    this.tryingToSubmit = this.tryingToSubmit.bind(this);
-    // this.props.workoutActions.editSet = this.props.workoutActions.editSet.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+
   }
 
-  /////keepers below
-  updateWeight(input) {
-    this.setState({ weight: input })
-  }
-
-  updateReps(input) {
-    this.setState({ reps: input });
-  }
 
   toggleDialogBox = (visible) => {
     this.setState({ edit_dialog_box_visible: visible });
   }
 
 
-  tryingToSubmit() {
-    this.props.workoutActions.editSet({id: this.props.setId, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+  submitForm() {
+    if (this.state.repsNumeric === true && this.state.weightNumeric === true) {
+      this.props.workoutActions.editSet({id: this.props.setId, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+      this.toggleDialogBox(!this.state.edit_dialog_box_visible);
+    } else {
+      null;
+    };
+  }
+
+  updateForm(input, section) {
+    // sets and wieghts should only be numeric valuess
+    const num = /^[0-9]+$/;
+    if (input.match(num)) {
+      // if the input only contains numbers update input and set numeric to true
+      if (section === "weight") {
+        this.setState({ weight: input, weightNumeric: true });
+      } else {
+        // if you put "reps" in section
+        this.setState({ reps: input, repsNumeric: true });
+      };
+
+    } else {
+
+      if (section === "weight") {
+        this.setState({ weight: input, weightNumeric: false });
+      } else {
+        this.setState({ reps: input, repsNumeric: false });
+      };
+
+    };
   }
 
   reactNativeDialog() {
     const { set, setId, weight, reps, number, liftId } = this.props;
     // console.log("setid?!", setId);
+
+    const errorDisplayReps = (this.state.repsNumeric === true) ? (
+      null
+    ) : (
+      <View>
+        <Text style={{color: 'red'}}>Numbers Only</Text>
+      </View>
+    );
+
+    const errorDisplayWeight = (this.state.weightNumeric === true) ? (
+      null
+    ) : (
+      <View>
+        <Text style={{color: 'red'}}>Numbers Only</Text>
+      </View>
+    );
+
     return(
       <View>
         <Dialog.Container
           visible={this.state.edit_dialog_box_visible}
           onBackdropPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)}>
-          <Dialog.Title>this the title?</Dialog.Title>
+          <Dialog.Title>Edit Set# {setId}</Dialog.Title>
           <Dialog.Description>
-            This is the dialog description
+            Weight: {weight} lbs   Reps: {reps}
           </Dialog.Description>
           <Dialog.Input
-            label={"weight"}
-            onChangeText={(input)=> this.updateWeight(input)}></Dialog.Input>
+            label={"Weight"}
+            placeholder={"new weight"}
+            onChangeText={(input)=> this.updateForm(input, "weight")}></Dialog.Input>
+          { errorDisplayWeight }
           <Dialog.Input
-            label={"sets"}
-            onChangeText={(input)=> this.updateReps(input)}></Dialog.Input>
-
+            label={"Reps"}
+            placeholder={"new reps"}
+            onChangeText={(input)=> this.updateForm(input)}></Dialog.Input>
+          { errorDisplayReps }
+          <Dialog.Button label="Delete Set" onPress={() => { console.log("deleted the set"); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
           <Dialog.Button label="Cancel" onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)} />
-          <Dialog.Button label="Submit" onPress={() => {this.tryingToSubmit(); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
+          <Dialog.Button label="Submit" onPress={() => {this.submitForm()}}/>
         </Dialog.Container>
       </View>
     );
@@ -73,7 +116,6 @@ class SetShow extends React.Component {
 
     const { set, setId, weight, reps, number } = this.props;
 
-    console.log("PROPS???", this.props);
     return(
       <View>
         <TouchableHighlight

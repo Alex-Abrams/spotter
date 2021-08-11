@@ -17,9 +17,7 @@ const setsReducer = (state = {}, action) => {
       return {};
 
     case EDIT_SET:
-      console.log("zipperTTT[]");
       return merge({}, state, { [action.set.id]: action.set });
-      // const editedSet =
 
     default:
       return state;
