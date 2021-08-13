@@ -102,9 +102,8 @@ class SetForm extends React.Component {
 
   render() {
     const { liftId, sets } = this.props;
-    // console.log("disabled button", this.state.disableButton);
-    // console.log("leeength", this.state.reps.length);
-                                    // weightNumeric(if true then the input contains only numbers)
+
+    // weightNumeric(if true then the input contains only numbers)
     const errorDisplayWeight = (this.state.weightNumeric === true) ? (
       null
     ) : (
@@ -157,8 +156,18 @@ class SetForm extends React.Component {
 
       <View>
         <Button
-          title="Confirm"
+          raised
+          title="Confirm Set"
           onPress={() => this.submitForm()}>
+        </Button>
+      </View>
+
+      <View style={{paddingTop: 9}}>
+        <Button
+          raised
+          title="Delete Exercise"
+          buttonStyle={{backgroundColor: 'red'}}
+          onPress={() => console.log("deleter")}>
         </Button>
       </View>
 

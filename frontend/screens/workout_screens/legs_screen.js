@@ -88,6 +88,7 @@ export class LegsScreen extends React.Component {
 
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
+            raised
             title={"Confirm Workout"}
             onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
           </Button>

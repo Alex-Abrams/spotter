@@ -5,6 +5,7 @@ export const RESET_SETS = "RESET_SETS";
 export const RESET_LIFTS = "RESET_LIFTS";
 export const EDIT_SET = "EDIT_SET";
 export const DELETE_SET = "DELETE_SET";
+export const RECEIVE_ALL_SETS = "RECEIVE_ALL_SETS";
 
 export const receiveWorkout = (workout) => ({
   type: RECEIVE_WORKOUT,
@@ -20,6 +21,11 @@ export const receiveLift = (lift) => ({
 export const receiveSet = (set) => ({
   type: RECEIVE_SET,
   set
+});
+
+export const receiveAllSets = (sets) => ({
+  type: RECEIVE_ALL_SETS,
+  sets
 });
 
 export const resetSets = () => ({

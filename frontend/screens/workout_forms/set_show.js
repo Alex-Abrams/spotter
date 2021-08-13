@@ -23,7 +23,7 @@ class SetShow extends React.Component {
     };
 
     this.submitForm = this.submitForm.bind(this);
-
+    this.deleteSet = this.deleteSet.bind(this);
   }
 
 
@@ -64,6 +64,15 @@ class SetShow extends React.Component {
     };
   }
 
+  deleteSet() {
+    // I am deleting sets here instead of the deleting from redux directly because overall it quicker an easier.
+    const { sets, setId } = this.props;
+    // (this.props.sets[0].id)
+    const new_sets = sets.filter(set => setId !== set.id);
+    this.props.workoutActions.resetSets();
+    new_sets.forEach(set => this.props.workoutActions.receiveSet(set));
+  }
+
   reactNativeDialog() {
     const { set, setId, weight, reps, number, liftId } = this.props;
     // console.log("setid?!", setId);
@@ -83,7 +92,6 @@ class SetShow extends React.Component {
         <Text style={{color: 'red'}}>Numbers Only</Text>
       </View>
     );
-
     return(
       <View>
         <Dialog.Container
@@ -103,7 +111,7 @@ class SetShow extends React.Component {
             placeholder={"new reps"}
             onChangeText={(input)=> this.updateForm(input)}></Dialog.Input>
           { errorDisplayReps }
-          <Dialog.Button label="Delete Set" onPress={() => { this.props.workoutActions.deleteSet(); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
+          <Dialog.Button label="Delete Set" onPress={() => { this.deleteSet(); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
           <Dialog.Button label="Cancel" onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)} />
           <Dialog.Button label="Submit" onPress={() => {this.submitForm()}}/>
         </Dialog.Container>

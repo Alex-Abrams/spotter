@@ -1,5 +1,6 @@
 import {
   RECEIVE_SET,
+  RECEIVE_ALL_SETS,
   RESET_SETS,
   EDIT_SET,
   DELETE_SET,
@@ -13,6 +14,9 @@ const setsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_SET:
       return merge({}, state, { [action.set.id]: action.set });
+
+    case RECEIVE_ALL_SETS:
+      return merge({}, state, action.sets);
 
     case RESET_SETS:
       return {};
