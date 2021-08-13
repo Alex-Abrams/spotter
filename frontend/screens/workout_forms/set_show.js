@@ -103,7 +103,7 @@ class SetShow extends React.Component {
             placeholder={"new reps"}
             onChangeText={(input)=> this.updateForm(input)}></Dialog.Input>
           { errorDisplayReps }
-          <Dialog.Button label="Delete Set" onPress={() => { console.log("deleted the set"); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
+          <Dialog.Button label="Delete Set" onPress={() => { this.props.workoutActions.deleteSet(); this.toggleDialogBox(!this.state.edit_dialog_box_visible);}}/>
           <Dialog.Button label="Cancel" onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)} />
           <Dialog.Button label="Submit" onPress={() => {this.submitForm()}}/>
         </Dialog.Container>
@@ -115,6 +115,8 @@ class SetShow extends React.Component {
   render() {
 
     const { set, setId, weight, reps, number } = this.props;
+
+    // this.props.workoutActions.deleteSet();
 
     return(
       <View>
