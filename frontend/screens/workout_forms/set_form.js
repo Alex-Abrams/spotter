@@ -17,6 +17,8 @@ class SetForm extends React.Component {
       weightNumeric: true,
       repsNumeric: true,
     };
+
+    this.deleteLift = this.deleteLift.bind(this);
   }
 
   updateForm(input, section) {
@@ -61,8 +63,7 @@ class SetForm extends React.Component {
 
   }
 
-  //testing new return
-  displaySets() {
+  displaySets() { // this displays the sets for the appropriate lifts
     const { sets, liftId } = this.props;
 
     if (sets.length === 0 || sets[0] === null) {
@@ -72,7 +73,7 @@ class SetForm extends React.Component {
     const setsPerLift = () => {
 
       let selectSets = [];
-      sets.forEach(set => {
+      sets.forEach(set => {    //// seperates sets by lift id
         if (liftId === set.lift_id) {
           selectSets.push(set);
         };
@@ -99,6 +100,16 @@ class SetForm extends React.Component {
     };
   }
 
+  deleteLift() {
+    // this will filter out the lift to delete and its setz, clear the entire store of lifts and sets, then re-dispatch all of them back
+    const { lifts, sets, liftId } = this.props;
+    const new_lifts = lifts.filter(lift => liftId !== lift.id);
+    const new_sets = sets.filter(set => liftId !== set.lift_id);
+    this.props.workoutActions.resetSets();
+    this.props.workoutActions.resetLifts();
+    new_lifts.forEach(lift => this.props.workoutActions.receiveLift(lift));
+    new_sets.forEach(set => this.props.workoutActions.receiveSet(set));
+  }
 
   render() {
     const { liftId, sets } = this.props;
@@ -120,13 +131,9 @@ class SetForm extends React.Component {
       </View>
     );
 
-
     return(
       <View style={{paddingLeft: 16, paddingRight: 16}}>
 
-        {/*
-        {setsDisplay}
-        */}
         {this.displaySets()}
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -167,7 +174,7 @@ class SetForm extends React.Component {
           raised
           title="Delete Exercise"
           buttonStyle={{backgroundColor: 'red'}}
-          onPress={() => console.log("deleter")}>
+          onPress={() => this.deleteLift()}>
         </Button>
       </View>
 
