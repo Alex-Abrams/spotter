@@ -14,6 +14,7 @@ import WorkoutNav from './workout_navigator';
 // import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
 import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 import ExercisesListContainer from './exercises_list_container';
+import GraphMenuScreen from '../screens/graph_screens/graph_screen_menu';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -60,14 +61,9 @@ class FarStack extends React.Component {
     this._retrieveStorageEmail();
     this.props.authActions.getUserInfo(this.props.email, this.props.auth_token);
   }
-
-
-
 // above is for the stuff between the stack navigators....
 // initialRouteName="login"
 
-//below goes on bottom
-// <Stack.Screen name="WorkoutForm" component={WorkoutForm} navigation={this.props.navigation} />
 
   render() {
     const Stack = createStackNavigator();
@@ -84,6 +80,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
+          <Stack.Screen name="Progress Charts" component={GraphMenuScreen} navigation={this.props.navigation} />
           </>
         ) : (
           <>

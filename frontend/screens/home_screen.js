@@ -76,13 +76,13 @@ class Home extends React.Component {
     )
   }
 
-  toProgressCharts() {
+  toGraphScreens() {
     return(
       <View style={styles.buttons}>
         <Button
           title="Progess Charts"
           raised
-          onPress={() => {console.log("progress charts")}}>
+          onPress={() => {this.props.navigation.navigate("Progress Charts")}}>
         </Button>
       </View>
     )
@@ -96,7 +96,7 @@ class Home extends React.Component {
         {this.toWorkoutForm(this.props.navigation)}
         {this.toPreviousWorkouts(this.props.navigation)}
         {this.toCalendar()}
-        {this.toProgressCharts()}
+        {this.toGraphScreens()}
         {this.logoutButton()}
       </View>
     );

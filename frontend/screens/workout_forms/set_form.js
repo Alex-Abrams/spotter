@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Alert} from 'react-native';
 import { Button } from 'react-native-elements';
 // import { List, ListItem } from "react-native-elements";
 
@@ -111,6 +111,20 @@ class SetForm extends React.Component {
     new_sets.forEach(set => this.props.workoutActions.receiveSet(set));
   }
 
+  createTwoButtonAlert = () =>
+  Alert.alert(
+    "Delete Entire Exercise?",
+    "",
+    [
+      {
+        text: "Cancel",
+        style: "cancel"
+      },
+      { cancelable: true},
+      { text: "OK", onPress: () => this.deleteLift() }
+    ]
+  );
+
   render() {
     const { liftId, sets } = this.props;
 
@@ -174,7 +188,7 @@ class SetForm extends React.Component {
           raised
           title="Delete Exercise"
           buttonStyle={{backgroundColor: 'red'}}
-          onPress={() => this.deleteLift()}>
+          onPress={() => this.createTwoButtonAlert()}>
         </Button>
       </View>
 
