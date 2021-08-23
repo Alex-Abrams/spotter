@@ -18,7 +18,7 @@ class ExercisesList extends React.Component {
   componentDidMount() {
     const { auth_token } = this.props;
     const { workout_id, user_id } = this.props.route.params;
-    this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token);
+    this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token); // requests exercises for this workout
   }
 
 

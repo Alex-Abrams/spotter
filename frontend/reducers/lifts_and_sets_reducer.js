@@ -1,8 +1,3 @@
-// this reducer is soley so i can "delete", sets and lifts when migrating pages
-// import {
-//   CLEAR_ALL_LIFTS_AND_SETS
-// } from '../actions/workout_submit_actions';
-
 import {
   RECEIVE_SET,
   RESET_SETS
@@ -13,33 +8,7 @@ import {
   RESET_LIFTS,
 } from '../actions/workout_actions';
 
-// import liftsReducer from './lifts_reducer';
-// import setsReducer from './sets_reducer';
-
-// import { combineReducers } from 'redux';
 import merge from 'lodash/merge';
-
-// const _null_lifts_and_sets = Object.freeze({
-//   // lifts: null,
-//   sets: null,
-// });
-//
-// const liftsSetsReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     case CLEAR_ALL_LIFTS_AND_SETS:
-//       return merge({}, state, _null_lifts_and_sets)
-//     default:
-//       return state;
-//   }
-// };
-//
-// const liftsAndSetsReducer = combineReducers({
-//   lifts: liftsReducer,
-//   sets: setsReducer,
-// });
-//
 
 const _null_lifts_and_sets = Object.freeze({
   lifts: null,

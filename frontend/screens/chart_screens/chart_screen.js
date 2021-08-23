@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class GraphSreen extends React.Component {
+class ChartSreen extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,4 +14,4 @@ class GraphSreen extends React.Component {
 }
 
 
-export default GraphSreen;
+export default ChartSreen;
