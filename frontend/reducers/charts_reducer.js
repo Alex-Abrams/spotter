@@ -10,9 +10,9 @@ const chartsReducer = (state = {}, action) => {
 
   switch(acton.type) {
     case RECEIVE_CHART_WORKOUTS:
-
+      return merge({}, state, action.workouts);
     case RECEIVE_CHART_LIFTS:
-
+      return merge({}, state, action.lifts);
     default:
       return state;
   }

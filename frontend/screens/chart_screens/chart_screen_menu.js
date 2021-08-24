@@ -9,6 +9,9 @@ import {
   StackedBarChart
 } from "react-native-chart-kit";
 
+import { Button } from 'react-native-elements';
+// import * as chartActions from '../../actions/chart_actions';
+
 class ChartMenuScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -67,6 +70,13 @@ class ChartMenuScreen extends React.Component {
             borderRadius: 16
           }}
         />
+
+      <View>
+        <Button
+          title="test actions"
+          onPress={() => console.log("shitposting")}>
+        </Button>
+      </View>
       </View>
     );
   }
