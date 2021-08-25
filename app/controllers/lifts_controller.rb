@@ -1,8 +1,16 @@
 class LiftsController < ApplicationController
   def index
     # @lifts = Lift.all
-    @lifts = Lift.where("workout_id = ?", params[:workout_id])
-    render json: @lifts
+    # @lifts = Lift.where("workout_id = ?", params[:workout_id])
+    # render json: @lifts
+
+    if params[:workout_id] == "all_lifts"
+      @lifts = Lift.all
+      render json: @lifts
+    else
+      @lifts = Lift.where("workout_id = ?", params[:workout_id])
+      render json: @lifts
+    end
   end
 
   def show

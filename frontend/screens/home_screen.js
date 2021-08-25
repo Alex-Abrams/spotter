@@ -80,7 +80,7 @@ class Home extends React.Component {
     return(
       <View style={styles.buttons}>
         <Button
-          title="Progess Charts"
+          title="My Progess Charts"
           raised
           onPress={() => {this.props.navigation.navigate("Progress Charts")}}>
         </Button>
@@ -95,8 +95,8 @@ class Home extends React.Component {
       <View style={styles.container}>
         {this.toWorkoutForm(this.props.navigation)}
         {this.toPreviousWorkouts(this.props.navigation)}
-        {this.toCalendar()}
         {this.toGraphScreens()}
+        {this.toCalendar()}
         {this.logoutButton()}
       </View>
     );

@@ -74,7 +74,7 @@ class ChartScreen extends React.Component {
       <View>
         <Button
           title="test actions"
-          onPress={() => this.props.chartActions.requestChartWorkouts(this.props.current_user_id, this.props.auth_token)}>
+          onPress={() => this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token)}>
         </Button>
       </View>
       </View>
