@@ -18,7 +18,7 @@ const entitiesReducer = combineReducers({
   submit: workoutSubmitReducer,
   journal: prevWorkoutReducer,
   journal_exercises: prevExercisesReducer,
-  charts: chartsReducer,
+  charts_exercises: chartsReducer,
   // liftsAndSets: liftsAndSetsReducer,
 });
 

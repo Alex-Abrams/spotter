@@ -9,7 +9,6 @@ import {
   StackedBarChart
 } from "react-native-chart-kit";
 
-import SelectDropdown from 'react-native-select-dropdown';
 import { Button } from 'react-native-elements';
 import * as chartActions from '../../actions/chart_actions';
 
@@ -22,27 +21,6 @@ class ChartScreen extends React.Component {
     const countries = ["Egypt", "Canada", "Australia", "Ireland"];
     return(
       <View>
-
-        <View style={{borderWidth: 0.5, width: "50%"}}>
-          <SelectDropdown
-            data={countries}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index)
-            }}
-            defaultButtonText={"Select Exercise"}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text represented after item is selected
-              // if data array is an array of objects then return selectedItem.property to render after item is selected
-              return selectedItem
-            }}
-            rowTextForSelection={(item, index) => {
-              // text represented for each item in dropdown
-              // if data array is an array of objects then return item.property to represent item in dropdown
-              return item
-            }}
-          />
-        </View>
-
         <LineChart
           data={{
             labels: ["January", "February", "March", "April", "May", "June"],
@@ -99,8 +77,6 @@ class ChartScreen extends React.Component {
           onPress={() => this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token)}>
         </Button>
       </View>
-
-
       </View>
     );
   }

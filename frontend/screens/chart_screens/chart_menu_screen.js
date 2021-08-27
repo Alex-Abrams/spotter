@@ -2,29 +2,32 @@ import React, { Component } from 'react';
 import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Modal} from 'react-native';
 import { Button, List, ListItem } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
-import { keywordSearch } from './searchbar_keywords';
+import { keywordSearch } from '../workout_forms/workout_lift_searchbar/searchbar_keywords';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {Picker} from '@react-native-picker/picker';
 
-
-class WorkoutDropdownSearch extends React.Component {
+class ChartMenuScreen extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
       value: '',
       modalVisible: false,
-      // temp_id: 1,
+      nativePicker: '',
     };
 
-    this.arrayNew = keywordSearch(this.props.keywordPart); // keywordPart comes from the route param passsed from select_workout.js
+    this.arrayNew = keywordSearch(this.state.nativePicker);
+    this.updatePicker = this.updatePicker.bind(this);
+  }
 
-  };
-
+  componentDidMount() {
+    this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token);
+  }
 
   searchItems(text) {
     // filter out the array as user types input
-    const newData = this.arrayNew.filter(item => {
+    console.log("search items", keywordSearch(this.state.nativePicker));
+    const newData = keywordSearch(this.state.nativePicker).filter(item => { // arrayNew
       const itemData = `${item.name.toUpperCase()}`;
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
@@ -35,7 +38,7 @@ class WorkoutDropdownSearch extends React.Component {
     });
   };
 
-  renderHeader(){
+  renderHeader(){ // text input for exercise time
     // text input uses searchItems text to filter out the array as its typed
     return (
       <TextInput
@@ -48,21 +51,35 @@ class WorkoutDropdownSearch extends React.Component {
     );
   };
 
+  updatePicker(pick) {
+    this.setState({ nativePicker: pick });
+  }
+
+  renderExerciseSectionPicker() {
+    return (
+      <View>
+        <Picker style={{marginTop: 20, borderWidth: 0.5}}
+          selectedValue={this.state.nativePicker}
+          onValueChange={(pick) => this.updatePicker(pick) }>
+          <Picker.Item label="Chest" value="Chest" />
+          <Picker.Item label="Shoulders" value="Shoulders" />
+          <Picker.Item label="Back" value="Back" />
+          <Picker.Item label="Legs" value="Legs" />
+          <Picker.Item label="Arms" value="Arms" />
+        </Picker>
+      </View>
+    );
+  }
+
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
 
-  submitForm() {
-    const temp_id = (this.props.lifts.length === 0) ? 1 : (this.props.lifts[this.props.lifts.length -1].id) + 1;
-    // temp_id is for the store only, POSTing only occur after the entire workout(all the lifts are complete)
-    this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
-
+  submitForm() { // submit
     this.setState({ value: '' });
   }
 
-
   render() {
-
     const addExerButton = (
       <Button
         raised
@@ -73,7 +90,7 @@ class WorkoutDropdownSearch extends React.Component {
             color="white"
              />
         }
-        title="Add Exercise"
+        title="Search Exercise"
         buttonStyle={{ backgroundColor: "#0497A9"}}
         titleStyle={{fontSize: 24}}
         onPress={() => this.setModalVisible(true)}
@@ -81,7 +98,7 @@ class WorkoutDropdownSearch extends React.Component {
         />
     );
 
-
+// console.log("fucking hello?", keywordSearch(this.state.nativePicker));
     return(
       <ScrollView style={styles.topScrollView}>
         <KeyboardAvoidingView
@@ -92,9 +109,11 @@ class WorkoutDropdownSearch extends React.Component {
           {addExerButton}
         </View>
 
+
         <Modal
           visible={this.state.modalVisible}
           >
+          {this.renderExerciseSectionPicker()}
           <View style={styles.container}>
             <FlatList
               style={styles.flatlist}
@@ -143,8 +162,8 @@ class WorkoutDropdownSearch extends React.Component {
   }
 }
 
-//
-export default WorkoutDropdownSearch;
+
+export default ChartMenuScreen;
 
 const styles = StyleSheet.create({
   container: {
