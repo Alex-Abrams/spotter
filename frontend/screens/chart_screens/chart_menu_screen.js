@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from '../workout_forms/workout_lift_searchbar/searchbar_keywords';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Picker} from '@react-native-picker/picker';
+import ChartScreenContainer from '../../containers/chart_screen_container';
 
 class ChartMenuScreen extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class ChartMenuScreen extends React.Component {
       value: '',
       modalVisible: false,
       nativePicker: '',
+      chart_display_section: '',
+      input_selected:  false,
     };
 
     this.arrayNew = keywordSearch(this.state.nativePicker);
@@ -51,16 +54,21 @@ class ChartMenuScreen extends React.Component {
     );
   };
 
-  updatePicker(pick) {
-    this.setState({ nativePicker: pick });
+  updatePicker(pick) { // will not let them select the default value
+    if ( pick !== "1" ) {
+      this.setState({ nativePicker: pick });
+      this.setState({ input_selected: true });
+    }
+
   }
 
   renderExerciseSectionPicker() {
     return (
       <View>
-        <Picker style={{marginTop: 20, borderWidth: 0.5}}
+        <Picker style={{marginTop: 20, borderWidth: 0.5, marginLeft: 12, marginRight: 12}}
           selectedValue={this.state.nativePicker}
           onValueChange={(pick) => this.updatePicker(pick) }>
+          <Picker.Item label="Select Exercise Section..." value="1" />
           <Picker.Item label="Chest" value="Chest" />
           <Picker.Item label="Shoulders" value="Shoulders" />
           <Picker.Item label="Back" value="Back" />
@@ -76,7 +84,64 @@ class ChartMenuScreen extends React.Component {
   }
 
   submitForm() { // submit
-    this.setState({ value: '' });
+    this.setState({ chart_display_section: this.state.value });
+    this.setState({ input_selected: false });
+  }
+
+  renderExerciseSearchInput() { // this renders the entire modal
+    const render_header = (this.state.input_selected) ? (
+      <View>
+        {this.renderHeader()}
+      </View>
+    ) : (
+      null
+    );
+
+    return(
+      <Modal
+        visible={this.state.modalVisible}
+        >
+        {this.renderExerciseSectionPicker()}
+        <View style={styles.container}>
+          <FlatList
+            style={styles.flatlist}
+            data={this.state.data}
+            renderItem={({item})=>(
+              <View style={styles.listItem}>
+                <Text onPress={() => this.setState({data: [], value: item.name})} style={{backgroundColor:'blue',color:'white',padding:10}}>
+                  {item.name}
+                </Text>
+              </View>
+            )}
+            keyExtractor={item => item.name}
+            ListHeaderComponent={render_header}
+            />
+
+
+        <View style={styles.buttons}>
+          <View>
+            <Button
+              style={styles.buttonSingle}
+              title={"Submit"}
+              onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
+              >
+            </Button>
+          </View>
+
+          <View style={{ paddingTop: 12 }}>
+            <Button
+              style={styles.buttonSingle}
+              title={"Cancel"}
+              onPress={() => this.setModalVisible(!this.state.modalVisible)}
+              >
+            </Button>
+          </View>
+
+        </View>
+
+        </View>
+      </Modal>
+    );
   }
 
   render() {
@@ -98,70 +163,24 @@ class ChartMenuScreen extends React.Component {
         />
     );
 
-// console.log("fucking hello?", keywordSearch(this.state.nativePicker));
     return(
       <ScrollView style={styles.topScrollView}>
         <KeyboardAvoidingView
           behavior="margin">
-      <View>
+          <View>
+            <View style={styles.addExerciseButtonView}>
+              {addExerButton}
 
-        <View style={styles.addExerciseButtonView}>
-          {addExerButton}
-        </View>
+                <ChartScreenContainer />
 
-
-        <Modal
-          visible={this.state.modalVisible}
-          >
-          {this.renderExerciseSectionPicker()}
-          <View style={styles.container}>
-            <FlatList
-              style={styles.flatlist}
-              data={this.state.data}
-              renderItem={({item})=>(
-                <View style={styles.listItem}>
-                  <Text onPress={() => this.setState({data: [], value: item.name})} style={{backgroundColor:'blue',color:'white',padding:10}}>
-                    {item.name}
-                  </Text>
-                </View>
-              )}
-              keyExtractor={item => item.name}
-              ListHeaderComponent={this.renderHeader()}
-              />
-
-
-          <View style={styles.buttons}>
-            <View>
-              <Button
-                style={styles.buttonSingle}
-                title={"Submit"}
-                onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
-                >
-              </Button>
             </View>
-
-            <View style={{ paddingTop: 12 }}>
-              <Button
-                style={styles.buttonSingle}
-                title={"Cancel"}
-                onPress={() => this.setModalVisible(!this.state.modalVisible)}
-                >
-              </Button>
-            </View>
-
+            {this.renderExerciseSearchInput()}
           </View>
-
-          </View>
-        </Modal>
-      </View>
-
-
-    </KeyboardAvoidingView>
-    </ScrollView>
+        </KeyboardAvoidingView>
+      </ScrollView>
     );
   }
 }
-
 
 export default ChartMenuScreen;
 
@@ -171,13 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: 12,
   },
-  topScrollView: {
-    // backgroundColor: "#7EE8F5",
-  },
   addExerciseButtonView: {
-    // elevation: 2,
-    // backgroundColor: "#0497A9",
-    // flexDirection: 'row',
     padding: 10,
   },
   evilIconButtonText: {
@@ -191,7 +204,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   input: {
-    // { height: 60, borderColor: '#000', borderWidth: 1, margin: 10 }
     height: 40,
     borderColor: '#000',
     borderWidth: 1,
@@ -205,7 +217,6 @@ const styles = StyleSheet.create({
   flatlist: {
     width: "100%",
   },
-  // {{justifyContent:'center',marginBottom: 2, marginLeft: 10}
   listItem : {
     justifyContent: 'center',
     marginBottom: 2,
@@ -218,7 +229,6 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   buttonSingle: {
-    // elevation: 3,
     marginTop: 15,
     paddingTop: 60,
     backgroundColor: "purple",

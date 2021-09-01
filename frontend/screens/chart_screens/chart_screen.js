@@ -16,8 +16,10 @@ class ChartScreen extends React.Component {
   constructor(props) {
     super(props);
   }
+  //onDataPointClick -> see this
 
   render() {
+    console.log("width?", Dimensions.get("window").width)
     const countries = ["Egypt", "Canada", "Australia", "Ireland"];
     return(
       <View>
@@ -38,13 +40,14 @@ class ChartScreen extends React.Component {
                   170,
                   190,
                   250,
-                  300
+                  300,
+                  400
                 ]
               }
             ]
           }}
-          width={Dimensions.get("window").width} // from react-native
-          height={220}
+          width={Dimensions.get("window").width - 20}
+          height={260}
           yAxisLabel="$"
           yAxisSuffix="k"
           yAxisInterval={1} // optional, defaults to 1
@@ -70,13 +73,6 @@ class ChartScreen extends React.Component {
             borderRadius: 16
           }}
         />
-
-      <View>
-        <Button
-          title="test actions"
-          onPress={() => this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token)}>
-        </Button>
-      </View>
       </View>
     );
   }
