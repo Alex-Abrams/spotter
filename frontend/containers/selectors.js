@@ -8,3 +8,5 @@ export const selectAllSets = state => Object.values(state.entities.sets); // ori
 export const selectAllWorkouts = state => Object.values(state.entities.journal);
 
 export const selectAllPrevExercises = state => Object.values(state.entities.journal_exercises);
+
+export const selectAllChartExercises = state => Object.values(state.entities.chart_exercises);

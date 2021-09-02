@@ -84,6 +84,7 @@ class WorkoutDropdownSearch extends React.Component {
 
     return(
       <ScrollView style={styles.topScrollView}>
+        <StatusBar hidden />
         <KeyboardAvoidingView
           behavior="margin">
       <View>

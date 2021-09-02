@@ -29,7 +29,6 @@ class ChartMenuScreen extends React.Component {
 
   searchItems(text) {
     // filter out the array as user types input
-    console.log("search items", keywordSearch(this.state.nativePicker));
     const newData = keywordSearch(this.state.nativePicker).filter(item => { // arrayNew
       const itemData = `${item.name.toUpperCase()}`;
       const textData = text.toUpperCase();
@@ -98,49 +97,53 @@ class ChartMenuScreen extends React.Component {
     );
 
     return(
-      <Modal
-        visible={this.state.modalVisible}
-        >
-        {this.renderExerciseSectionPicker()}
-        <View style={styles.container}>
-          <FlatList
-            style={styles.flatlist}
-            data={this.state.data}
-            renderItem={({item})=>(
-              <View style={styles.listItem}>
-                <Text onPress={() => this.setState({data: [], value: item.name})} style={{backgroundColor:'blue',color:'white',padding:10}}>
-                  {item.name}
-                </Text>
-              </View>
-            )}
-            keyExtractor={item => item.name}
-            ListHeaderComponent={render_header}
-            />
+      <ScrollView>
+        <StatusBar hidden />
+        <Modal
+          visible={this.state.modalVisible}
+          >
+          {this.renderExerciseSectionPicker()}
+          <View style={styles.container}>
+            <FlatList
+              style={styles.flatlist}
+              data={this.state.data}
+              renderItem={({item})=>(
+                <View style={styles.listItem}>
+                  <Text onPress={() => this.setState({data: [], value: item.name})} style={{backgroundColor:'blue',color:'white',padding:10}}>
+                    {item.name}
+                  </Text>
+                </View>
+              )}
+              keyExtractor={item => item.name}
+              ListHeaderComponent={render_header}
+              />
 
 
-        <View style={styles.buttons}>
-          <View>
-            <Button
-              style={styles.buttonSingle}
-              title={"Submit"}
-              onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
-              >
-            </Button>
+          <View style={styles.buttons}>
+            <View>
+              <Button
+                style={styles.buttonSingle}
+                title={"Submit"}
+                onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
+                >
+              </Button>
+            </View>
+
+            <View style={{ paddingTop: 12 }}>
+              <Button
+                style={styles.buttonSingle}
+                title={"Cancel"}
+                onPress={() => this.setModalVisible(!this.state.modalVisible)}
+                >
+              </Button>
+            </View>
+
           </View>
 
-          <View style={{ paddingTop: 12 }}>
-            <Button
-              style={styles.buttonSingle}
-              title={"Cancel"}
-              onPress={() => this.setModalVisible(!this.state.modalVisible)}
-              >
-            </Button>
           </View>
+        </Modal>
 
-        </View>
-
-        </View>
-      </Modal>
+      </ScrollView>
     );
   }
 
@@ -165,8 +168,7 @@ class ChartMenuScreen extends React.Component {
 
     return(
       <ScrollView style={styles.topScrollView}>
-        <KeyboardAvoidingView
-          behavior="margin">
+
           <View>
             <View style={styles.addExerciseButtonView}>
               {addExerButton}
@@ -176,7 +178,7 @@ class ChartMenuScreen extends React.Component {
             </View>
             {this.renderExerciseSearchInput()}
           </View>
-        </KeyboardAvoidingView>
+
       </ScrollView>
     );
   }

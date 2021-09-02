@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import {
   LineChart,
   BarChart,
@@ -17,40 +17,51 @@ class ChartScreen extends React.Component {
     super(props);
   }
   //onDataPointClick -> see this
+  // consider a shadow under the line (like it makes a mountain)
 
   render() {
-    console.log("width?", Dimensions.get("window").width)
     const countries = ["Egypt", "Canada", "Australia", "Ireland"];
+
+    const dt = new Date("2021-05-05T20:29:52.759Z");
+    const the_day = dt.getMonth(); // 0 is january
+    // console.log("the_day", the_day);
+    // labels: ["jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"],
+
+    const { chart_exercises } = this.props;
+
+    console.log("chart exercises", chart_exercises);
     return(
-      <View>
+      <ScrollView horizontal={true}>
         <LineChart
           data={{
-            labels: ["January", "February", "March", "April", "May", "June"],
+            // labels: ["jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"],
+            // labels: ["1", "2", "3", "4 feb"],
+            // labels: ["jan", "feb", "march"],
+            labels: countries,
             datasets: [
               {
                 data: [
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100
-                  100,
-                  120,
-                  170,
-                  190,
-                  250,
-                  300,
-                  400
+                  1,
+                  12,
+                  19,
+                  19,
+                  19,
+                  21,
+                  23,
+                  24,
+                  25,
+                  23,
+                  25
                 ]
               }
             ]
           }}
-          width={Dimensions.get("window").width - 20}
-          height={260}
-          yAxisLabel="$"
-          yAxisSuffix="k"
+          width={Dimensions.get("window").width}
+          height={310}
+          yAxisLabel=""
+          yAxisSuffix="lbs"
           yAxisInterval={1} // optional, defaults to 1
+          verticalLabelRotation={75}
           chartConfig={{
             backgroundColor: "#e26a00",
             backgroundGradientFrom: "#fb8c00", // back from and to the same to be same color background
@@ -73,7 +84,7 @@ class ChartScreen extends React.Component {
             borderRadius: 16
           }}
         />
-      </View>
+    </ScrollView>
     );
   }
 }
