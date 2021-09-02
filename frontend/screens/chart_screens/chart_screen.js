@@ -18,18 +18,45 @@ class ChartScreen extends React.Component {
   }
   //onDataPointClick -> see this
   // consider a shadow under the line (like it makes a mountain)
+ // 176%Khajiit1!
+
+ getMonth(created_at) {
+   const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+   const dt = new Date(created_at);
+   return months[dt.getMonth()];
+ }
 
   render() {
     const countries = ["Egypt", "Canada", "Australia", "Ireland"];
 
-    const dt = new Date("2021-05-05T20:29:52.759Z");
-    const the_day = dt.getMonth(); // 0 is january
+    // const dt = new Date("2021-05-05T20:29:52.759Z");
+    // const the_month = dt.getMonth(); // 0 is january
     // console.log("the_day", the_day);
-    // labels: ["jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"],
 
-    const { chart_exercises } = this.props;
+    const { chart_exercises, exercise } = this.props;  //chart_exercises is from container, exercise is passed down
 
-    console.log("chart exercises", chart_exercises);
+    console.log("chart exercises", exercise);
+
+    // console.log("uuhh", chart_exercises[2].name.toUpperCase() === chart_exercises[2].name.toUpperCase());
+
+    const filtered_exercises = chart_exercises.filter(exer => exer.name.toUpperCase() === exercise.toUpperCase());
+
+    let label_array = [];
+    let weight_array = [];
+
+    filtered_exercises.forEach((exer, i) => {
+      if (i === 0) {
+        label_array.push(`${this.getMonth(exer.created_at)}`);
+        weight_array.push(exer.weight); // might need t convert to integer
+      } else if (this.getMonth(exer.created_at) !== this.getMonth(filtered_exercises[i -1].created_at)) {
+        label_array.push(`${this.getMonth(exer.created_at)}`);
+        weight_array.push(exer.weight);
+      } else {
+        weight_array.push(exer.weight);
+        label_array.push("*");
+      };
+    });
+
     return(
       <ScrollView horizontal={true}>
         <LineChart
@@ -37,22 +64,10 @@ class ChartScreen extends React.Component {
             // labels: ["jan", "feb", "march", "april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"],
             // labels: ["1", "2", "3", "4 feb"],
             // labels: ["jan", "feb", "march"],
-            labels: countries,
+            labels: label_array,
             datasets: [
               {
-                data: [
-                  1,
-                  12,
-                  19,
-                  19,
-                  19,
-                  21,
-                  23,
-                  24,
-                  25,
-                  23,
-                  25
-                ]
+                data: weight_array
               }
             ]
           }}

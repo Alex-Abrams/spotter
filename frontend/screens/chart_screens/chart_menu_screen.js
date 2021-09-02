@@ -173,7 +173,7 @@ class ChartMenuScreen extends React.Component {
             <View style={styles.addExerciseButtonView}>
               {addExerButton}
 
-                <ChartScreenContainer />
+                <ChartScreenContainer exercise={this.state.chart_display_section} />
 
             </View>
             {this.renderExerciseSearchInput()}
