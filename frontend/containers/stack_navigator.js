@@ -16,6 +16,7 @@ import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
 import ChartScreenContainer from './chart_screen_container';
+import CalendarScreen from '../screens/calendar_screens/calendar_screen';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -82,6 +83,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
           <Stack.Screen name="Progress Charts" component={ChartMenuScreenContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Calendar" component={CalendarScreen} navigation={this.props.navigation} />
           </>
         ) : (
           <>

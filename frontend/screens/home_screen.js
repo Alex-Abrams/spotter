@@ -70,7 +70,7 @@ class Home extends React.Component {
         <Button
           title="Calendar"
           raised
-          onPress={() => {console.log("calendar!!")}}>
+          onPress={() => {this.props.navigation.navigate("Calendar")}}>
         </Button>
       </View>
     )
