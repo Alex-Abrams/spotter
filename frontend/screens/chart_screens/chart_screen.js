@@ -43,7 +43,7 @@ class ChartScreen extends React.Component {
         weight_array.push(exer.weight);
       } else {
         weight_array.push(exer.weight);
-        label_array.push("*");
+        label_array.push("*"); // pushes a star to represent a week within a month
       };
     });
 

@@ -11,12 +11,12 @@ import SplashScreen from '../screens/splash_screen';
 import SelectWorkout from '../screens/select_workout'; // select workout body part
 import SelectWorkoutContainer from './select_workout_container';
 import WorkoutNav from './workout_navigator';
-// import PrevWorkoutScreen from '../screens/prev_workout_screens/prev_workout_screen';
 import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
 import ChartScreenContainer from './chart_screen_container';
-import CalendarScreen from '../screens/calendar_screens/calendar_screen';
+// import CalendarScreen from '../screens/calendar_screens/calendar_screen';
+import CalendarScreenContainer from './calendar_screen_container';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -26,7 +26,7 @@ class FarStack extends React.Component {
   }
 
   // -------------------------------------------------------------------
-  // keep, explain with comments later $explain$
+  // retireves the tolen store on the phone and sends it to the store
   _retrieveStorageToken = async () => {
     try {
       const auth_token = await AsyncStorage.getItem('token');
@@ -40,7 +40,7 @@ class FarStack extends React.Component {
     }
   };
 
-  // copy from login_screen
+  // retrives the email from phone storage, email and auth_token is all you need to remain logged in
   _retrieveStorageEmail = async () => {
     try {
       const value = await AsyncStorage.getItem('email');
@@ -65,7 +65,9 @@ class FarStack extends React.Component {
   }
 // above is for the stuff between the stack navigators....
 // initialRouteName="login"
-
+// colestoral is high,
+// everything is high saturrted fats, brown rice, granola, vit d is low more sun, liver, heptitas A shot
+// call them for it libierty, flu shot
 
   render() {
     const Stack = createStackNavigator();
@@ -83,7 +85,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
           <Stack.Screen name="Progress Charts" component={ChartMenuScreenContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Calendar" component={CalendarScreen} navigation={this.props.navigation} />
+          <Stack.Screen name="Calendar" component={CalendarScreenContainer} navigation={this.props.navigation} />
           </>
         ) : (
           <>

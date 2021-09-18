@@ -24,7 +24,7 @@ class ChartMenuScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token);
+    this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token);  // this requests EVERY WORKOUT
   }
 
   searchItems(text) {
