@@ -47,6 +47,10 @@ class ChartScreen extends React.Component {
       };
     });
 
+     // all of a sudden label_array and weight_array  dont work, i suspect nulls
+     // the calender sholdnt be getting rendered until body part has been picked
+    const fartmonths = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
     return(
       <ScrollView horizontal={true}>
         <LineChart

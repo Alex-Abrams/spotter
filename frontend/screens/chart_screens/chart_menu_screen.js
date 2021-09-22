@@ -17,6 +17,7 @@ class ChartMenuScreen extends React.Component {
       nativePicker: '',
       chart_display_section: '',
       input_selected:  false,
+      form_submit: false, // svg has problems loading this only need to be true once
     };
 
     this.arrayNew = keywordSearch(this.state.nativePicker);
@@ -85,6 +86,7 @@ class ChartMenuScreen extends React.Component {
   submitForm() { // submit
     this.setState({ chart_display_section: this.state.value });
     this.setState({ input_selected: false });
+    this.setState({ form_submit: true });
   }
 
   renderExerciseSearchInput() { // this renders the entire modal
@@ -147,6 +149,18 @@ class ChartMenuScreen extends React.Component {
     );
   }
 
+  displayChartScreen() {
+    return (
+      ( this.state.form_submit) ? (
+        <View>
+          <ChartScreenContainer exercise={this.state.chart_display_section} />
+        </View>
+      ) : (
+        null
+      )
+    );
+  }
+
   render() {
     const addExerButton = (
       <Button
@@ -166,6 +180,9 @@ class ChartMenuScreen extends React.Component {
         />
     );
 
+
+    // <ChartScreenContainer exercise={this.state.chart_display_section} />
+
     return(
       <ScrollView style={styles.topScrollView}>
 
@@ -173,7 +190,7 @@ class ChartMenuScreen extends React.Component {
             <View style={styles.addExerciseButtonView}>
               {addExerButton}
 
-                <ChartScreenContainer exercise={this.state.chart_display_section} />
+              {this.displayChartScreen()}
 
             </View>
             {this.renderExerciseSearchInput()}

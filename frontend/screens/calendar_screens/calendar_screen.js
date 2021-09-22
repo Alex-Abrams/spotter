@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
+
 class CalendarScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ class CalendarScreen extends React.Component {
 
 
   render() {
-    const marked_dates = {
+    const testyboy = {
 
       // {'2021-09-17': {startingDay: true, endingDay: true, color: 'green', textColor: 'black'}},
 
@@ -41,7 +42,18 @@ class CalendarScreen extends React.Component {
       ['2021-09-19']: {disabled: true, startingDay: true, color: 'green', endingDay: true}
       };
 
-      console.log("montypython blows", this.getDateAndExerciseSection(this.props.calendar_exercises));
+      // console.log("[1?]", this.getDateAndExerciseSection(this.props.calendar_exercises));
+      const date_array = this.getDateAndExerciseSection(this.props.calendar_exercises);
+
+      let marked_dates = {};
+
+      // date_array.forEach(el => {
+      //   Object.assign({}, marked_dates, {[el.date]: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'}});
+      // });
+
+      let fart_date = Object.assign({}, marked_dates, {['2021-09-17']: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'}});
+
+      console.log("markedDates", fart_date);
 
     // console.log(this.getYearMonthDay("2021-05-05T20:29:52.759Z"));
     return(
@@ -51,7 +63,7 @@ class CalendarScreen extends React.Component {
           onDayPress={(day) => {console.log('selected day', day)}}
           onDayLongPress={(day) => {console.log('long press', day)}}
           markingType={'period'}
-          markedDates={marked_dates}>
+          markedDates={testyboy}>
         </Calendar>
       </View>
     );
