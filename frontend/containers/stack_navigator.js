@@ -15,8 +15,10 @@ import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
 import ChartScreenContainer from './chart_screen_container';
-// import CalendarScreen from '../screens/calendar_screens/calendar_screen';
 import CalendarScreenContainer from './calendar_screen_container';
+// combine calendar screens and chart screens into 1 stack 
+
+import SelectedDateContainer from './selected_date_container';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
@@ -65,9 +67,6 @@ class FarStack extends React.Component {
   }
 // above is for the stuff between the stack navigators....
 // initialRouteName="login"
-// colestoral is high,
-// everything is high saturrted fats, brown rice, granola, vit d is low more sun, liver, heptitas A shot
-// call them for it libierty, flu shot
 
   render() {
     const Stack = createStackNavigator();
@@ -86,6 +85,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
           <Stack.Screen name="Progress Charts" component={ChartMenuScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Calendar" component={CalendarScreenContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Selected Date" component={SelectedDateContainer} navigation={this.props.navigation} />
           </>
         ) : (
           <>

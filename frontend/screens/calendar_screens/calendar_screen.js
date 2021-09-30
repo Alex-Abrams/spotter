@@ -8,6 +8,9 @@ class CalendarScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      date: '',
+    }
   }
 
   componentDidMount() {
@@ -30,19 +33,19 @@ class CalendarScreen extends React.Component {
     return date_section_array;
   }
 
+  setDate(day) {
+    this.setState({ date: day});
+  }
+
+  directToSelectedDateScreen({ navigation }, day) {
+    console.log("zzzzz", day.dateString);
+    this.props.navigation.navigate("Selected Date", {
+        date: day.dateString,
+      });
+  }
+
 
   render() {
-    // const testyboy = {
-    //
-    //   // {'2021-09-17': {startingDay: true, endingDay: true, color: 'green', textColor: 'black'}},
-    //
-    //   ['2021-09-17']: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'},
-    //   ['2021-09-18']: {startingDay: true, endingDay: true, color: 'green', textColor: 'blue'},
-    //   ['2021-10-18']: {startingDay: true, endingDay: true, color: 'green', textColor: 'black'},
-    //   ['2021-09-19']: {disabled: true, startingDay: true, color: 'green', endingDay: true}
-    //   };
-
-      // console.log("[1?]", this.getDateAndExerciseSection(this.props.calendar_exercises));
 
       let marked_dates = {};
       const date_array = this.getDateAndExerciseSection(this.props.calendar_exercises);
@@ -63,6 +66,8 @@ class CalendarScreen extends React.Component {
           color_section = 'orange';
         };
 
+        // example date entry --> ['2021-10-18']: {startingDay: true, endingDay: true, color: 'green', textColor: 'black'},
+
         let new_date = {[el.date]: {startingDay: true, endingDay: true, color: color_section, textColor: 'black'}};
         // Object.assign({}, marked_dates, {[el.date]: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'}});
 
@@ -70,20 +75,14 @@ class CalendarScreen extends React.Component {
         marked_dates = merge({}, marked_dates, new_date_obj);
       });
 
-      // let fart_date = Object.assign({}, marked_dates, {['2021-09-17']: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'}});
-      //
-      // let poop_date = Object.assign({}, fart_date, {['2021-09-18']: {startingDay: true, endingDay: true, color: 'green', textColor: 'blue'}});
-
-      // console.log("markedDates", fart_date);
-      // console.log("poopdate", poop_date);
-      console.log("markedDates", marked_dates);
-
-    // console.log(this.getYearMonthDay("2021-05-05T20:29:52.759Z"));
+          //onLongPress wll not work with the dev tools running.
+          // {this.directToSelectedDateScreen(this.props.navigation, day)}
+          console.log(this.state);
     return(
       <View>
         <Calendar
           current={'2021-09-01'}
-          onDayPress={(day) => {console.log('selected day', day)}}
+          onDayPress={(day) => {this.directToSelectedDateScreen(this.props.navigation, day)}}
           onDayLongPress={(day) => {console.log('long press', day)}}
           markingType={'period'}
           markedDates={marked_dates}>
