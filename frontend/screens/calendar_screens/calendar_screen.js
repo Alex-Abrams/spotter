@@ -15,6 +15,7 @@ class CalendarScreen extends React.Component {
 
   componentDidMount() {
     this.props.chartActions.requestChartExercises(this.props.current_user_id, this.props.auth_token);  // this requests EVERY WORKOUT
+    this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user_id, this.props.auth_token);
   }
 
   getYearMonthDay(created_at) {
@@ -25,9 +26,10 @@ class CalendarScreen extends React.Component {
 
   getDateAndExerciseSection() {
     // extract the date and section and put into an array
-    const { calendar_exercises } = this.props;
+    const { calendar_exercises, all_workouts } = this.props;
+    console.log("workoutsjourndndn", all_workouts);
     const date_section_array = [];
-    calendar_exercises.forEach(exercise => {
+    all_workouts.forEach(exercise => {
       date_section_array.push({date: this.getYearMonthDay(exercise.created_at), section: exercise.exercise_section});
     });
     return date_section_array;
@@ -38,7 +40,6 @@ class CalendarScreen extends React.Component {
   }
 
   directToSelectedDateScreen({ navigation }, day) {
-    console.log("zzzzz", day.dateString);
     this.props.navigation.navigate("Selected Date", {
         date: day.dateString,
       });
@@ -48,7 +49,7 @@ class CalendarScreen extends React.Component {
   render() {
 
       let marked_dates = {};
-      const date_array = this.getDateAndExerciseSection(this.props.calendar_exercises);
+      const date_array = this.getDateAndExerciseSection(this.props.all_workouts);
 
       let color_section = ''; // color of the marked date depending on the exercise section
       date_array.forEach(el => {
@@ -77,7 +78,7 @@ class CalendarScreen extends React.Component {
 
           //onLongPress wll not work with the dev tools running.
           // {this.directToSelectedDateScreen(this.props.navigation, day)}
-          console.log(this.state);
+
     return(
       <View>
         <Calendar

@@ -15,10 +15,11 @@ class SelectedDate extends React.Component {
   }
 
   render() {
-    // const { date } = this.props;
-    // const { poo } = this.props.route.params;
-    // console.log("peepee", this.props.route.params.date);
     const date = this.props.route.params.date;
+    const { calendar_exercises } = this.props; //works
+
+
+    // console.log(calendar_exercises); // works
     return(
       <View>
         <Text>Helo from {date}!!!!!!!</Text>
