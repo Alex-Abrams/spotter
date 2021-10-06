@@ -16,9 +16,10 @@ class SelectedDate extends React.Component {
 
   render() {
     const date = this.props.route.params.date;
-    const { calendar_exercises } = this.props; //works
+    const { calendar_exercises, all_workouts } = this.props; //works
 
-
+    // calendar_exercises.filter(exercise)
+    console.log('allworkouts' ,all_workouts)
     // console.log(calendar_exercises); // works
     return(
       <View>

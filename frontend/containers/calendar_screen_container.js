@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
   current_user_id: Object.values(state.entities.users)[0].id,
   auth_token: state.authentication.auth_token,
   calendar_exercises: selectAllChartExercises(state), // changing the name of variable to calendar instead of chart
-  all_workouts: selectAllWorkouts(state),
+  all_workouts: selectAllWorkouts(state),  // from the journal store entity
 });
 
 const mapDispatchToProps = dispatch => ({
