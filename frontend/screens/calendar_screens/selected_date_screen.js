@@ -19,11 +19,16 @@ class SelectedDate extends React.Component {
     const { calendar_exercises, all_workouts } = this.props; //works
 
     // calendar_exercises.filter(exercise)
-    console.log('allworkouts' ,all_workouts)
-    // console.log(calendar_exercises); // works
+    // console.log('date' , date);
+    console.log("calendar ex", calendar_exercises[0].created_at.slice(0,  10)); // this
+     const display_exercises = calendar_exercises.filter((exercise) => {
+       console.log(exercise.created_at.slice(0, 10));
+      exercise.created_at.slice(0, 9) === date;
+    })
+    // console.log("display_exercises", display_exercises); // works
     return(
       <View>
-        <Text>Helo from {date}!!!!!!!</Text>
+        <Text>date here... + bold text</Text>
       </View>
     );
   }
