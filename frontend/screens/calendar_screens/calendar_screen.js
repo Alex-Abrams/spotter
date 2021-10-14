@@ -27,7 +27,7 @@ class CalendarScreen extends React.Component {
   getDateAndExerciseSection() {
     // extract the date and section and put into an array
     const { all_workouts } = this.props;
-    console.log("workoutsjourndndn", all_workouts);
+    // console.log("workoutsjourndndn", all_workouts);
     const date_section_array = [];
     all_workouts.forEach(exercise => {
       date_section_array.push({date: this.getYearMonthDay(exercise.created_at), section: exercise.exercise_section});
@@ -80,7 +80,7 @@ class CalendarScreen extends React.Component {
           // {this.directToSelectedDateScreen(this.props.navigation, day)}
 
     return(
-      <View>
+      <ScrollView>
         <Calendar
           current={'2021-09-01'}
           onDayPress={(day) => {this.directToSelectedDateScreen(this.props.navigation, day)}}
@@ -89,7 +89,7 @@ class CalendarScreen extends React.Component {
           markedDates={marked_dates}>
         </Calendar>
 
-      <View style={{padding: 8}}>
+      <View style={{padding: 8, width: 100}}>
         <View style={styles.legend_bubbles}>
           <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'blue'}}>
           </View>
@@ -122,7 +122,7 @@ class CalendarScreen extends React.Component {
 
       </View>
 
-      </View>
+    </ScrollView>
     );
   }
 }

@@ -17,19 +17,24 @@ class SelectedDate extends React.Component {
   render() {
     const date = this.props.route.params.date;
     const { calendar_exercises, all_workouts } = this.props; //works
+    // console.log(calendar_exercises);
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-    // calendar_exercises.filter(exercise)
-    // console.log('date' , date);
-    console.log("calendar ex", calendar_exercises[0].created_at.slice(0,  10)); // this
-     const display_exercises = calendar_exercises.filter((exercise) => {
-       console.log(exercise.created_at.slice(0, 10));
-      exercise.created_at.slice(0, 9) === date;
-    })
-    // console.log("display_exercises", display_exercises); // works
+    const dt = new Date(date);
+    const the_day = days[dt.getDay()];
+    console.log("DAAAAAY", the_day);
+
+
+    const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date);
+    console.log('filteed', display_exercises);
+    // ad0awjdaw
+
     return(
-      <View>
-        <Text>date here... + bold text</Text>
-      </View>
+      <ScrollView>
+        <View style={{flex: 1, width: '100%'}}>
+          <Text style={{justifyContent: 'center'}}>{the_day}</Text>
+        </View>
+      </ScrollView>
     );
   }
 }

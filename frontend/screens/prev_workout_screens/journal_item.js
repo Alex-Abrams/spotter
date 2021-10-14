@@ -18,7 +18,7 @@ class JournalItem extends React.Component {
   touchableNavToExercises({navigation}) {
     // basically all  the things below neeed to go in here
     const { user_id, workout_id, created_at, exercise_section, auth_token } = this.props;
-    const days = ["Sun", "Mon", "Tue", "Thu", "Fri", "Sat"];
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dt = new Date(created_at);
     const the_day = days[dt.getDay()];
     //5 - 9
