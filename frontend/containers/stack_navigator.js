@@ -16,7 +16,7 @@ import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
 import ChartScreenContainer from './chart_screen_container';
 import CalendarScreenContainer from './calendar_screen_container';
-// combine calendar screens and chart screens into 1 stack 
+// combine calendar screens and chart screens into 1 stack
 
 import SelectedDateContainer from './selected_date_container';
 
@@ -85,7 +85,7 @@ class FarStack extends React.Component {
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
           <Stack.Screen name="Progress Charts" component={ChartMenuScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Calendar" component={CalendarScreenContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Selected Date" component={SelectedDateContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Selected Date" component={SelectedDateContainer} options={({ route }) => ({ title: route.params.header })} navigation={this.props.navigation} />
           </>
         ) : (
           <>

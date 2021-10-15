@@ -40,8 +40,13 @@ class CalendarScreen extends React.Component {
   }
 
   directToSelectedDateScreen({ navigation }, day) {
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const dt = new Date(day.dateString);
+    const the_day = days[dt.getDay()];
+
     this.props.navigation.navigate("Selected Date", {
         date: day.dateString,
+        header: `      ${the_day}    ${day.dateString}`,
       });
   }
 

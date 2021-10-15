@@ -16,6 +16,7 @@ class SelectedDate extends React.Component {
 
   render() {
     const date = this.props.route.params.date;
+    console.log("pRms", this.props.route.params);
     const { calendar_exercises, all_workouts } = this.props; //works
     // console.log(calendar_exercises);
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -31,8 +32,8 @@ class SelectedDate extends React.Component {
 
     return(
       <ScrollView>
-        <View style={{flex: 1, width: '100%'}}>
-          <Text style={{justifyContent: 'center'}}>{the_day}</Text>
+        <View style={{flex: 1, alignItems: 'center', backgroundColor: 'yellow', width: '100%'}}>
+          <Text style={{backgroundColor: 'gray'}}>{the_day}</Text>
         </View>
       </ScrollView>
     );
