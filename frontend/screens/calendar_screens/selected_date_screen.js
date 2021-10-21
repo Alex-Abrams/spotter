@@ -39,11 +39,13 @@ class SelectedDate extends React.Component {
     for (let i = 0; i < copy_unique_exercise_names.length; i++) {
       let title = copy_unique_exercise_names[i];
 
-      exer_array.push(<Text key={i + 100000}>{copy_unique_exercise_names[i]}</Text>);
+      exer_array.push(<Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>);
 
+      let set_num = 0;
       for( let n = i; n < copy_display_exercises.length; n++) {
         if(copy_display_exercises[n].name === title) {
-          exer_array.push(<Text key={copy_display_exercises[n].id}>Set# {n}    {copy_display_exercises[i].reps}  {copy_display_exercises[i].weight}</Text>);
+          set_num += 1;
+          exer_array.push(<Text key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[i].reps}  {copy_display_exercises[i].weight}</Text>);
         } else {
           copy_display_exercises = copy_display_exercises.slice(2, copy_display_exercises.length);
           break;
@@ -60,25 +62,8 @@ class SelectedDate extends React.Component {
   render() {
     const date = this.props.route.params.date;
     const { calendar_exercises, all_workouts } = this.props; //works
-    // const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    // const dt = new Date(date);
-    // const the_day = days[dt.getDay()];
 
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date); // in use
-
-
-    // const exercise_names = [];
-    // display_exercises.forEach(exercise => { exercise_names.push(exercise.name)});
-
-
-    // const exer_array = [];
-    // for (let i = 0; i < exercise_names.length; i++) {
-    //   exer_array.push(<Text>{exercise_names[i]}</Text>);
-    // }
-
-
-
-
 
     return(
       <ScrollView>
@@ -92,5 +77,13 @@ class SelectedDate extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  exercise: {
+    backgroundColor: "blue",
+    height: 34,
+    fontSize: 27,
+  }
+});
 
 export default SelectedDate;
