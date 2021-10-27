@@ -41,12 +41,22 @@ class CalendarScreen extends React.Component {
 
   directToSelectedDateScreen({ navigation }, day) {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
     const dt = new Date(day.dateString);
     const the_day = days[dt.getDay()];
 
+    const { calendar_exercises, all_workouts } = this.props;
+
+    // console.log("calendarexers", calendar_exercises);
+    console.log("workouts", all_workouts[5].created_at.slice(0, 9));
+
+    // console.log("dt", dt);
+    console.log("daystring", day.dateString);
+    // console.log('just day', day);
+
     this.props.navigation.navigate("Selected Date", {
         date: day.dateString,
-        header: `      ${the_day}    ${day.dateString}`,
+        header: `            ${months[day.month - 1]} ${day.day}, ${day.year} `,
       });
   }
 

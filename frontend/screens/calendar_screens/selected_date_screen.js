@@ -30,6 +30,7 @@ class SelectedDate extends React.Component {
 
     const unique_exercise_names = [...new Set(exercise_names)];
 
+    console.log('find error date', date);
 
 
     let copy_unique_exercise_names = unique_exercise_names;
@@ -45,7 +46,7 @@ class SelectedDate extends React.Component {
       for( let n = i; n < copy_display_exercises.length; n++) {
         if(copy_display_exercises[n].name === title) {
           set_num += 1;
-          exer_array.push(<Text key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[i].reps}  {copy_display_exercises[i].weight}</Text>);
+          exer_array.push(<Text style={styles.sets} key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[i].reps} reps  {copy_display_exercises[i].weight} lbs</Text>);
         } else {
           copy_display_exercises = copy_display_exercises.slice(2, copy_display_exercises.length);
           break;
@@ -58,20 +59,22 @@ class SelectedDate extends React.Component {
   }
 
 
-
   render() {
     const date = this.props.route.params.date;
     const { calendar_exercises, all_workouts } = this.props; //works
 
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date); // in use
+    console.log("find error 2", display_exercises);
+
+    const display_exercises_or_alternative = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (this.displayExercises());
+    const display_title_or_null = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (<Text style={styles.title}>{display_exercises[0].exercise_section}</Text>);
 
     return(
       <ScrollView>
         <View style={{flex: 1, alignItems: 'center', backgroundColor: 'yellow', width: '100%'}}>
-          <Text style={{backgroundColor: 'gray'}}>{display_exercises[0].exercise_section}</Text>
+          {display_title_or_null}
         </View>
-
-          {this.displayExercises()}
+          {display_exercises_or_alternative}
 
       </ScrollView>
     );
@@ -79,10 +82,28 @@ class SelectedDate extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    // backgroundColor: 'gray',
+    fontSize: 32,
+    fontFamily: 'Roboto', // probably the one to g with
+
+  },
   exercise: {
     backgroundColor: "blue",
     height: 34,
     fontSize: 27,
+    color: 'white',
+    // borderWidth: 1,
+    // borderColor: 'black',
+
+    shadowColor: '#470000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.25,
+    elevation: 5,
+  },
+  sets: {
+    fontSize: 16,
+    paddingTop: 6,
   }
 });
 
