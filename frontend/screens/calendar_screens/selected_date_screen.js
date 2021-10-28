@@ -22,6 +22,7 @@ class SelectedDate extends React.Component {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const dt = new Date(date);
     const the_day = days[dt.getDay()];
+    // console.log(the_day); // works
 
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date);
 
@@ -30,7 +31,7 @@ class SelectedDate extends React.Component {
 
     const unique_exercise_names = [...new Set(exercise_names)];
 
-    console.log('find error date', date);
+    // console.log('find error date', date);
 
 
     let copy_unique_exercise_names = unique_exercise_names;
@@ -64,14 +65,14 @@ class SelectedDate extends React.Component {
     const { calendar_exercises, all_workouts } = this.props; //works
 
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date); // in use
-    console.log("find error 2", display_exercises);
+    // console.log("find error 2", display_exercises);
 
     const display_exercises_or_alternative = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (this.displayExercises());
     const display_title_or_null = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (<Text style={styles.title}>{display_exercises[0].exercise_section}</Text>);
 
     return(
       <ScrollView>
-        <View style={{flex: 1, alignItems: 'center', backgroundColor: 'yellow', width: '100%'}}>
+        <View style={styles.title_view}>
           {display_title_or_null}
         </View>
           {display_exercises_or_alternative}
@@ -82,6 +83,21 @@ class SelectedDate extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title_view: {
+    flex: 1,
+    alignItems: 'center',
+    // backgroundColor: '#54d8e8', // darker but lighter blue
+    // backgroundColor: '#c5c9c9', // grayish
+    backgroundColor: '#abe6ed', //
+    width: '100%',
+
+    marginBottom: 12,
+    shadowColor: '#470000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.25,
+    elevation: 5,
+
+  },
   title: {
     // backgroundColor: 'gray',
     fontSize: 32,
@@ -89,10 +105,12 @@ const styles = StyleSheet.create({
 
   },
   exercise: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
+    backgroundColor: "#7EE8F5",
     height: 34,
     fontSize: 27,
-    color: 'white',
+    // color: 'white',
+    paddingLeft: 12,
     // borderWidth: 1,
     // borderColor: 'black',
 
@@ -104,6 +122,8 @@ const styles = StyleSheet.create({
   sets: {
     fontSize: 16,
     paddingTop: 6,
+    paddingLeft: 16,
+    fontFamily: 'Roboto',
   }
 });
 
