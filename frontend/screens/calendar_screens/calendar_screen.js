@@ -48,10 +48,10 @@ class CalendarScreen extends React.Component {
     const { calendar_exercises, all_workouts } = this.props;
 
     // console.log("calendarexers", calendar_exercises);
-    console.log("workouts", all_workouts[5].created_at.slice(0, 9));
+    // console.log("workouts", all_workouts[5].created_at.slice(0, 9));
 
     // console.log("dt", dt);
-    console.log("daystring", day.dateString);
+    // console.log("daystring", day.dateString);
     // console.log('just day', day);
 
     this.props.navigation.navigate("Selected Date", {

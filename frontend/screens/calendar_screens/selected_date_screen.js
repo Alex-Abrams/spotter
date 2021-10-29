@@ -34,28 +34,69 @@ class SelectedDate extends React.Component {
     // console.log('find error date', date);
 
 
-    let copy_unique_exercise_names = unique_exercise_names;
+    let copy_unique_exercise_names = unique_exercise_names; // ['titles of each exercise']
     let copy_display_exercises = display_exercises;
+
+    //////////////////////////////////////////////////////////////////
+    // here im going to group up all the workouts by title before going through them, since they can be out of order when they are posted
+    // to the database with a Promise.all
+    const arrays_by_titles = [];
+    for(let i = 0; i < copy_unique_exercise_names.length; i++) {
+      let seperated_exercises = copy_display_exercises.filter(exercise => exercise.name === copy_unique_exercise_names[i]);
+      arrays_by_titles.push(seperated_exercises);
+    }
+
+    console.log(arrays_by_titles[0]);
+
+    // this arrays_by_titles is now an array of the sorted exercises.
+    // below i loop over this one array, pulling out a title from the first in the inner arrays, then lising out all the sets
+
+    const list_exercises = (
+      <View>
+        {arrays_by_titles.map((exercise, i) =>
+          <View>
+          <Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>
+          <Text key={i}>fart</Text>
+        </View>
+        )}
+      </View>
+    );
+
+    // the second text should be a seperate file for just the sets.
+
+
+    ///////////////////////////////////////////////////////////////////
+
+    // console.log('unique_exercise_names', unique_exercise_names);
+    // console.log('display', copy_display_exercises);
+    // const test_date = new Date(copy_display_exercises[0].created_at);
+    // console.log('the TIMEME', test_date.getTime());
 
     const exer_array = [];
     for (let i = 0; i < copy_unique_exercise_names.length; i++) {
-      let title = copy_unique_exercise_names[i];
+      let title = copy_unique_exercise_names[i]; ///////////////////////
+      // console.log('title', title);
 
       exer_array.push(<Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>);
 
       let set_num = 0;
-      for( let n = i; n < copy_display_exercises.length; n++) {
+      for( let n = 0; n < copy_display_exercises.length; n++) {
         if(copy_display_exercises[n].name === title) {
           set_num += 1;
-          exer_array.push(<Text style={styles.sets} key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[i].reps} reps  {copy_display_exercises[i].weight} lbs</Text>);
+          // console.log('if', copy_display_exercises);
+          exer_array.push(<Text style={styles.sets} key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[n].reps} reps  {copy_display_exercises[n].weight} lbs</Text>);
         } else {
-          copy_display_exercises = copy_display_exercises.slice(2, copy_display_exercises.length);
+          // console.log('n', n);
+          // console.log('before', copy_display_exercises);
+          copy_display_exercises = copy_display_exercises.slice(0, copy_display_exercises.length);
+          // console.log('else', copy_display_exercises);
           break;
         }
       }
 
     };
 
+    // console.log('exer_array', exer_array);
     return exer_array;
   }
 
