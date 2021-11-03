@@ -8,6 +8,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
+import SelectedDateScreenItem from './selected_date_screen_item';
 
 class SelectedDate extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class SelectedDate extends React.Component {
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const dt = new Date(date);
     const the_day = days[dt.getDay()];
-    // console.log(the_day); // works
+
 
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date);
 
@@ -30,8 +31,6 @@ class SelectedDate extends React.Component {
     display_exercises.forEach(exercise => { exercise_names.push(exercise.name)});
 
     const unique_exercise_names = [...new Set(exercise_names)];
-
-    // console.log('find error date', date);
 
 
     let copy_unique_exercise_names = unique_exercise_names; // ['titles of each exercise']
@@ -46,8 +45,6 @@ class SelectedDate extends React.Component {
       arrays_by_titles.push(seperated_exercises);
     }
 
-    console.log(arrays_by_titles[0]);
-
     // this arrays_by_titles is now an array of the sorted exercises.
     // below i loop over this one array, pulling out a title from the first in the inner arrays, then lising out all the sets
 
@@ -56,48 +53,17 @@ class SelectedDate extends React.Component {
         {arrays_by_titles.map((exercise, i) =>
           <View>
           <Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>
-          <Text key={i}>fart</Text>
+          <SelectedDateScreenItem key={i} sets={exercise} dotted_line={i}/>
         </View>
         )}
       </View>
     );
 
-    // the second text should be a seperate file for just the sets.
 
+
+    return list_exercises;
 
     ///////////////////////////////////////////////////////////////////
-
-    // console.log('unique_exercise_names', unique_exercise_names);
-    // console.log('display', copy_display_exercises);
-    // const test_date = new Date(copy_display_exercises[0].created_at);
-    // console.log('the TIMEME', test_date.getTime());
-
-    const exer_array = [];
-    for (let i = 0; i < copy_unique_exercise_names.length; i++) {
-      let title = copy_unique_exercise_names[i]; ///////////////////////
-      // console.log('title', title);
-
-      exer_array.push(<Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>);
-
-      let set_num = 0;
-      for( let n = 0; n < copy_display_exercises.length; n++) {
-        if(copy_display_exercises[n].name === title) {
-          set_num += 1;
-          // console.log('if', copy_display_exercises);
-          exer_array.push(<Text style={styles.sets} key={copy_display_exercises[n].id}>Set# {set_num}    {copy_display_exercises[n].reps} reps  {copy_display_exercises[n].weight} lbs</Text>);
-        } else {
-          // console.log('n', n);
-          // console.log('before', copy_display_exercises);
-          copy_display_exercises = copy_display_exercises.slice(0, copy_display_exercises.length);
-          // console.log('else', copy_display_exercises);
-          break;
-        }
-      }
-
-    };
-
-    // console.log('exer_array', exer_array);
-    return exer_array;
   }
 
 
@@ -127,8 +93,6 @@ const styles = StyleSheet.create({
   title_view: {
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: '#54d8e8', // darker but lighter blue
-    // backgroundColor: '#c5c9c9', // grayish
     backgroundColor: '#abe6ed', //
     width: '100%',
 
@@ -140,21 +104,15 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    // backgroundColor: 'gray',
     fontSize: 32,
-    fontFamily: 'Roboto', // probably the one to g with
+    fontFamily: 'Roboto',
 
   },
   exercise: {
-    // backgroundColor: "blue",
     backgroundColor: "#7EE8F5",
     height: 34,
     fontSize: 27,
-    // color: 'white',
     paddingLeft: 12,
-    // borderWidth: 1,
-    // borderColor: 'black',
-
     shadowColor: '#470000',
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.25,
