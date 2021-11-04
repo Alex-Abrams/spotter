@@ -53,7 +53,7 @@ class SelectedDate extends React.Component {
         {arrays_by_titles.map((exercise, i) =>
           <View>
           <Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>
-          <SelectedDateScreenItem key={i} sets={exercise} dotted_line={i}/>
+          <SelectedDateScreenItem key={i} sets={exercise} />
         </View>
         )}
       </View>
@@ -70,10 +70,7 @@ class SelectedDate extends React.Component {
   render() {
     const date = this.props.route.params.date;
     const { calendar_exercises, all_workouts } = this.props; //works
-
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date); // in use
-    // console.log("find error 2", display_exercises);
-
     const display_exercises_or_alternative = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (this.displayExercises());
     const display_title_or_null = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (<Text style={styles.title}>{display_exercises[0].exercise_section}</Text>);
 

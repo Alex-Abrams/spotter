@@ -1,51 +1,47 @@
-import React, { Component } from 'react';
-import { Button } from 'react-native-elements';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 
+
+// turns an array of sets from selected date screen into displayed weight and reps
 class ExerciseItem extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
-
   render() {
-    const { name, weight, reps } = this.props;
+    const { sets } = this.props;
+
     return(
       <View style={styles.container}>
-        <View style={styles.exercise}>
-          <View style={{paddingTop: 12, width: '53%'}}>
-            <Text>{name}</Text>
-          </View>
+        {sets.map((set, i) =>
+          <View>
+        <Text key={i} style={styles.sets}>Set# {i +1}    {set.reps} reps  {set.weight} lbs</Text>
+        <View key={i+ 100} style={styles.set_lines}></View>
+      </View>
+      )}
 
-
-            <View style={{paddingTop: 12}}>
-              <Text>weight: {weight}lbs</Text>
-            </View>
-
-
-          <View style={{paddingTop: 12}}>
-            <Text>reps: {reps}</Text>
-          </View>
-
-        </View>
-        <View style={{borderWidth: 0.5}}></View>
       </View>
     );
   }
 }
 
+export default ExerciseItem;
+
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 16,
-    marginRight: 16,
-    paddingTop: 20,
+    paddingTop: 4,
+    // paddingBottom: 4,
   },
-  exercise: {
-    marginTop: 22,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+  sets: {
+    fontSize: 16,
+    paddingLeft: 16,
+    fontFamily: 'Roboto',
   },
+  set_lines: {
+    borderColor: 'rgba(158, 150, 150, .5)',
+    borderWidth: 1,
+    borderRadius: 1,
+  }
 });
-
-export default ExerciseItem;

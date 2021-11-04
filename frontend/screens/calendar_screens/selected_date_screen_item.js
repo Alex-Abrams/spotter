@@ -11,20 +11,8 @@ class SelectedDateScreenItem extends React.Component {
   }
 
   render() {
-    const { sets, dotted_line } = this.props;
-
-    let display_line = null;
-
-    if (dotted_line !== sets.length - 1) {
-      console.log("true");
-      console.log('name', sets[0].name);
-      display_line = (<View style={styles.set_lines}></View>);
-    } else {
-      console.log("false");
-      display_line = null;
-    };
-
-
+    const { sets } = this.props;
+    
     return(
       <View style={styles.container}>
         {sets.map((set, i) =>
