@@ -93,6 +93,14 @@ export class ArmsScreen extends React.Component {
           </Button>
         </View>
 
+        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
+          <Button
+            raised
+            title={"Paste Workout"}
+            onPress={() => console.log('pastyboy')}>
+          </Button>
+        </View>
+
       </ScrollView>
     );
   }

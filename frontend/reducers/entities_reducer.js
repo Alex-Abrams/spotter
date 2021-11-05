@@ -20,7 +20,7 @@ const entitiesReducer = combineReducers({
   journal: prevWorkoutReducer,
   journal_exercises: prevExercisesReducer,
   chart_exercises: chartsReducer,
-  copy_workout: copyWorkoutReducer,
+  copied_workout: copyWorkoutReducer,
 });
 
 export default entitiesReducer;

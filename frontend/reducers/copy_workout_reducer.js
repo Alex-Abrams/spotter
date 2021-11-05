@@ -11,7 +11,7 @@ const copyWorkoutReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_COPIED_WORKOUT:
-      // return merge({}, state, action.)
+      return merge({}, state, action.workout);
     default:
       return state;
   }

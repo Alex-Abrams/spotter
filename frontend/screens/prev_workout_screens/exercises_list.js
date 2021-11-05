@@ -33,6 +33,8 @@ class ExercisesList extends React.Component {
 
     const unique_exercise_names = [...new Set(exercise_names)];
 
+    // console.log('unique names', unique_exercise_names);
+    //     console.log('journal_exercises', journal_exercises);
 
     const arrays_by_titles = [];
     for(let i = 0; i < unique_exercise_names.length; i++) {
@@ -54,21 +56,39 @@ class ExercisesList extends React.Component {
     return list_exercises;
   }
 
-  // this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
-  // receiveLift
+  copyWorkoutData() {
+    // this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
+    // receiveLift
+    // this function forms an array of the exercise sections and names to be copied to the new workout forms
+
+    const { journal_exercises } = this.props;
+
+    const exercise_names = [];
+    journal_exercises.forEach(exercise => { exercise_names.push(exercise.name)});
+
+    const unique_exercise_names = [...new Set(exercise_names)];
+
+    unique_exercise_names.push(journal_exercises[0].exercise_section);
+
+
+    this.props.prevWorkoutActions.receiveCopiedWorkout(unique_exercise_names);
+  }
 
   render() {
     const { auth_token, journal_exercises } = this.props;
     const { workout_id, user_id, the_day, the_date } = this.props.route.params;
 
+
     return(
       <ScrollView>
         {this.displayExercises()}
 
-        <Button
-          title={"Copy Workout to New Workout"}
-          onPress={() => console.log('copied!!!')}
-          />
+        <View>
+          <Button
+            title={"Copy Workout to New Workout"}
+            onPress={() => this.copyWorkoutData()}
+            />
+        </View>
       </ScrollView>
     );
   }
