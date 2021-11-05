@@ -1,15 +1,22 @@
 export const RECEIVE_ALL_WORKOUTS = "RECEIVE_ALL_WORKOUTS";
 export const RECEIVE_EXERCISES = "RECEIVE_EXERCISES";
+export const RECEIVE_COPIED_WORKOUT = "RECEIVE_COPIED_WORKOUT";
 
 export const receiveAllWorkouts = (workouts) => ({
-  type: "RECEIVE_ALL_WORKOUTS",
+  type: RECEIVE_ALL_WORKOUTS,
   workouts
 });
 
 export const receiveExercises = (exercises) => ({
-  type: "RECEIVE_EXERCISES",
+  type: RECEIVE_EXERCISES,
   exercises
 });
+
+export const receiveCopiedWorkout = (workout) => ({  // this will an object of serveral exercises, ie: exercise section, name)
+  type: RECEIVE_COPIED_WORKOUT,
+  workout
+});
+
 
 // /users/:user_id/workouts
 export function requestAllWorkouts(user_id, auth_token) {
