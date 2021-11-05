@@ -51,7 +51,7 @@ class SelectedDate extends React.Component {
     const list_exercises = (
       <View>
         {arrays_by_titles.map((exercise, i) =>
-          <View>
+          <View key={i + 10000000}>
           <Text key={i + 100000} style={styles.exercise}>{copy_unique_exercise_names[i]}</Text>
           <SelectedDateScreenItem key={i} sets={exercise} />
         </View>

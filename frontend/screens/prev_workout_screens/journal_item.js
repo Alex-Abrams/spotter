@@ -36,7 +36,7 @@ class JournalItem extends React.Component {
             user_id: user_id,
             the_day: the_day,
             the_date: the_date,
-            name: `           ${exercise_section}              ${the_day} ${the_date}`,
+            name: `      ${exercise_section}        ${the_day} ${the_date}`,
           });
         }}>
 

@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
 import ExerciseItem from './exercise_item';
 
 // this is to display every excercise for a workout when tapped from "prev_workout_screen"
-
+// search copy button
 class ExercisesList extends React.Component {
   constructor(props) {
     super(props);
@@ -40,11 +40,10 @@ class ExercisesList extends React.Component {
       arrays_by_titles.push(seperated_exercises);
     }
 
-    // <ExerciseItem key={i} sets={exercise} />
     const list_exercises = (
       <View>
         {arrays_by_titles.map((exercise, i) =>
-          <View>
+          <View key={i + 1000000}>
           <Text key={i + 100000} style={styles.exercise}>{unique_exercise_names[i]}</Text>
             <ExerciseItem key={i} sets={exercise}/>
         </View>
@@ -55,17 +54,21 @@ class ExercisesList extends React.Component {
     return list_exercises;
   }
 
+  // this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
+  // receiveLift
 
   render() {
     const { auth_token, journal_exercises } = this.props;
     const { workout_id, user_id, the_day, the_date } = this.props.route.params;
-    // console.log('peepees', journal_exercises);
-    // console.log('unique', this.displayExercises());
-
 
     return(
       <ScrollView>
         {this.displayExercises()}
+
+        <Button
+          title={"Copy Workout to New Workout"}
+          onPress={() => console.log('copied!!!')}
+          />
       </ScrollView>
     );
   }

@@ -16,9 +16,9 @@ class ExerciseItem extends React.Component {
     return(
       <View style={styles.container}>
         {sets.map((set, i) =>
-          <View>
+          <View key={i + 1000000}>
         <Text key={i} style={styles.sets}>Set# {i +1}    {set.reps} reps  {set.weight} lbs</Text>
-        <View key={i+ 100} style={styles.set_lines}></View>
+        <View key={i+ 10000} style={styles.set_lines}></View>
       </View>
       )}
 

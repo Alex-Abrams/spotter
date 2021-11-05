@@ -35,6 +35,7 @@ class PrevWorkoutScreen extends React.Component {
           auth_token={auth_token}
           created_at={workout.created_at}
           exercise_section={workout.exercise_section}/>)}
+
       </View>
     );
 
