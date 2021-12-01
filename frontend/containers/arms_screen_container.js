@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import {ArmsScreen} from '../screens/workout_screens/arms_screen';
 import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
-import { selectAllLifts, selectAllSets } from './selectors';
+import { selectAllLifts, selectAllSets, selectCopiedWorkout } from './selectors';
 import * as submitActions from '../actions/workout_submit_actions';
 
 
@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   auth_token: state.authentication.auth_token,
   workout: state.entities.workout,
   liftsAndSets: state.entities.submit.liftsAndSets,
+  copied_exercises: selectCopiedWorkout(state),
 });
 
 const mapDispatchToProps = dispatch => ({

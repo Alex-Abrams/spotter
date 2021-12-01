@@ -11,4 +11,4 @@ export const selectAllPrevExercises = state => Object.values(state.entities.jour
 
 export const selectAllChartExercises = state => Object.values(state.entities.chart_exercises);
 
-export const selectCopiedWorkout = state => Object.vales(state.entities.copied_workout);
+export const selectCopiedWorkout = state => Object.values(state.entities.copied_workout);

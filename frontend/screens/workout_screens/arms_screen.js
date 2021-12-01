@@ -13,6 +13,9 @@ export class ArmsScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    // this.state = {
+    //   temp_id_value: '',
+    // }
   }
 
 
@@ -62,6 +65,25 @@ export class ArmsScreen extends React.Component {
     ]
   );
 
+  pasteCopiedWorkout() {
+    const temp_id = (this.props.lifts.length === 0) ? 1 : (this.props.lifts[this.props.lifts.length -1].id) + 1;
+    // temp_id is for the store only, POSTing only occur after the entire workout(all the lifts are complete)
+    this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
+
+    this.setState({ value: '' });
+
+    ///// actual stuff below
+    const { copied_exercises } = this.props;
+    const { partType } = this.props.route.params;
+
+    const just_exercise_names = copied_exercises.slice(0, copied_exercises.length -1); // the last element is partType, or name of the exercise section ie: Arms, Shoulders etc
+    just_exercise_names.forEach((exercise, i) => {
+      this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
+    })
+    // console.log('paams', this.props.route.params); // gives 'Arms'
+
+  }
+
 
   render() {
 
@@ -78,7 +100,10 @@ export class ArmsScreen extends React.Component {
       </View>
     );
 
+    ////////testing/////////
+    console.log('test copied lifts', this.props.copied_exercises);
 
+    ///////   end /////////
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
