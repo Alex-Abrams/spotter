@@ -42,10 +42,10 @@ export class ArmsScreen extends React.Component {
   }
   ////////
 
-
+  ////***************************************
   postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
     const { workout, auth_token, liftsAndSets } = this.props;
-    this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);
+    this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);  // post Workout from workout_submit_actions.js
     this.props.navigation.navigate('Previous Workouts');
   }
 
@@ -66,26 +66,22 @@ export class ArmsScreen extends React.Component {
   );
 
   pasteCopiedWorkout() {
-    const temp_id = (this.props.lifts.length === 0) ? 1 : (this.props.lifts[this.props.lifts.length -1].id) + 1;
-    // temp_id is for the store only, POSTing only occur after the entire workout(all the lifts are complete)
-    this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
-
-    this.setState({ value: '' });
-
-    ///// actual stuff below
     const { copied_exercises } = this.props;
     const { partType } = this.props.route.params;
 
     const just_exercise_names = copied_exercises.slice(0, copied_exercises.length -1); // the last element is partType, or name of the exercise section ie: Arms, Shoulders etc
-    just_exercise_names.forEach((exercise, i) => {
-      this.props.workoutActions.receiveLift({id: temp_id, workout_id: 3, exercise_section: this.props.keywordPart, name: this.state.value });
+
+    let temp_id = this.props.lifts.length; // making a temp id based on length so copied workouts can be posted after current workout
+    just_exercise_names.forEach((exercise, i) => { 
+      this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
     })
-    // console.log('paams', this.props.route.params); // gives 'Arms'
+
 
   }
 
 
   render() {
+      // console.log(' AAAAA', this.props.lifts.length);
 
     const { partType } = this.props.route.params;
     const { lifts, auth_token, workout, liftsAndSets } = this.props;
@@ -101,7 +97,7 @@ export class ArmsScreen extends React.Component {
     );
 
     ////////testing/////////
-    console.log('test copied lifts', this.props.copied_exercises);
+    // console.log('test copied lifts', this.props.copied_exercises);
 
     ///////   end /////////
     return(
@@ -122,7 +118,7 @@ export class ArmsScreen extends React.Component {
           <Button
             raised
             title={"Paste Workout"}
-            onPress={() => console.log('pastyboy')}>
+            onPress={() => this.pasteCopiedWorkout()}>
           </Button>
         </View>
 

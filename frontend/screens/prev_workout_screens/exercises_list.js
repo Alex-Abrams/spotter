@@ -11,7 +11,6 @@ class ExercisesList extends React.Component {
 
     this.state= {
       button_pressed: false,
-      counter: 1,
 
     };
 
@@ -24,9 +23,14 @@ class ExercisesList extends React.Component {
     this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token); // requests exercises for this workout
   }
 
+
   startTimer() { // when the copy workout button is pressed, it will change its title to 'Copied!', then revert back after 10 seconds
     this.setState({ button_pressed: true });
-    setTimeout(() => {this.setState({ button_pressed: false })}, 10000);
+    setTimeout(() => {this.setState({ button_pressed: false })}, 1300);
+  }
+
+  componentWillUnmount() {
+    clearTimeout();
   }
 
   displayExercises() {
@@ -72,12 +76,7 @@ class ExercisesList extends React.Component {
     this.props.prevWorkoutActions.receiveCopiedWorkout(unique_exercise_names);
   }
 
-  copiedButtonPessed() {
-    this.setState({ button_pressed: true });
-  }
-
   render() {
-    console.log('buttonpressed', this.state.button_pressed);
     const { auth_token, journal_exercises } = this.props;
     const { workout_id, user_id, the_day, the_date } = this.props.route.params;
 
@@ -92,7 +91,6 @@ class ExercisesList extends React.Component {
             raised
             type= "outline"
             buttonStyle={{
-              // width: '100%',
             }}
             title={dynamic_button_title}
             onPress={() => {this.copyWorkoutData(); this.startTimer();}}

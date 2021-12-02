@@ -56,7 +56,7 @@ export const clearAllLiftsAndSets = () => ({
   }
 // /users/:user_id/workouts(.:format)
 // exercise_section ==> type
-export function postWorkout(workout, auth_token, liftsAndSets) {
+export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE IN USE
   return function action(dispatch) {
     const request = fetch(`http://10.0.2.2:3000/users/${workout.user_id}/workouts`, {
       method: 'POST',
