@@ -62,7 +62,19 @@ export class LegsScreen extends React.Component {
     ]
   );
 
-  // this.props.submitActions.postWorkout(this.props.workout, this.props.auth_token, this.props.liftsAndSets)
+  pasteCopiedWorkout() {
+    const { copied_exercises } = this.props;
+    const { partType } = this.props.route.params;
+
+    const just_exercise_names = copied_exercises.slice(0, copied_exercises.length -1); // the last element is partType, or name of the exercise section ie: Arms, Shoulders etc
+
+    let temp_id = this.props.lifts.length; // making a temp id based on length so copied workouts can be posted after current workout
+    just_exercise_names.forEach((exercise, i) => {
+      this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
+    });
+
+  }
+
 
 
   render() {
@@ -91,6 +103,14 @@ export class LegsScreen extends React.Component {
             raised
             title={"Confirm Workout"}
             onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
+          </Button>
+        </View>
+
+        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
+          <Button
+            raised
+            title={"Paste Workout"}
+            onPress={() => this.pasteCopiedWorkout()}>
           </Button>
         </View>
 

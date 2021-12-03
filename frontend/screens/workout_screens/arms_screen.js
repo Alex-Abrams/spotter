@@ -72,10 +72,9 @@ export class ArmsScreen extends React.Component {
     const just_exercise_names = copied_exercises.slice(0, copied_exercises.length -1); // the last element is partType, or name of the exercise section ie: Arms, Shoulders etc
 
     let temp_id = this.props.lifts.length; // making a temp id based on length so copied workouts can be posted after current workout
-    just_exercise_names.forEach((exercise, i) => { 
+    just_exercise_names.forEach((exercise, i) => {
       this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
-    })
-
+    });
 
   }
 

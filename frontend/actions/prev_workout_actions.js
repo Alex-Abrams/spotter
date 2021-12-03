@@ -1,6 +1,7 @@
 export const RECEIVE_ALL_WORKOUTS = "RECEIVE_ALL_WORKOUTS";
 export const RECEIVE_EXERCISES = "RECEIVE_EXERCISES";
 export const RECEIVE_COPIED_WORKOUT = "RECEIVE_COPIED_WORKOUT";
+export const RESET_JOURNAL_EXERCISES = "RESET_JOURNAL_EXERCISES";
 
 export const receiveAllWorkouts = (workouts) => ({
   type: RECEIVE_ALL_WORKOUTS,
@@ -15,6 +16,10 @@ export const receiveExercises = (exercises) => ({
 export const receiveCopiedWorkout = (workout) => ({  // this will an object of serveral exercises, ie: exercise section, name)
   type: RECEIVE_COPIED_WORKOUT,
   workout
+});
+
+export const resetJournalExercises = () => ({
+  type: RESET_JOURNAL_EXERCISES,
 });
 
 
