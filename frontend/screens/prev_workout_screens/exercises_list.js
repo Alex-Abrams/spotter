@@ -27,7 +27,7 @@ class ExercisesList extends React.Component {
 
   startTimer() { // when the copy workout button is pressed, it will change its title to 'Copied!', then revert back after 10 seconds
     this.setState({ button_pressed: true });
-    setTimeout(() => {this.setState({ button_pressed: false })}, 1300);
+    setTimeout(() => {this.setState({ button_pressed: false })}, 800);
   }
 
   componentWillUnmount() {

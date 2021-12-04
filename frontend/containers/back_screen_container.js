@@ -6,6 +6,7 @@ import * as authActions from '../actions/auth_actions';
 import * as workoutActions from '../actions/workout_actions';
 import { selectAllLifts, selectAllSets, selectCopiedWorkout } from './selectors';
 import * as submitActions from '../actions/workout_submit_actions';
+import * as prevWorkoutActions from '../actions/prev_workout_actions';
 
 
 const mapStateToProps = state => ({
@@ -21,7 +22,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   authActions: bindActionCreators(authActions, dispatch),
   workoutActions: bindActionCreators(workoutActions, dispatch),
-  submitActions: bindActionCreators(submitActions, dispatch)
+  submitActions: bindActionCreators(submitActions, dispatch),
+  prevWorkoutActions: bindActionCreators(prevWorkoutActions, dispatch),
 });
 
 export default connect(

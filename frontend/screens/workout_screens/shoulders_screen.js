@@ -73,6 +73,8 @@ export class ShouldersScreen extends React.Component {
       this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
     });
 
+    this.props.prevWorkoutActions.resetCopiedJournalExercises();
+
   }
 
 
@@ -80,7 +82,7 @@ export class ShouldersScreen extends React.Component {
   render() {
 
     const { partType } = this.props.route.params;
-    const { lifts, auth_token, workout, liftsAndSets } = this.props;
+    const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
     const revLifts = lifts.reverse();
 
     const liftsDisplay = (
@@ -92,25 +94,32 @@ export class ShouldersScreen extends React.Component {
       </View>
     );
 
+    const paste_button_display = ( copied_exercises.length > 0) ?
+    (<View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
+      <Button
+        raised
+        title={"Paste Workout"}
+        onPress={() => this.pasteCopiedWorkout()}>
+      </Button>
+    </View>) : (
+      null
+    );
+
+
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{ borderBottomColor: '#0497A9', borderBottomWidth: 1 }}></View>
+
         {liftsDisplay}
+
+        { paste_button_display }
 
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             raised
             title={"Confirm Workout"}
             onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
-          </Button>
-        </View>
-
-        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
-          <Button
-            raised
-            title={"Paste Workout"}
-            onPress={() => this.pasteCopiedWorkout()}>
           </Button>
         </View>
 

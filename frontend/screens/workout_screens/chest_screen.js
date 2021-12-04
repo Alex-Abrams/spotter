@@ -73,13 +73,16 @@ export class ChestScreen extends React.Component {
       this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
     });
 
+    this.props.prevWorkoutActions.resetCopiedJournalExercises(); // sets the copied_exercises state to {}, will make the paste button go away
+
   }
 
 
   render() {
 
     const { partType } = this.props.route.params;
-    const { lifts, auth_token, workout, liftsAndSets } = this.props;
+    const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
+    console.log('copied', copied_exercises);
     const revLifts = lifts.reverse();
 
     const liftsDisplay = (
@@ -91,11 +94,25 @@ export class ChestScreen extends React.Component {
       </View>
     );
 
+    const paste_button_display = ( copied_exercises.length > 0) ?
+    (<View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
+      <Button
+        raised
+        title={"Paste Workout"}
+        onPress={() => this.pasteCopiedWorkout()}>
+      </Button>
+    </View>) : (
+      null
+    );
+
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{ borderBottomColor: '#0497A9', borderBottomWidth: 1 }}></View>
-        {liftsDisplay}
+
+        { liftsDisplay }
+
+        { paste_button_display }
 
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
@@ -104,14 +121,7 @@ export class ChestScreen extends React.Component {
             onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
           </Button>
         </View>
-        
-        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
-          <Button
-            raised
-            title={"Paste Workout"}
-            onPress={() => this.pasteCopiedWorkout()}>
-          </Button>
-        </View>
+
 
       </ScrollView>
     );

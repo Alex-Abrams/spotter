@@ -73,6 +73,8 @@ export class LegsScreen extends React.Component {
       this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
     });
 
+    this.props.prevWorkoutActions.resetCopiedJournalExercises();
+
   }
 
 

@@ -71,9 +71,9 @@ export class BackScreen extends React.Component {
     let temp_id = this.props.lifts.length; // making a temp id based on length so copied workouts can be posted after current workout
     just_exercise_names.forEach((exercise, i) => {
       this.props.workoutActions.receiveLift({id: (temp_id + 1 + i), exercise_section: partType, name: exercise });
-    })
+    });
 
-
+    this.props.prevWorkoutActions.resetCopiedJournalExercises();
   }
 
   render() {
