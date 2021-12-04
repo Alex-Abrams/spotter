@@ -91,25 +91,31 @@ export class BackScreen extends React.Component {
       </View>
     );
 
+    const paste_button_display = ( copied_exercises.length > 0) ?
+    (<View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
+      <Button
+        raised
+        title={"Paste Workout"}
+        onPress={() => this.pasteCopiedWorkout()}>
+      </Button>
+    </View>) : (
+      null
+    );
+
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{ borderBottomColor: '#0497A9', borderBottomWidth: 1 }}></View>
+
         {liftsDisplay}
+
+        { paste_button_display }
 
         <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
           <Button
             raised
             title={"Confirm Workout"}
             onPress={() => {this.submitWorkout(); this.createTwoButtonAlert()}}>
-          </Button>
-        </View>
-
-        <View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
-          <Button
-            raised
-            title={"Paste Workout"}
-            onPress={() => this.pasteCopiedWorkout()}>
           </Button>
         </View>
 
