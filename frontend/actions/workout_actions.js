@@ -45,3 +45,5 @@ export const deleteSet = (set_id) => ({
   type: DELETE_SET,
   set_id
 });
+
+////// Switching to indivudal reducers for each section in new workouts so users can return to them without losing pogress

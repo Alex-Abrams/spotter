@@ -44,7 +44,7 @@ export class ArmsScreen extends React.Component {
 
   ////***************************************
   postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
-    const { workout, auth_token, liftsAndSets } = this.props;
+    const { workout, auth_token, liftsAndSets, copied_exercises } = this.props;
     this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);  // post Workout from workout_submit_actions.js
     this.props.navigation.navigate('Previous Workouts');
   }
@@ -84,13 +84,15 @@ export class ArmsScreen extends React.Component {
   render() {
       // console.log(' AAAAA', this.props.lifts.length);
 
-    const { partType } = this.props.route.params;
-    const { lifts, auth_token, workout, liftsAndSets } = this.props;
+    const { partType } = this.props.route.params; // ie: Arms
+    const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
     const revLifts = lifts.reverse();
+
+    const only_arms_sections = revLifts.filter(lift => partType == lift.exercise_section);
 
     const liftsDisplay = (
       <View>
-      {revLifts.map(lift =>
+      {only_arms_sections.map(lift =>
         <LiftsShow
         key={lift.id}
         lift={lift} />)}
@@ -108,10 +110,7 @@ export class ArmsScreen extends React.Component {
       null
     );
 
-    ////////testing/////////
-    // console.log('test copied lifts', this.props.copied_exercises);
 
-    ///////   end /////////
     return(
       <ScrollView>
         <WorkoutDropdownSearchContainer keywordPart={partType} />

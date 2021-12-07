@@ -52,10 +52,9 @@ class LiftsShow extends React.Component {
     const { lift } = this.props;
 
     // toggles up or down arrow for symbolizing minimizing each lift or maximizing them
-    // const displayLiftItem = (this.state.isMinimized) ? liftItemMax : liftItemMin;
     const displayLiftItem = (this.state.isMinimized) ? this.minOrMaxLiftItem("arrow-up") : this.minOrMaxLiftItem("arrow-down");
 
-    const displaySetForm = (!this.state.isMinimized) ? null : ( <SetFormContainer liftId={lift.id} /> ) ;
+    const displaySetForm = (!this.state.isMinimized) ? null : ( <SetFormContainer liftId={lift.id} exercise_section={lift.exercise_section} /> ) ;
 
     const displaySetShowItem = (!this.state.isMinimized) ? null : ( <SetShowContainer liftId={lift.id}/> ) ;
 

@@ -80,14 +80,17 @@ export class ChestScreen extends React.Component {
 
   render() {
 
-    const { partType } = this.props.route.params;
+    const { partType } = this.props.route.params; // ie: Chest
     const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
-    console.log('copied', copied_exercises);
+
     const revLifts = lifts.reverse();
+
+    const only_chest_sections = revLifts.filter(lift => partType == lift.exercise_section); // create array that dispays just same partType
+
 
     const liftsDisplay = (
       <View>
-      {revLifts.map(lift =>
+      {only_chest_sections.map(lift =>
         <LiftsShow
         key={lift.id}
         lift={lift} />)}

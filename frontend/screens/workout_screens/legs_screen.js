@@ -81,13 +81,16 @@ export class LegsScreen extends React.Component {
 
   render() {
 
-    const { partType } = this.props.route.params;
-    const { lifts, auth_token, workout, liftsAndSets } = this.props;
+    const { partType } = this.props.route.params; // ie Legs 
+    const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
     const revLifts = lifts.reverse();
+
+    const only_legs_sections = revLifts.filter(lift => partType == lift.exercise_section); // create array that dispays just same partType
+
 
     const liftsDisplay = (
       <View>
-      {revLifts.map(lift =>
+      {only_legs_sections.map(lift =>
         <LiftsShow
         key={lift.id}
         lift={lift} />)}

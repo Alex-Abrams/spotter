@@ -49,7 +49,7 @@ class SetForm extends React.Component {
     if (this.state.weightNumeric && this.state.repsNumeric && (this.state.weight.length > 0) && (this.state.reps.length > 0)) {
       const temp_id = (this.props.sets.length === 0) ? 1 : (this.props.sets[this.props.sets.length -1].id) + 1;
       // needss a temp set id
-      this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps});
+      this.props.workoutActions.receiveSet({id: temp_id, lift_id: this.props.liftId, weight: this.state.weight, reps: this.state.reps, exercise_section: this.props.exercise_section});
 
       this.textInput.clear(); // clear in the inputs after submiting
 
@@ -127,6 +127,8 @@ class SetForm extends React.Component {
 
   render() {
     const { liftId, sets } = this.props;
+
+    // console.log(this.props.exercise_section);
 
     // weightNumeric(if true then the input contains only numbers)
     const errorDisplayWeight = (this.state.weightNumeric === true) ? (

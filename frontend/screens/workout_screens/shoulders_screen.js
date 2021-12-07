@@ -81,18 +81,22 @@ export class ShouldersScreen extends React.Component {
 
   render() {
 
-    const { partType } = this.props.route.params;
+    const { partType } = this.props.route.params; // ie Shoulders
     const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
     const revLifts = lifts.reverse();
 
+    const only_shoulders_sections = revLifts.filter(lift => partType == lift.exercise_section); // create array that dispays just same partType
+
     const liftsDisplay = (
       <View>
-      {revLifts.map(lift =>
+      {only_shoulders_sections.map(lift =>
         <LiftsShow
         key={lift.id}
         lift={lift} />)}
       </View>
     );
+
+
 
     const paste_button_display = ( copied_exercises.length > 0) ?
     (<View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
@@ -111,7 +115,7 @@ export class ShouldersScreen extends React.Component {
         <WorkoutDropdownSearchContainer keywordPart={partType} />
         <View style={{ borderBottomColor: '#0497A9', borderBottomWidth: 1 }}></View>
 
-        {liftsDisplay}
+        { liftsDisplay }
 
         { paste_button_display }
 
