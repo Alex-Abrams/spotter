@@ -33,9 +33,11 @@ export class LegsScreen extends React.Component {
 
       });
     });
-    // console.log("LIFTSSETS: ", liftsSets);
-    this.props.submitActions.receiveLiftsAndSets(liftsSets);
-    // console.log("length: ", Object.values(this.props.workout).length);
+
+    // filter out the sections not relavant to this screen
+    const only_legs_sections = liftsSets.filter(lift => partType == lift.exercise_section);
+    this.props.submitActions.receiveLiftsAndSets(only_legs_sections);
+
 
   }
   ////////
@@ -81,7 +83,7 @@ export class LegsScreen extends React.Component {
 
   render() {
 
-    const { partType } = this.props.route.params; // ie Legs 
+    const { partType } = this.props.route.params; // ie Legs
     const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;
     const revLifts = lifts.reverse();
 

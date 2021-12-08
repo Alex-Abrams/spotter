@@ -35,9 +35,10 @@ export class ArmsScreen extends React.Component {
 
       });
     });
-    // console.log("LIFTSSETS: ", liftsSets);
-    this.props.submitActions.receiveLiftsAndSets(liftsSets);
-    // console.log("length: ", Object.values(this.props.workout).length);
+    // filter out the sections not relavant to this screen
+    const only_arms_sections = liftsSets.filter(lift => partType == lift.exercise_section);
+    this.props.submitActions.receiveLiftsAndSets(only_arms_sections);
+
 
   }
   ////////

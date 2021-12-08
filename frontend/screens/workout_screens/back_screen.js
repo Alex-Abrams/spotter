@@ -32,9 +32,11 @@ export class BackScreen extends React.Component {
 
       });
     });
-    // console.log("LIFTSSETS: ", liftsSets);
-    this.props.submitActions.receiveLiftsAndSets(liftsSets);
-    // console.log("length: ", Object.values(this.props.workout).length);
+
+    // filter out the sections not relavant to this screen
+    const only_back_sections = liftsSets.filter(lift => partType == lift.exercise_section);
+    this.props.submitActions.receiveLiftsAndSets(only_back_sections);
+
 
   }
   ////////

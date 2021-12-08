@@ -17,10 +17,12 @@ export class ShouldersScreen extends React.Component {
 
 
   submitWorkout() { // this function combines sets into lifts into a arge array to post to backend
+    const { partType } = this.props.route.params;
     let liftsSets = [];
 
     const liftsArray = this.props.lifts;
     const setsArray = this.props.sets;
+
 
     setsArray.forEach(set => {
       liftsArray.forEach(lift => {
@@ -32,9 +34,10 @@ export class ShouldersScreen extends React.Component {
 
       });
     });
-    // console.log("LIFTSSETS: ", liftsSets);
-    this.props.submitActions.receiveLiftsAndSets(liftsSets);
-    // console.log("length: ", Object.values(this.props.workout).length);
+  // filter out the sections not relavant to this screen
+    const only_shoulders_sections = liftsSets.filter(lift => partType == lift.exercise_section);
+    this.props.submitActions.receiveLiftsAndSets(only_shoulders_sections);
+
 
   }
   ////////

@@ -19,51 +19,6 @@ const workoutReducer = (state = {}, action) => {
   }
 };
 
-// const armsWorkoutReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     default:
-//       return state;
-//   }
-// };
-//
-// const legsWorkoutReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     default:
-//       return state;
-//   }
-// };
-//
-// const shouldersWorkoutReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     default:
-//       return state;
-//   }
-// };
-//
-// const backWorkoutReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     default:
-//       return state;
-//   }
-// };
-//
-// const chestWorkoutReducer = (state = {}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     default:
-//       return state;
-//   }
-// };
-//
 // const workoutReducer = combineReducers({
 //   arms: armsWorkoutReducer,
 //   legs: legsWorkoutReducer,
