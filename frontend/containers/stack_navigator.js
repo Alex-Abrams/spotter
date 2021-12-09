@@ -18,6 +18,8 @@ import ChartScreenContainer from './chart_screen_container';
 import CalendarScreenContainer from './calendar_screen_container';
 // combine calendar screens and chart screens into 1 stack
 
+import HomeWelcomeScreen from '../screens/home_welcome_screen';
+
 import SelectedDateContainer from './selected_date_container';
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
@@ -79,6 +81,8 @@ class FarStack extends React.Component {
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
+
+        <Stack.Screen name="Home Welcome" component={HomeWelcomeScreen} navigation={this.props.navigation} />
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />

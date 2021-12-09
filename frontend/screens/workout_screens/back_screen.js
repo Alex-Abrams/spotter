@@ -17,6 +17,7 @@ export class BackScreen extends React.Component {
 
 
   submitWorkout() { // this function combines sets into lifts into a arge array to post to backend
+    const { partType } = this.props.route.params;
     let liftsSets = [];
 
     const liftsArray = this.props.lifts;

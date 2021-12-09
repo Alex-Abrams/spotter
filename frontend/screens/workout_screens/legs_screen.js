@@ -18,6 +18,7 @@ export class LegsScreen extends React.Component {
 
 
   submitWorkout() { // this function combines sets into lifts into a arge array to send to store, does not send to the backend
+    const { partType } = this.props.route.params;
     let liftsSets = [];
 
     const liftsArray = this.props.lifts;

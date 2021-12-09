@@ -88,6 +88,18 @@ class Home extends React.Component {
     )
   }
 
+  toNewHome() {
+    return(
+      <View>
+        <Button
+          title="Temp Real Home Button"
+          raised
+          onPress={() => (this.props.navigation.navigate("Home Welcome"))}>
+        </Button>
+      </View>
+    )
+  }
+
   render() {
 
     // <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
@@ -98,6 +110,7 @@ class Home extends React.Component {
         {this.toGraphScreens()}
         {this.toCalendar()}
         {this.logoutButton()}
+        {this.toNewHome()}
       </View>
     );
   } // render
