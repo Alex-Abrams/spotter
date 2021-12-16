@@ -1,6 +1,8 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import React, { Component } from 'react';
 import { AsyncStorage, Navigator } from 'react-native';
 
@@ -16,13 +18,31 @@ import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
 import ChartScreenContainer from './chart_screen_container';
 import CalendarScreenContainer from './calendar_screen_container';
+import SelectedDateContainer from './selected_date_container';
 // combine calendar screens and chart screens into 1 stack
 
 import HomeWelcomeScreen from '../screens/home_welcome_screen';
 
-import SelectedDateContainer from './selected_date_container';
+
+//////
+// import DrawerNav from '../navigators/sidebar_drawer_navigator';
+
+// import { TestDrawerHomeScreen, TestDrawerSlideScreen } from '../navigators/sidebar_drawer_navigator';
+
 
 import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
+// const Drawer = createDrawerNavigator();
+
+// const Drawer = createDrawerNavigator();
+//
+//  function MyDrawer() {
+//   return (
+//     <Drawer.Navigator>
+//       <Drawer.Screen name="Home" component={HomeContainer} />
+//       <Drawer.Screen name="Home Welcome" component={HomeWelcomeScreen} />
+//     </Drawer.Navigator>
+//   );
+// }
 
 class FarStack extends React.Component {
   constructor(props) {
@@ -70,8 +90,15 @@ class FarStack extends React.Component {
 // above is for the stuff between the stack navigators....
 // initialRouteName="login"
 
+
+////////////////////////////////
+
+
+//////////////////////////////
+
   render() {
     const Stack = createStackNavigator();
+
     const { loggedIn, splash_screen } = this.props;
 
     return (
@@ -80,9 +107,13 @@ class FarStack extends React.Component {
         {(loggedIn == true) ? (
           <>
           <Stack.Screen name="Home" component={HomeContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
+          {/*
+            <Stack.Screen name="Home Welcome" component={MyDrawer}/>
+            */}
+            <Stack.Screen name="Home Welcome" component={HomeWelcomeScreen} navigation={this.props.navigation} />
 
-        <Stack.Screen name="Home Welcome" component={HomeWelcomeScreen} navigation={this.props.navigation} />
+
+          <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />

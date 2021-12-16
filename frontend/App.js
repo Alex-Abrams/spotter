@@ -13,7 +13,6 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // import { createStackNavigator } from 'react-navigation-stack';
-import StackNavigatorContainer from './containers/stack_navigator_container';
 
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
@@ -21,10 +20,17 @@ import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import logger from 'redux-logger'
 import authReducer from './reducers/auth_reducer'; //
 import rootReducer from './reducers/root_reducer';
-import LoginContainer from './containers/login_screen_container';
-import Home from './screens/home_screen';
+// import LoginContainer from './containers/login_screen_container';
+// import Home from './screens/home_screen';
 
 import SplashScreen from './screens/splash_screen';  // loading screen
+
+
+import StackNavigatorContainer from './containers/stack_navigator_container';
+///////
+// import SideBar from './navigators/sidebar_drawer_navigator';
+import DrawerNav from './navigators/sidebar_drawer_navigator';
+/////
 
 import * as Font from 'expo-font';
 
