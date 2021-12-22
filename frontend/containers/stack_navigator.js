@@ -25,7 +25,7 @@ import HomeWelcomeScreen from '../screens/home_welcome_screen';
 
 
 //////
-// import DrawerNav from '../navigators/sidebar_drawer_navigator';
+import DrawerNav from '../navigators/sidebar_drawer_navigator';
 
 // import { TestDrawerHomeScreen, TestDrawerSlideScreen } from '../navigators/sidebar_drawer_navigator';
 
@@ -99,6 +99,8 @@ class FarStack extends React.Component {
   render() {
     const Stack = createStackNavigator();
 
+    const Drawer = createDrawerNavigator();
+
     const { loggedIn, splash_screen } = this.props;
 
     return (
@@ -110,7 +112,8 @@ class FarStack extends React.Component {
           {/*
             <Stack.Screen name="Home Welcome" component={MyDrawer}/>
             */}
-            <Stack.Screen name="Home Welcome" component={HomeWelcomeScreen} navigation={this.props.navigation} />
+            <Stack.Screen name="Home Welcome" component={DrawerNav} options={{ headerShown: false }} navigation={this.props.navigation} />
+
 
 
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
