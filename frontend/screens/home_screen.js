@@ -11,6 +11,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token);
+    this.props.navigation.navigate("Drawer");
   }
 
 
@@ -94,7 +95,7 @@ class Home extends React.Component {
         <Button
           title="Temp Real Home Button"
           raised
-          onPress={() => (this.props.navigation.navigate("Home Welcome"))}>
+          onPress={() => (this.props.navigation.navigate("Drawer"))}>
         </Button>
       </View>
     )
