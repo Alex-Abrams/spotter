@@ -11,6 +11,7 @@ import PrevWorkoutScreenContainer from '../containers/prev_workout_screen_contai
 import ExercisesListContainer from '../containers/exercises_list_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 import CalendarScreenContainer from '../containers/calendar_screen_container';
+import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 
 
 
@@ -23,7 +24,7 @@ function MyDrawer() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={HomeContainer} />
-      <Drawer.Screen name="Home Welcome" component={HomeWelcomeScreen} />
+      <Drawer.Screen name="Home Welcome" component={HomeWelcomeScreenContainer} />
       <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
       <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
       <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />

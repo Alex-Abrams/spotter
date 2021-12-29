@@ -21,8 +21,8 @@ import CalendarScreenContainer from './calendar_screen_container';
 import SelectedDateContainer from './selected_date_container';
 // combine calendar screens and chart screens into 1 stack
 
-import HomeWelcomeScreen from '../screens/home_welcome_screen';
-
+// import HomeWelcomeScreen from '../screens/home_welcome_screen';
+import HomeWelcomeScreenContainer from './home_welcome_screen_container';
 
 //////
 import DrawerNav from '../navigators/sidebar_drawer_navigator';
