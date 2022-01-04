@@ -12,3 +12,10 @@ export const selectAllPrevExercises = state => Object.values(state.entities.jour
 export const selectAllChartExercises = state => Object.values(state.entities.chart_exercises);
 
 export const selectCopiedWorkout = state => Object.values(state.entities.copied_workout);
+
+export const selectMostRecentWorkout = (state) => {
+
+  const last = Object.values(state.entities.journal).length - 1; // find position of last workout
+  return Object.values(state.entities.journal)[last];  // return the id of the last workout to request its info (exercises)
+  //
+};

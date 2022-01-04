@@ -9,19 +9,46 @@ class HomeWelcomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    const { current_user, auth_token} = this.props;
+    const { current_user, auth_token, most_recent_workout_id } = this.props;
     // // user_id, auth_token
     this.props.fetchAllExercises.requestChartExercises(current_user.id, auth_token);
+
+    this.props.prevWorkoutActions.requestAllWorkouts(current_user.id, auth_token) // get al/ the workouts and send to the store
+    // workout_list.workouts[workout_list.workouts.length - 1].id ---> the workout id of the last workout, so i that i can request its exercises and send them to the journal_exercises reducer
+    .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token));
+
   }
 
-  displayRecords(sorted_by_weight) {
-    // if there are no information it will display something other than the current records
+  displayLastWorkout() { // display the users last workout {/* */}
+    const { last_workout } = this.props;
+
+    const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
+      <View>
+        {/* hnnng */}
+        <Text>workout is here</Text>
+        <Text>{last_workout[0].exercise_section}</Text>
+
+      </View>
+    ) : (
+      <Text>no last workout</Text>
+    );
+
+    return(
+      <View>
+        {display_last_workout_or_na}
+      </View>
+    );
+  }
+
+  displayRecords(sorted_by_weight) { // dispays the all time records of each main exercise catagory
+    // if there is no information it will display something other than the current records
     const { current_user, all_exercises } = this.props;
 
     const display_records_or_na = (all_exercises.length > 0) ? (
       <View>
         <Text>Heavy Compound Workout Records</Text>
-          {/* find the heaviest of each category and use whatever name is listed */}
+          {/* find the heaviest of each category and use whatever name is listed
+            Also get the last workout done */}
         <Text>Arms: {sorted_by_weight[0].name} {sorted_by_weight[0].weight}</Text>
         <Text>Shoulders: {sorted_by_weight[1].name} {sorted_by_weight[1].weight}</Text>
         <Text>Chest: {sorted_by_weight[2].name} {sorted_by_weight[2].weight}</Text>
@@ -30,6 +57,7 @@ class HomeWelcomeScreen extends React.Component {
       </View>
     ) : (
       <View>
+        {/* this will show how to use the tab to the left, and that new workouts appear here */}
         <Text>No workouts yet</Text>
         <Text>New Workout Records Show up there</Text>
       </View>
@@ -47,7 +75,8 @@ class HomeWelcomeScreen extends React.Component {
 
 
   render() {
-    const { current_user, all_exercises } = this.props;
+    const { current_user, all_exercises, last_workout } = this.props;
+    console.log('last_workout', last_workout);
 
 
     const sorted_by_type = [];  // sorting all_exercises into an array of sectioned exercises in the order of the types variable
@@ -85,7 +114,7 @@ class HomeWelcomeScreen extends React.Component {
         </View>
 
         {/* put a line here */}
-
+        {this.displayLastWorkout()}
         {this.displayRecords(sorted_by_weight)}
 
       </ScrollView>
