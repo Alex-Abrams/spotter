@@ -10,6 +10,8 @@ class HomeWelcomeScreen extends React.Component {
 
   componentDidMount() {
     const { current_user, auth_token, most_recent_workout_id } = this.props;
+    this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token);
+    this.props.navigation.navigate("Drawer");
     // // user_id, auth_token
     this.props.fetchAllExercises.requestChartExercises(current_user.id, auth_token);
 

@@ -14,17 +14,12 @@ import CalendarScreenContainer from '../containers/calendar_screen_container';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 
 
-
-// <Drawer.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
-// <Drawer.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} />
-
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomeContainer} />
-      <Drawer.Screen name="Home Welcome" component={HomeWelcomeScreenContainer} />
+      <Drawer.Screen name="Home" component={HomeWelcomeScreenContainer} />
       <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
       <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
       <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />
