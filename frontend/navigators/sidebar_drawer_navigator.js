@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeWelcomeScreen from '../screens/home_welcome_screen';
 import HomeContainer from '../containers/home_container';
@@ -18,7 +24,14 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator initialRoute="Home" drawerContent={props => {
+        return(
+          <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+            <DrawerItem label="Logout" onPress={() => console.log('logout works!')} />
+          </DrawerContentScrollView>
+        )
+      }}>
       <Drawer.Screen name="Home" component={HomeWelcomeScreenContainer} />
       <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
       <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
