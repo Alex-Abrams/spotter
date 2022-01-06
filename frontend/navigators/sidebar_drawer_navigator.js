@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 // import { createDrawerNavigator } from '@react-navigation/drawer';
+import { AsyncStorage } from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -22,27 +23,44 @@ import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_contai
 
 const Drawer = createDrawerNavigator();
 
-function MyDrawer() {
-  return (
-    <Drawer.Navigator initialRoute="Home" drawerContent={props => {
-        return(
-          <DrawerContentScrollView {...props}>
-            <DrawerItemList {...props} />
-            <DrawerItem label="Logout" onPress={() => console.log('logout works!')} />
-          </DrawerContentScrollView>
-        )
-      }}>
-      <Drawer.Screen name="Home" component={HomeWelcomeScreenContainer} />
-      <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
-      <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
-      <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />
-      <Drawer.Screen name="Calendar" component={CalendarScreenContainer} />
-    </Drawer.Navigator>
-  );
+
+
+class DrawerNav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  userLogout = async () => {
+    try {
+      let keys = ['token', 'email'];
+      await AsyncStorage.multiRemove(keys);
+      this.props.authActions.logoutCurrentUser();
+    } catch (error) {
+      // Error saving data
+      // console.log("userLogout: ", error); //
+      return null;
+    }
+  };
+
+  render() {
+    return(
+      <Drawer.Navigator initialRoute="Home" drawerContent={props => {
+          return(
+            <DrawerContentScrollView {...props}>
+              <DrawerItemList {...props} />
+              <DrawerItem label="Logout" onPress={() => this.userLogout()} />
+            </DrawerContentScrollView>
+          )
+        }}>
+        <Drawer.Screen name="Home" component={HomeWelcomeScreenContainer} />
+        <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
+        <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
+        <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />
+        <Drawer.Screen name="Calendar" component={CalendarScreenContainer} />
+      </Drawer.Navigator>
+
+    );
+  }
 }
 
-export default function DrawerNav() {
-  return(
-      <MyDrawer />
-  );
-}
+export default DrawerNav;

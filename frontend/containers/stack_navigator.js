@@ -26,6 +26,7 @@ import HomeWelcomeScreenContainer from './home_welcome_screen_container';
 
 //////
 import DrawerNav from '../navigators/sidebar_drawer_navigator';
+import DrawerNavContainer from './drawernav_container';
 
 import { Button } from 'react-native-elements';
 
@@ -90,7 +91,7 @@ class FarStack extends React.Component {
         {(loggedIn == true) ? (
           <>
           <Stack.Screen name="Home" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Drawer" component={DrawerNav} options={{ headerShown: false }} navigation={this.props.navigation} />
+          <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
 
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}

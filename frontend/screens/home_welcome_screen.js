@@ -20,18 +20,8 @@ class HomeWelcomeScreen extends React.Component {
 
     .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token))
     .catch(error => console.log('bb', error));
-    // .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token));
-
 
     this.props.navigation.navigate("Drawer");
-
-    // // user_id, auth_token
-    // this.props.fetchAllExercises.requestChartExercises(current_user.id, auth_token);
-    // //
-    // this.props.prevWorkoutActions.requestAllWorkouts(current_user.id, auth_token); // get al/ the workouts and send to the store
-    // // workout_list.workouts[workout_list.workouts.length - 1].id ---> the workout id of the last workout, so i that i can request its exercises and send them to the journal_exercises reducer
-    // .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token));
-
 
   }
 
