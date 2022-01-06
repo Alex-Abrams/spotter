@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
+import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
+import LastWorkoutTouchableItem from './last_workout_touchable_item';
 
 class HomeWelcomeScreen extends React.Component {
   constructor(props) {
@@ -25,14 +27,33 @@ class HomeWelcomeScreen extends React.Component {
 
   }
 
+  // <Text>Last Workout</Text>
+  // <Text>{last_workout[0].exercise_section}</Text>
+
+  // {last_workout[0].exercise_section}
+
   displayLastWorkout() { // display the users last workout {/* */}
     const { last_workout } = this.props;
 
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
-      <View>
+      <View style={{flex: 1}}>
         {/* hnnng */}
-        <Text>workout is here</Text>
-        <Text>{last_workout[0].exercise_section}</Text>
+        <TouchableHighlight
+          underlayColor="white"
+          style={{ height: 80 }}
+          onPress={() => {console.log('pisssssss')}}>
+
+          <View style={{flex: 1, flexDirection: 'row' , justifyContent: 'space-between', alignItems: 'center'}}>
+            <View style={{backgroundColor: 'yellow', paddingLeft: 30}}>
+              <Text style={{fontSize: 28}}>Previous Workout</Text>
+              <Text style={{fontSize: 28}}>Legs  9/28/22</Text>
+            </View>
+
+            <View style={{backgroundColor: 'blue', alignContent: 'flex-end'}}>
+              <EvilIcons name={'chevron-down'} size={62} />
+            </View>
+          </View>
+        </TouchableHighlight>
 
       </View>
     ) : (
@@ -51,15 +72,21 @@ class HomeWelcomeScreen extends React.Component {
     const { current_user, all_exercises } = this.props;
 
     const display_records_or_na = (all_exercises.length > 0) ? (
-      <View>
-        <Text>Heavy Compound Workout Records</Text>
+      <View style={{backgroundColor: 'blue'}}>
+        <Text>Your Best Lifts</Text>
           {/* find the heaviest of each category and use whatever name is listed
-            Also get the last workout done */}
-        <Text>Arms: {sorted_by_weight[0].name} {sorted_by_weight[0].weight}</Text>
-        <Text>Shoulders: {sorted_by_weight[1].name} {sorted_by_weight[1].weight}</Text>
-        <Text>Chest: {sorted_by_weight[2].name} {sorted_by_weight[2].weight}</Text>
-        <Text>Legs: {sorted_by_weight[3].name} {sorted_by_weight[3].weight}</Text>
-        <Text>Back: {sorted_by_weight[4].name} {sorted_by_weight[4].weight}</Text>
+            Also get the last workout done, putting arms last since least exciting */}
+        <Text>Chest:</Text>
+          <Text>{sorted_by_weight[2].name} {sorted_by_weight[2].weight}</Text>
+        <Text>Shoulders:</Text>
+          <Text>{sorted_by_weight[1].name} {sorted_by_weight[1].weight}</Text>
+        <Text>Legs:</Text>
+          <Text>{sorted_by_weight[3].name} {sorted_by_weight[3].weight}</Text>
+        <Text>Back:</Text>
+          <Text>{sorted_by_weight[4].name} {sorted_by_weight[4].weight}</Text>
+        <Text>Arms:</Text>
+          <Text>{sorted_by_weight[0].name} {sorted_by_weight[0].weight}</Text>
+
       </View>
     ) : (
       <View>
@@ -76,9 +103,6 @@ class HomeWelcomeScreen extends React.Component {
     );
 
   }
-
-
-
 
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
@@ -114,16 +138,10 @@ class HomeWelcomeScreen extends React.Component {
 
     return(
       <ScrollView>
-        <View>
-          <Text>Welcome to Spotter!!</Text>
-          {/* something about welcome to spotter use the tabs on the left site to navigate screens, developed by Alexander Abrams */}
-        </View>
-
         {this.displayLastWorkout()}
         {this.displayRecords(sorted_by_weight)}
         {/* put a line here
           */}
-
       </ScrollView>
     );
   }

@@ -90,7 +90,7 @@ class FarStack extends React.Component {
 
         {(loggedIn == true) ? (
           <>
-          <Stack.Screen name="Home" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Spotter" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
 
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />

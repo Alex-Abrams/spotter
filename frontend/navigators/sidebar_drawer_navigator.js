@@ -9,7 +9,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeWelcomeScreen from '../screens/home_welcome_screen';
+// import HomeWelcomeScreen from '../screens/home_welcome_screen';
 import HomeContainer from '../containers/home_container';
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
@@ -44,7 +44,7 @@ class DrawerNav extends React.Component {
 
   render() {
     return(
-      <Drawer.Navigator initialRoute="Home" drawerContent={props => {
+      <Drawer.Navigator initialRoute="Spotter" drawerContent={props => {
           return(
             <DrawerContentScrollView {...props}>
               <DrawerItemList {...props} />
@@ -52,7 +52,7 @@ class DrawerNav extends React.Component {
             </DrawerContentScrollView>
           )
         }}>
-        <Drawer.Screen name="Home" component={HomeWelcomeScreenContainer} />
+        <Drawer.Screen name="Spotter" component={HomeWelcomeScreenContainer} />
         <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
         <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
         <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />

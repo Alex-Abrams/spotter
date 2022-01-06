@@ -23,8 +23,6 @@ class LiftsShow extends React.Component {
       (this.props.lift[0] === null) ? (
         null
       ) : (
-
-
       <View style={{paddingTop: 5, paddingRight: 16, paddingLeft: 16,  flex: 1}}>
         <Button
           raised
