@@ -73,7 +73,6 @@ class HomeWelcomeScreen extends React.Component {
 
   displayLastWorkoutExercises() {
     const { last_workout } = this.props; // array of the very last workouts exercises
-    // console.log(last_workout);
     // sum each workout by its sets, so if there are 4 Leg presses, itll show => Leg Press 4 sets 300 top weight
     const sets = [];
     last_workout.forEach(exercise => {sets.push(exercise.name)});
@@ -100,13 +99,29 @@ class HomeWelcomeScreen extends React.Component {
       };
     });
 
+
+    const test_sort = last_workout.sort(function(a, b) {
+      const textA = a.name.toUpperCase();
+      const textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    /// USE TEST SORT TO FINISH THIS OUT
+
+    console.log('test_sort', test_sort);
+
     const exercise_weights_array = [];
     let heaviest_weight = last_workout[0];
     for (let i = 0; i < last_workout.length; i ++) {
       if (last_workout[i].weight > heaviest_weight.weight) {
-        console.log('buttttutut');
+        // console.log('buttttutut');
         heaviest_weight = last_workout[i];
+        // console.log(heaviest_weight);
+        // exercise_weights_array.push(heaviest_weight);
+      };
+
+      if ((i > 0) && (last_workout[i].name !== last_workout[i - 1].name)) {
         exercise_weights_array.push(heaviest_weight);
+        heaviest_weight = last_workout[i];
       };
     };
 
@@ -123,7 +138,7 @@ class HomeWelcomeScreen extends React.Component {
     //   };
     // };
 
-    console.log('exercise_weights_array', exercise_weights_array);
+    // console.log('exercise_weights_array', exercise_weights_array);
 
     //exercise_hash, sorted_set_counts_hash
 
