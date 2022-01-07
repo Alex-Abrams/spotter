@@ -38,6 +38,7 @@ class HomeWelcomeScreen extends React.Component {
   displayLastWorkout(arrow_direction) { // display the users last workout {/* */}
     const { last_workout } = this.props;
 
+
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
       <View style={{flex: 1}}>
         {/* hnnng */}
@@ -49,7 +50,7 @@ class HomeWelcomeScreen extends React.Component {
           <View style={{flex: 1, flexDirection: 'row' , justifyContent: 'space-between', alignItems: 'center'}}>
             <View style={{paddingLeft: 12}}>
               <Text style={{fontSize: 22}}>Previous Workout</Text>
-              <Text style={{fontSize: 22}}>Legs  8 days ago</Text>
+              <Text style={{fontSize: 15}}>Legs  8 days ago</Text>
             </View>
 
             <View style={{alignContent: 'flex-end'}}>
@@ -63,14 +64,79 @@ class HomeWelcomeScreen extends React.Component {
       <Text>no last workout</Text>
     );
 
-
-
     return(
       <View>
         {display_last_workout_or_na}
       </View>
     );
   }
+
+  displayLastWorkoutExercises() {
+    const { last_workout } = this.props; // array of the very last workouts exercises
+    // console.log(last_workout);
+    // sum each workout by its sets, so if there are 4 Leg presses, itll show => Leg Press 4 sets 300 top weight
+    const sets = [];
+    last_workout.forEach(exercise => {sets.push(exercise.name)});
+    const sorted_sets = sets.sort();
+    /////////////////////////////////
+    const sorted_set_counts = {}; // {Leg Press: 3} => 3 sets of leg press
+    let count = 0
+    for(let i = 0; i < sorted_sets.length; i ++) { // this will create a hash where the exercises's sets are counted
+      count += 1;
+      sorted_set_counts[sorted_sets[i]] = count;
+      if (sorted_sets[i] !== sorted_sets[i + 1]) {
+        count = 0;
+      };
+
+    };
+
+    //////////////////////////////////
+    const exercise_hash = {}; // {Leg Press: 145 (lbs)}
+    let heaviest = 0;
+    last_workout.forEach((exercise) => {    // exercise hash with find the highest weight set for each exercise
+      if (exercise.weight > heaviest) {
+        exercise_hash[exercise.name] = exercise.weight;
+        heaviest = exercise.weight;
+      };
+    });
+
+    const exercise_weights_array = [];
+    let heaviest_weight = last_workout[0];
+    for (let i = 0; i < last_workout.length; i ++) {
+      if (last_workout[i].weight > heaviest_weight.weight) {
+        console.log('buttttutut');
+        heaviest_weight = last_workout[i];
+        exercise_weights_array.push(heaviest_weight);
+      };
+    };
+
+      // console.log('heavy', heaviest_weight);
+      // console.log('heleleo??!?!', last_workout[0].weight > 111);
+      // if ( i < last_workout.length ) { console.log(i)};
+
+    //   if (i < last_workout.length - 1 && last_workout[i].name !== last_workout[i + 1].name) {
+    //     exercise_weights_array.push(heaviest_weight);
+    //     heaviest_weight = last_workout[i + 1];
+    //
+    //   } else if (i = last_workout.length - 1 && last_workout[i].weight > heaviest_weight) {
+    //     exercise_weights_array.push(last_workout[i]);
+    //   };
+    // };
+
+    console.log('exercise_weights_array', exercise_weights_array);
+
+    //exercise_hash, sorted_set_counts_hash
+
+    // console.log(exercise_hash[0]); // doesnt work with hashes
+
+    return(
+      <View>
+
+      </View>
+    );
+
+  }
+
 
   displayRecords(sorted_by_weight) { // dispays the all time records of each main exercise catagory
     // if there is no information it will display something other than the current records
@@ -115,7 +181,8 @@ class HomeWelcomeScreen extends React.Component {
     const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down");
 
     // console.log('last_workout', last_workout);
-    console.log('state', this.state.is_minimized);
+    // console.log('state', this.state.is_minimized);
+    this.displayLastWorkoutExercises();
 
 
     const sorted_by_type = [];  // sorting all_exercises into an array of sectioned exercises in the order of the types variable
@@ -143,7 +210,6 @@ class HomeWelcomeScreen extends React.Component {
       heaviest = 0;
 
     };
-
 
     return(
       <ScrollView>
