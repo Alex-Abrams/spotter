@@ -5,9 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
 import LastWorkoutTouchableItem from './last_workout_touchable_item';
 
+////// FIX THE BOOLEANS ON DISPLAYING OR NOT, SHOULD ALL BE 1 THING
+
 class HomeWelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      is_minimized: false,
+    };
   }
 
   componentDidMount() {
@@ -27,12 +33,9 @@ class HomeWelcomeScreen extends React.Component {
 
   }
 
-  // <Text>Last Workout</Text>
-  // <Text>{last_workout[0].exercise_section}</Text>
-
   // {last_workout[0].exercise_section}
 
-  displayLastWorkout() { // display the users last workout {/* */}
+  displayLastWorkout(arrow_direction) { // display the users last workout {/* */}
     const { last_workout } = this.props;
 
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
@@ -41,16 +44,16 @@ class HomeWelcomeScreen extends React.Component {
         <TouchableHighlight
           underlayColor="white"
           style={{ height: 80 }}
-          onPress={() => {console.log('pisssssss')}}>
+          onPress={() => {this.setState({ is_minimized: !this.state.is_minimized})}}>
 
           <View style={{flex: 1, flexDirection: 'row' , justifyContent: 'space-between', alignItems: 'center'}}>
-            <View style={{backgroundColor: 'yellow', paddingLeft: 30}}>
-              <Text style={{fontSize: 28}}>Previous Workout</Text>
-              <Text style={{fontSize: 28}}>Legs  9/28/22</Text>
+            <View style={{paddingLeft: 12}}>
+              <Text style={{fontSize: 22}}>Previous Workout</Text>
+              <Text style={{fontSize: 22}}>Legs  8 days ago</Text>
             </View>
 
-            <View style={{backgroundColor: 'blue', alignContent: 'flex-end'}}>
-              <EvilIcons name={'chevron-down'} size={62} />
+            <View style={{alignContent: 'flex-end'}}>
+              <EvilIcons name={arrow_direction} size={62} />
             </View>
           </View>
         </TouchableHighlight>
@@ -59,6 +62,8 @@ class HomeWelcomeScreen extends React.Component {
     ) : (
       <Text>no last workout</Text>
     );
+
+
 
     return(
       <View>
@@ -106,7 +111,11 @@ class HomeWelcomeScreen extends React.Component {
 
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
+
+    const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down");
+
     // console.log('last_workout', last_workout);
+    console.log('state', this.state.is_minimized);
 
 
     const sorted_by_type = [];  // sorting all_exercises into an array of sectioned exercises in the order of the types variable
@@ -138,7 +147,7 @@ class HomeWelcomeScreen extends React.Component {
 
     return(
       <ScrollView>
-        {this.displayLastWorkout()}
+        {display_last_workout}
         {this.displayRecords(sorted_by_weight)}
         {/* put a line here
           */}

@@ -12,7 +12,7 @@ class JournalItem extends React.Component {
     super(props);
 
 
-  } //406-375-0004 luckys bail bond
+  } 
 
 
   touchableNavToExercises({navigation}) {
