@@ -74,79 +74,44 @@ class HomeWelcomeScreen extends React.Component {
   displayLastWorkoutExercises() {
     const { last_workout } = this.props; // array of the very last workouts exercises
     // sum each workout by its sets, so if there are 4 Leg presses, itll show => Leg Press 4 sets 300 top weight
-    const sets = [];
-    last_workout.forEach(exercise => {sets.push(exercise.name)});
-    const sorted_sets = sets.sort();
-    /////////////////////////////////
-    const sorted_set_counts = {}; // {Leg Press: 3} => 3 sets of leg press
-    let count = 0
-    for(let i = 0; i < sorted_sets.length; i ++) { // this will create a hash where the exercises's sets are counted
-      count += 1;
-      sorted_set_counts[sorted_sets[i]] = count;
-      if (sorted_sets[i] !== sorted_sets[i + 1]) {
-        count = 0;
-      };
 
-    };
-
-    //////////////////////////////////
-    const exercise_hash = {}; // {Leg Press: 145 (lbs)}
-    let heaviest = 0;
-    last_workout.forEach((exercise) => {    // exercise hash with find the highest weight set for each exercise
-      if (exercise.weight > heaviest) {
-        exercise_hash[exercise.name] = exercise.weight;
-        heaviest = exercise.weight;
-      };
-    });
-
-
-    const test_sort = last_workout.sort(function(a, b) {
+    const sorted_exercises = last_workout.sort(function(a, b) { // sort the last_workout object by its names
       const textA = a.name.toUpperCase();
       const textB = b.name.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
-    /// USE TEST SORT TO FINISH THIS OUT
 
-    console.log('test_sort', test_sort);
 
-    const exercise_weights_array = [];
-    let heaviest_weight = last_workout[0];
-    for (let i = 0; i < last_workout.length; i ++) {
-      if (last_workout[i].weight > heaviest_weight.weight) {
-        // console.log('buttttutut');
-        heaviest_weight = last_workout[i];
-        // console.log(heaviest_weight);
-        // exercise_weights_array.push(heaviest_weight);
+    ////////////////////////////
+    let name = sorted_exercises[0].name;
+    let heaviest = sorted_exercises[0];
+    let exercises_weight = [];
+    for( let i = 0; i < sorted_exercises.length; i ++) { //current heaviest is 185, also last of its name type
+
+      if(sorted_exercises[i].name !== name) { // if there is a change in the name (Leg Press to Squats, then the loop is now at the squats catagory and can push the heaviest weight from the previous catagory)
+        name = sorted_exercises[i].name;  // change the name to the current iteration's elements name
+        exercises_weight.push(heaviest); // push the heaviest
+        heaviest = sorted_exercises[i]; // reset the heaviest to the current iterations eleemtn
+
       };
 
-      if ((i > 0) && (last_workout[i].name !== last_workout[i - 1].name)) {
-        exercise_weights_array.push(heaviest_weight);
-        heaviest_weight = last_workout[i];
+      if(sorted_exercises[i].weight > heaviest.weight) { // change the heaviest to current heaviest in the name catagory
+        heaviest = sorted_exercises[i];
       };
-    };
 
-      // console.log('heavy', heaviest_weight);
-      // console.log('heleleo??!?!', last_workout[0].weight > 111);
-      // if ( i < last_workout.length ) { console.log(i)};
+      if(i === sorted_exercises.length - 1) {  // the last element will always be the indicator to push the heaviest
+        exercises_weight.push(heaviest);
+      };
+    }
+    ////////////////////////////
+    console.log(exercises_weight);
 
-    //   if (i < last_workout.length - 1 && last_workout[i].name !== last_workout[i + 1].name) {
-    //     exercise_weights_array.push(heaviest_weight);
-    //     heaviest_weight = last_workout[i + 1];
-    //
-    //   } else if (i = last_workout.length - 1 && last_workout[i].weight > heaviest_weight) {
-    //     exercise_weights_array.push(last_workout[i]);
-    //   };
-    // };
-
-    // console.log('exercise_weights_array', exercise_weights_array);
-
-    //exercise_hash, sorted_set_counts_hash
-
-    // console.log(exercise_hash[0]); // doesnt work with hashes
-
+    // and we deleted the part with the sets........
+    //we have exercises_weight --> array with the weights
     return(
       <View>
-
+        {/* display the name of the workout, how many sets and its highest waight */}
+        <Text>{}</Text>
       </View>
     );
 
@@ -225,6 +190,8 @@ class HomeWelcomeScreen extends React.Component {
       heaviest = 0;
 
     };
+
+    console.log('sets?!?!', sorted_by_weight);
 
     return(
       <ScrollView>
