@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
 import LastWorkoutTouchableItem from './last_workout_touchable_item';
 import LastWorkoutItem from './last_workout_item';
+import WorkoutRecords from './workout_records';
 
 ////// FIX THE BOOLEANS ON DISPLAYING OR NOT, SHOULD ALL BE 1 THING
 
@@ -21,9 +22,7 @@ class HomeWelcomeScreen extends React.Component {
     const { current_user, auth_token, most_recent_workout_id } = this.props;
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
-    // .then(() => console.log('test', user));
     .catch(error => console.log(error))
-    // .then(() => console.log('testzz'))
     .then(() => this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user.id, auth_token))
     .catch(error => console.log('zz', error))
 
@@ -34,15 +33,19 @@ class HomeWelcomeScreen extends React.Component {
 
   }
 
-  // {last_workout[0].exercise_section}
 
   displayLastWorkout(arrow_direction) { // display the users last workout {/* */}
     const { last_workout } = this.props;
 
+    const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
+    const created_on = new Date(last_workout[0].created_at);
+    const ms_in_day = 24 * 60 * 60 * 1000;
+    created_on.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
 
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
       <View style={{flex: 1}}>
-        {/* hnnng */}
         <TouchableHighlight
           underlayColor="white"
           style={{ height: 80 }}
@@ -51,7 +54,7 @@ class HomeWelcomeScreen extends React.Component {
           <View style={{flex: 1, flexDirection: 'row' , justifyContent: 'space-between', alignItems: 'center'}}>
             <View style={{paddingLeft: 12}}>
               <Text style={{fontSize: 22}}>Previous Workout</Text>
-              <Text style={{fontSize: 15}}>Legs  8 days ago</Text>
+              <Text style={{fontSize: 15}}>Legs {days_since} days ago</Text>
             </View>
 
             <View style={{alignContent: 'flex-end'}}>
@@ -134,6 +137,7 @@ class HomeWelcomeScreen extends React.Component {
 
   displayRecords(sorted_by_weight) { // dispays the all time records of each main exercise catagory
     // if there is no information it will display something other than the current records
+    // make a new file for this
     const { current_user, all_exercises } = this.props;
 
     const display_records_or_na = (all_exercises.length > 0) ? (
@@ -172,12 +176,13 @@ class HomeWelcomeScreen extends React.Component {
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
 
-    const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down");
+    const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down"); //onclick chnages arrow from down to up
 
-    // console.log('last_workout', last_workout);
-    // console.log('state', this.state.is_minimized);
-    // this.displayLastWorkoutExercises();
-
+    const display_last_workout_exercises_line_or_null = (this.state.is_minimized) ? ( // a divider line across the phone, only shows when is_minimized is true
+      <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
+    ) : (
+      null
+    );
 
     const sorted_by_type = [];  // sorting all_exercises into an array of sectioned exercises in the order of the types variable
     const types = ['Arms', 'Shoulders', 'Chest', 'Legs', 'Back'];
@@ -186,8 +191,6 @@ class HomeWelcomeScreen extends React.Component {
       let type = all_exercises.filter(exercise => exercise.exercise_section === types[i]);
       sorted_by_type.push(type);
     };
-
-    // now i need to find the highest lbs workout for each catagory
 
     const sorted_by_weight = [];  // an array of the highest lbs object
 
@@ -208,14 +211,14 @@ class HomeWelcomeScreen extends React.Component {
     return(
       <ScrollView>
         {display_last_workout}
-        <View
-          style={{
-            borderBottomColor: '#C7C7C7',
-            borderBottomWidth: 10,
-          }}
-        />
+        <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
         {this.displayLastWorkoutExercises()}
-        {this.displayRecords(sorted_by_weight)}
+        {display_last_workout_exercises_line_or_null}
+        <WorkoutRecords
+          sorted_by_weight={sorted_by_weight}
+          current_user={current_user}
+          all_exercises={all_exercises}
+          />
         {/* put a line here
           */}
       </ScrollView>
