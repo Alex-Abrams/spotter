@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
 import LastWorkoutTouchableItem from './last_workout_touchable_item';
+import LastWorkoutItem from './last_workout_item';
 
 ////// FIX THE BOOLEANS ON DISPLAYING OR NOT, SHOULD ALL BE 1 THING
 
@@ -82,7 +83,7 @@ class HomeWelcomeScreen extends React.Component {
     });
 
 
-    ////////////////////////////
+    ////////////////////////////  sorting the weights of last workout
     let name = sorted_exercises[0].name;
     let heaviest = sorted_exercises[0];
     let exercises_weight = [];
@@ -103,15 +104,28 @@ class HomeWelcomeScreen extends React.Component {
         exercises_weight.push(heaviest);
       };
     }
-    ////////////////////////////
-    console.log(exercises_weight);
+    //////////////////////////// sorting the sets of last workout
+    exercises_weight.forEach((exercise) => { // iterate over each exercise weight object
+        let set_count = sorted_exercises.filter(s_exercise => s_exercise.name === exercise.name); // filter down to the exercises that use the same name
+        exercise["set_count"] = set_count.length; // add the set count to the length
+    });
 
-    // and we deleted the part with the sets........
-    //we have exercises_weight --> array with the weights
+    ////////////////////////////
+
+    const display_workout_exercises_or_null = (this.state.is_minimized) ? (
+      <View>
+        {exercises_weight.map((exercise, i) =>
+        <LastWorkoutItem
+          key={i}
+          exercise={exercise} />)}
+      </View>
+        ) : (
+          null
+        );
+
     return(
       <View>
-        {/* display the name of the workout, how many sets and its highest waight */}
-        <Text>{}</Text>
+        {display_workout_exercises_or_null}
       </View>
     );
 
@@ -162,7 +176,7 @@ class HomeWelcomeScreen extends React.Component {
 
     // console.log('last_workout', last_workout);
     // console.log('state', this.state.is_minimized);
-    this.displayLastWorkoutExercises();
+    // this.displayLastWorkoutExercises();
 
 
     const sorted_by_type = [];  // sorting all_exercises into an array of sectioned exercises in the order of the types variable
@@ -191,11 +205,16 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    console.log('sets?!?!', sorted_by_weight);
-
     return(
       <ScrollView>
         {display_last_workout}
+        <View
+          style={{
+            borderBottomColor: '#C7C7C7',
+            borderBottomWidth: 10,
+          }}
+        />
+        {this.displayLastWorkoutExercises()}
         {this.displayRecords(sorted_by_weight)}
         {/* put a line here
           */}
