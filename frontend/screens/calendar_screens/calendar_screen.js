@@ -47,13 +47,6 @@ class CalendarScreen extends React.Component {
 
     const { calendar_exercises, all_workouts } = this.props;
 
-    // console.log("calendarexers", calendar_exercises);
-    // console.log("workouts", all_workouts[5].created_at.slice(0, 9));
-
-    // console.log("dt", dt);
-    // console.log("daystring", day.dateString);
-    // console.log('just day', day);
-
     this.props.navigation.navigate("Selected Date", {
         date: day.dateString,
         header: `            ${months[day.month - 1]} ${day.day}, ${day.year} `,
@@ -97,19 +90,31 @@ class CalendarScreen extends React.Component {
     return(
       <ScrollView>
         <Calendar
-          current={'2021-09-01'}
           onDayPress={(day) => {this.directToSelectedDateScreen(this.props.navigation, day)}}
           onDayLongPress={(day) => {console.log('long press', day)}}
           markingType={'period'}
           markedDates={marked_dates}>
         </Calendar>
 
+
       <View style={{padding: 8, width: 100}}>
-        <View style={styles.legend_bubbles}>
-          <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'blue'}}>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={styles.legend_bubbles}>
+            <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'blue'}}>
+            </View>
+            <Text style={styles.legend_text}>Shoulders</Text>
           </View>
-          <Text style={styles.legend_text}>Shoulders</Text>
+
+          <View style={{paddingLeft: 15}}>
+          <View style={styles.legend_bubbles}>
+            <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'green'}}>
+            </View>
+            <Text style={styles.legend_text}>Legs</Text>
+          </View>
         </View>
+
+        </View>
+
 
         <View style={styles.legend_bubbles}>
           <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'yellow'}}>
@@ -127,12 +132,6 @@ class CalendarScreen extends React.Component {
           <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'red'}}>
           </View>
           <Text style={styles.legend_text}>Back</Text>
-        </View>
-
-        <View style={styles.legend_bubbles}>
-          <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'green'}}>
-          </View>
-          <Text style={styles.legend_text}>Legs</Text>
         </View>
 
       </View>

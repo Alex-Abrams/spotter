@@ -8,10 +8,12 @@ class LoadingScreen extends React.Component {
     super(props);
   }
 
+  // <Progress.Circle size={180} indeterminate={true} borderWidth={4} strokeCap={"square"} />
   render() {
     return(
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <ActivityIndicator size="large" color="blue" />
+        <ActivityIndicator size={95} color="blue" />
+
       </View>
     );
   }
