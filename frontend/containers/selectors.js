@@ -19,3 +19,5 @@ export const selectMostRecentWorkout = (state) => {
   return Object.values(state.entities.journal)[last];  // return the id of the last workout to request its info (exercises)
   //
 };
+
+export const selectIsLoading = state => (state.entities.loading)["is_loading"];

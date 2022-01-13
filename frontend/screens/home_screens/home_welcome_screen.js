@@ -6,6 +6,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
 import LastWorkoutTouchableItem from './last_workout_touchable_item';
 import LastWorkoutItem from './last_workout_item';
 import WorkoutRecords from './workout_records';
+import LoadingScreen from '../loading_screen';
 
 ////// FIX THE BOOLEANS ON DISPLAYING OR NOT, SHOULD ALL BE 1 THING
 
@@ -19,30 +20,39 @@ class HomeWelcomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    const { current_user, auth_token, most_recent_workout_id } = this.props;
+    const { current_user, auth_token, is_loading } = this.props;
+    this.props.loadingActions.loadingScreen();
+    // .then(() => this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token))
+    // .catch(error => console.log(error))
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
-    .catch(error => console.log(error))
+    .catch(error => console.log('ddd', error))
     .then(() => this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user.id, auth_token))
     .catch(error => console.log('zz', error))
 
     .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token))
     .catch(error => console.log('bb', error));
+    // .then(() => this.props.loadingActions.loadingComplete())
+    // .catch(error => console.log('tt', error))
 
+
+    // this.props.loadingActions.loadingComplete();
     this.props.navigation.navigate("Drawer");
-
   }
 
 
   displayLastWorkout(arrow_direction) { // display the users last workout {/* */}
-    const { last_workout } = this.props;
+    const { last_workout,  is_loading } = this.props;
+    // console.log('isloading: ', is_loading);
 
-    const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
-    const created_on = new Date(last_workout[0].created_at);
-    const ms_in_day = 24 * 60 * 60 * 1000;
-    created_on.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
-    const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
+      const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
+      // const created_on = new Date(last_workout[0].created_at);
+      const created_on = (last_workout.length > 0) ? new Date(last_workout[0].created_at) : new Date();
+      const ms_in_day = 24 * 60 * 60 * 1000;
+      created_on.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+      const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
+
 
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
       <View style={{flex: 1}}>
@@ -208,8 +218,8 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    return(
-      <ScrollView>
+    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (
+      <View>
         {display_last_workout}
         <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
         {this.displayLastWorkoutExercises()}
@@ -221,8 +231,23 @@ class HomeWelcomeScreen extends React.Component {
           />
         {/* put a line here
           */}
-      </ScrollView>
+      </View>
+    ) : (
+      <View>
+        <LoadingScreen />
+      </View>
     );
+
+    if(this.props.is_loading) {
+      return <LoadingScreen />
+    } else {
+      return(
+        <ScrollView>
+          {display_workouts_or_loadingbar}
+        </ScrollView>
+      );
+    };
+
   }
 }
 

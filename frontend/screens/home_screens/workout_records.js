@@ -12,22 +12,23 @@ class WorkoutRecords extends React.Component {
 
   render() {
     const { sorted_by_weight, current_user, all_exercises } = this.props;
+    console.log('currrrrentuser', current_user);
 
     const display_records_or_na = (all_exercises.length > 0) ? (
-      <View style={{backgroundColor: 'blue'}}>
-        <Text>Your Best Lifts</Text>
+      <View style={{paddingLeft: 12}}>
+        <Text style={{fontWeight: '800', fontSize: 18}}>{current_user.email} Best Lifts</Text>
           {/* find the heaviest of each category and use whatever name is listed
             Also get the last workout done, putting arms last since least exciting */}
-        <Text>Chest:</Text>
-          <Text>{sorted_by_weight[2].name} {sorted_by_weight[2].weight}</Text>
-        <Text>Shoulders:</Text>
-          <Text>{sorted_by_weight[1].name} {sorted_by_weight[1].weight}</Text>
-        <Text>Legs:</Text>
-          <Text>{sorted_by_weight[3].name} {sorted_by_weight[3].weight}</Text>
-        <Text>Back:</Text>
-          <Text>{sorted_by_weight[4].name} {sorted_by_weight[4].weight}</Text>
-        <Text>Arms:</Text>
-          <Text>{sorted_by_weight[0].name} {sorted_by_weight[0].weight}</Text>
+        <Text style={styles.text_labels}>Chest:</Text>
+          <Text>{sorted_by_weight[2].name} {sorted_by_weight[2].weight} lbs</Text>
+        <Text style={styles.text_labels}>Shoulders:</Text>
+          <Text>{sorted_by_weight[1].name} {sorted_by_weight[1].weight} lbs</Text>
+        <Text style={styles.text_labels}>Legs:</Text>
+          <Text>{sorted_by_weight[3].name} {sorted_by_weight[3].weight} lbs</Text>
+        <Text style={styles.text_labels}>Back:</Text>
+          <Text>{sorted_by_weight[4].name} {sorted_by_weight[4].weight} lbs</Text>
+        <Text style={styles.text_labels}>Arms:</Text>
+          <Text>{sorted_by_weight[0].name} {sorted_by_weight[0].weight} lbs</Text>
 
       </View>
     ) : (
@@ -45,5 +46,11 @@ class WorkoutRecords extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  text_labels: {
+    color: '#2E91D5',
+  }
+});
 
 export default WorkoutRecords;

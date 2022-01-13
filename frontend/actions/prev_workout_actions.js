@@ -3,6 +3,7 @@ export const RECEIVE_EXERCISES = "RECEIVE_EXERCISES";
 export const RECEIVE_COPIED_WORKOUT = "RECEIVE_COPIED_WORKOUT";
 export const RESET_JOURNAL_EXERCISES = "RESET_JOURNAL_EXERCISES";
 export const RESET_COPIED_JOURNAL_EXERCISES = 'RESET_COPIED_JOURNAL_EXERCISES';
+import {loadingComplete} from './loading_actions';
 
 export const receiveAllWorkouts = (workouts) => ({
   type: RECEIVE_ALL_WORKOUTS,
@@ -67,6 +68,7 @@ export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
     .then(
       json => dispatch(receiveExercises(json)),
       err => console.log("bottom requestAllWorkoutExercises", err),
-    );
+    )
+    .then(() => dispatch(loadingComplete()));
   }
 }
