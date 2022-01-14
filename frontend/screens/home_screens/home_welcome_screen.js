@@ -22,8 +22,7 @@ class HomeWelcomeScreen extends React.Component {
   componentDidMount() {
     const { current_user, auth_token, is_loading } = this.props;
     this.props.loadingActions.loadingScreen();
-    // .then(() => this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token))
-    // .catch(error => console.log(error))
+
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
     .catch(error => console.log('ddd', error))
@@ -32,11 +31,7 @@ class HomeWelcomeScreen extends React.Component {
 
     .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token))
     .catch(error => console.log('bb', error));
-    // .then(() => this.props.loadingActions.loadingComplete())
-    // .catch(error => console.log('tt', error))
 
-
-    // this.props.loadingActions.loadingComplete();
     this.props.navigation.navigate("Drawer");
   }
 
@@ -45,13 +40,23 @@ class HomeWelcomeScreen extends React.Component {
     const { last_workout,  is_loading } = this.props;
     // console.log('isloading: ', is_loading);
 
-      const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
-      // const created_on = new Date(last_workout[0].created_at);
-      const created_on = (last_workout.length > 0) ? new Date(last_workout[0].created_at) : new Date();
-      const ms_in_day = 24 * 60 * 60 * 1000;
-      created_on.setHours(0, 0, 0, 0);
-      today.setHours(0, 0, 0, 0);
-      const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
+    const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
+    // const created_on = new Date(last_workout[0].created_at);
+    const created_on = (last_workout.length > 0) ? new Date(last_workout[0].created_at) : new Date();
+    const ms_in_day = 24 * 60 * 60 * 1000;
+    created_on.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
+
+    let display_days_since_last_workout = null;
+    const last_wo_ex_section = (last_workout.length > 0) ? (last_workout[0].exercise_section) : null;  // for some reason this is the only function on this page that does not wait for anything to load despite is_loading being true 
+    if(days_since === 0) {
+      display_days_since_last_workout = (<Text style={{fontSize: 15}}>{last_wo_ex_section} Today</Text>);
+    } else if(days_since === 1) {
+      display_days_since_last_workout = (<Text style={{fontSize: 15}}>{last_wo_ex_section} 1 day ago</Text>);
+    } else {
+      display_days_since_last_workout = (<Text style={{fontSize: 15}}>{last_wo_ex_section} {days_since} days ago</Text>);
+    };
 
 
     const display_last_workout_or_na = (last_workout.length > 0) ? ( // last workout needs to have at least 1 exercise to display
@@ -64,7 +69,7 @@ class HomeWelcomeScreen extends React.Component {
           <View style={{flex: 1, flexDirection: 'row' , justifyContent: 'space-between', alignItems: 'center'}}>
             <View style={{paddingLeft: 12}}>
               <Text style={{fontSize: 22}}>Previous Workout</Text>
-              <Text style={{fontSize: 15}}>Legs {days_since} days ago</Text>
+              { display_days_since_last_workout }
             </View>
 
             <View style={{alignContent: 'flex-end'}}>

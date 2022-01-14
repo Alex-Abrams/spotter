@@ -6,71 +6,74 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create!(name: 'guest', password: 'password', password_confirmation: 'password', email: 'guest@guest.com')
+user1 = User.create!(username: 'rumpus', password: 'password', password_confirmation: 'password', email: 'tomhardy')
+# user2 = User.create!(username: 'rumpus', password: 'password', password_confirmation: 'password', email: 'tomhardy')
+# user2 = User.create!(name: 'rumpusrunes', password: 'password', password_confirmation: 'password', email: 'guest@guest.com')
+
 
 #workouts
 
 # "2021-05-05T20:29:52.759Z"
 workout_1 = Workout.create(user_id: user1.id, exercise_section: "Legs") # #
-workout_1.update_attribute :created_at, Time.new(2022, 2, 9); ## Year, Month, Day
+workout_1.update_attribute :created_at, Time.new(2021, 12, 16); ## Year, Month, Day
 
 workout_2 = Workout.create(user_id: user1.id, exercise_section: "Arms") # #
-workout_2.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_2.update_attribute :created_at, Time.new(2021, 12, 17);
 
 workout_3 = Workout.create(user_id: user1.id, exercise_section: "Back") # #
-workout_3.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_3.update_attribute :created_at, Time.new(2021, 12, 18);
 
 workout_4 = Workout.create(user_id: user1.id, exercise_section: "Chest")# #
-workout_4.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_4.update_attribute :created_at, Time.new(2021, 12, 27);
 
 workout_5 = Workout.create(user_id: user1.id, exercise_section: "Shoulders") #
-workout_5.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_5.update_attribute :created_at, Time.new(2021, 12, 28);
 
 workout_6 = Workout.create(user_id: user1.id, exercise_section: "Legs") #
-workout_6.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_6.update_attribute :created_at, Time.new(2021, 12, 29);
 
 workout_7 = Workout.create(user_id: user1.id, exercise_section: "Arms") #
-workout_7.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_7.update_attribute :created_at, Time.new(2021, 12, 30);
 
 
 workout_8 = Workout.create(user_id: user1.id, exercise_section: "Back") #
 workout_8.update_attribute :created_at, Time.new(2022, 1, 1);
 
 workout_9 = Workout.create(user_id: user1.id, exercise_section: "Chest") #
-workout_9.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_9.update_attribute :created_at, Time.new(2022, 1, 2);
 
 workout_10 = Workout.create(user_id: user1.id, exercise_section: "Shoulders") #
-workout_10.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_10.update_attribute :created_at, Time.new(2022, 1, 3);
 
 workout_11 = Workout.create(user_id: user1.id, exercise_section: "Legs") #
-workout_11.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_11.update_attribute :created_at, Time.new(2022, 1, 4);
 
 workout_12 = Workout.create(user_id: user1.id, exercise_section: "Arms") #
-workout_12.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_12.update_attribute :created_at, Time.new(2022, 1, 5);
 
 workout_13 = Workout.create(user_id: user1.id, exercise_section: "Back") #
-workout_13.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_13.update_attribute :created_at, Time.new(2022, 1, 6);
 
 workout_14 = Workout.create(user_id: user1.id, exercise_section: "Chest") #
-workout_14.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_14.update_attribute :created_at, Time.new(2022, 1, 7);
 
 workout_15 = Workout.create(user_id: user1.id, exercise_section: "Shoulders") #
-workout_15.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_15.update_attribute :created_at, Time.new(2022, 1, 8);
 
 workout_16 = Workout.create(user_id: user1.id, exercise_section: "Legs")
-workout_16.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_16.update_attribute :created_at, Time.new(2022, 1, 9);
 
 workout_17 = Workout.create(user_id: user1.id, exercise_section: "Arms")
-workout_17.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_17.update_attribute :created_at, Time.new(2022, 1, 10);
 
 workout_18 = Workout.create(user_id: user1.id, exercise_section: "Back")
-workout_18.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_18.update_attribute :created_at, Time.new(2022, 1, 11);
 
 workout_19 = Workout.create(user_id: user1.id, exercise_section: "Chest")
-workout_19.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_19.update_attribute :created_at, Time.new(2022, 1, 12);
 
 workout_20 = Workout.create(user_id: user1.id, exercise_section: "Shoulders")
-workout_20.update_attribute :created_at, Time.new(2022, 1, 1);
+workout_20.update_attribute :created_at, Time.new(2022, 1, 13);
 
 #reps_weights
 ##############################
