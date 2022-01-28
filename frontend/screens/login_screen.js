@@ -6,9 +6,6 @@ import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './splash_screen';
 
-//
-
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +16,6 @@ class Login extends React.Component {
       token: '',
     };
   }
-
 
   _storeEmail = async (email) => {
     try {
@@ -44,7 +40,6 @@ class Login extends React.Component {
   }
 };
 
-
 userLogout = async () => {  //
   try {
     let keys = ['token', 'email'];
@@ -55,7 +50,6 @@ userLogout = async () => {  //
     console.log("userLogout: ", error);
   }
 };
-
 
 // ----------------------------------------------------------------------
 
@@ -100,7 +94,6 @@ userLogout = async () => {  //
       )
     );
   }
-
 
 
   logoutButton() {

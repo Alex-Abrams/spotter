@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import { AsyncStorage, Navigator } from 'react-native';
 
 import LoginContainer from './login_screen_container';
-import HomeContainer from '../containers/home_container';
 import SignupContainer from './signup_container';
 import SplashScreen from '../screens/splash_screen';
 import SelectWorkout from '../screens/select_workout'; // select workout body part

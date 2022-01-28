@@ -8,8 +8,8 @@ import LastWorkoutItem from './last_workout_item';
 import WorkoutRecords from './workout_records';
 import LoadingScreen from '../loading_screen';
 
-////// FIX THE BOOLEANS ON DISPLAYING OR NOT, SHOULD ALL BE 1 THING
 
+//// this will be exported to home_screen
 class HomeWelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ class HomeWelcomeScreen extends React.Component {
     const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
 
     let display_days_since_last_workout = null;
-    const last_wo_ex_section = (last_workout.length > 0) ? (last_workout[0].exercise_section) : null;  // for some reason this is the only function on this page that does not wait for anything to load despite is_loading being true 
+    const last_wo_ex_section = (last_workout.length > 0) ? (last_workout[0].exercise_section) : null;  // for some reason this is the only function on this page that does not wait for anything to load despite is_loading being true
     if(days_since === 0) {
       display_days_since_last_workout = (<Text style={{fontSize: 15}}>{last_wo_ex_section} Today</Text>);
     } else if(days_since === 1) {

@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   has_secure_password
 
+validates :email, uniqueness: true
+validates :username, uniqueness: true
+
+
   extend FriendlyId
   friendly_id :email, use: :slugged
-
-  # def to_param
-  #   email
-  # end
 
   has_many :workouts,
     primary_key: :id,

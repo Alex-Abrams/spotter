@@ -10,7 +10,7 @@ import {
 } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 // import HomeWelcomeScreen from '../screens/home_welcome_screen';
-import HomeContainer from '../containers/home_container';
+
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import WorkoutNav from '../containers/workout_navigator';

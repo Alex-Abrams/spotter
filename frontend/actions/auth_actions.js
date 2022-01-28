@@ -6,6 +6,8 @@ export const REQUEST_EMAIL = "REQUEST_EMAIL";
 export const LOAD_SPLASH_SCREEN = "LOAD_SPLASH_SCREEN";
 export const RECEIVE_AUTH_TOKEN_SPINNER = "RECEIVE_AUTH_TOKEN_SPINNER";
 export const RECEIVE_ERROR = "RECEIVE_ERROR";
+export const RECEIVE_SIGN_UP_ERROR = "RECEIVE_SIGN_UP_ERROR";
+
 import fetch from 'cross-fetch';
 import { AsyncStorage } from 'react-native';
 
@@ -18,11 +20,6 @@ export const loadSplashScreen = (splash_screen) => ({
 export const logoutCurrentUser = () => ({
   type: LOGOUT_USER,
 }); // the new stuff
-
-// export const receiveCurrentUser = currentUser => ({
-//   type: RECEIVE_CURRENT_USER,
-//   currentUser
-// });
 
 export const receiveAuthToken = auth_token => ({
   type: RECEIVE_AUTH_TOKEN,
@@ -40,12 +37,6 @@ export const isLoggedIn = loggedIn => ({
   loggedIn
 });
 
-// delete later not used
-// export const requestUserInfo = currentUser => ({
-//   type: REQEUST_USER_INFO,
-//   currentUser
-// });
-
 export const requestEmail = email => ({
   type: REQUEST_EMAIL,
   email,
@@ -53,6 +44,11 @@ export const requestEmail = email => ({
 
 export const receiveError = error => ({
   type: RECEIVE_ERROR,
+  error
+});
+
+export const receiveSignUpError = error => ({
+  type: RECEIVE_SIGN_UP_ERROR,
   error
 });
 
@@ -108,8 +104,6 @@ export function getThatToken(email, password) {
   }
 }
 
-
-///
 /// sign UP function
 export function signupUser(email, password, password_confirmation) {
   return function action(dispatch) {
@@ -129,10 +123,13 @@ export function signupUser(email, password, password_confirmation) {
 
 
     return request.then(
-      response => {if (response.status !== 200) {
-        dispatch(receiveError("An error occured"))};
+      // response => {if (response.status !== 200) {
+      response => {if (response.status === 422) {
+        // console.log('response erro!!!! =>>>', response);
+        // dispatch(receiveError("An error occured"))};
+        dispatch(receiveError('Username or Email Taken'))};
       },
-      err => console.log("singupUser test failed")
+      err => dispatch(receiveError('signup failed'))
     );
   }
 }
