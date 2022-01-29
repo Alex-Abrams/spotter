@@ -42,7 +42,7 @@ export const clearAllLiftsAndSets = () => ({
           reps: `${set.reps}`,
           weight: `${set.weight}`,
           exercise_section: `${set.exercise_section}`,
-          workout_id: `${workout_id}`
+          workout_id: `${workout_id}`,
         })
       }));
 
@@ -76,10 +76,10 @@ export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE I
       err => console.log("response.json erro ><", err)
     )
     .then(
-      // postLiftsAndSets(liftsAndSets, workout_id, auth_token)
+
       // json => console.log("great post Workout Success", json.id),
-        // so the postLiftsAndSets needs to happen here with Promiseall
-        // which means postWorkout will need to take the liftsAndSets argument
+        // so the poostLiftsAndSets needs to happen here with Promiseall
+        // which means postWorkt will need to take the liftsAndSets argument
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
         //needs to reset the store
@@ -89,7 +89,7 @@ export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE I
         // // dispatch(/)
         // dispatch(clearAllLiftsAndSets());
       },
-      err => console.log("postWorkout post error :()", err)
+      err => console.log("postWorkot post error :()", err)
     );
 
   }

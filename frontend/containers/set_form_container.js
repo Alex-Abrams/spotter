@@ -8,6 +8,7 @@ import { selectAllLifts, selectAllSets } from './selectors';
 const mapStateToProps = state => ({
   sets: selectAllSets(state),
   lifts: selectAllLifts(state),
+  current_user: Object.values(state.entities.users)[0],
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -27,12 +27,20 @@ class HomeWelcomeScreen extends React.Component {
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
     .catch(error => console.log('ddd', error))
     .then(() => this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user.id, auth_token))
+    // .then(() => console.log("THIS ID???", this.props.current_user.id))
     .catch(error => console.log('zz', error))
 
     .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token))
     .catch(error => console.log('bb', error));
 
     this.props.navigation.navigate("Drawer");
+
+    // this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token).then(user => {
+    //   if( 5 > 3) {console.log('shitbal;ls')};
+    // }, error => {
+    //   console.log('zzzz');
+    // }
+    // );
   }
 
 

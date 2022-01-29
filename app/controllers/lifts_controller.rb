@@ -5,7 +5,7 @@ class LiftsController < ApplicationController
     # render json: @lifts
 
     if params[:workout_id] == "all_lifts"
-      @lifts = Lift.all
+      @lifts = Lift.where("user_id = ?", params[:user_id])
       render json: @lifts
     else
       @lifts = Lift.where("workout_id = ?", params[:workout_id])
@@ -36,6 +36,6 @@ class LiftsController < ApplicationController
   private
 
   def lift_params
-    params.require(:lift).permit(:workout_id, :weight, :reps, :exercise_section, :name)
+    params.require(:lift).permit(:workout_id, :weight, :reps, :exercise_section, :name, :user_id)
   end
 end

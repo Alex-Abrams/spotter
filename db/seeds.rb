@@ -81,75 +81,75 @@ workout_20.update_attribute :created_at, Time.new(2022, 1, 13);
 prng = Random.new
 ### Legs
 3.times do
-  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats")
+  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats", user_id: user1.id)
   x.created_at = workout_1.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts")
+  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts", user_id: user1.id)
   x.created_at = workout_1.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges")
+  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges", user_id: user1.id)
   x.created_at = workout_1.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises")
+  x = Lift.create(workout_id: workout_1.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises", user_id: user1.id)
   x.created_at = workout_1.created_at
   x.save
 end
 
 ### Arms
 3.times do
-  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls")
+  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls", user_id: user1.id)
   x.created_at = workout_2.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press")
+  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press", user_id: user1.id)
   x.created_at = workout_2.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls")
+  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls", user_id: user1.id)
   x.created_at = workout_2.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers")
+  x = Lift.create(workout_id: workout_2.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers", user_id: user1.id)
   x.created_at = workout_2.created_at
   x.save
 end
 
 ### Back
 3.times do
-  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts")
+  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts", user_id: user1.id)
   x.created_at = workout_3.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns")
+  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns", user_id: user1.id)
   x.created_at = workout_3.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)")
+  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)", user_id: user1.id)
   x.created_at = workout_3.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups")
+  x = Lift.create(workout_id: workout_3.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups", user_id: user1.id)
   x.created_at = workout_3.created_at
   x.save
 end
@@ -157,125 +157,125 @@ end
 
 ### Chest
 3.times do
-  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press")
+  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press", user_id: user1.id)
   x.created_at = workout_4.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies")
+  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies", user_id: user1.id)
   x.created_at = workout_4.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press")
+  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press", user_id: user1.id)
   x.created_at = workout_4.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press")
+  x = Lift.create(workout_id: workout_4.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press", user_id: user1.id)
   x.created_at = workout_4.created_at
   x.save
 end
 
 ### Shoulders
 3.times do
-  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press")
+  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press", user_id: user1.id)
   x.created_at = workout_5.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows")
+  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows", user_id: user1.id)
   x.created_at = workout_5.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press")
+  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press", user_id: user1.id)
   x.created_at = workout_5.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs")
+  x = Lift.create(workout_id: workout_5.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs", user_id: user1.id)
   x.created_at = workout_5.created_at
   x.save
 end
 
  ## back
 3.times do
-  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats")
+  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats", user_id: user1.id)
   x.created_at = workout_6.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts")
+  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts", user_id: user1.id)
   x.created_at = workout_6.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges")
+  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges", user_id: user1.id)
   x.created_at = workout_6.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises")
+  x = Lift.create(workout_id: workout_6.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises", user_id: user1.id)
   x.created_at = workout_6.created_at
   x.save
 end
 
 ### Arms
 3.times do
-  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls")
+  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls", user_id: user1.id)
   x.created_at = workout_7.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press")
+  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press", user_id: user1.id)
   x.created_at = workout_7.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls")
+  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls", user_id: user1.id)
   x.created_at = workout_7.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers")
+  x = Lift.create(workout_id: workout_7.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers", user_id: user1.id)
   x.created_at = workout_7.created_at
   x.save
 end
 
 ### Back
 3.times do
-  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts")
+  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts", user_id: user1.id)
   x.created_at = workout_8.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns")
+  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns", user_id: user1.id)
   x.created_at = workout_8.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)")
+  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)", user_id: user1.id)
   x.created_at = workout_8.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups")
+  x = Lift.create(workout_id: workout_8.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups", user_id: user1.id)
   x.created_at = workout_8.created_at
   x.save
 end
@@ -283,125 +283,125 @@ end
 
 ### Chest
 3.times do
-  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press")
+  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press", user_id: user1.id)
   x.created_at = workout_9.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies")
+  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies", user_id: user1.id)
   x.created_at = workout_9.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press")
+  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press", user_id: user1.id)
   x.created_at = workout_9.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press")
+  x = Lift.create(workout_id: workout_9.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press", user_id: user1.id)
   x.created_at = workout_9.created_at
   x.save
 end
 
 ### Shoulders
 3.times do
-  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press")
+  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press", user_id: user1.id)
   x.created_at = workout_10.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows")
+  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows", user_id: user1.id)
   x.created_at = workout_10.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press")
+  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press", user_id: user1.id)
   x.created_at = workout_10.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs")
+  x = Lift.create(workout_id: workout_10.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs", user_id: user1.id)
   x.created_at = workout_10.created_at
   x.save
 end
 
 ### Legs
 3.times do
-  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats")
+  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats", user_id: user1.id)
   x.created_at = workout_11.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts")
+  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts", user_id: user1.id)
   x.created_at = workout_11.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges")
+  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges", user_id: user1.id)
   x.created_at = workout_11.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises")
+  x = Lift.create(workout_id: workout_11.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises", user_id: user1.id)
   x.created_at = workout_11.created_at
   x.save
 end
 
 ### Arms
 3.times do
-  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls")
+  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls", user_id: user1.id)
   x.created_at = workout_12.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press")
+  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press", user_id: user1.id)
   x.created_at = workout_12.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls")
+  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls", user_id: user1.id)
   x.created_at = workout_12.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers")
+  x = Lift.create(workout_id: workout_12.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers", user_id: user1.id)
   x.created_at = workout_12.created_at
   x.save
 end
 
 ### Back
 3.times do
-  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts")
+  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts", user_id: user1.id)
   x.created_at = workout_13.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns")
+  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns", user_id: user1.id)
   x.created_at = workout_13.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)")
+  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)", user_id: user1.id)
   x.created_at = workout_13.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups")
+  x = Lift.create(workout_id: workout_13.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups", user_id: user1.id)
   x.created_at = workout_13.created_at
   x.save
 end
@@ -409,125 +409,125 @@ end
 
 ### Chest
 3.times do
-  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press")
+  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press", user_id: user1.id)
   x.created_at = workout_14.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies")
+  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies", user_id: user1.id)
   x.created_at = workout_14.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press")
+  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press", user_id: user1.id)
   x.created_at = workout_14.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press")
+  x = Lift.create(workout_id: workout_14.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press", user_id: user1.id)
   x.created_at = workout_14.created_at
   x.save
 end
 
 ### Shoulders
 3.times do
-  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press")
+  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press", user_id: user1.id)
   x.created_at = workout_15.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows")
+  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows", user_id: user1.id)
   x.created_at = workout_15.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press")
+  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press", user_id: user1.id)
   x.created_at = workout_15.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs")
+  x = Lift.create(workout_id: workout_15.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs", user_id: user1.id)
   x.created_at = workout_15.created_at
   x.save
 end
 
  ## back
 3.times do
-  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats")
+  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Squats", user_id: user1.id)
   x.created_at = workout_16.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts")
+  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "DeadLifts", user_id: user1.id)
   x.created_at = workout_16.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges")
+  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Lunges", user_id: user1.id)
   x.created_at = workout_16.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises")
+  x = Lift.create(workout_id: workout_16.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Legs", name: "Calf Raises", user_id: user1.id)
   x.created_at = workout_16.created_at
   x.save
 end
 
 ### Arms
 3.times do
-  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls")
+  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Dumbbell Curls", user_id: user1.id)
   x.created_at = workout_17.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press")
+  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Tricep Press", user_id: user1.id)
   x.created_at = workout_17.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls")
+  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Reverse Curls", user_id: user1.id)
   x.created_at = workout_17.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers")
+  x = Lift.create(workout_id: workout_17.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Arms", name: "Skull Crushers", user_id: user1.id)
   x.created_at = workout_17.created_at
   x.save
 end
 
 ### Back
 3.times do
-  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts")
+  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Deadlifts", user_id: user1.id)
   x.created_at = workout_18.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns")
+  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Lateral Pulldowns", user_id: user1.id)
   x.created_at = workout_18.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)")
+  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Seated Cable Row (Close Grip)", user_id: user1.id)
   x.created_at = workout_18.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups")
+  x = Lift.create(workout_id: workout_18.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Back", name: "Pullups", user_id: user1.id)
   x.created_at = workout_18.created_at
   x.save
 end
@@ -535,50 +535,50 @@ end
 
 ### Chest
 3.times do
-  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press")
+  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Bench Press", user_id: user1.id)
   x.created_at = workout_19.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies")
+  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Dumbell Flies", user_id: user1.id)
   x.created_at = workout_19.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press")
+  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Incline Bench Press", user_id: user1.id)
   x.created_at = workout_19.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press")
+  x = Lift.create(workout_id: workout_19.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Chest", name: "Decline Bench Press", user_id: user1.id)
   x.created_at = workout_19.created_at
   x.save
 end
 
 ### Shoulders
 3.times do
-  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press")
+  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Military Press", user_id: user1.id)
   x.created_at = workout_20.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows")
+  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Upright Rows", user_id: user1.id)
   x.created_at = workout_20.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press")
+  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Seated Shoulder Press", user_id: user1.id)
   x.created_at = workout_20.created_at
   x.save
 end
 
 3.times do
-  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs")
+  x = Lift.create(workout_id: workout_20.id, weight: prng.rand(50...200), reps: prng.rand(5...15), exercise_section: "Shoulders", name: "Shrugs", user_id: user1.id)
   x.created_at = workout_20.created_at
   x.save
 end

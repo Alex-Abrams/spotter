@@ -6,16 +6,9 @@
 // t.datetime "updated_at", null: false
 // t.string "exercise_section"
 
-// export const createLiftSet = (singleLiftSet, workout_id, auth_token) => {
-//   return fetch()
-// }
 import fetch from 'cross-fetch';
 
 export function postLiftsAndSets(liftsAndSets, workout_id, auth_token) {
-   // i think for testing just use an actual user id and workout id
-   // console.log(Object.values(liftsAndSets));
-   // console.log(liftsAndSets);
-   // console.log("hello!");
    let promises = [];
    console.log("liftsAndSets", liftsAndSets);
    liftsAndSets.forEach(set => {
@@ -36,9 +29,5 @@ export function postLiftsAndSets(liftsAndSets, workout_id, auth_token) {
        })
      }));
 
-     // promise all the promise array liftsAndSets
-     //
-     // return promises;
-     console.log(promises);
    });
  }

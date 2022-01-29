@@ -12,4 +12,10 @@ validates :username, uniqueness: true
     primary_key: :id,
     foreign_key: :user_id,
     class_name: :Workout
+
+  has_many :lifts,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Lift
+
 end
