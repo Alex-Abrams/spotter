@@ -43,8 +43,10 @@ class Login extends React.Component {
 userLogout = async () => {  //
   try {
     let keys = ['token', 'email'];
-    await AsyncStorage.multiRemove(keys);
-    this.props.authActions.logoutCurrentUser();
+    // await AsyncStorage.multiRemove(keys);
+    // this.props.authActions.logoutCurrentUser();
+    await AsyncStorage.multiRemove(keys)
+    .then(() => this.props.authActions.logoutCurrentUser());
   } catch (error) {
     // Error saving data
     console.log("userLogout: ", error);

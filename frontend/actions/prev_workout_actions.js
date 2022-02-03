@@ -63,10 +63,12 @@ export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
 
     return request.then(
       response => response.json(),
+      // response => console.log('response', response.json()),
       err => console.log("top requestAllWorkoutExercises error", err),
     )
     .then(
       json => dispatch(receiveExercises(json)),
+      // json => console.log('just json12?!?!', json),
       err => console.log("bottom requestAllWorkoutExercises", err),
     )
     .then(() => dispatch(loadingComplete()));

@@ -6,7 +6,7 @@ import * as prevWorkoutActions from '../actions/prev_workout_actions.js';
 import * as chartActions from '../actions/chart_actions';
 import * as loadingActions from '../actions/loading_actions';
 import HomeWelcomeScreen from '../screens/home_screens/home_welcome_screen';
-import { selectAllChartExercises, selectMostRecentWorkout, selectAllPrevExercises, selectIsLoading } from './selectors';
+import { selectAllChartExercises, selectMostRecentWorkout, selectAllPrevExercises, selectIsLoading, selectAllWorkouts } from './selectors';
 
 const mapStateToProps = state => ({
   loggedIn: state.authentication.loggedIn,
@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   most_recent_workout_id: selectMostRecentWorkout(state), // this will give us the last workout to display on home page
   last_workout: selectAllPrevExercises(state),  // the exercises associated with the above workout id, (most_recent_workout_id)
   is_loading: selectIsLoading(state),
+  journal: selectAllWorkouts(state),
 });
 
 const mapDispatchToProps = dispatch => ({

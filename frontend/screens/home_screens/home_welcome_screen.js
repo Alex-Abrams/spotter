@@ -20,27 +20,27 @@ class HomeWelcomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    const { current_user, auth_token, is_loading } = this.props;
+    const { current_user, auth_token, is_loading, journal, all_exercises } = this.props;
     this.props.loadingActions.loadingScreen();
+    // this.props.prevWorkoutActions.requestAllWorkoutExercises(1, 1, auth_token);
 
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
-    .catch(error => console.log('ddd', error))
+    .catch(error => console.log('111', error))
     .then(() => this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user.id, auth_token))
     // .then(() => console.log("THIS ID???", this.props.current_user.id))
-    .catch(error => console.log('zz', error))
+    .catch(error => console.log('222', error))
+    .then((workout_list) => {
+      if(workout_list.workouts.length > 1) {
+        this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token)
+      } else {
+        this.props.loadingActions.loadingComplete();
+      }
+    })
 
-    .then((workout_list) => this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token))
-    .catch(error => console.log('bb', error));
+    .catch(error => console.log('333', error));
 
     this.props.navigation.navigate("Drawer");
-
-    // this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token).then(user => {
-    //   if( 5 > 3) {console.log('shitbal;ls')};
-    // }, error => {
-    //   console.log('zzzz');
-    // }
-    // );
   }
 
 
@@ -231,7 +231,7 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (
+    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (  // Cahning this from display workouts or display new user 
       <View>
         {display_last_workout}
         <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
@@ -247,7 +247,7 @@ class HomeWelcomeScreen extends React.Component {
       </View>
     ) : (
       <View>
-        <LoadingScreen />
+        <Text>hnnng</Text>
       </View>
     );
 

@@ -12,7 +12,6 @@ class WorkoutRecords extends React.Component {
 
   render() {
     const { sorted_by_weight, current_user, all_exercises } = this.props;
-    console.log('currrrrentuser', current_user);
 
     const display_records_or_na = (all_exercises.length > 0) ? (
       <View style={{paddingLeft: 12}}>
