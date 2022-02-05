@@ -22,23 +22,24 @@ class HomeWelcomeScreen extends React.Component {
   componentDidMount() {
     const { current_user, auth_token, is_loading, journal, all_exercises } = this.props;
     this.props.loadingActions.loadingScreen();
-    // this.props.prevWorkoutActions.requestAllWorkoutExercises(1, 1, auth_token);
-
+    // These next store items need to load in carefully, to seperate the users with no workout data and the current users
     this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
     .catch(error => console.log('111', error))
+
     .then(() => this.props.prevWorkoutActions.requestAllWorkouts(this.props.current_user.id, auth_token))
-    // .then(() => console.log("THIS ID???", this.props.current_user.id))
     .catch(error => console.log('222', error))
+      // if the workout list is greater than one, then they definitly have workout information
     .then((workout_list) => {
       if(workout_list.workouts.length > 1) {
         this.props.prevWorkoutActions.requestAllWorkoutExercises(this.props.current_user.id, workout_list.workouts[workout_list.workouts.length - 1].id, auth_token)
       } else {
+        // loading complete is already called within requestAllWorkoutExercises above, so if they do not have workout info, then the loading circle will finish here
         this.props.loadingActions.loadingComplete();
       }
     })
-
     .catch(error => console.log('333', error));
+
 
     this.props.navigation.navigate("Drawer");
   }
@@ -46,10 +47,8 @@ class HomeWelcomeScreen extends React.Component {
 
   displayLastWorkout(arrow_direction) { // display the users last workout {/* */}
     const { last_workout,  is_loading } = this.props;
-    // console.log('isloading: ', is_loading);
 
     const today = new Date(); /// getting the difference in days since the last workout and today, ends with days_since
-    // const created_on = new Date(last_workout[0].created_at);
     const created_on = (last_workout.length > 0) ? new Date(last_workout[0].created_at) : new Date();
     const ms_in_day = 24 * 60 * 60 * 1000;
     created_on.setHours(0, 0, 0, 0);
@@ -157,45 +156,6 @@ class HomeWelcomeScreen extends React.Component {
 
   }
 
-
-  displayRecords(sorted_by_weight) { // dispays the all time records of each main exercise catagory
-    // if there is no information it will display something other than the current records
-    // make a new file for this
-    const { current_user, all_exercises } = this.props;
-
-    const display_records_or_na = (all_exercises.length > 0) ? (
-      <View style={{backgroundColor: 'blue'}}>
-        <Text>Your Best Lifts</Text>
-          {/* find the heaviest of each category and use whatever name is listed
-            Also get the last workout done, putting arms last since least exciting */}
-        <Text>Chest:</Text>
-          <Text>{sorted_by_weight[2].name} {sorted_by_weight[2].weight}</Text>
-        <Text>Shoulders:</Text>
-          <Text>{sorted_by_weight[1].name} {sorted_by_weight[1].weight}</Text>
-        <Text>Legs:</Text>
-          <Text>{sorted_by_weight[3].name} {sorted_by_weight[3].weight}</Text>
-        <Text>Back:</Text>
-          <Text>{sorted_by_weight[4].name} {sorted_by_weight[4].weight}</Text>
-        <Text>Arms:</Text>
-          <Text>{sorted_by_weight[0].name} {sorted_by_weight[0].weight}</Text>
-
-      </View>
-    ) : (
-      <View>
-        {/* this will show how to use the tab to the left, and that new workouts appear here */}
-        <Text>No workouts yet</Text>
-        <Text>New Workout Records Show up there</Text>
-      </View>
-    );
-
-    return(
-      <View>
-        {display_records_or_na}
-      </View>
-    );
-
-  }
-
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
 
@@ -231,7 +191,7 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (  // Cahning this from display workouts or display new user 
+    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (  // Cahning this from display workouts or display new user
       <View>
         {display_last_workout}
         <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>

@@ -8,47 +8,53 @@ class WorkoutRecords extends React.Component {
     super(props);
   }
 
-
+  displayRecords(sorted_by_weight) {
+    // const reversed_sorted_by_weight = sorted_by_weight.reverse();
+    const exercise_sections = [];
+    sorted_by_weight.forEach((exercise) => exercise_sections.push(exercise.exercise_section));
+    console.log(exercise_sections);
+    return(
+      <View style={styles.container}>
+        <View style={styles.records_header}>
+          <Text style={styles.records_header}>Heaviest Lift Records</Text>
+        </View>
+        {exercise_sections.map((section, i) =>
+          <View key={i} style={{paddingTop: 10}}>
+            <Text style={styles.text_labels}>{section}:</Text>
+            <Text>{sorted_by_weight[i].name} {sorted_by_weight[i].weight} lbs</Text>
+          </View>
+        )}
+      </View>
+    )
+  }
 
   render() {
     const { sorted_by_weight, current_user, all_exercises } = this.props;
 
-    const display_records_or_na = (all_exercises.length > 0) ? (
-      <View style={{paddingLeft: 12}}>
-        <Text style={{fontWeight: '800', fontSize: 18}}>{current_user.email} Best Lifts</Text>
-          {/* find the heaviest of each category and use whatever name is listed
-            Also get the last workout done, putting arms last since least exciting */}
-        <Text style={styles.text_labels}>Chest:</Text>
-          <Text>{sorted_by_weight[2].name} {sorted_by_weight[2].weight} lbs</Text>
-        <Text style={styles.text_labels}>Shoulders:</Text>
-          <Text>{sorted_by_weight[1].name} {sorted_by_weight[1].weight} lbs</Text>
-        <Text style={styles.text_labels}>Legs:</Text>
-          <Text>{sorted_by_weight[3].name} {sorted_by_weight[3].weight} lbs</Text>
-        <Text style={styles.text_labels}>Back:</Text>
-          <Text>{sorted_by_weight[4].name} {sorted_by_weight[4].weight} lbs</Text>
-        <Text style={styles.text_labels}>Arms:</Text>
-          <Text>{sorted_by_weight[0].name} {sorted_by_weight[0].weight} lbs</Text>
-
-      </View>
-    ) : (
-      <View>
-        {/* this will show how to use the tab to the left, and that new workouts appear here */}
-        <Text>No workouts yet</Text>
-        <Text>New Workout Records Show up there</Text>
-      </View>
-    );
+    // const display_records_or_no_records = (sorted_by_weight.length > 0) ? <
+    // make the no records thing first and import it here. 
 
     return(
       <View>
-        {display_records_or_na}
+        {this.displayRecords(sorted_by_weight)}
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingLeft: 12,
+  },
+  records_header: {
+    alignItems: 'center',
+    flex: 1,
+    fontSize: 20,
+    paddingTop: 8,
+  },
   text_labels: {
     color: '#2E91D5',
+    fontSize: 16,
   }
 });
 
