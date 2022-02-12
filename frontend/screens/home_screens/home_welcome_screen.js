@@ -7,7 +7,9 @@ import LastWorkoutTouchableItem from './last_workout_touchable_item';
 import LastWorkoutItem from './last_workout_item';
 import WorkoutRecords from './workout_records';
 import LoadingScreen from '../loading_screen';
+import NoWorkoutsScreen from './no_workouts_screen';
 
+import HomeScreenSwitch from './home_screen_switch';
 
 //// this will be exported to home_screen
 class HomeWelcomeScreen extends React.Component {
@@ -191,7 +193,7 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (  // Cahning this from display workouts or display new user
+    const display_workouts_or_loadingbar = (last_workout.length < 0) ? (  // Cahning this from display workouts or display new user
       <View>
         {display_last_workout}
         <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
@@ -207,7 +209,7 @@ class HomeWelcomeScreen extends React.Component {
       </View>
     ) : (
       <View>
-        <Text>hnnng</Text>
+        <HomeScreenSwitch />
       </View>
     );
 
