@@ -24,8 +24,9 @@ import SelectedDateContainer from './selected_date_container';
 import HomeWelcomeScreenContainer from './home_welcome_screen_container';
 
 //////
-import DrawerNav from '../navigators/sidebar_drawer_navigator';
+// import DrawerNav from '../navigators/sidebar_drawer_navigator';
 import DrawerNavContainer from './drawernav_container';
+import BottomTabNavigator from '../navigators/bottom_tab_navigator';
 
 import { Button } from 'react-native-elements';
 
@@ -91,7 +92,8 @@ class FarStack extends React.Component {
           <>
           <Stack.Screen name="Spotter" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
-
+          <Stack.Screen name="Bottom Tabs" component={BottomTabNavigator} options={{ headerShown: false }} navigation={this.props.navigation} />
+          
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
