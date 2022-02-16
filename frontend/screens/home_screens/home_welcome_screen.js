@@ -9,7 +9,6 @@ import WorkoutRecords from './workout_records';
 import LoadingScreen from '../loading_screen';
 import NoWorkoutsScreen from './no_workouts_screen';
 
-import HomeScreenSwitch from './home_screen_switch';
 
 //// this will be exported to home_screen
 class HomeWelcomeScreen extends React.Component {
@@ -209,7 +208,7 @@ class HomeWelcomeScreen extends React.Component {
       </View>
     ) : (
       <View>
-        <HomeScreenSwitch />
+        <NoWorkoutsScreen />
       </View>
     );
 
