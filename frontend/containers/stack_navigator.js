@@ -81,7 +81,7 @@ class FarStack extends React.Component {
   render() {
     const Stack = createStackNavigator();
 
-    const Drawer = createDrawerNavigator();
+    // const Drawer = createDrawerNavigator();
 
     const { loggedIn, splash_screen } = this.props;
 
@@ -90,14 +90,20 @@ class FarStack extends React.Component {
 
         {(loggedIn == true) ? (
           <>
-          <Stack.Screen name="Spotter" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
-          <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
-          <Stack.Screen name="Bottom Tabs" component={BottomTabNavigator} options={{ headerShown: false }} navigation={this.props.navigation} />
-          
+          {/*
+            <Stack.Screen name="Spotter" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
+            */}
+            <Stack.Screen name="Spotter"  options={{ headerShown: false }} component={BottomTabNavigator} navigation={this.props.navigation} />
+          {/*
+            <Stack.Screen name="BottomTabs" component={BottomTabNavigator} navigation={this.props.navigation} />
+            */}
+            <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
+
+
           <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
           {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav" */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
-          <Stack.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
+          <Stack.Screen name="Journal" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Previous Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
           <Stack.Screen name="Progress Charts" component={ChartMenuScreenContainer} navigation={this.props.navigation} />
           <Stack.Screen name="Calendar" component={CalendarScreenContainer} navigation={this.props.navigation} />

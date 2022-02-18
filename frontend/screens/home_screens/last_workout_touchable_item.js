@@ -11,7 +11,6 @@ class LastWorkoutTouchableItem extends React.Component {
 
   render(){
     const { last_workout } = this.props;
-    console.log(last_workout);
     return (
       <View>
         <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>

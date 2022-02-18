@@ -8,6 +8,8 @@ import LastWorkoutItem from './last_workout_item';
 import WorkoutRecords from './workout_records';
 import LoadingScreen from '../loading_screen';
 import NoWorkoutsScreen from './no_workouts_screen';
+///
+// import BottomTabNavigator from '../../navigators/bottom_tab_navigator';
 
 
 //// this will be exported to home_screen
@@ -42,8 +44,9 @@ class HomeWelcomeScreen extends React.Component {
     .catch(error => console.log('333', error));
 
 
-    this.props.navigation.navigate("Drawer");
-    // this.props.navigation.navigate("Bottom Tabs");
+    // this.props.navigation.navigate("Drawer");
+    // this.props.navigation.navigate("BottomTabs"); // problem here is cant use home
+
   }
 
 
@@ -158,9 +161,10 @@ class HomeWelcomeScreen extends React.Component {
 
   }
 
+
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
-
+    // this.props.navigation.navigate("Bottom Tabs");
 
     const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down"); //onclick chnages arrow from down to up
 

@@ -20,10 +20,10 @@ import ChartMenuScreenContainer from '../containers/chart_menu_screen_container'
 import CalendarScreenContainer from '../containers/calendar_screen_container';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 
+/// nesting the tabs into drawer and drawer into stack
+// import BottomTabNavigator from './sidebar_drawer_navigator';
 
 const Drawer = createDrawerNavigator();
-
-
 
 class DrawerNav extends React.Component {
   constructor(props) {
@@ -52,9 +52,13 @@ class DrawerNav extends React.Component {
             </DrawerContentScrollView>
           )
         }}>
+        {/*
+          <Drawer.Screen name="Spotter" component={BottomTabNavigator} />
+          */}
         <Drawer.Screen name="Spotter" component={HomeWelcomeScreenContainer} />
+
         <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
-        <Drawer.Screen name="Previous Workouts" component={PrevWorkoutScreenContainer} />
+        <Drawer.Screen name="Journal" component={PrevWorkoutScreenContainer} />
         <Drawer.Screen name="Progress Charts" component={ChartMenuScreenContainer} />
         <Drawer.Screen name="Calendar" component={CalendarScreenContainer} />
       </Drawer.Navigator>

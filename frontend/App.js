@@ -11,8 +11,7 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-// import { createStackNavigator } from 'react-navigation-stack';
+
 
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
@@ -20,17 +19,12 @@ import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import logger from 'redux-logger'
 import authReducer from './reducers/auth_reducer'; //
 import rootReducer from './reducers/root_reducer';
-// import LoginContainer from './containers/login_screen_container';
-// import Home from './screens/home_screen';
 
 import SplashScreen from './screens/splash_screen';  // loading screen
-
-
 import StackNavigatorContainer from './containers/stack_navigator_container';
-///////
-// import SideBar from './navigators/sidebar_drawer_navigator';
-import DrawerNav from './navigators/sidebar_drawer_navigator';
-/////
+
+import BottomTabNavigator from './navigators/bottom_tab_navigator';
+
 
 import * as Font from 'expo-font';
 
@@ -69,7 +63,8 @@ export default class App extends React.Component {
         // 'SimpleLineIcons': require('@expo/vector-icons/fonts/SimpleLineIcons.ttf'),
         'SimpleLineIcons': require('./android/app/src/main/assets/fonts/SimpleLineIcons.ttf'),
         'EvilIcons': require('./android/app/src/main/assets/fonts/EvilIcons.ttf'),
-        'FontAwesome.ttf': require('./android/app/src/main/assets/fonts/FontAwesome.ttf'),
+        'FontAwesome': require('./android/app/src/main/assets/fonts/FontAwesome.ttf'),
+        'MaterialCommunityIcons': require('./android/app/src/main/assets/fonts/MaterialCommunityIcons.ttf'),
       });
       this.setState({ fontsAreLoaded: true });
     } catch(error) {
@@ -88,7 +83,13 @@ export default class App extends React.Component {
     return (
       <Provider store={teststore}>
         <NavigationContainer>
-          <StackNavigatorContainer />
+          {/*
+            //trying to load through tabs now aapparently
+            //ok this works... ish the tabs are displayed at the login screen
+            // maybe if i use drawer here
+            <BottomTabNavigator />
+            */}
+            <StackNavigatorContainer />
         </NavigationContainer>
       </Provider>
     );

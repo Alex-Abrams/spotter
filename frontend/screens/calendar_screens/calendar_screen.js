@@ -27,7 +27,6 @@ class CalendarScreen extends React.Component {
   getDateAndExerciseSection() {
     // extract the date and section and put into an array
     const { all_workouts } = this.props;
-    // console.log("workoutsjourndndn", all_workouts);
     const date_section_array = [];
     all_workouts.forEach(exercise => {
       date_section_array.push({date: this.getYearMonthDay(exercise.created_at), section: exercise.exercise_section});
