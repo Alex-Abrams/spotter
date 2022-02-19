@@ -12,7 +12,7 @@ class JournalItem extends React.Component {
     super(props);
 
 
-  } 
+  }
 
 
   touchableNavToExercises({navigation}) {
@@ -31,7 +31,7 @@ class JournalItem extends React.Component {
         <TouchableHighlight
           style={{ height: 80 }}
           underlayColor="white"
-          onPress={() => {this.props.navigation.navigate("Previous Exercises", {
+          onPress={() => {this.props.navigation.navigate("Workout's Exercises", {
             workout_id: workout_id,
             user_id: user_id,
             the_day: the_day,

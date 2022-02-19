@@ -23,7 +23,9 @@ import rootReducer from './reducers/root_reducer';
 import SplashScreen from './screens/splash_screen';  // loading screen
 import StackNavigatorContainer from './containers/stack_navigator_container';
 
-import BottomTabNavigator from './navigators/bottom_tab_navigator';
+// import BottomTabNavigator from './navigators/bottom_tab_navigator';
+
+// import DrawerNavContainer from './navigators/bottom_tab_navigator';
 
 
 import * as Font from 'expo-font';
@@ -88,6 +90,7 @@ export default class App extends React.Component {
             //ok this works... ish the tabs are displayed at the login screen
             // maybe if i use drawer here
             <BottomTabNavigator />
+            <DrawerNavContainer />
             */}
             <StackNavigatorContainer />
         </NavigationContainer>

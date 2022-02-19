@@ -23,6 +23,9 @@ import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_contai
 /// nesting the tabs into drawer and drawer into stack
 // import BottomTabNavigator from './sidebar_drawer_navigator';
 
+// import StackNavigatorContainer from '../containers/stack_navigator_container';
+// import BottomTabNavigator from './bottom_tab_navigator';
+
 const Drawer = createDrawerNavigator();
 
 class DrawerNav extends React.Component {
@@ -43,6 +46,7 @@ class DrawerNav extends React.Component {
   };
 
   render() {
+    // <Drawer.Navigator initialRoute="Spotter" drawerContent={props =>
     return(
       <Drawer.Navigator initialRoute="Spotter" drawerContent={props => {
           return(
@@ -53,9 +57,9 @@ class DrawerNav extends React.Component {
           )
         }}>
         {/*
-          <Drawer.Screen name="Spotter" component={BottomTabNavigator} />
+          // this has been moved
           */}
-        <Drawer.Screen name="Spotter" component={HomeWelcomeScreenContainer} />
+          <Drawer.Screen name="Spotter" component={HomeWelcomeScreenContainer} />
 
         <Drawer.Screen name="Workouts" component={SelectWorkoutContainer} />
         <Drawer.Screen name="Journal" component={PrevWorkoutScreenContainer} />
