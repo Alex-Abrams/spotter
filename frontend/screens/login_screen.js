@@ -129,6 +129,7 @@ userLogout = async () => {  //
 
 
   render() {
+    console.log("hello from login?!?!");
     return(
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

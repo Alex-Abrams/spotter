@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View } from 'react-native';
-// import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { AsyncStorage } from 'react-native';
 import {
   createDrawerNavigator,
@@ -9,7 +9,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-// import HomeWelcomeScreen from '../screens/home_welcome_screen';
+
 
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
@@ -20,11 +20,6 @@ import ChartMenuScreenContainer from '../containers/chart_menu_screen_container'
 import CalendarScreenContainer from '../containers/calendar_screen_container';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 
-/// nesting the tabs into drawer and drawer into stack
-// import BottomTabNavigator from './sidebar_drawer_navigator';
-
-// import StackNavigatorContainer from '../containers/stack_navigator_container';
-// import BottomTabNavigator from './bottom_tab_navigator';
 
 const Drawer = createDrawerNavigator();
 

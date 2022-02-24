@@ -54,6 +54,9 @@ class CalendarScreen extends React.Component {
 
 
   render() {
+    //////
+    // console.log(this.props);
+    /////
 
       let marked_dates = {};
       const date_array = this.getDateAndExerciseSection(this.props.all_workouts);

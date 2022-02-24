@@ -15,22 +15,21 @@ import WorkoutNav from './workout_navigator';
 import PrevWorkoutScreenContainer from './prev_workout_screen_container';
 import ExercisesListContainer from './exercises_list_container';
 import ChartMenuScreenContainer from './chart_menu_screen_container';
-// import ChartScreenContainer from './chart_screen_container';s
+
 import CalendarScreenContainer from './calendar_screen_container';
 import SelectedDateContainer from './selected_date_container';
-// combine calendar screens and chart screens into 1 stack
 
-// import HomeWelcomeScreen from '../screens/home_welcome_screen';
+
+
 import HomeWelcomeScreenContainer from './home_welcome_screen_container';
 
 //////
-// import DrawerNav from '../navigators/sidebar_drawer_navigator';
+
 import DrawerNavContainer from './drawernav_container';
 import BottomTabNavigator from '../navigators/bottom_tab_navigator';
 
-import { Button } from 'react-native-elements';
 
-import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
+// import { receiveAuthToken, getThoseItems } from '../actions/auth_actions';
 
 
 class FarStack extends React.Component {
@@ -90,22 +89,9 @@ class FarStack extends React.Component {
 
         {(loggedIn == true) ? (
           <>
-          {/*
-            <Stack.Screen name="Spotter" component={HomeWelcomeScreenContainer} navigation={this.props.navigation} />
-            */}
-            {/*
-              // this one was moved
-              */}
-              <Stack.Screen name="Spotter"  options={{ headerShown: false }} component={BottomTabNavigator} navigation={this.props.navigation} />
-          {/*
-              // this one was moved
-            */}
-            <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
+          <Stack.Screen name="Spotter"  options={{ headerShown: false }} component={BottomTabNavigator} navigation={this.props.navigation} />
+          <Stack.Screen name="Drawer" component={DrawerNavContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
 
-
-          {/* "Workouts" is the BodyParts List that when clicked on, directs to "one of the bodyparts from WorkoutNav"
-            <Stack.Screen name="Workouts" component={SelectWorkoutContainer} navigation={this.props.navigation} />
-            */}
           <Stack.Screen name="WorkoutNav" options={{headerShown: false}} component={WorkoutNav} navigation={this.props.navigation} />
           {/* Workout's Exercises is when you click a workout in journal */}
           <Stack.Screen name="Journal" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />

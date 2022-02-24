@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 import PrevWorkoutScreenContainer from '../containers/prev_workout_screen_container';
 import SelectWorkoutContainer from '../containers/select_workout_container';
-import CalendarScreenContainer from '../containers/calendar_screen_container';
+// import CalendarScreenContainer from '../containers/calendar_screen_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 /////////
 // import StackNavigatorContainer from '../containers/stack_navigator_container';
-import DrawerNavContainer from '../containers/drawernav_container';
+// import DrawerNavContainer from '../containers/drawernav_container';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 ////////
@@ -16,11 +16,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 //// new imports
 import CalendarStackNavigator from './calendar_stack_navigator';
 import JournalStackNavigator from './journal_stack_navigator';
+import DrawerNavigatorContainer from '../containers/drawer_navigator_container';
 
 
 const Tab = createBottomTabNavigator();
 
-class BottomTabNavigator extends React.Component {
+class TabNavigator extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -33,7 +34,7 @@ class BottomTabNavigator extends React.Component {
         {/*
           <Tab.Screen name="Spotter" component={StackNavigatorContainer} navigation={this.props.navigation} />
           */}
-        <Tab.Screen name="Home" options={{ headerShown: false }} component={DrawerNavContainer}
+        <Tab.Screen name="Home" component={HomeWelcomeScreenContainer}
           navigation={this.props.navigation}
           options={{
             tabBarIcon: () => (
@@ -41,7 +42,7 @@ class BottomTabNavigator extends React.Component {
             )
           }} />
 
-        <Tab.Screen name="Journal" component={PrevWorkoutScreenContainer}
+        <Tab.Screen name="Journal" component={JournalStackNavigator}
           navigation={this.props.navigation}
           options={{
             tabBarIcon: () => (
@@ -65,7 +66,7 @@ class BottomTabNavigator extends React.Component {
             )
           }} />
 
-        <Tab.Screen name="Calendar" component={CalendarScreenContainer}
+        <Tab.Screen name="Calendar" component={CalendarStackNavigator}
           navigation={this.props.navigation}
           options={{
             tabBarIcon: () => (
@@ -76,3 +77,5 @@ class BottomTabNavigator extends React.Component {
     );
   }
 }
+
+export default TabNavigator;

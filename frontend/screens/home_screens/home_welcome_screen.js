@@ -164,7 +164,7 @@ class HomeWelcomeScreen extends React.Component {
 
   render() {
     const { current_user, all_exercises, last_workout } = this.props;
-    // this.props.navigation.navigate("Bottom Tabs");
+
 
     const display_last_workout = (this.state.is_minimized) ? this.displayLastWorkout("chevron-up") : this.displayLastWorkout("chevron-down"); //onclick chnages arrow from down to up
 
