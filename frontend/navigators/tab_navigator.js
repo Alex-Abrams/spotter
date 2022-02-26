@@ -34,7 +34,7 @@ class TabNavigator extends React.Component {
         {/*
           <Tab.Screen name="Spotter" component={StackNavigatorContainer} navigation={this.props.navigation} />
           */}
-        <Tab.Screen name="Home" component={HomeWelcomeScreenContainer}
+        <Tab.Screen name="HomeTab" component={HomeWelcomeScreenContainer}
           navigation={this.props.navigation}
           options={{
             tabBarIcon: () => (

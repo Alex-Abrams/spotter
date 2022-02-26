@@ -67,4 +67,4 @@ class BottomTabNavigator extends React.Component {
   }
 }
 
-export default BottomTabNavigator;
+// export default BottomTabNavigator;

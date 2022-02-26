@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -30,6 +30,9 @@ import MainStackNavigatorContainer from './containers/main_stack_navigator_conta
 
 // new try
 import DrawerNavigatorContainer from './containers/drawer_navigator_container';
+
+//
+import DrawerScreenNavigatorContainer from './containers/drawer_screen_navigator_container';
 
 
 import * as Font from 'expo-font';
@@ -86,9 +89,13 @@ export default class App extends React.Component {
       return <SplashScreen />
     };
 
+    const navigationRef = React.createRef();
+    const nav = () => navigationRef.current;
+    // console.log("navreg", navigationRef);
+
     return (
       <Provider store={teststore}>
-        <NavigationContainer>
+        <NavigationContainer ref={this.navigationRef}>
           {/*
             //trying to load through tabs now aapparently
             //ok this works... ish the tabs are displayed at the login screen
@@ -97,8 +104,9 @@ export default class App extends React.Component {
             <DrawerNavContainer />
             <StackNavigatorContainer />
             <MainStackNavigatorContainer />
+            <DrawerNavigatorContainer nav={nav} />
             */}
-            <DrawerNavigatorContainer />
+            <DrawerScreenNavigatorContainer nav={this.nav} navigation={this.props.navigation} />
         </NavigationContainer>
       </Provider>
     );
