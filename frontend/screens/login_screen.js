@@ -126,6 +126,11 @@ userLogout = async () => {  //
     );
   }
 
+  componentDidMount() {
+    console.log(this.props.navigation);
+    // console.log(this.props.navigation.closeDrawer());
+  }
+
 
 
   render() {

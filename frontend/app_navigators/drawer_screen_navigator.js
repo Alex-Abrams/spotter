@@ -90,10 +90,11 @@ class DrawerScreenNavigator extends React.Component {
 
     const Drawer = createDrawerNavigator();
 
-    const CustomDrawerContent = (props) => {
+    const CustomDrawerContent = (props, {navigation}) => {
 
       return (
         <DrawerContentScrollView {...props}>
+           <DrawerItemList {...props} />
           {
             routes.filter(route => route.showInDrawer).map((route, index) => {
               return (
@@ -110,6 +111,7 @@ class DrawerScreenNavigator extends React.Component {
               )
             })
           }
+          <DrawerItem label="Logout" activeTintColor='#2196f3' inactiveTintColor='red' onPress={() => {this.userLogout(); props.navigation.closeDrawer();}} />
         </DrawerContentScrollView>
       );
     }
