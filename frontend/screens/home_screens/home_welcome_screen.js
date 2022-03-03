@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight, ScrollView} from 'react-nat
 import { Button } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
+// import FontAwesomeIcon from 'react-native-vector-icons/FontAwesomeIcon'; // currently not working :()
 import LastWorkoutTouchableItem from './last_workout_touchable_item';
 import LastWorkoutItem from './last_workout_item';
 import WorkoutRecords from './workout_records';
@@ -42,10 +43,6 @@ class HomeWelcomeScreen extends React.Component {
       }
     })
     .catch(error => console.log('333', error));
-
-
-    // this.props.navigation.navigate("Drawer");
-    // this.props.navigation.navigate("BottomTabs"); // problem here is cant use home
 
   }
 

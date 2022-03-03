@@ -18,7 +18,7 @@ export const screens = {
 };
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-// gettingf rid of the focused icons didnt do anything 
+
 
 export const routes = [
   {

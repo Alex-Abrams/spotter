@@ -13,7 +13,7 @@ class JournalStackNavigator extends React.Component {
     const Stack = createStackNavigator();
     return(
       <Stack.Navigator>
-        <Stack.Screen name="Journal" component={PrevWorkoutScreenContainer} navigation={this.props.navigation} />
+        <Stack.Screen name="Journal" component={PrevWorkoutScreenContainer} options={{headerShown: false}} navigation={this.props.navigation} />
         <Stack.Screen name="Workout's Exercises" component={ExercisesListContainer} options={({ route }) => ({ title: route.params.name })} navigation={this.props.navigation} />
       </Stack.Navigator>
     );

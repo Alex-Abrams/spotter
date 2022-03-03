@@ -9,14 +9,11 @@ class SelectWorkout extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //
-    // };
   }
-  // {type: "chest", user_id: 5}
+
 
   toBodyPart({navigation}, array) {
-    // takes aray of body parts and makes a button that redirects to that form
+  
     const bodyList = array.map((part, i) =>
     <View key={i} style={styles.buttonContainer}>
       <Button
@@ -39,10 +36,9 @@ class SelectWorkout extends React.Component {
     );
   }
 
-
-
   render() {
     let bodyArray = ["Chest", "Legs", "Back", "Shoulders", "Arms"];
+    console.log(this.props.navigation);
 
     return(
       <View style={styles.container}>
@@ -51,6 +47,7 @@ class SelectWorkout extends React.Component {
           <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         </View>
         {this.toBodyPart(this.props.navigation, bodyArray)}
+
       </View>
 
     );

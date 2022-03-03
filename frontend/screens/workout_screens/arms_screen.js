@@ -13,9 +13,6 @@ export class ArmsScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   temp_id_value: '',
-    // }
   }
 
 
@@ -84,7 +81,6 @@ export class ArmsScreen extends React.Component {
 
 
   render() {
-      // console.log(' AAAAA', this.props.lifts.length);
 
     const { partType } = this.props.route.params; // ie: Arms
     const { lifts, auth_token, workout, liftsAndSets, copied_exercises } = this.props;

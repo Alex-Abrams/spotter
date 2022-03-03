@@ -21,15 +21,6 @@ import authReducer from './reducers/auth_reducer'; //
 import rootReducer from './reducers/root_reducer';
 
 import SplashScreen from './screens/splash_screen';  // loading screen
-import StackNavigatorContainer from './containers/stack_navigator_container';
-import MainStackNavigatorContainer from './containers/main_stack_navigator_container';
-
-// import BottomTabNavigator from './navigators/bottom_tab_navigator';
-
-// import DrawerNavContainer from './navigators/bottom_tab_navigator';
-
-// new try
-import DrawerNavigatorContainer from './containers/drawer_navigator_container';
 
 //
 import DrawerScreenNavigatorContainer from './containers/drawer_screen_navigator_container';
@@ -69,7 +60,6 @@ export default class App extends React.Component {
   async componentDidMount() {  // retrieves the fonts and icons from fonts folders before app loads
     try {
       await Font.loadAsync({
-        // 'SimpleLineIcons': require('@expo/vector-icons/fonts/SimpleLineIcons.ttf'),
         'SimpleLineIcons': require('./android/app/src/main/assets/fonts/SimpleLineIcons.ttf'),
         'EvilIcons': require('./android/app/src/main/assets/fonts/EvilIcons.ttf'),
         'FontAwesome': require('./android/app/src/main/assets/fonts/FontAwesome.ttf'),
@@ -91,22 +81,12 @@ export default class App extends React.Component {
 
     const navigationRef = React.createRef();
     const nav = () => navigationRef.current;
-    // console.log("navreg", navigationRef);
+
 
     return (
       <Provider store={teststore}>
         <NavigationContainer ref={this.navigationRef}>
-          {/*
-            //trying to load through tabs now aapparently
-            //ok this works... ish the tabs are displayed at the login screen
-            // maybe if i use drawer here
-            <BottomTabNavigator />
-            <DrawerNavContainer />
-            <StackNavigatorContainer />
-            <MainStackNavigatorContainer />
-            <DrawerNavigatorContainer nav={nav} />
-            */}
-            <DrawerScreenNavigatorContainer nav={this.nav} navigation={this.props.navigation} />
+            <DrawerScreenNavigatorContainer navigation={this.props.navigation} />
         </NavigationContainer>
       </Provider>
     );

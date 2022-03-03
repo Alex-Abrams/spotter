@@ -11,7 +11,6 @@ import {
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-// import HomeStackNavigator from './home_stack_navigator'; // bottom tabs gets replaced in bottom tab navigator
 import BottomTabNavigator from './tab_screen_navigator';
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
@@ -29,17 +28,10 @@ import SignupContainer from '../containers/signup_container';
 import SplashScreen from '../screens/splash_screen';
 ///////////////////////////////
 
-
-
-
-
 class DrawerScreenNavigator extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      focus: false,
-    };
   }
 
   userLogout = async () => {
@@ -49,7 +41,6 @@ class DrawerScreenNavigator extends React.Component {
       this.props.authActions.logoutCurrentUser();
     } catch (error) {
       // Error saving data
-      // console.log("userLogout: ", error); //
       return null;
     }
   };
@@ -100,20 +91,11 @@ class DrawerScreenNavigator extends React.Component {
     const Drawer = createDrawerNavigator();
 
     const CustomDrawerContent = (props) => {
-      // const currentRouteName = props.nav()?.getCurrentRoute().name;
+
       return (
         <DrawerContentScrollView {...props}>
           {
             routes.filter(route => route.showInDrawer).map((route, index) => {
-              // const focused = index === props.state.index;
-              // const focusedRouteItem = routes.find(r => r.name === currentRouteName) // get route item config object
-              // const focused = focusedRouteItem ?
-              //   route.name === focusedRouteItem?.focusedRoute :
-              //   route.name === screens.HomeStack
-              /////
-              // <Text style={focused ? styles.drawerLabelFocused : styles.drawerLabel}>
-              // style={[styles.drawerItem, focused ? styles.drawerItemFocused : null]} // after onPress
-              //// im thinking you could do something with onPRess.. let getting the route
               return (
                 <DrawerItem
                   key={route.name}
@@ -132,18 +114,16 @@ class DrawerScreenNavigator extends React.Component {
       );
     }
 
-    console.log('focus?', this.state.focus);
 
     return(
       <Drawer.Navigator
         screenOptions={({ navigation }) => ({
           headerStyle: {
-            backgroundColor: '#551E18',
             height: 50,
           },
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={styles.headerLeft}>
-              <EvilIcons name={"cart"} size={20} color="#fff" />
+              <EvilIcons name={"navicon"} size={26} />
             </TouchableOpacity>
           ),
         })}
@@ -152,12 +132,7 @@ class DrawerScreenNavigator extends React.Component {
       {(loggedIn == true) ? (
         <>
         <Drawer.Screen name={screens.HomeTab} component={BottomTabNavigator} options={{
-          title: 'Home',
-          headerRight: () => (
-            <View style={styles.headerRight}>
-              <EvilIcons name={"cart"} size={20} color="#fff" />
-            </View>
-          ),
+          title: '',
         }}/>
       </>
     ) : (

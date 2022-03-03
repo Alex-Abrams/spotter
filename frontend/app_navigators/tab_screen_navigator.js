@@ -15,6 +15,8 @@ import LoginSignupStack from './login_signup_stack';
 
 import { routes, screens } from './route_items';
 
+import WorkoutNav from '../containers/workout_navigator';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -74,7 +76,7 @@ class BottomTabNavigator extends React.Component {
         }}
         />
 
-      <Tab.Screen name="WorkoutStack" component={SelectWorkoutContainer} options={{
+      <Tab.Screen name="WorkoutStack" component={SelectWorkoutContainer} navigation={this.props.navigation} options={{
           tabBarIcon: ({ focused }) => (
             <EvilIcons name={'bell'} size={30} color={focused ? '#551E18' : '#000'} />
           ),
@@ -90,21 +92,19 @@ class BottomTabNavigator extends React.Component {
         }}
         />
 
-      <Tab.Screen name="LoginSignupStack" component={LoginSignupStack} />
+      <Tab.Screen name="WorkoutNav" component={WorkoutNav}
+        options={{
+            tabBarButton: () => null,
+            tabBarVisible:false //hide tab bar on this screen
 
+        }}
+    />
 
       </Tab.Navigator>
     );
   }
 }
 
-// <Tab.Screen name="loginSignupStack" component={loginSignupStack} options={{
-//     tabBarIcon: ({ focused }) => (
-//       <EvilIcons name={'chart'} size={30} color={focused ? '#551E18' : '#000'} />
-//     ),
-//     tabBarLabel: () => <Text style={styles.tabBarLabel}>Chart</Text>
-//   }}
-//   />
 
 const styles = StyleSheet.create({
   tabBarLabel: {
