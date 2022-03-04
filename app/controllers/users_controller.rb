@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  wrap_parameters :user, include: [:email, :password, :password_confirmation]
+  wrap_parameters :user, include: [:email, :password, :username, :password_confirmation]
 
   def show
      @user = User.friendly.find(params[:id])
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
+
 
     if @user.save
       render json: @user
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit( :email, :password, :password_confirmation, :username )
+    params.require(:user).permit( :email, :username, :password, :password_confirmation )
   end
 end

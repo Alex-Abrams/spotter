@@ -1,4 +1,9 @@
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RESET_USER = "RESET_USER";
+
+export const resetUser = () => ({
+  type: RESET_USER,
+});
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
@@ -20,7 +25,7 @@ export function requestCurrentUser(email, auth_token) {
     )
     .then(
       // json => console.log("json!!", {id: json.id, email: json.email}),
-      json => dispatch(receiveCurrentUser({id: json.id, email: json.email})),
+      json => dispatch(receiveCurrentUser({id: json.id, email: json.email, username: json.username})),
       err => console.log("user json error"),
     );
   }

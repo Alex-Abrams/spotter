@@ -36,6 +36,7 @@ class DrawerScreenNavigator extends React.Component {
       let keys = ['token', 'email'];
       await AsyncStorage.multiRemove(keys);
       this.props.authActions.logoutCurrentUser();
+      this.props.userActions.resetUser();
     } catch (error) {
       // Error saving data
       return null;

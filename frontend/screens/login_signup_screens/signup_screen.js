@@ -13,6 +13,7 @@ class Signup extends React.Component {
       email: '',
       password: '',
       password_confirmation: '',
+      username: '',
       token: '',
     };
 
@@ -45,7 +46,6 @@ _storeEmail = async (email) => {
   }
 };
 
-
 renderSpinner() {
   return(
     ( this.props.splash_screen == true ) ? (
@@ -61,9 +61,9 @@ renderSpinner() {
   _signUpHandler() {
 
     if(this.state.password !== this.state.password_confirmation) {
-      console.log("mismatched passwords");
+      // dispatch error
     } else {
-      this.props.authActions.signupUser(this.state.email, this.state.password, this.state.password_confirmation)
+      this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
       .then(() => this.props.authActions.getThatToken(this.state.email, this.state.password))
       .then((auth_token) => {
         this._storeData(auth_token.auth_token.auth_token);
@@ -117,6 +117,15 @@ renderSpinner() {
           onChangeText={email => this.setState({email})}
           >
         </Hoshi>
+
+        <Hoshi
+          label={'Username'}
+          borderColor={'#b76c94'}
+          backgroundColor={'#FFF'}
+          onChangeText={username => this.setState({username})}
+          >
+        </Hoshi>
+
 
         <Hoshi
           label={'Password'}

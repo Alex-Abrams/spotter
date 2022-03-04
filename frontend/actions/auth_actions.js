@@ -105,7 +105,7 @@ export function getThatToken(email, password) {
 }
 
 /// sign UP function
-export function signupUser(email, password, password_confirmation) {
+export function signupUser(email, username, password, password_confirmation) {
   return function action(dispatch) {
 
     const request = fetch('http://10.0.2.2:3000/users', {
