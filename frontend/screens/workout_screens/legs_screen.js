@@ -100,7 +100,9 @@ export class LegsScreen extends React.Component {
       </View>
     );
 
-    const paste_button_display = ( copied_exercises.length > 0) ?
+    // if there is copied_exercises data and the last element, which is the exercise part type of the data copied from the journal, is equal to the partType of this screen (Arms, LEgs)
+    // then the paste button will show 
+    const paste_button_display = ( copied_exercises.length > 0 && copied_exercises[copied_exercises.length - 1] === partType) ?
     (<View style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 18 }}>
       <Button
         raised

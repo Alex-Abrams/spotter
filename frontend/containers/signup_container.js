@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Signup from '../screens/signup_screen';
+import Signup from '../screens/login_signup_screens/signup_screen';
 import * as authActions from '../actions/auth_actions';
 
 const mapStateToProps = state => ({

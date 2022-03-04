@@ -20,7 +20,7 @@ import logger from 'redux-logger'
 import authReducer from './reducers/auth_reducer'; //
 import rootReducer from './reducers/root_reducer';
 
-import SplashScreen from './screens/splash_screen';  // loading screen
+import SplashScreen from './screens/login_signup_screens/splash_screen';
 
 //
 import DrawerScreenNavigatorContainer from './containers/drawer_screen_navigator_container';

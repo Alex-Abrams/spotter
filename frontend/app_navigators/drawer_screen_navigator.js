@@ -22,7 +22,7 @@ import {screens, routes} from './route_items';
 /////////////////////////////
 import LoginContainer from '../containers/login_screen_container';
 import SignupContainer from '../containers/signup_container';
-import SplashScreen from '../screens/splash_screen';
+import SplashScreen from '../screens/login_signup_screens/splash_screen';
 ///////////////////////////////
 
 class DrawerScreenNavigator extends React.Component {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import SelectWorkout from '../screens/select_workout';
+import SelectWorkout from '../screens/workout_screens/select_workout';
 import * as workoutActions from '../actions/workout_actions';
 import * as authActions from '../actions/auth_actions';
 
