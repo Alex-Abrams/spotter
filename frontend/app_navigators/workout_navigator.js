@@ -3,11 +3,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
 // import { Navigator } from 'react-native';
 
-import LegsScreenContainer from './legs_screen_container';
-import ChestScreenContainer from './chest_screen_container';
-import ArmsScreenContainer from './arms_screen_container';
-import BackScreenContainer from './back_screen_container';
-import ShouldersScreenContainer from './shoulders_screen_container';
+import LegsScreenContainer from '../containers/legs_screen_container';
+import ChestScreenContainer from '../containers/chest_screen_container';
+import ArmsScreenContainer from '../containers/arms_screen_container';
+import BackScreenContainer from '../containers/back_screen_container';
+import ShouldersScreenContainer from '../containers/shoulders_screen_container';
 
 class WorkoutNav extends React.Component {
   constructor(props) {

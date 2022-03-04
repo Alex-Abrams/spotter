@@ -8,14 +8,14 @@ import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_contai
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 
-import CalendarStackNavigator from '../navigators/calendar_stack_navigator';
-import JournalStackNavigator from '../navigators/journal_stack_navigator';
+import CalendarStackNavigator from './calendar_stack_navigator';
+import JournalStackNavigator from './journal_stack_navigator';
 
 import LoginSignupStack from './login_signup_stack';
 
 import { routes, screens } from './route_items';
 
-import WorkoutNav from '../containers/workout_navigator';
+import WorkoutNav from './workout_navigator';
 
 
 const Tab = createBottomTabNavigator();

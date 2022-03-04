@@ -17,9 +17,6 @@ import SelectWorkoutContainer from '../containers/select_workout_container';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 
-import CalendarStackNavigator from '../navigators/calendar_stack_navigator';
-import JournalStackNavigator from '../navigators/journal_stack_navigator';
-
 import {screens, routes} from './route_items';
 
 /////////////////////////////

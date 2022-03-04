@@ -78,15 +78,11 @@ export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE I
       err => console.log("response.json erro ><", err)
     )
     .then(
-
-      // json => console.log("great post Workout Success", json.id),
         // so the poostLiftsAndSets needs to happen here with Promiseall
         // which means postWorkt will need to take the liftsAndSets argument
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
-        // console.log('json!!', liftsAndSets);
-        //needs to reset the store
-        // dispatch(resetLiftsAndSets());
+        // clear store to wipe the screen
         dispatch(resetLifts());
         dispatch(resetSets());
         // // dispatch(/)
