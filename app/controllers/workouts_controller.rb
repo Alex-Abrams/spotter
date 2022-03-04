@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+
   def index
     #going to be shown based on user id
     # @workouts = Workout.all
@@ -11,7 +12,7 @@ class WorkoutsController < ApplicationController
     if @workout.save
       render json: @workout
     else
-      render json: @workout.errors.full_messages, status: 422
+      render json: @workout.errors.full_messages
     end
   end
 

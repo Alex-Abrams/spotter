@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Button, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import { Hoshi } from 'react-native-textinput-effects';
 import { AsyncStorage } from 'react-native';
 import SplashScreen from './splash_screen';
@@ -89,6 +90,20 @@ renderSpinner() {
     );
   }
 
+  toLoginButton({ navigation }) {
+    return(
+      <View>
+        <Button
+          raised
+          title="To Login"
+          color="purple"
+          onPress={() => this.props.navigation.navigate('login')}
+          >
+        </Button>
+      </View>
+    );
+  }
+
   render() {
     return(
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
@@ -120,16 +135,16 @@ renderSpinner() {
 
         <Button
           title="Submit"
+          raised
           buttonStyle={{
             fontSize: 20,
             color: '#ffffff',
             backgroundColor: '#00cc00',
-            padding: 20,
-            marginTop: 10
           }}
           styleDisabled={{ color: 'red' }}
           onPress={() => this._signUpHandler()}
         />
+        {this.toLoginButton(this.props.navigation)}
         </View>
     );
   }

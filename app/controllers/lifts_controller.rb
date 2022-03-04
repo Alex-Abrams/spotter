@@ -1,4 +1,6 @@
 class LiftsController < ApplicationController
+
+
   def index
     # @lifts = Lift.all
     # @lifts = Lift.where("workout_id = ?", params[:workout_id])
@@ -19,11 +21,11 @@ class LiftsController < ApplicationController
   end
 
   def create
-    @lift = Lift.new(lift_params)
+    @lift = Lift.create!(lift_params)
     if @lift.save
       render json: @lift
     else
-      render json: @lift.errors.full_messages, status: 422
+      render json: @lift.errors.full_messages
     end
   end
 

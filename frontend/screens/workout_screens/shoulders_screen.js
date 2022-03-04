@@ -46,7 +46,7 @@ export class ShouldersScreen extends React.Component {
   postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
     const { workout, auth_token, liftsAndSets } = this.props;
     this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);
-    this.props.navigation.navigate('Journal');
+    this.props.navigation.navigate('HomeStack');
   }
 
 

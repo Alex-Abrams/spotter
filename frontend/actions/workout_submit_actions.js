@@ -23,7 +23,7 @@ export const clearAllLiftsAndSets = () => ({
 // /users/:user_id/workouts/:workout_id/lifts
 // promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
 
- function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) {
+export function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) {
     // this function takes the newly combined lifts and sets (submit reducer) and pushes them into an array
     // the array of promises is then all posted at once when submit workout button is pressed
     // this function is used in postWorkout below
@@ -43,6 +43,7 @@ export const clearAllLiftsAndSets = () => ({
           weight: `${set.weight}`,
           exercise_section: `${set.exercise_section}`,
           workout_id: `${workout_id}`,
+          user_id: `${user_id}`,
         })
       }));
 
@@ -57,6 +58,7 @@ export const clearAllLiftsAndSets = () => ({
 // /users/:user_id/workouts(.:format)
 // exercise_section ==> type
 export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE IN USE
+
   return function action(dispatch) {
     const request = fetch(`http://10.0.2.2:3000/users/${workout.user_id}/workouts`, {
       method: 'POST',
@@ -82,6 +84,7 @@ export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE I
         // which means postWorkt will need to take the liftsAndSets argument
       json => {
         postLiftsAndSets(liftsAndSets, json.id, auth_token, json.user_id);
+        // console.log('json!!', liftsAndSets);
         //needs to reset the store
         // dispatch(resetLiftsAndSets());
         dispatch(resetLifts());

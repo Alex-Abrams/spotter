@@ -45,7 +45,7 @@ export class ArmsScreen extends React.Component {
   postWorkoutAndRedirectToPrevWorkouts({ navigation }) {
     const { workout, auth_token, liftsAndSets, copied_exercises } = this.props;
     this.props.submitActions.postWorkout(workout, auth_token, liftsAndSets);  // post Workout from workout_submit_actions.js
-    this.props.navigation.navigate('Journal');
+    this.props.navigation.navigate('HomeStack');
   }
 
 
