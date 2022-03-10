@@ -36,8 +36,12 @@ class DrawerScreenNavigator extends React.Component {
       let keys = ['token', 'email'];
       await AsyncStorage.multiRemove(keys);
       this.props.authActions.logoutCurrentUser();
+      /// below resets the store one entity at a time
       this.props.userActions.resetUser();
-      this.props.journalActions.resetJournalExercises(); // when users logout everything should be cleared 
+      this.props.journalActions.resetJournalExercises(); //
+      this.props.journalActions.resetWorkouts();
+      this.props.chartActions.resetChartExercises();
+
     } catch (error) {
       // Error saving data
       return null;

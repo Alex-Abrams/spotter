@@ -1,6 +1,6 @@
 export const RECEIVE_CHART_WORKOUTS = "RECEIVE_CHART_WORKOUTS";
 export const RECEIVE_CHART_LIFTS = "RECEIVE_CHART_LIFTS";
-
+export const RESET_CHART_EXERCISES = "RESET_CHART_EXERCISES";
 
 import { requestAllWorkouts, requestAllWorkoutExercises } from './prev_workout_actions';
 
@@ -12,6 +12,10 @@ export const receiveChartWorkouts = (workouts) => ({
 export const receiveChartExercises = (exercises) => ({
   type: RECEIVE_CHART_LIFTS,
   exercises
+});
+
+export const resetChartExercises = () => ({
+  type: RESET_CHART_EXERCISES,
 });
 
 

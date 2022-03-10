@@ -16,7 +16,7 @@ class SetShowEditPopup extends React.Component {
 
 
   render() {
-    console.log("setshoeditpop", this.state);
+  
     return(
       <View>
         <View>

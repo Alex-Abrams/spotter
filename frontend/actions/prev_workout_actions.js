@@ -3,6 +3,7 @@ export const RECEIVE_EXERCISES = "RECEIVE_EXERCISES";
 export const RECEIVE_COPIED_WORKOUT = "RECEIVE_COPIED_WORKOUT";
 export const RESET_JOURNAL_EXERCISES = "RESET_JOURNAL_EXERCISES";
 export const RESET_COPIED_JOURNAL_EXERCISES = 'RESET_COPIED_JOURNAL_EXERCISES';
+export const RESET_WORKOUTS ='RESET_WORKOUTS';
 import {loadingComplete} from './loading_actions';
 
 export const receiveAllWorkouts = (workouts) => ({
@@ -28,6 +29,9 @@ export const resetCopiedJournalExercises = () => ({
   type: RESET_COPIED_JOURNAL_EXERCISES,
 });
 
+export const resetWorkouts = () => ({
+  type: RESET_WORKOUTS,
+});
 
 // /users/:user_id/workouts
 export function requestAllWorkouts(user_id, auth_token) {

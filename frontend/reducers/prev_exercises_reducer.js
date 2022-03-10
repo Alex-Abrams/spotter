@@ -12,7 +12,7 @@ const prevExercisesReducer = (state ={}, action) => {
     case RECEIVE_EXERCISES:
       return merge({}, state, action.exercises);
 
-    case RESET_JOURNAL_EXERCISES:
+    case RESET_JOURNAL_EXERCISES:  //
       return {};
     default:
       return state;

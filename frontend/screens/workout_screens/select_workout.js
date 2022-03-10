@@ -13,7 +13,7 @@ class SelectWorkout extends React.Component {
 
 
   toBodyPart({navigation}, array) {
-  
+
     const bodyList = array.map((part, i) =>
     <View key={i} style={styles.buttonContainer}>
       <Button
@@ -38,7 +38,6 @@ class SelectWorkout extends React.Component {
 
   render() {
     let bodyArray = ["Chest", "Legs", "Back", "Shoulders", "Arms"];
-    console.log(this.props.navigation);
 
     return(
       <View style={styles.container}>

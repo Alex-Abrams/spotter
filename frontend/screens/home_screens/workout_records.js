@@ -12,7 +12,6 @@ class WorkoutRecords extends React.Component {
     // const reversed_sorted_by_weight = sorted_by_weight.reverse();
     const exercise_sections = [];
     sorted_by_weight.forEach((exercise) => exercise_sections.push(exercise.exercise_section));
-    console.log(exercise_sections);
     return(
       <View style={styles.container}>
         <View style={styles.records_header}>
@@ -32,7 +31,7 @@ class WorkoutRecords extends React.Component {
     const { sorted_by_weight, current_user, all_exercises } = this.props;
 
     // const display_records_or_no_records = (sorted_by_weight.length > 0) ? <
-    // make the no records thing first and import it here. 
+    // make the no records thing first and import it here.
 
     return(
       <View>
