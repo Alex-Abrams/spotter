@@ -37,6 +37,7 @@ class DrawerScreenNavigator extends React.Component {
       await AsyncStorage.multiRemove(keys);
       this.props.authActions.logoutCurrentUser();
       this.props.userActions.resetUser();
+      this.props.journalActions.resetJournalExercises(); // when users logout everything should be cleared 
     } catch (error) {
       // Error saving data
       return null;

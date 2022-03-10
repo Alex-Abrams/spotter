@@ -2,9 +2,6 @@ class ApplicationController < ActionController::API
    before_action :authenticate_request, except: [:create] #removed create
    attr_reader :current_user
 
-   #
-
-   #
 
    private
 

@@ -1,6 +1,7 @@
 export const RECEIVE_CHART_WORKOUTS = "RECEIVE_CHART_WORKOUTS";
 export const RECEIVE_CHART_LIFTS = "RECEIVE_CHART_LIFTS";
 
+
 import { requestAllWorkouts, requestAllWorkoutExercises } from './prev_workout_actions';
 
 export const receiveChartWorkouts = (workouts) => ({

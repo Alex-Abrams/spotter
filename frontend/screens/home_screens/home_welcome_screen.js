@@ -195,7 +195,7 @@ class HomeWelcomeScreen extends React.Component {
 
     };
 
-    const display_workouts_or_loadingbar = (last_workout.length < 0) ? (  // Cahning this from display workouts or display new user
+    const display_workouts_or_loadingbar = (last_workout.length > 0) ? (  // Cahning this from display workouts or display new user
       <View>
         {display_last_workout}
         <View style={{ borderBottomColor: '#C7C7C7', borderBottomWidth: 10 }}/>
