@@ -8,6 +8,7 @@ import {
   LOAD_SPLASH_SCREEN,
   RECEIVE_AUTH_TOKEN_SPINNER,
   RECEIVE_ERROR,
+  RECEIVE_SIGN_UP_ERROR,
 } from '../actions/auth_actions';
 
 import merge from 'lodash/merge';
@@ -22,6 +23,8 @@ const _nullUser = Object.freeze({
   auth_token: null,
   email: null,
   splash_screen: false,
+  error: null,
+  signup_error: null,
 });
 
 const authReducer = (state = { loggedIn: false }, action) => {
@@ -51,6 +54,9 @@ const authReducer = (state = { loggedIn: false }, action) => {
 
     case RECEIVE_ERROR:
       return merge({}, state, { error: action.error});
+
+    case RECEIVE_SIGN_UP_ERROR:
+      return merge({}, state, { signup_error: action.error });
 
     default:
       return state;

@@ -1,8 +1,16 @@
 class User < ApplicationRecord
   has_secure_password
 
-validates :email, uniqueness: true
-validates :username, uniqueness: true
+# validates :email, uniqueness: true
+# validates :username, uniqueness: true
+# so below.. sorta works i just cant seem to get it to send via json...
+validates :username,
+  :presence => true,
+  :uniqueness => { :message => "is taken"}
+
+validates :email,
+  :presence => true,
+  :uniqueness => { :message => "is taken"}
 
 
   extend FriendlyId

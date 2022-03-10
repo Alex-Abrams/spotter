@@ -111,25 +111,41 @@ export function signupUser(email, username, password, password_confirmation) {
     const request = fetch('http://10.0.2.2:3000/users', {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         email: `${email}`,
+        username: `${username}`,
         password: `${password}`,
         password_confirmation: `${password_confirmation}`
       })
     });
 
-
+    // console.log('request?!', request);
+    // return request.then(
+    //   response => {if (response.status !== 200) {
+    //   // response => {if (response.status === 422) {
+    //     console.log('response erro!!!! =>>>', response)};
+    //     // dispatch(receiveError("An error occured"))};
+    //     // dispatch(receiveError('Username or Email Taken'))};
+    //   },
+    //   err => dispatch(receiveError('signup failed'))
+    // );
+    ////////////////
     return request.then(
-      // response => {if (response.status !== 200) {
-      response => {if (response.status === 422) {
-        // console.log('response erro!!!! =>>>', response);
-        // dispatch(receiveError("An error occured"))};
-        dispatch(receiveError('Username or Email Taken'))};
+      response => response.json(),
+      err => console.log('TO ERR ZZ', err),
+    )
+    .then(
+      json => {
+        if (json[0] === 'Username is taken') { //// json[0] is the error message recieved from ACtive Record, for some reason it will not send it through errors, this was the simpliest fix
+          dispatch(receiveSignUpError('Username is taken.'));
+        } else if (json[0] === 'Email is taken') {
+          dispatch(receiveSignUpError('Email already in use.'));
+        };
       },
-      err => dispatch(receiveError('signup failed'))
+      err => console.log('Sign up error has occurred', err),
     );
   }
 }

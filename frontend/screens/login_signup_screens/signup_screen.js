@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Keyboard } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Hoshi } from 'react-native-textinput-effects';
 import { AsyncStorage } from 'react-native';
@@ -62,6 +62,7 @@ renderSpinner() {
 
     if(this.state.password !== this.state.password_confirmation) {
       // dispatch error
+      console.log('error in signuphandler');
     } else {
       this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
       .then(() => this.props.authActions.getThatToken(this.state.email, this.state.password))
@@ -72,7 +73,7 @@ renderSpinner() {
       .then(() => this._storeEmail(this.state.email))
       .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token));
     }
-
+    Keyboard.dismiss();
 
   }
 
@@ -81,7 +82,7 @@ renderSpinner() {
       ( this.props.error ) ? (
         <View>
           <Text style={{ color: "red" }}>
-            {this.props.error.user_authentication}
+            {this.props.signup_error}
           </Text>
         </View>
       ) : (

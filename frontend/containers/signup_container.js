@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   auth_token: state.authentication.auth_token,
   splash_screen: state.authentication.splash_screen,
   error: state.authentication.error,
+  signup_error: state.authentication.signup_error,
 })
 
 const mapDispatchToProps = dispatch => ({
