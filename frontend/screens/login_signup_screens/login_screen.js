@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
-import { View, Button, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Hoshi } from 'react-native-textinput-effects';
+import { View, Button, ImageBackground, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, TextInput, Image } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './splash_screen';
+
+
+const back_image = <Image source={require('../../img/squatrack.png')} />;
+const image = { uri: '../../img/squatrack.png'};
 
 class Login extends React.Component {
   constructor(props) {
@@ -40,18 +43,6 @@ class Login extends React.Component {
   }
 };
 
-userLogout = async () => {  //
-  try {
-    let keys = ['token', 'email'];
-    // await AsyncStorage.multiRemove(keys);
-    // this.props.authActions.logoutCurrentUser();
-    await AsyncStorage.multiRemove(keys)
-    .then(() => this.props.authActions.logoutCurrentUser());
-  } catch (error) {
-    // Error saving data
-    console.log("userLogout: ", error);
-  }
-};
 
 // ----------------------------------------------------------------------
 
@@ -98,24 +89,9 @@ userLogout = async () => {  //
   }
 
 
-  logoutButton() {
-    return(
-      <View>
-        <Button
-          title="logout"
-          color="green"
-          onPress={() => {
-            this.userLogout();
-          }}>
-          </Button>
-      </View>
-    );
-  }
-
-
   toSignup({ navigation }) {
     return(
-      <View>
+      <View style={{paddingTop: 12}}>
         <Button
           title="New User"
           color="purple"
@@ -126,31 +102,46 @@ userLogout = async () => {  //
     );
   }
 
+// backgroundColor: '#aedcf2'
 
   render() {
 
     return(
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}>
+        <ImageBackground source={require('../../img/squatrack.png')} style={{width: '100%', height: '100%'}}>
+
+      <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 12, paddingRight: 12}}>
+
+        <View style={{paddingTop: 16}}>
+          <Text style={{fontSize: 40, alignSelf: 'center', color: 'white'}}>Spotter</Text>
+          <Text style={{fontSize: 18, paddingTop: 10, alignSelf: 'center', color: 'white'}}>The Weight Lifting Workout Journal</Text>
+        </View>
+
         {this.renderError()}
         {this.renderSpinner()}
-        <Hoshi
-          label={'Email'}
-          borderColor={'#b76c94'}
-          backgroundColor={'#FFF'}
-          onChangeText={email => this.setState({email})}
-          >
-        </Hoshi>
 
-        <Hoshi
-          label={'Password'}
-          borderColor={'#b76c94'}
-          backgroundColor={'#FFF'}
-          onChangeText={password => this.setState({password})}
-          >
-        </Hoshi>
+        <View>
+          <Text style={{paddingLeft: 12}}>Email</Text>
+        <View style={{paddingLeft: 12, paddingRight: 12}}>
+          <TextInput
+            placeholder='example@gmail.com'
+            onChangeText={email => this.setState({email})}
+            style={{paddingLeft: 12, paddingRight: 12, borderBottomWidth: 1, borderLeftWidth: 1, borderBottomColor:'#c1c5c7', borderLeftColor: '#c1c5c7', height: 45, backgroundColor: 'white'}}>
+          </TextInput>
+        </View>
 
+        <View style={{paddingLeft: 12, paddingRight: 12, paddingTop: 20}}>
+          <Text>Password</Text>
+          <TextInput
+            placeholder='Minimum 6 characters'
+            onChangeText={password => this.setState({password})}
+            style={{paddingLeft: 12, paddingRight: 12, borderBottomWidth: 1, borderLeftWidth: 1, borderBottomColor:'#c1c5c7', borderLeftColor: '#c1c5c7', height: 45, backgroundColor: 'white'}}>
+          </TextInput>
+        </View>
+        </View>
+
+        <View style={{paddingBottom: 60}}>
         <Button
           title="Submit"
           buttonStyle={{
@@ -162,12 +153,15 @@ userLogout = async () => {  //
           }}
           styleDisabled={{ color: 'red' }}
           onPress={() => {this._signInHandler()}
-        }/>
-
-        {this.logoutButton()}
-        {this.toSignup(this.props.navigation)}
+          }/>
+        {/*
+          {this.logoutButton()}
+          */}
+          {this.toSignup(this.props.navigation)}
+        </View>
 
       </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
 
     );
