@@ -10,7 +10,6 @@ import WorkoutRecords from './workout_records';
 import LoadingScreen from '../loading_screen';
 import NoWorkoutsScreen from './no_workouts_screen';
 ///
-// import BottomTabNavigator from '../../navigators/bottom_tab_navigator';
 
 
 //// this will be exported to home_screen
@@ -55,7 +54,8 @@ class HomeWelcomeScreen extends React.Component {
     const ms_in_day = 24 * 60 * 60 * 1000;
     created_on.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
-    const days_since = (+today - +created_on)/ms_in_day; //+makes sure its a nonzero number
+    const days_since = parseInt((+today - +created_on)/ms_in_day); //+makes sure its a nonzero number, parseInt also MAth.floors so that the number is rounded down
+
 
     let display_days_since_last_workout = null;
     const last_wo_ex_section = (last_workout.length > 0) ? (last_workout[0].exercise_section) : null;  // for some reason this is the only function on this page that does not wait for anything to load despite is_loading being true
@@ -208,6 +208,8 @@ class HomeWelcomeScreen extends React.Component {
           />
         {/* put a line here
           */}
+
+
       </View>
     ) : (
       <View>

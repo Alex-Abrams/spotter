@@ -77,8 +77,8 @@ class Login extends React.Component {
   renderError() {
     return (
       ( this.props.error ) ? (
-        <View>
-          <Text style={{ color: "red" }}>
+        <View style={{alignSelf: 'center'}}>
+          <Text style={{ color: "red", fontSize: 18 }}>
             {this.props.error.user_authentication}
           </Text>
         </View>
@@ -94,7 +94,7 @@ class Login extends React.Component {
       <View style={{paddingTop: 12}}>
         <Button
           title="New User"
-          color="purple"
+          color="#5d854e"
           onPress={() => this.props.navigation.navigate('signup')}
           >
         </Button>
@@ -122,7 +122,7 @@ class Login extends React.Component {
         {this.renderSpinner()}
 
         <View>
-          <Text style={{paddingLeft: 12}}>Email</Text>
+          <Text style={{paddingLeft: 12, color: 'white'}}>Email</Text>
         <View style={{paddingLeft: 12, paddingRight: 12}}>
           <TextInput
             placeholder='example@gmail.com'
@@ -132,9 +132,10 @@ class Login extends React.Component {
         </View>
 
         <View style={{paddingLeft: 12, paddingRight: 12, paddingTop: 20}}>
-          <Text>Password</Text>
+          <Text style={{color: 'white'}}>Password</Text>
           <TextInput
             placeholder='Minimum 6 characters'
+            secureTextEntry={true}
             onChangeText={password => this.setState({password})}
             style={{paddingLeft: 12, paddingRight: 12, borderBottomWidth: 1, borderLeftWidth: 1, borderBottomColor:'#c1c5c7', borderLeftColor: '#c1c5c7', height: 45, backgroundColor: 'white'}}>
           </TextInput>

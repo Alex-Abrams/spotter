@@ -16,6 +16,11 @@ import LoginSignupStack from './login_signup_stack';
 import { routes, screens } from './route_items';
 
 import WorkoutNav from './workout_navigator';
+import { FontAwesome } from '@expo/vector-icons';
+
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+// import { dumbbell } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell, faCalendar, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +59,7 @@ class BottomTabNavigator extends React.Component {
 
         <Tab.Screen name="HomeStack" component={HomeWelcomeScreenContainer} options={{
           tabBarIcon: ({ focused }) => (
-            <EvilIcons name={'eye'} size={30} color={focused ? '#551E18' : '#000'} />
+            <FontAwesome name='home' size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Home</Text>
         }}
@@ -62,7 +67,7 @@ class BottomTabNavigator extends React.Component {
 
       <Tab.Screen name="JournalStack" component={JournalStackNavigator} options={{
           tabBarIcon: ({ focused }) => (
-            <EvilIcons name={'trophy'} size={30} color={focused ? '#551E18' : '#000'} />
+            <FontAwesome name='book' size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Journal</Text>
         }}
@@ -70,7 +75,7 @@ class BottomTabNavigator extends React.Component {
 
       <Tab.Screen name="CalendarStack" component={CalendarStackNavigator} options={{
           tabBarIcon: ({ focused }) => (
-            <EvilIcons name={'calendar'} size={30} color={focused ? '#551E18' : '#000'} />
+            <EvilIcons name={'calendar'} size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Calendar</Text>
         }}
@@ -78,7 +83,7 @@ class BottomTabNavigator extends React.Component {
 
       <Tab.Screen name="WorkoutStack" component={SelectWorkoutContainer} navigation={this.props.navigation} options={{
           tabBarIcon: ({ focused }) => (
-            <EvilIcons name={'bell'} size={30} color={focused ? '#551E18' : '#000'} />
+            <FontAwesomeIcon icon={faDumbbell} size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Workout</Text>
         }}
@@ -86,7 +91,7 @@ class BottomTabNavigator extends React.Component {
 
       <Tab.Screen name="ChartStack" component={ChartMenuScreenContainer} options={{
           tabBarIcon: ({ focused }) => (
-            <EvilIcons name={'chart'} size={30} color={focused ? '#551E18' : '#000'} />
+            <FontAwesomeIcon icon={faChartLine} size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Chart</Text>
         }}

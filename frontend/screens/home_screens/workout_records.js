@@ -20,7 +20,7 @@ class WorkoutRecords extends React.Component {
         {exercise_sections.map((section, i) =>
           <View key={i} style={{paddingTop: 10}}>
             <Text style={styles.text_labels}>{section}:</Text>
-            <Text>{sorted_by_weight[i].name} {sorted_by_weight[i].weight} lbs</Text>
+            <Text>{sorted_by_weight[i].name}: {sorted_by_weight[i].weight} lbs</Text>
           </View>
         )}
       </View>
