@@ -32,7 +32,6 @@ export default ExerciseItem;
 const styles = StyleSheet.create({
   container: {
     paddingTop: 4,
-    // paddingBottom: 4,
   },
   sets: {
     fontSize: 16,
@@ -43,5 +42,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(158, 150, 150, .5)',
     borderWidth: 1,
     borderRadius: 1,
+    paddingLeft: 12,
   }
 });
