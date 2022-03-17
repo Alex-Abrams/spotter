@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
-import { View, Button, ImageBackground, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, TextInput, Image } from 'react-native';
+import { View, Button, ImageBackground, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, TextInput, Image, StyleSheet } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './splash_screen';
 
-
-const back_image = <Image source={require('../../img/squatrack.png')} />;
-const image = { uri: '../../img/squatrack.png'};
 
 class Login extends React.Component {
   constructor(props) {
@@ -109,13 +106,13 @@ class Login extends React.Component {
     return(
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ImageBackground source={require('../../img/squatrack.png')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('../../img/heavy-squat-3.png')} style={{width: '100%', height: '100%'}}>
 
       <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 12, paddingRight: 12}}>
 
         <View style={{paddingTop: 16}}>
-          <Text style={{fontSize: 40, alignSelf: 'center', color: 'white'}}>Spotter</Text>
-          <Text style={{fontSize: 18, paddingTop: 10, alignSelf: 'center', color: 'white'}}>The Weight Lifting Workout Journal</Text>
+          <Text style={styles.title}>Spotter</Text>
+          <Text style={styles.under_title}>The Weight Lifting Workout Journal</Text>
         </View>
 
         {this.renderError()}
@@ -127,7 +124,7 @@ class Login extends React.Component {
           <TextInput
             placeholder='example@gmail.com'
             onChangeText={email => this.setState({email})}
-            style={{paddingLeft: 12, paddingRight: 12, borderBottomWidth: 1, borderLeftWidth: 1, borderBottomColor:'#c1c5c7', borderLeftColor: '#c1c5c7', height: 45, backgroundColor: 'white'}}>
+            style={styles.text_input}>
           </TextInput>
         </View>
 
@@ -137,7 +134,7 @@ class Login extends React.Component {
             placeholder='Minimum 6 characters'
             secureTextEntry={true}
             onChangeText={password => this.setState({password})}
-            style={{paddingLeft: 12, paddingRight: 12, borderBottomWidth: 1, borderLeftWidth: 1, borderBottomColor:'#c1c5c7', borderLeftColor: '#c1c5c7', height: 45, backgroundColor: 'white'}}>
+            style={styles.text_input}>
           </TextInput>
         </View>
         </View>
@@ -155,9 +152,6 @@ class Login extends React.Component {
           styleDisabled={{ color: 'red' }}
           onPress={() => {this._signInHandler()}
           }/>
-        {/*
-          {this.logoutButton()}
-          */}
           {this.toSignup(this.props.navigation)}
         </View>
 
@@ -168,5 +162,40 @@ class Login extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title:{
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    fontSize: 40,
+    alignSelf: 'center',
+    color: 'white',
+  },
+  under_title: {
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+    fontSize: 18,
+    paddingTop: 10,
+    alignSelf: 'center',
+    color: 'white'
+  },
+  textShadow: {
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+  },
+  text_input: {
+    paddingLeft: 12,
+    paddingRight: 12,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+    borderBottomColor:'#c1c5c7',
+    borderLeftColor: '#c1c5c7',
+    height: 45,
+    backgroundColor: 'white',
+  },
+});
 
 export default Login;
