@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, View, Text, StyleSheet, TextInput, FlatList, SafeAreaView, StatusBar, ScrollView, Modal} from 'react-native';
+import { TouchableWithoutFeedback, View, Text, StyleSheet, TextInput, FlatList, Keyboard, StatusBar, ScrollView, Modal} from 'react-native';
 import { Button, List, ListItem } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { keywordSearch } from '../workout_forms/workout_lift_searchbar/searchbar_keywords';
@@ -58,6 +58,7 @@ class ChartMenuScreen extends React.Component {
     if ( pick !== "1" ) {
       this.setState({ nativePicker: pick });
       this.setState({ input_selected: true });
+      this.setState({ value: ''})
     }
 
   }
@@ -65,7 +66,7 @@ class ChartMenuScreen extends React.Component {
   renderExerciseSectionPicker() {
     return (
       <View>
-        <Picker style={{marginTop: 20, borderWidth: 0.5, marginLeft: 12, marginRight: 12}}
+        <Picker style={{marginTop: 20, borderWidth: 0.5, backgroundColor: '#ebebeb', marginLeft: 12, marginRight: 12}}
           selectedValue={this.state.nativePicker}
           onValueChange={(pick) => this.updatePicker(pick) }>
           <Picker.Item label="Select Exercise Section..." value="1" />
@@ -98,6 +99,8 @@ class ChartMenuScreen extends React.Component {
       null
     );
 
+    const enable_submit_button = !(this.state.value.length > 1);
+
     return(
       <ScrollView>
         <StatusBar hidden />
@@ -126,6 +129,8 @@ class ChartMenuScreen extends React.Component {
               <Button
                 style={styles.buttonSingle}
                 title={"Submit"}
+                disabled={enable_submit_button}
+                raised
                 onPress={() => {this.setModalVisible(!this.state.modalVisible); this.submitForm();}}
                 >
               </Button>
@@ -135,6 +140,7 @@ class ChartMenuScreen extends React.Component {
               <Button
                 style={styles.buttonSingle}
                 title={"Cancel"}
+                raised
                 onPress={() => this.setModalVisible(!this.state.modalVisible)}
                 >
               </Button>
@@ -181,10 +187,9 @@ class ChartMenuScreen extends React.Component {
     );
 
 
-    // <ChartScreenContainer exercise={this.state.chart_display_section} />
-
     return(
-      <ScrollView style={styles.topScrollView}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView>
 
           <View>
             <View style={styles.addExerciseButtonView}>
@@ -197,6 +202,7 @@ class ChartMenuScreen extends React.Component {
           </View>
 
       </ScrollView>
+    </TouchableWithoutFeedback>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Button, ImageBackground, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, TextInput, Image, StyleSheet } from 'react-native';
+import { View, Button, ImageBackground, Text, TouchableWithoutFeedback, Keyboard, TextInput, Image, StyleSheet } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './splash_screen';
@@ -179,7 +179,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingTop: 10,
     alignSelf: 'center',
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold',
   },
   textShadow: {
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
