@@ -10,9 +10,11 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export function requestCurrentUser(email, auth_token) {
+// export function requestCurrentUser(email, auth_token) { // CETU
+export function requestCurrentUser(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`http://10.0.2.2:3000/users/${email}`, {
+    // const request = fetch(`http://10.0.2.2:3000/users/${email}`, { // CETU
+    const request = fetch(`http://10.0.2.2:3000/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -24,7 +26,6 @@ export function requestCurrentUser(email, auth_token) {
       err => console.log("user error"),
     )
     .then(
-      // json => console.log("json!!", {id: json.id, email: json.email}),
       json => dispatch(receiveCurrentUser({id: json.id, email: json.email, username: json.username})),
       err => console.log("user json error"),
     );

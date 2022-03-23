@@ -14,7 +14,8 @@ validates :email,
 
 
   extend FriendlyId
-  friendly_id :email, use: :slugged
+  # friendly_id :email, use: :slugged ## CETU
+  friendly_id :username, use: :slugged
 
   has_many :workouts,
     primary_key: :id,

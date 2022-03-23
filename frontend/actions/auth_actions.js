@@ -8,6 +8,8 @@ export const RECEIVE_AUTH_TOKEN_SPINNER = "RECEIVE_AUTH_TOKEN_SPINNER";
 export const RECEIVE_ERROR = "RECEIVE_ERROR";
 export const RECEIVE_SIGN_UP_ERROR = "RECEIVE_SIGN_UP_ERROR";
 
+export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
+
 import fetch from 'cross-fetch';
 import { AsyncStorage } from 'react-native';
 
@@ -42,6 +44,11 @@ export const requestEmail = email => ({
   email,
 });
 
+export const receiveUsername = username => ({
+  type: RECEIVE_USERNAME,
+  username,
+});
+
 export const receiveError = error => ({
   type: RECEIVE_ERROR,
   error
@@ -53,9 +60,11 @@ export const receiveSignUpError = error => ({
 });
 
 //// in use $explain$
-export function getUserInfo(email, auth_token) {
+// export function getUserInfo(email, auth_token) { // CETU
+export function getUserInfo(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`http://10.0.2.2:3000/users/${email}`, {
+    // const request = fetch(`http://10.0.2.2:3000/users/${email}`, { //CETU
+    const request = fetch(`http://10.0.2.2:3000/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -77,7 +86,8 @@ export function getUserInfo(email, auth_token) {
 
 ////
 //// in use $explain$
-export function getThatToken(email, password) {
+// export function getThatToken(email, password) { // CETU
+  export function getThatToken(username, password) {
 
   return function action(dispatch) {
 
@@ -88,7 +98,8 @@ export function getThatToken(email, password) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: `${email}`,
+        // email: `${email}`, // CETU
+        username: `${username}`,
         password: `${password}`
       })
     });

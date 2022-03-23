@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create!(username: 'rumpus', password: 'password', password_confirmation: 'password', email: 'tomhardy')
-# user2 = User.create!(username: 'rumpus', password: 'password', password_confirmation: 'password', email: 'tomhardy')
+
 user2 = User.create!(username: 'moonrunes', password: 'password', password_confirmation: 'password', email: 'moonrunes')
-# user2 = User.create!(name: 'rumpusrunes', password: 'password', password_confirmation: 'password', email: 'guest@guest.com')
+
 
 
 #workouts

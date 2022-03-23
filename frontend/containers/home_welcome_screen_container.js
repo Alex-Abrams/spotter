@@ -10,7 +10,10 @@ import { selectAllChartExercises, selectMostRecentWorkout, selectAllPrevExercise
 
 const mapStateToProps = state => ({
   loggedIn: state.authentication.loggedIn,
+  ////
   email: state.authentication.email,
+  username: state.authentication.username, // CETU
+  //
   auth_token: state.authentication.auth_token,
   all_exercises: selectAllChartExercises(state),
   current_user: Object.values(state.entities.users)[0],

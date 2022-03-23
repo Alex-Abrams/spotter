@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
   auth_token: state.authentication.auth_token,
   loggedIn: state.authentication.loggedIn,
   splash_screen: state.authentication.splash_screen,
-  email: state.authentication.email,
+  email: state.authentication.email, //CETU
+  username: state.authentication.username, // CETU 
 });
 
 

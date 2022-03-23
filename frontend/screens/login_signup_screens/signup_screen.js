@@ -25,7 +25,8 @@ class Signup extends React.Component {
       `${auth_token}`
     );
 
-    this.props.authActions.requestEmail(this.state.email);
+    this.props.authActions.requestEmail(this.state.email); // CETU
+    this.props.authActions.requestEmail(this.state.username);
     // doesnt need dispatch to store here
      // \
   } catch (error) {
@@ -33,13 +34,17 @@ class Signup extends React.Component {
   }
 };
 
-_storeEmail = async (email) => {
+// _storeEmail = async (email) => { // CETU
+_storeEmail = async (username) => {
   try {
     await AsyncStorage.setItem(
-      'email',
-      `${email}`
+      // 'email',
+      // `${email}`
+      'username',
+      `${username}`
     );
-    this.props.authActions.requestEmail(email);
+    // this.props.authActions.requestEmail(email); // CETU
+    this.props.authActions.requestEmail(username);
   } catch (error) {
     // Error saving data
   }
@@ -64,13 +69,16 @@ renderSpinner() {
       console.log('error in signuphandler');
     } else {
       this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
-      .then(() => this.props.authActions.getThatToken(this.state.email, this.state.password))
+      // .then(() => this.props.authActions.getThatToken(this.state.email, this.state.password)) // CETU
+      .then(() => this.props.authActions.getThatToken(this.state.username, this.state.password))
       .then((auth_token) => {
         this._storeData(auth_token.auth_token.auth_token);
         this.setState({ token: auth_token.auth_token.auth_token });
       })
-      .then(() => this._storeEmail(this.state.email))
-      .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token));
+      // .then(() => this._storeEmail(this.state.email)) // CETU
+      // .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token)); // CETU
+      .then(() => this._storeEmail(this.state.username)) // CETU
+      .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token)); // CETU
     }
     Keyboard.dismiss();
 

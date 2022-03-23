@@ -9,6 +9,7 @@ import {
   RECEIVE_AUTH_TOKEN_SPINNER,
   RECEIVE_ERROR,
   RECEIVE_SIGN_UP_ERROR,
+  RECEIVE_USERNAME, // CETU
 } from '../actions/auth_actions';
 
 import merge from 'lodash/merge';
@@ -25,6 +26,7 @@ const _nullUser = Object.freeze({
   splash_screen: false,
   error: null,
   signup_error: null,
+  username: null, // CETU
 });
 
 const authReducer = (state = { loggedIn: false }, action) => {
@@ -43,8 +45,13 @@ const authReducer = (state = { loggedIn: false }, action) => {
     case REQEUST_USER_INFO:
       return merge({}, state, { user: action.currentUser });
 
+      ///////////////////
     case REQUEST_EMAIL:
       return merge({}, state, { email: action.email });
+
+    case RECEIVE_USERNAME:
+        return merge({}, state, {username: action.username}); // CETU 
+      ///////////////////
 
     case LOAD_SPLASH_SCREEN:
       return merge({}, state, { splash_screen: action.splash_screen });
