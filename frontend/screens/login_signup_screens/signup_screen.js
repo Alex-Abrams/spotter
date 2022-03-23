@@ -25,8 +25,8 @@ class Signup extends React.Component {
       `${auth_token}`
     );
 
-    this.props.authActions.requestEmail(this.state.email); // CETU
-    this.props.authActions.requestEmail(this.state.username);
+    // this.props.authActions.requestEmail(this.state.email); // CETU
+    this.props.authActions.receiveUsername(this.state.username);
     // doesnt need dispatch to store here
      // \
   } catch (error) {
@@ -35,7 +35,7 @@ class Signup extends React.Component {
 };
 
 // _storeEmail = async (email) => { // CETU
-_storeEmail = async (username) => {
+_storeUsername = async (username) => {
   try {
     await AsyncStorage.setItem(
       // 'email',
@@ -44,7 +44,7 @@ _storeEmail = async (username) => {
       `${username}`
     );
     // this.props.authActions.requestEmail(email); // CETU
-    this.props.authActions.requestEmail(username);
+    this.props.authActions.receiveUsername(username);
   } catch (error) {
     // Error saving data
   }
@@ -77,7 +77,7 @@ renderSpinner() {
       })
       // .then(() => this._storeEmail(this.state.email)) // CETU
       // .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token)); // CETU
-      .then(() => this._storeEmail(this.state.username)) // CETU
+      .then(() => this._storeUsername(this.state.username)) // CETU
       .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token)); // CETU
     }
     Keyboard.dismiss();

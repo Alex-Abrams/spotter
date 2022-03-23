@@ -11,19 +11,19 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
+      username: '',
       password: '',
       token: '',
     };
   }
 
-  _storeEmail = async (email) => {
+  _storeUsername = async (username) => {
     try {
       await AsyncStorage.setItem(
-        'email',
-        `${email}`
+        'username',
+        `${username}`
       );
-      this.props.authActions.requestEmail(email);
+      this.props.authActions.receiveUsername(username);
     } catch (error) {
       // Error saving data
     }
@@ -46,14 +46,14 @@ class Login extends React.Component {
   _signInHandler() {
     this.props.authActions.loadSplashScreen(true);
 
-    this.props.authActions.getThatToken(this.state.email, this.state.password)
+    this.props.authActions.getThatToken(this.state.username, this.state.password)
     .then((auth_token) => {
       this._storeData(auth_token.auth_token.auth_token);
       this.setState({ token: auth_token.auth_token.auth_token });
     })
-    .then(() => this.props.authActions.requestEmail(this.state.email))
+    .then(() => this.props.authActions.receiveUsername(this.state.username))
 
-    .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token));
+    .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token));
 
     this.props.authActions.loadSplashScreen(false);
 
@@ -119,11 +119,11 @@ class Login extends React.Component {
         {this.renderSpinner()}
 
         <View>
-          <Text style={{paddingLeft: 12, color: 'white'}}>Email</Text>
+          <Text style={{paddingLeft: 12, color: 'white'}}>Username</Text>
         <View style={{paddingLeft: 12, paddingRight: 12}}>
           <TextInput
-            placeholder='example@gmail.com'
-            onChangeText={email => this.setState({email})}
+            placeholder='Enter Username'
+            onChangeText={username => this.setState({username})}
             style={styles.text_input}>
           </TextInput>
         </View>

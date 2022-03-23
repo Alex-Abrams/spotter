@@ -68,10 +68,10 @@ class DrawerScreenNavigator extends React.Component {
     try {
       const value = await AsyncStorage.getItem('email');
       if (value !== null) {
-        this.props.authActions.requestEmail(value);
+        this.props.authActions.receiveUsername(value);
         // return value;
       } else {
-        this.props.authActions.requestEmail(null);
+        this.props.authActions.receiveUsername(null);
       }
 
     } catch (error) {

@@ -26,7 +26,7 @@ class HomeWelcomeScreen extends React.Component {
     const { current_user, auth_token, is_loading, journal, all_exercises } = this.props;
     this.props.loadingActions.loadingScreen();
     // These next store items need to load in carefully, to seperate the users with no workout data and the current users
-    this.props.userActions.requestCurrentUser(this.props.email, this.props.auth_token)
+    this.props.userActions.requestCurrentUser(this.props.username, this.props.auth_token)
     .then((user) => this.props.fetchAllExercises.requestChartExercises(user.currentUser.id, auth_token))
     .catch(error => console.log('111', error))
 
