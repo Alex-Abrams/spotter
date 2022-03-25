@@ -99,15 +99,15 @@ class CalendarScreen extends React.Component {
         </Calendar>
 
 
-      <View style={{padding: 8, width: 100}}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', paddingTop: 10}}>
+
           <View style={styles.legend_bubbles}>
             <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'blue'}}>
             </View>
             <Text style={styles.legend_text}>Shoulders</Text>
           </View>
 
-          <View style={{paddingLeft: 15}}>
+          <View style={{}}>
           <View style={styles.legend_bubbles}>
             <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'green'}}>
             </View>
@@ -115,7 +115,7 @@ class CalendarScreen extends React.Component {
           </View>
         </View>
 
-        </View>
+
 
 
         <View style={styles.legend_bubbles}>
@@ -130,7 +130,7 @@ class CalendarScreen extends React.Component {
           <Text style={styles.legend_text}>Arms</Text>
         </View>
 
-        <View style={styles.legend_bubbles}>
+        <View style={[styles.legend_bubbles, { paddingTop: 3}]}>
           <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'red'}}>
           </View>
           <Text style={styles.legend_text}>Back</Text>
@@ -148,7 +148,8 @@ export default CalendarScreen;
 const styles = StyleSheet.create({
   legend_text: {
     paddingTop: 5,
-    paddingLeft: 7
+    paddingLeft: 7,
+    paddingRight: 7,
   },
   legend_bubbles : {
     paddingTop: 1,

@@ -8,10 +8,11 @@ const EXERCISES = [
 ];
 
 let chestArray = [
-  "Bench Chest Press",
+  "Barbell Chest Press",
+  "Dumbell Chest Press",
   "Dumbbell Chest Flies",
-  "Incline Chest Press",
-  "Decline Chest Press",
+  "Barbell Incline Chest Press",
+  "Barbell Decline Chest Press",
   "Butterflies",
   "Chest Dips",
   "Dumbbell Chest Incline",
@@ -19,15 +20,15 @@ let chestArray = [
 ];
 
 let legsArray = [
-  "Front Squats",
+  "Front Squat",
   "Split Squat",
-  "Squat (regular)",
+  "Barbell Squat",
   "Dumbell Squat",
   "Hip Thrust",
   "Machine Squats",
   "Lunges",
-  "Leg Press",
-  "DeadLifts (regular)",
+  "Machine Leg Press",
+  "DeadLifts",
   "Seated Calf Raise",
   "Standing Calf Raise",
 ];
@@ -53,12 +54,12 @@ let shouldersArray = [
 
 let backArray = [
   "DeadLift",
-  "Bent-Over Row (Barbell)",
-  "Single-Arm Row (Dumbell)",
+  "Barbell Bent-Over Row",
+  "Dumbell Single-Arm Row",
   "Seated Cable Row (Close Grip)",
   "Seated Cable Row (Wide Grip)",
-  "Pullup",
-  "Lat Pulldown",
+  "Pullups",
+  "Lateral Pulldown",
   "Front Squats",
 ];
 

@@ -24,7 +24,7 @@ class PrevWorkoutScreen extends React.Component {
 
     const reversed_workouts_list = workouts_list.reverse();
 
-    const journal_list = (
+    const journal_list = (reversed_workouts_list.length > 0) ? (
       <View>
         {reversed_workouts_list.map((workout, i) =>
         <JournalItem
@@ -37,6 +37,13 @@ class PrevWorkoutScreen extends React.Component {
           exercise_section={workout.exercise_section}/>)}
 
       </View>
+    ) : (
+      <View style={{flex: 1, alignSelf: 'center', paddingTop: 50}}>
+        <Text style={{fontSize: 28}}>No Current Data To Display</Text>
+        <Text style={{alignSelf: 'center'}}>(Journal Data Will Show Here After 1st Log)</Text>
+        <Text style={{alignSelf: 'center'}}>Workouts Can Be Copied Onto New Workout Entries</Text>
+      </View>
+
     );
 
     return(
