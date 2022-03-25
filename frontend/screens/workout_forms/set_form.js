@@ -114,7 +114,7 @@ class SetForm extends React.Component {
 
   createTwoButtonAlert = () =>
   Alert.alert(
-    "Delete Entire Exercise?",
+    `Delete ${this.props.lifts[this.props.liftId - 1].name}?`,
     "",
     [
       {
@@ -189,7 +189,7 @@ class SetForm extends React.Component {
       <View style={{paddingTop: 9}}>
         <Button
           raised
-          title="Delete Exercise"
+          title={`Delete ${this.props.lifts[liftId - 1].name}`}
           buttonStyle={{backgroundColor: 'red'}}
           onPress={() => this.createTwoButtonAlert()}>
         </Button>
