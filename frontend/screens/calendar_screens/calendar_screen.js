@@ -54,9 +54,6 @@ class CalendarScreen extends React.Component {
 
 
   render() {
-    //////
-    // console.log(this.props);
-    /////
 
       let marked_dates = {};
       const date_array = this.getDateAndExerciseSection(this.props.all_workouts);
@@ -80,14 +77,10 @@ class CalendarScreen extends React.Component {
         // example date entry --> ['2021-10-18']: {startingDay: true, endingDay: true, color: 'green', textColor: 'black'},
 
         let new_date = {[el.date]: {startingDay: true, endingDay: true, color: color_section, textColor: 'black'}};
-        // Object.assign({}, marked_dates, {[el.date]: {startingDay: true, endingDay: true, color: 'green', textColor: 'yellow'}});
 
         let new_date_obj = Object.assign({}, new_date);
         marked_dates = merge({}, marked_dates, new_date_obj);
       });
-
-          //onLongPress wll not work with the dev tools running.
-          // {this.directToSelectedDateScreen(this.props.navigation, day)}
 
     return(
       <ScrollView>
@@ -114,9 +107,6 @@ class CalendarScreen extends React.Component {
             <Text style={styles.legend_text}>Legs</Text>
           </View>
         </View>
-
-
-
 
         <View style={styles.legend_bubbles}>
           <View style={{width: 34, height: 34, borderRadius: 17, backgroundColor: 'yellow'}}>

@@ -59,11 +59,10 @@ export const receiveSignUpError = error => ({
   error
 });
 
-//// in use $explain$
-// export function getUserInfo(email, auth_token) { // CETU
+////
+
 export function getUserInfo(username, auth_token) {
   return function action(dispatch) {
-    // const request = fetch(`http://10.0.2.2:3000/users/${email}`, { //CETU
     const request = fetch(`http://10.0.2.2:3000/users/${username}`, {
       method: 'GET',
         headers: {
@@ -72,21 +71,18 @@ export function getUserInfo(username, auth_token) {
     });
 
     return request.then(
-      // response => { response.status == 200 ? dispatch(isLoggedIn(true)) : dispatch(isLoggedIn(false))},
       response => {if (response.status == 200) {
         dispatch(isLoggedIn(true));
       } else {
         dispatch(isLoggedIn(false));
       }},
-      err => console.log('get userinfo error ', err)
-    ); // oringal
+      err => dispatch(receiveError('User Not Found')),
+    );
   }
 }
 
 
 ////
-//// in use $explain$
-// export function getThatToken(email, password) { // CETU
   export function getThatToken(username, password) {
 
   return function action(dispatch) {
@@ -98,7 +94,6 @@ export function getUserInfo(username, auth_token) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        // email: `${email}`, // CETU
         username: `${username}`,
         password: `${password}`
       })
@@ -106,11 +101,10 @@ export function getUserInfo(username, auth_token) {
 
      return request.then(
       response => response.json(),
-      // response => console.log("zzzzz", response.json()),
     )
     .then(
       json => dispatch(receiveAuthToken(json)),
-      err => console.log("jsonerror ", json)
+      err => dispatch(receiveError('Unathorized Token')),
     );
   }
 }
@@ -133,20 +127,9 @@ export function signupUser(email, username, password, password_confirmation) {
       })
     });
 
-    // console.log('request?!', request);
-    // return request.then(
-    //   response => {if (response.status !== 200) {
-    //   // response => {if (response.status === 422) {
-    //     console.log('response erro!!!! =>>>', response)};
-    //     // dispatch(receiveError("An error occured"))};
-    //     // dispatch(receiveError('Username or Email Taken'))};
-    //   },
-    //   err => dispatch(receiveError('signup failed'))
-    // );
-    ////////////////
     return request.then(
       response => response.json(),
-      err => console.log('TO ERR ZZ', err),
+      err => dispatch(receiveError('Signup Failed')),
     )
     .then(
       json => {
@@ -156,7 +139,7 @@ export function signupUser(email, username, password, password_confirmation) {
           dispatch(receiveSignUpError('Email already in use.'));
         };
       },
-      err => console.log('Sign up error has occurred', err),
+      err => dispatch(receiveError('Signup Failed')),
     );
   }
 }

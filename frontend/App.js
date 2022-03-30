@@ -35,7 +35,8 @@ function configureStore(initialState = {}) {
   if (store) {
     return store;
   }
-  const middlewares = [thunk, logger];
+  // const middlewares = [thunk, logger];
+  const middlewares = [thunk];
 
   store = createStore(
     rootReducer,
@@ -45,7 +46,7 @@ function configureStore(initialState = {}) {
   return store;
 }
 
-let teststore = configureStore();
+let app_store = configureStore();
 
 
 export default class App extends React.Component {
@@ -84,7 +85,7 @@ export default class App extends React.Component {
 
 
     return (
-      <Provider store={teststore}>
+      <Provider store={app_store}>
         <NavigationContainer ref={this.navigationRef}>
             <DrawerScreenNavigatorContainer navigation={this.props.navigation} />
         </NavigationContainer>
@@ -95,7 +96,7 @@ export default class App extends React.Component {
 
 // const App = () => {
 //   return (
-//     <Provider store={teststore}>
+//     <Provider store={app_store}>
 //       <NavigationContainer>
 //         <StackNavigatorContainer />
 //       </NavigationContainer>

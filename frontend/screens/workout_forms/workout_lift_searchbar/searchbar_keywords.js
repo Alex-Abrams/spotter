@@ -8,6 +8,7 @@ const EXERCISES = [
 ];
 
 let chestArray = [
+  "Bench Press",
   "Barbell Chest Press",
   "Dumbell Chest Press",
   "Dumbbell Chest Flies",

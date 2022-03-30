@@ -75,7 +75,6 @@ class SetShow extends React.Component {
 
   reactNativeDialog() {
     const { set, setId, weight, reps, number, liftId } = this.props;
-    // console.log("setid?!", setId);
 
     const errorDisplayReps = (this.state.repsNumeric === true) ? (
       null
@@ -130,7 +129,6 @@ class SetShow extends React.Component {
       <View>
         <TouchableHighlight
           underlayColor="white"
-          onLongPress={() => console.log("LOOOONG TOUCH")}
           onPress={() => this.toggleDialogBox(!this.state.edit_dialog_box_visible)}>
           <TouchableSetItem
             set={set}

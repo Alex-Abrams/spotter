@@ -66,19 +66,16 @@ renderSpinner() {
 
     if(this.state.password !== this.state.password_confirmation) {
       // dispatch error
-      console.log('error in signuphandler');
+      this.props.authActions.receiveError('Sign Up Failed');
     } else {
       this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
-      // .then(() => this.props.authActions.getThatToken(this.state.email, this.state.password)) // CETU
       .then(() => this.props.authActions.getThatToken(this.state.username, this.state.password))
       .then((auth_token) => {
         this._storeData(auth_token.auth_token.auth_token);
         this.setState({ token: auth_token.auth_token.auth_token });
       })
-      // .then(() => this._storeEmail(this.state.email)) // CETU
-      // .then(() => this.props.authActions.getUserInfo(this.state.email, this.state.token)); // CETU
-      .then(() => this._storeUsername(this.state.username)) // CETU
-      .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token)); // CETU
+      .then(() => this._storeUsername(this.state.username))
+      .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token)); 
     }
     Keyboard.dismiss();
 

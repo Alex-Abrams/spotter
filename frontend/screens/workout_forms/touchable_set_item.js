@@ -10,8 +10,6 @@ class TouchableSetItem extends React.Component {
     super(props);
   }
 
-  // console.log("setsghow", this.props.lifts);
-  // console.log("liftID:", this.props.liftId);
   render() {
     const { set, setId, weight, reps, number } = this.props;
     // {id: 3, lift_id: 2, weight: "444", reps: "555"}

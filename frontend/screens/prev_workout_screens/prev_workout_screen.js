@@ -15,11 +15,6 @@ class PrevWorkoutScreen extends React.Component {
   }
 
   render() {
-    // console.log(this.props.workouts_list);
-    // const days = ["Sun", "Mon", "Tues", "Thur", "Fri", "Sat"];
-    // const dt = new Date("2021-05-16T18:46:31.571Z"); // works gives a numeral
-    // console.log("getdatday", days[dt.getDay()]);
-
     const { auth_token, current_user, workouts_list } = this.props;
 
     const reversed_workouts_list = workouts_list.reverse();

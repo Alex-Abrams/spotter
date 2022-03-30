@@ -129,8 +129,6 @@ class SetForm extends React.Component {
   render() {
     const { liftId, sets } = this.props;
 
-    // console.log(this.props.exercise_section);
-
     // weightNumeric(if true then the input contains only numbers)
     const errorDisplayWeight = (this.state.weightNumeric === true) ? (
       null
