@@ -25,6 +25,7 @@ class Login extends React.Component {
     .then((auth_token) => {
       // this._storeData(auth_token.auth_token.auth_token);
       // this._storeUsername(this.state.username);
+      console.log(auth_token);
       this.setState({ token: auth_token.auth_token.auth_token });
     })
     .then(() => this.props.authActions.receiveUsername(this.state.username))

@@ -61,7 +61,7 @@ export const receiveSignUpError = error => ({
 
 export function getUserInfo(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${EMULATOR_HOST}/users/${username}`, {
+    const request = fetch(`${PHONE_HOST}/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -85,7 +85,7 @@ export function getUserInfo(username, auth_token) {
 
   return function action(dispatch) {
 
-    const request = fetch(`${EMULATOR_HOST}/authenticate`, {
+    const request = fetch(`${PHONE_HOST}/authenticate`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -111,7 +111,7 @@ export function getUserInfo(username, auth_token) {
 export function signupUser(email, username, password, password_confirmation) {
   return function action(dispatch) {
 
-    const request = fetch(`${EMULATOR_HOST}/users`, {
+    const request = fetch(`${PHONE_HOST}/users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
