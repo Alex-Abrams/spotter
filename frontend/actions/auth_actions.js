@@ -1,18 +1,16 @@
 export const RECEIVE_AUTH_TOKEN = "RECEIVE_AUTH_TOKEN";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const LOGOUT_USER = "LOGOUT_USER";
-// export const REQEUST_USER_INFO = "REQEUST_USER_INFO";
 export const REQUEST_EMAIL = "REQUEST_EMAIL";
 export const LOAD_SPLASH_SCREEN = "LOAD_SPLASH_SCREEN";
 export const RECEIVE_AUTH_TOKEN_SPINNER = "RECEIVE_AUTH_TOKEN_SPINNER";
 export const RECEIVE_ERROR = "RECEIVE_ERROR";
 export const RECEIVE_SIGN_UP_ERROR = "RECEIVE_SIGN_UP_ERROR";
-
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 
-import fetch from 'cross-fetch';
-import { AsyncStorage } from 'react-native';
+import { EMULATOR_HOST, PHONE_HOST } from '../environment';
 
+import fetch from 'cross-fetch';
 
 export const loadSplashScreen = (splash_screen) => ({
   type: LOAD_SPLASH_SCREEN,
@@ -63,7 +61,7 @@ export const receiveSignUpError = error => ({
 
 export function getUserInfo(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`http://10.0.2.2:3000/users/${username}`, {
+    const request = fetch(`${EMULATOR_HOST}/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -87,7 +85,7 @@ export function getUserInfo(username, auth_token) {
 
   return function action(dispatch) {
 
-    const request = fetch('http://10.0.2.2:3000/authenticate', {
+    const request = fetch(`${EMULATOR_HOST}/authenticate`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -113,7 +111,7 @@ export function getUserInfo(username, auth_token) {
 export function signupUser(email, username, password, password_confirmation) {
   return function action(dispatch) {
 
-    const request = fetch('http://10.0.2.2:3000/users', {
+    const request = fetch(`${EMULATOR_HOST}/users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

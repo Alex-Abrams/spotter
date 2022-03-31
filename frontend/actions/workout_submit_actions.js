@@ -6,6 +6,8 @@ import { resetSets, resetLifts } from './workout_actions';
 
 import fetch from 'cross-fetch';
 
+import { EMULATOR_HOST, PHONE_HOST } from '../environment';
+
 export const receiveLiftsAndSets = (liftsAndSets) => ({
   type: RECEIVE_LIFTS_AND_SETS,
   liftsAndSets
@@ -20,9 +22,6 @@ export const clearAllLiftsAndSets = () => ({
 });
 
 
-// /users/:user_id/workouts/:workout_id/lifts
-// promises.push(fetch(`http://10.0.2.2:3000/users/1/workouts/1/lifts`));
-
 export function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) {
     // this function takes the newly combined lifts and sets (submit reducer) and pushes them into an array
     // the array of promises is then all posted at once when submit workout button is pressed
@@ -30,7 +29,7 @@ export function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) 
     let promises = [];
     liftsAndSets.forEach(set => {
 
-      promises.push(fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/${workout_id}/lifts`, {
+      promises.push(fetch(`${EMULATOR_HOST}/users/${user_id}/workouts/${workout_id}/lifts`, {
         method: 'POST',
         headers: {
           "Authorization": auth_token,
@@ -49,7 +48,6 @@ export function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) 
 
       Promise.all(promises)
         .then(
-          // response => console.log("sucess ayy", response),
           response => response,
           err => console.log("not success", err)
         );
@@ -60,7 +58,7 @@ export function postLiftsAndSets(liftsAndSets, workout_id, auth_token, user_id) 
 export function postWorkout(workout, auth_token, liftsAndSets) { // MAY NOT BE IN USE
 
   return function action(dispatch) {
-    const request = fetch(`http://10.0.2.2:3000/users/${workout.user_id}/workouts`, {
+    const request = fetch(`${EMULATOR_HOST}/users/${workout.user_id}/workouts`, {
       method: 'POST',
         headers: {
           "Authorization": auth_token,

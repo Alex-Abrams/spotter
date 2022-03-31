@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import {
   createDrawerNavigator,
@@ -25,6 +25,8 @@ import SignupContainer from '../containers/signup_container';
 import SplashScreen from '../screens/login_signup_screens/splash_screen';
 ///////////////////////////////
 
+const Drawer = createDrawerNavigator();
+
 class DrawerScreenNavigator extends React.Component {
   constructor(props) {
     super(props);
@@ -33,8 +35,8 @@ class DrawerScreenNavigator extends React.Component {
 
   userLogout = async () => {
     try {
-      let keys = ['token', 'email'];
-      await AsyncStorage.multiRemove(keys);
+      // let keys = ['token', 'username'];
+      // await AsyncStorage.multiRemove(keys);
       this.props.authActions.logoutCurrentUser();
       /// below resets the store one entity at a time
       this.props.userActions.resetUser();
@@ -48,41 +50,9 @@ class DrawerScreenNavigator extends React.Component {
     }
   };
 
-  ////////////////////
-    // -------------------------------------------------------------------
-  _retrieveStorageToken = async () => {
-    try {
-      const auth_token = await AsyncStorage.getItem('token');
-      if (auth_token !== null) {
-        this.props.authActions.receiveAuthToken({auth_token});
-      } else {
-        this.props.authActions.receiveAuthToken(null);
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
 
-  // retrives the email from phone storage, email and auth_token is all you need to remain logged in
-  _retrieveStorageEmail = async () => {
-    try {
-      const value = await AsyncStorage.getItem('email');
-      if (value !== null) {
-        this.props.authActions.receiveUsername(value);
-        // return value;
-      } else {
-        this.props.authActions.receiveUsername(null);
-      }
-
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
-  // -------------------------------------------------------------------
 
   componentDidMount() {
-    this._retrieveStorageToken();
-    this._retrieveStorageEmail();
     this.props.authActions.getUserInfo(this.props.email, this.props.auth_token);
   }
   ////////////////////
@@ -91,7 +61,7 @@ class DrawerScreenNavigator extends React.Component {
   render() {
     const { loggedIn, splash_screen, nav, navigationRef } = this.props;
 
-    const Drawer = createDrawerNavigator();
+    // const Drawer = createDrawerNavigator();
 
     const CustomDrawerContent = (props, {navigation}) => {
 

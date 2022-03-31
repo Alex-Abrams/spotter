@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Keyboard, TextInput, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-import { AsyncStorage } from 'react-native';
+// import { AsyncStorage } from "@react-native-async-storage/async-storage";
 import SplashScreen from './splash_screen';
 
 class Signup extends React.Component {
@@ -18,37 +18,6 @@ class Signup extends React.Component {
 
   }
 
-  _storeData = async (auth_token) => {
-  try {
-    await AsyncStorage.setItem(
-      'token',
-      `${auth_token}`
-    );
-
-    // this.props.authActions.requestEmail(this.state.email); // CETU
-    this.props.authActions.receiveUsername(this.state.username);
-    // doesnt need dispatch to store here
-     // \
-  } catch (error) {
-    // Error saving data
-  }
-};
-
-// _storeEmail = async (email) => { // CETU
-_storeUsername = async (username) => {
-  try {
-    await AsyncStorage.setItem(
-      // 'email',
-      // `${email}`
-      'username',
-      `${username}`
-    );
-    // this.props.authActions.requestEmail(email); // CETU
-    this.props.authActions.receiveUsername(username);
-  } catch (error) {
-    // Error saving data
-  }
-};
 
 renderSpinner() {
   return(
@@ -71,11 +40,12 @@ renderSpinner() {
       this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
       .then(() => this.props.authActions.getThatToken(this.state.username, this.state.password))
       .then((auth_token) => {
-        this._storeData(auth_token.auth_token.auth_token);
+        // this._storeData(auth_token.auth_token.auth_token);
+        // console.log('triple auth token?', auth_token);
         this.setState({ token: auth_token.auth_token.auth_token });
       })
-      .then(() => this._storeUsername(this.state.username))
-      .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token)); 
+      // .then(() => this._storeUsername(this.state.username))
+      .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token));
     }
     Keyboard.dismiss();
 

@@ -35,8 +35,8 @@ function configureStore(initialState = {}) {
   if (store) {
     return store;
   }
-  // const middlewares = [thunk, logger];
-  const middlewares = [thunk];
+  const middlewares = [thunk, logger];
+  // const middlewares = [thunk];
 
   store = createStore(
     rootReducer,

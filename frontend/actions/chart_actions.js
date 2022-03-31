@@ -2,6 +2,8 @@ export const RECEIVE_CHART_WORKOUTS = "RECEIVE_CHART_WORKOUTS";
 export const RECEIVE_CHART_LIFTS = "RECEIVE_CHART_LIFTS";
 export const RESET_CHART_EXERCISES = "RESET_CHART_EXERCISES";
 
+import { EMULATOR_HOST, PHONE_HOST } from '../environment';
+
 import { requestAllWorkouts, requestAllWorkoutExercises } from './prev_workout_actions';
 
 export const receiveChartWorkouts = (workouts) => ({
@@ -21,7 +23,7 @@ export const resetChartExercises = () => ({
 
 export function requestChartExercises(user_id, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`http://10.0.2.2:3000/users/${user_id}/workouts/all_lifts/lifts`, {
+    const request = fetch(`${EMULATOR_HOST}/users/${user_id}/workouts/all_lifts/lifts`, {
       method: 'GET',
       headers: {
         "Authorization": auth_token

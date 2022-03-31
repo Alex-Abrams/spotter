@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { View, Button, ImageBackground, Text, TouchableWithoutFeedback, Keyboard, TextInput, Image, StyleSheet } from 'react-native';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from './splash_screen';
 
@@ -17,38 +17,14 @@ class Login extends React.Component {
     };
   }
 
-  _storeUsername = async (username) => {
-    try {
-      await AsyncStorage.setItem(
-        'username',
-        `${username}`
-      );
-      this.props.authActions.receiveUsername(username);
-    } catch (error) {
-      // Error saving data
-    }
-  };
-
-  _storeData = async (auth_token) => {
-  try {
-    await AsyncStorage.setItem(
-      'token',
-      `${auth_token}`
-    );
-  } catch (error) {
-    // Error saving data
-  }
-};
-
-
-// ----------------------------------------------------------------------
 
   _signInHandler() {
     this.props.authActions.loadSplashScreen(true);
 
     this.props.authActions.getThatToken(this.state.username, this.state.password)
     .then((auth_token) => {
-      this._storeData(auth_token.auth_token.auth_token);
+      // this._storeData(auth_token.auth_token.auth_token);
+      // this._storeUsername(this.state.username);
       this.setState({ token: auth_token.auth_token.auth_token });
     })
     .then(() => this.props.authActions.receiveUsername(this.state.username))
