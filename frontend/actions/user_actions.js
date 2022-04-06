@@ -14,7 +14,7 @@ export const receiveCurrentUser = currentUser => ({
 
 export function requestCurrentUser(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${PHONE_HOST}/users/${username}`, {
+    const request = fetch(`${EMULATOR_HOST}/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
