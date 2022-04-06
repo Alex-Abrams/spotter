@@ -6,7 +6,7 @@ export const RESET_COPIED_JOURNAL_EXERCISES = 'RESET_COPIED_JOURNAL_EXERCISES';
 export const RESET_WORKOUTS ='RESET_WORKOUTS';
 import {loadingComplete} from './loading_actions';
 
-import { EMULATOR_HOST, PHONE_HOST } from '../environment';
+import { HOST } from '../environment';  // boolean, if true HOST = emulator IP, if flase = phone IP
 
 export const receiveAllWorkouts = (workouts) => ({
   type: RECEIVE_ALL_WORKOUTS,
@@ -38,7 +38,7 @@ export const resetWorkouts = () => ({
 // /users/:user_id/workouts
 export function requestAllWorkouts(user_id, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${EMULATOR_HOST}/users/${user_id}/workouts`, {
+    const request = fetch(`${HOST}/users/${user_id}/workouts`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -60,7 +60,7 @@ export function requestAllWorkouts(user_id, auth_token) {
 
 export function requestAllWorkoutExercises(user_id, workout_id, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${EMULATOR_HOST}/users/${user_id}/workouts/${workout_id}/lifts`, {
+    const request = fetch(`${HOST}/users/${user_id}/workouts/${workout_id}/lifts`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token

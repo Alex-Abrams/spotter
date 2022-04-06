@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
-import { View, Text, StyleSheet, ScrollView, Touch } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import JournalItem from './journal_item';
 
 

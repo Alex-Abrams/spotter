@@ -40,11 +40,9 @@ renderSpinner() {
       this.props.authActions.signupUser(this.state.email, this.state.username, this.state.password, this.state.password_confirmation)
       .then(() => this.props.authActions.getThatToken(this.state.username, this.state.password))
       .then((auth_token) => {
-        // this._storeData(auth_token.auth_token.auth_token);
-        // console.log('triple auth token?', auth_token);
         this.setState({ token: auth_token.auth_token.auth_token });
       })
-      // .then(() => this._storeUsername(this.state.username))
+      .then(() => this.props.authActions.receiveUsername(this.state.username))
       .then(() => this.props.authActions.getUserInfo(this.state.username, this.state.token));
     }
     Keyboard.dismiss();

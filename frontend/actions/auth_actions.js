@@ -8,7 +8,7 @@ export const RECEIVE_ERROR = "RECEIVE_ERROR";
 export const RECEIVE_SIGN_UP_ERROR = "RECEIVE_SIGN_UP_ERROR";
 export const RECEIVE_USERNAME = "RECEIVE_USERNAME";
 
-import { EMULATOR_HOST, PHONE_HOST } from '../environment';
+import { HOST } from '../environment';  // boolean, if true HOST = emulator IP, if flase = phone IP
 
 import fetch from 'cross-fetch';
 
@@ -61,7 +61,7 @@ export const receiveSignUpError = error => ({
 
 export function getUserInfo(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${EMULATOR_HOST}/users/${username}`, {
+    const request = fetch(`${HOST}/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
@@ -85,7 +85,7 @@ export function getUserInfo(username, auth_token) {
 
   return function action(dispatch) {
 
-    const request = fetch(`${EMULATOR_HOST}/authenticate`, {
+    const request = fetch(`${HOST}/authenticate`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -111,7 +111,7 @@ export function getUserInfo(username, auth_token) {
 export function signupUser(email, username, password, password_confirmation) {
   return function action(dispatch) {
 
-    const request = fetch(`${EMULATOR_HOST}/users`, {
+    const request = fetch(`${HOST}/users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

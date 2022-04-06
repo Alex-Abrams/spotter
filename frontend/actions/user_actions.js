@@ -1,7 +1,7 @@
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RESET_USER = "RESET_USER";
 
-import { EMULATOR_HOST, PHONE_HOST } from '../environment';
+import { HOST } from '../environment';  // boolean, if true HOST = emulator IP, if flase = phone IP
 
 export const resetUser = () => ({
   type: RESET_USER,
@@ -14,7 +14,7 @@ export const receiveCurrentUser = currentUser => ({
 
 export function requestCurrentUser(username, auth_token) {
   return function action(dispatch) {
-    const request = fetch(`${EMULATOR_HOST}/users/${username}`, {
+    const request = fetch(`${HOST}/users/${username}`, {
       method: 'GET',
         headers: {
           "Authorization": auth_token
