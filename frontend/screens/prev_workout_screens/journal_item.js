@@ -40,14 +40,12 @@ class JournalItem extends React.Component {
           });
         }}>
 
-          <View style={{paddingTop: 15}}>
             <TouchableJournalItem
               user_id={user_id}
               day={the_day}
               the_date={the_date}
               exercise_section={exercise_section} />
 
-          </View>
             </TouchableHighlight>
     );
   }
@@ -70,6 +68,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderWidth: 1,
+    paddingTop: 15,
     borderColor: "#c4cdcf", // there may be a problem here with different emulators
     // backgroundColor: "yellow",
     flex: 1,
