@@ -138,7 +138,7 @@ class SetShow extends React.Component {
             number={number} />
         </TouchableHighlight>
 
-  {this.reactNativeDialog()}
+        {this.reactNativeDialog()}
 
 
       </View>

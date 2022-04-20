@@ -48,12 +48,12 @@ function configureStore(initialState = {}) {
 
 let app_store = configureStore();
 
-import Constants from "expo-constants";
-const { manifest } = Constants;
-
-const api = (typeof manifest.packagerOpts === `object`) && manifest.packagerOpts.dev
-  ? manifest.debuggerHost.split(`:`).shift().concat(`:3000`)
-  : `api.example.com`;
+// import Constants from "expo-constants";
+// const { manifest } = Constants;
+//
+// const api = (typeof manifest.packagerOpts === `object`) && manifest.packagerOpts.dev
+//   ? manifest.debuggerHost.split(`:`).shift().concat(`:3000`)
+//   : `api.example.com`;
 
 
 export default class App extends React.Component {

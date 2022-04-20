@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
+// import { AsyncStorage } from "@react-native-async-storage/async-storage";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import {
   createDrawerNavigator,
@@ -22,8 +22,8 @@ import {screens, routes} from './route_items';
 /////////////////////////////
 import LoginContainer from '../containers/login_screen_container';
 import SignupContainer from '../containers/signup_container';
-import SplashScreen from '../screens/login_signup_screens/splash_screen';
 ///////////////////////////////
+
 
 const Drawer = createDrawerNavigator();
 
@@ -59,9 +59,7 @@ class DrawerScreenNavigator extends React.Component {
 
 
   render() {
-    const { loggedIn, splash_screen, nav, navigationRef } = this.props;
-
-    // const Drawer = createDrawerNavigator();
+    const { loggedIn, nav, navigationRef } = this.props;
 
     const CustomDrawerContent = (props, {navigation}) => {
 
