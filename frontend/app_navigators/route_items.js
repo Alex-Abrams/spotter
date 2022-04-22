@@ -1,3 +1,5 @@
+// Holds all the routes for each tab and drawer button
+
 import * as React from 'react';
 
 export const screens = {
@@ -29,7 +31,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={"eye"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"eye"} size={30} />,
+    // icon: () => <EvilIcons name={"eye"} size={30} />,
   },
   {
     name: screens.HomeStack,
@@ -39,7 +41,7 @@ export const routes = [
     showInDrawer: true,
     // icon: (focused) =>
     //   <EvilIcons name={"eye"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"eye"} size={30} />,
+    // icon: () => <EvilIcons name={"eye"} size={30} />,
   },
   {
     name: screens.Home,
@@ -49,7 +51,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={"eye"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"eye"} size={30} />,
+    // icon: () => <EvilIcons name={"eye"} size={30} />,
   },
 
   {
@@ -61,7 +63,7 @@ export const routes = [
     showInDrawer: true,
     // icon: (focused) =>
     //   <EvilIcons name={"trophy"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"trophy"} size={30} />,
+    // icon: () => <EvilIcons name={"trophy"} size={30} />,
   },
 
   {
@@ -72,7 +74,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={"trophy"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"trophy"} size={30} />,
+    // icon: () => <EvilIcons name={"trophy"} size={30} />,
   },
 
   {
@@ -94,7 +96,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={"bell"} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"bell"} size={30} />,
+    // icon: () => <EvilIcons name={"bell"} size={30} />,
   },
 
   {
@@ -106,7 +108,7 @@ export const routes = [
     showInDrawer: true,
     // icon: (focused) =>
     //   <EvilIcons name={'bell'} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"bell"} size={30} />,
+    // icon: () => <EvilIcons name={"bell"} size={30} />,
   },
   {
     name: screens.Workout,
@@ -116,7 +118,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={'bell'} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"bell"} size={30} />,
+    // icon: () => <EvilIcons name={"bell"} size={30} />,
   },
 
   {
@@ -128,7 +130,7 @@ export const routes = [
     showInDrawer: true,
     // icon: (focused) =>
     //   <EvilIcons name={'chart'} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"chart"} size={30} />,
+    // icon: () => <EvilIcons name={"chart"} size={30} />,
   },
   {
     name: screens.Chart,
@@ -138,7 +140,7 @@ export const routes = [
     showInDrawer: false,
     // icon: (focused) =>
     //   <EvilIcons name={'chart'} size={30} color={focused ? '#551E18' : '#000'} />,
-    icon: () => <EvilIcons name={"chart"} size={30} />,
+    // icon: () => <EvilIcons name={"chart"} size={30} />,
   },
   {
   name: screens.Login,

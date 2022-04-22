@@ -2,25 +2,19 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'; /////
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faDumbbell, faCalendar, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 
+import { routes, screens } from './route_items';
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container'; //
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
-
 import CalendarStackNavigator from './calendar_stack_navigator';
 import JournalStackNavigator from './journal_stack_navigator';
-
 import LoginSignupStack from './login_signup_stack';
-
-import { routes, screens } from './route_items';
-
-import WorkoutNav from './workout_navigator';
-import { FontAwesome } from '@expo/vector-icons';
-
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-// import { dumbbell } from '@fortawesome/free-solid-svg-icons';
-import { faDumbbell, faCalendar, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import WorkoutNavigator from './workout_navigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -96,8 +90,8 @@ class BottomTabNavigator extends React.Component {
           tabBarLabel: () => <Text style={styles.tabBarLabel}>Chart</Text>
         }}
         />
-
-      <Tab.Screen name="WorkoutNav" component={WorkoutNav}
+      {/* workout nav tab screen holds all the body sections when entering new workouts (workout navigator)  */}
+      <Tab.Screen name="WorkoutNav" component={WorkoutNavigator}
         options={{
             tabBarButton: () => null,
             tabBarVisible:false //hide tab bar on this screen

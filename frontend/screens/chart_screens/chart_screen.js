@@ -16,8 +16,6 @@ class ChartScreen extends React.Component {
   constructor(props) {
     super(props);
   }
-  //onDataPointClick -> see this
-  // consider a shadow under the line (like it makes a mountain)!
 
  getMonth(created_at) {
    const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
@@ -35,9 +33,9 @@ class ChartScreen extends React.Component {
     if (filtered_exercises.length > 0 ) {
 
       filtered_exercises.forEach((exer, i) => { // every time the month changes, it adds 1 instance of the month to the x axis labels
-        if (i === 0) {
+        if (i === 0) { // always pushes the starting month 
           label_array.push(`${this.getMonth(exer.created_at)}`);
-          weight_array.push(exer.weight); // might need t convert to integer
+          weight_array.push(exer.weight);
         } else if (this.getMonth(exer.created_at) !== this.getMonth(filtered_exercises[i -1].created_at)) {
           label_array.push(`${this.getMonth(exer.created_at)}`);
           weight_array.push(exer.weight);

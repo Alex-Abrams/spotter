@@ -20,7 +20,7 @@ class ChartMenuScreen extends React.Component {
       form_submit: false, // svg has problems loading this only need to be true once
     };
 
-    this.arrayNew = keywordSearch(this.state.nativePicker);
+    this.arrayNew = keywordSearch(this.state.nativePicker); // keywordSearch creates an array of the mmost common exercisess 
     this.updatePicker = this.updatePicker.bind(this);
   }
 

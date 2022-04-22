@@ -10,19 +10,6 @@ const appReducer = combineReducers({ // was root
   entities: entitiesReducer,
 });
 
-// export default rootReducer;
-
-
-// const rootReducer = (state ={}, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     case CLEAR_ALL_LIFTS_AND_SETS:
-//       return merge({}, state, {entities.lifts: null, entities.sets: null});
-//     default:
-//       return state;
-//   }
-// };
 
 const rootReducer = (state, action) => {
   if (action.type === CLEAR_ALL_LIFTS_AND_SETS) {

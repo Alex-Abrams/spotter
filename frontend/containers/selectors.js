@@ -1,8 +1,6 @@
 export const selectAllLifts = state => Object.values(state.entities.lifts);  //orginal
-// export const selectAllLifts = state => Object.values(state.entities.liftsAndSets.lifts);
 
 export const selectAllSets = state => Object.values(state.entities.sets); // original
-// export const selectAllSets = state => Object.values(state.entities.liftsAndSets.sets);
 
 // for the Journal display
 export const selectAllWorkouts = state => Object.values(state.entities.journal);

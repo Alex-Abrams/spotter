@@ -14,8 +14,6 @@ class SelectedDate extends React.Component {
   constructor(props) {
     super(props);
   }
-  //// FIRST YOu GROUP THEM BY DAY THEN BY WORKOUT ID
-
 
   displayExercises() {
     const date = this.props.route.params.date;
@@ -37,7 +35,7 @@ class SelectedDate extends React.Component {
     let copy_display_exercises = display_exercises;
 
     //////////////////////////////////////////////////////////////////
-    // here im going to group up all the workouts by title before going through them, since they can be out of order when they are posted
+    // Sort the exercises by title
     // to the database with a Promise.all
     const arrays_by_titles = [];
     for(let i = 0; i < copy_unique_exercise_names.length; i++) {
@@ -59,11 +57,8 @@ class SelectedDate extends React.Component {
       </View>
     );
 
-
-
     return list_exercises;
 
-    ///////////////////////////////////////////////////////////////////
   }
 
 
@@ -92,7 +87,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#abe6ed', //
     width: '100%',
-
     marginBottom: 12,
     shadowColor: '#470000',
     shadowOffset: {width: 0, height: 1},
@@ -103,7 +97,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontFamily: 'Roboto',
-
   },
   exercise: {
     backgroundColor: "#7EE8F5",

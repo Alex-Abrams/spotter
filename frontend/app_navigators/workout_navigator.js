@@ -9,7 +9,7 @@ import ArmsScreenContainer from '../containers/arms_screen_container';
 import BackScreenContainer from '../containers/back_screen_container';
 import ShouldersScreenContainer from '../containers/shoulders_screen_container';
 
-class WorkoutNav extends React.Component {
+class WorkoutNavigator extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,8 +18,6 @@ class WorkoutNav extends React.Component {
 
   render() {
     const Stack = createStackNavigator();
-
-    // let screenName = this.props.route.params.screen;
 
     return(
       <Stack.Navigator>
@@ -34,4 +32,4 @@ class WorkoutNav extends React.Component {
 }
 
 
-export default WorkoutNav;
+export default WorkoutNavigator;

@@ -1,3 +1,4 @@
+// stack nav for the journal screen, and the workout exercises (part of journal)
 import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ExercisesListContainer from '../containers/exercises_list_container';

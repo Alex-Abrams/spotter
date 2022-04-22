@@ -4,8 +4,6 @@ import {
   RESET_CHART_EXERCISES,
 } from '../actions/chart_actions';
 
-
-
 import merge from 'lodash/merge';
 
 const chartsReducer = (state = {}, action) => {

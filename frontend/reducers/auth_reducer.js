@@ -37,7 +37,7 @@ const authReducer = (state = { loggedIn: false }, action) => {
       return merge({}, state, action.auth_token);
 
     case IS_LOGGED_IN:
-      return merge({}, state, { loggedIn: action.loggedIn }, { splash_screen: false });
+      return merge({}, state, { loggedIn: action.loggedIn }, { splash_screen: false }); // splash_screen closes the spinner
 
     case LOGOUT_USER:
       return _nullUser;
@@ -45,19 +45,17 @@ const authReducer = (state = { loggedIn: false }, action) => {
     case REQEUST_USER_INFO:
       return merge({}, state, { user: action.currentUser });
 
-      ///////////////////
     case REQUEST_EMAIL:
       return merge({}, state, { email: action.email });
 
     case RECEIVE_USERNAME:
-        return merge({}, state, {username: action.username}); // CETU 
-      ///////////////////
+        return merge({}, state, {username: action.username});
 
     case LOAD_SPLASH_SCREEN:
       return merge({}, state, { splash_screen: action.splash_screen });
 
     case RECEIVE_AUTH_TOKEN_SPINNER:
-      return merge({}, state, action.auth_token, { splash_screen: action.splash_screen });
+      return merge({}, state, action.auth_token, { splash_screen: action.splash_screen }); // slpash screen opens spinner 
 
     case RECEIVE_ERROR:
       return merge({}, state, { error: action.error});

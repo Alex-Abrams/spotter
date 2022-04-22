@@ -19,12 +19,5 @@ const workoutReducer = (state = {}, action) => {
   }
 };
 
-// const workoutReducer = combineReducers({
-//   arms: armsWorkoutReducer,
-//   legs: legsWorkoutReducer,
-//   shoulders: shouldersWorkoutReducer,
-//   back: backWorkoutReducer,
-//   chest: chestWorkoutReducer,
-// });
 
 export default workoutReducer;

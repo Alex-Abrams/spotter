@@ -1,4 +1,4 @@
-// this navigator is the navigator highest in the navigation nest, it containts the tabs as well as switching to login/signup screens if user is not logged in 
+// this navigator is the navigator highest in the navigation nest, it containts the tabs as well as switching to login/signup screens if user is not logged in
 
 import * as React from 'react';
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
@@ -14,7 +14,6 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import BottomTabNavigator from './tab_screen_navigator';
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
-import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 
 import {screens, routes} from './route_items';
