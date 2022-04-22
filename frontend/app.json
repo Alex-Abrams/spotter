@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "spotter",
+    "icon": "./img/temp_spotter_logo.png",
     "slug": "spotter",
     "privacy": "public",
     "platforms": [

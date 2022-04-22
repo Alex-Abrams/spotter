@@ -115,10 +115,9 @@ class Login extends React.Component {
 
         <View style={{paddingBottom: 60}}>
         <Button
-          title="Submit"
+          title="Sign In"
           buttonStyle={{
             fontSize: 20,
-            color: '#ffffff',
             backgroundColor: '#00cc00',
             padding: 20,
             marginTop: 10
@@ -143,6 +142,7 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
     fontSize: 40,
+    paddingTop: 20,
     alignSelf: 'center',
     color: 'white',
   },

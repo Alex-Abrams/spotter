@@ -1,6 +1,6 @@
-import * as React from 'react';
+// this navigator is the navigator highest in the navigation nest, it containts the tabs as well as switching to login/signup screens if user is not logged in 
 
-// import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import * as React from 'react';
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import {
   createDrawerNavigator,
@@ -19,10 +19,8 @@ import ChartMenuScreenContainer from '../containers/chart_menu_screen_container'
 
 import {screens, routes} from './route_items';
 
-/////////////////////////////
 import LoginContainer from '../containers/login_screen_container';
 import SignupContainer from '../containers/signup_container';
-///////////////////////////////
 
 
 const Drawer = createDrawerNavigator();
@@ -35,10 +33,8 @@ class DrawerScreenNavigator extends React.Component {
 
   userLogout = async () => {
     try {
-      // let keys = ['token', 'username'];
-      // await AsyncStorage.multiRemove(keys);
+      // logging out will trigger these store actions to wipe the store
       this.props.authActions.logoutCurrentUser();
-      /// below resets the store one entity at a time
       this.props.userActions.resetUser();
       this.props.journalActions.resetJournalExercises(); //
       this.props.journalActions.resetWorkouts();
@@ -55,8 +51,6 @@ class DrawerScreenNavigator extends React.Component {
   componentDidMount() {
     this.props.authActions.getUserInfo(this.props.email, this.props.auth_token);
   }
-  ////////////////////
-
 
   render() {
     const { loggedIn, nav, navigationRef } = this.props;

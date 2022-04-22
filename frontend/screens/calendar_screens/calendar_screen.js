@@ -84,6 +84,10 @@ class CalendarScreen extends React.Component {
 
     return(
       <ScrollView>
+        <View style={{height: 70, flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
+          <Text style={{alignSelf: 'center', fontSize: 30}}>Calendar</Text>
+        </View>
+        <View style={{borderBottomColor: 'gray', borderBottomWidth: .78}}></View>
         <Calendar
           onDayPress={(day) => {this.directToSelectedDateScreen(this.props.navigation, day)}}
           onDayLongPress={(day) => {console.log('long press', day)}}

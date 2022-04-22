@@ -24,7 +24,6 @@ class ExercisesList extends React.Component {
     this.props.prevWorkoutActions.requestAllWorkoutExercises(user_id, workout_id, auth_token); // requests exercises for this workout
   }
 
-
   startTimer() { // when the copy workout button is pressed, it will change its title to 'Copied!', then revert back after 10 seconds
     this.setState({ button_pressed: true });
     setTimeout(() => {this.setState({ button_pressed: false })}, 800);
@@ -46,7 +45,6 @@ class ExercisesList extends React.Component {
       let seperated_exercises = journal_exercises.filter(exercise => exercise.name === unique_exercise_names[i]); // seperate the exercises by names, and push into an array
       arrays_by_titles.push(seperated_exercises);
     }
-
 
 
     const list_exercises = ( // each exercise name is the blue title, the exercise item is that exercises list of sets
@@ -133,7 +131,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 100,
     backgroundColor: 'yellow',
-    // top: '40%',
     bottom: '5%',
   }
 });

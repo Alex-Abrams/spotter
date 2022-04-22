@@ -24,12 +24,6 @@ class GraphMenuScreen extends React.Component {
             datasets: [
               {
                 data: [
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100,
-                  // Math.random() * 100
                   100,
                   120,
                   170,

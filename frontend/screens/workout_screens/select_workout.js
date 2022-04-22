@@ -43,7 +43,6 @@ class SelectWorkout extends React.Component {
       <View style={styles.container}>
         <View style={styles.container}>
           <Text style={styles.text}>Select Workout Section</Text>
-          <View style={{borderBottomColor: '#0497A9', borderBottomWidth: 1}}></View>
         </View>
         {this.toBodyPart(this.props.navigation, bodyArray)}
 
@@ -55,12 +54,12 @@ class SelectWorkout extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     padding: 24,
     // backgroundColor: "#C648D7",
     // backgroundColor: "#7EE8F5",
     flexDirection: 'column',
-    justifyContent: 'center'
+    // justifyContent: 'center'
   },
   buttonContainer: {
     padding: 18,
