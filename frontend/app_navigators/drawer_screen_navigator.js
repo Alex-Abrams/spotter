@@ -45,8 +45,6 @@ class DrawerScreenNavigator extends React.Component {
     }
   };
 
-
-
   componentDidMount() {
     this.props.authActions.getUserInfo(this.props.email, this.props.auth_token);
   }

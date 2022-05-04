@@ -24,7 +24,7 @@ class ChartScreen extends React.Component {
  }
 
  renderCharts() {
-    const { chart_exercises, exercise } = this.props;
+    const { chart_exercises, exercise } = this.props; // chart_exercises is all the available exericses, and exercise is what the user searches for (Bench Press)
     const filtered_exercises = chart_exercises.filter(exer => exer.name.toUpperCase() === exercise.toUpperCase());
 
     let label_array = [];
@@ -33,7 +33,7 @@ class ChartScreen extends React.Component {
     if (filtered_exercises.length > 0 ) {
 
       filtered_exercises.forEach((exer, i) => { // every time the month changes, it adds 1 instance of the month to the x axis labels
-        if (i === 0) { // always pushes the starting month 
+        if (i === 0) { // always pushes the starting month
           label_array.push(`${this.getMonth(exer.created_at)}`);
           weight_array.push(exer.weight);
         } else if (this.getMonth(exer.created_at) !== this.getMonth(filtered_exercises[i -1].created_at)) {
@@ -95,6 +95,7 @@ class ChartScreen extends React.Component {
 
     return(
       <View style={{flex: 1, flexDirection: 'column'}}>
+        <Text style={styles.exercise_title}>{exercise}</Text>
         {display_charts_or_na}
       </View>
     );
@@ -112,6 +113,15 @@ class ChartScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  exercise_title : {
+    fontSize: 20,
+    paddingTop: 7,
+    fontWeight: "800",
+    // alignSelf: 'center',
+  }
+});
 
 
 export default ChartScreen;

@@ -16,7 +16,7 @@ export class ArmsScreen extends React.Component {
   }
 
 
-  submitWorkout() { // this function combines sets into lifts into a arge array to post to backend
+  submitWorkout() { // this function combines sets into lifts into a large array of arrays to post to backend
     const { partType } = this.props.route.params;
     let liftsSets = [];
 

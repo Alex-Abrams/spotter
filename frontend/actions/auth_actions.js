@@ -59,7 +59,7 @@ export const receiveSignUpError = error => ({
 
 ////
 
-export function getUserInfo(username, auth_token) {
+export function getUserInfo(username, auth_token) { // for receiving all user info, worksouts etc.
   return function action(dispatch) {
     const request = fetch(`${HOST}/users/${username}`, {
       method: 'GET',
@@ -80,7 +80,7 @@ export function getUserInfo(username, auth_token) {
 }
 
 
-////
+//// used for logging in or signing in
   export function getThatToken(username, password) {
 
   return function action(dispatch) {
