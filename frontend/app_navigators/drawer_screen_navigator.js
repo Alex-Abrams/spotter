@@ -90,6 +90,9 @@ class DrawerScreenNavigator extends React.Component {
               <EvilIcons name={"navicon"} size={26} />
             </TouchableOpacity>
           ),
+          headerRight: () => (
+            <Text style={{paddingRight: 120}}>hello</Text>
+          ),
         })}
         drawerContent={(props) => <CustomDrawerContent {...props} nav={nav}/>}
       >

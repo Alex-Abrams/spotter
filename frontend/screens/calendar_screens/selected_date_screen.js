@@ -66,8 +66,8 @@ class SelectedDate extends React.Component {
     const date = this.props.route.params.date;
     const { calendar_exercises, all_workouts } = this.props; //works
     const display_exercises = calendar_exercises.filter(exer => exer.created_at.slice(0, 10) === date); // in use
-    const display_exercises_or_alternative = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (this.displayExercises());
-    const display_title_or_null = (display_exercises.length === 0) ? (<Text>nothing here</Text>) : (<Text style={styles.title}>{display_exercises[0].exercise_section}</Text>);
+    const display_exercises_or_alternative = (display_exercises.length === 0) ? (<Text style={styles.no_entry}>Nothing Here</Text>) : (this.displayExercises());
+    const display_title_or_null = (display_exercises.length === 0) ? (<Text>No Entry</Text>) : (<Text style={styles.title}>{display_exercises[0].exercise_section}</Text>);
 
     return(
       <ScrollView>
@@ -113,7 +113,11 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingLeft: 16,
     fontFamily: 'Roboto',
-  }
+  },
+  no_entry : {
+    // paddingLeft: 20,
+    alignItems: 'center',
+  },
 });
 
 export default SelectedDate;
