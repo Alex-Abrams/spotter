@@ -16,7 +16,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
 import authReducer from './reducers/auth_reducer'; //
 import rootReducer from './reducers/root_reducer';
 

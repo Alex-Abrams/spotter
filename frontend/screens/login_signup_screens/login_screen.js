@@ -21,7 +21,7 @@ class Login extends React.Component {
   _signInHandler() {
     this.props.authActions.loadSplashScreen(true);
 
-    this.props.authActions.getThatToken(this.state.username, this.state.password)
+    this.props.authActions.getThatToken((this.state.username).toLowerCase(), this.state.password)
     .then((auth_token) => {
       this.setState({ token: auth_token.auth_token.auth_token });
     })
