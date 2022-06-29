@@ -11,6 +11,8 @@ import {
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 import BottomTabNavigator from './tab_screen_navigator';
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
@@ -27,6 +29,10 @@ const Drawer = createDrawerNavigator();
 class DrawerScreenNavigator extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      title_header: '',
+    };
 
   }
 
@@ -49,8 +55,27 @@ class DrawerScreenNavigator extends React.Component {
     this.props.authActions.getUserInfo(this.props.email, this.props.auth_token);
   }
 
+  getHeaderTitle(route) {
+  // If the focused route is not found, we need to assume it's the initial screen
+  // This can happen during if there hasn't been any navigation inside the screen
+  // In our case, it's "Feed" as that's the first screen inside the navigator
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+  switch (routeName) {
+    case 'Home':
+      return 'HOOOME';
+    case 'Calendar':
+      return 'the Calendar';
+    case 'Selected Date':
+      return 'select date';
+      }
+    };
+
   render() {
     const { loggedIn, nav, navigationRef } = this.props;
+    // console.log("", nav);
+    // console.log("", navigationRef);
+    // console.log("titleheader!", this.state.title_header );
 
     const CustomDrawerContent = (props, {navigation}) => {
 
@@ -67,7 +92,7 @@ class DrawerScreenNavigator extends React.Component {
                       {route.title}
                     </Text>
                   )}
-                  onPress={() => props.navigation.navigate(route.name)}
+                  onPress={() => {props.navigation.navigate(route.name); this.setState({title_header: route.title})}}
                   style={styles.drawerItem}
                 />
               )
@@ -78,7 +103,13 @@ class DrawerScreenNavigator extends React.Component {
       );
     }
 
-
+// <Text style={{paddingRight: 120}}>hello</Text>
+// headerRight: () => (
+//   <TouchableOpacity style={styles.headerLeft}>
+//     <Text style={{paddingRight: 120}}>hello</Text>
+//   </TouchableOpacity>
+//
+// ),
     return(
       <Drawer.Navigator
         screenOptions={({ navigation }) => ({
@@ -90,17 +121,14 @@ class DrawerScreenNavigator extends React.Component {
               <EvilIcons name={"navicon"} size={26} />
             </TouchableOpacity>
           ),
-          headerRight: () => (
-            <Text style={{paddingRight: 120}}>hello</Text>
-          ),
         })}
         drawerContent={(props) => <CustomDrawerContent {...props} nav={nav}/>}
       >
       {(loggedIn == true) ? (
         <>
-        <Drawer.Screen name={screens.HomeTab} component={BottomTabNavigator} options={{
-          title: '',
-        }}/>
+        <Drawer.Screen name={screens.HomeTab} component={BottomTabNavigator} options={({route}) => ({
+            headerTitle: '',
+          })}/>
       </>
     ) : (
       <>
