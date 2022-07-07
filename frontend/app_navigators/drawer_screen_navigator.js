@@ -1,5 +1,5 @@
 // this navigator is the navigator highest in the navigation nest, it containts the tabs as well as switching to login/signup screens if user is not logged in
-
+// remove_drawer_branch
 import * as React from 'react';
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import {
