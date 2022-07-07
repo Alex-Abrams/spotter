@@ -14,7 +14,7 @@ class CalendarStackNavigator extends React.Component {
     const Stack = createStackNavigator();
     return(
       <Stack.Navigator>
-        <Stack.Screen name="Calendar" component={CalendarScreenContainer} options={{ headerShown: false }} navigation={this.props.navigation} />
+        <Stack.Screen name="Calendar" component={CalendarScreenContainer} options={{ headerShown: true }} navigation={this.props.navigation} />
         <Stack.Screen name="Selected Date" component={SelectedDateContainer} options={({ route }) => ({ title: route.params.header })} navigation={this.props.navigation} />
       </Stack.Navigator>
     );

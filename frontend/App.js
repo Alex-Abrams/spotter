@@ -24,6 +24,7 @@ import SplashScreen from './screens/login_signup_screens/splash_screen';
 
 //
 import DrawerScreenNavigatorContainer from './containers/drawer_screen_navigator_container';
+import BottomTabNavigatorContainer from './containers/tab_screen_container';
 
 
 import * as Font from 'expo-font';
@@ -86,7 +87,7 @@ export default class App extends React.Component {
     return (
       <Provider store={app_store}>
         <NavigationContainer ref={this.navigationRef}>
-            <DrawerScreenNavigatorContainer navigation={this.props.navigation} />
+            <BottomTabNavigatorContainer navigation={this.props.navigation} />
         </NavigationContainer>
       </Provider>
     );

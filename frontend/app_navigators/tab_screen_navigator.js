@@ -121,8 +121,8 @@ class BottomTabNavigator extends React.Component {
       </>
       ) : (
         <>
-        <Tab.Screen name="login" options={{headerShown: false, swipeEnabled: false}} component={LoginContainer} navigation={this.props.navigation} />
-        <Tab.Screen name="signup" options={{headerShown: false, swipeEnabled: false}} component={SignupContainer} navigation={this.props.navigation} />
+        <Tab.Screen name="login" options={{headerShown: false, tabBarVisible:false}} component={LoginContainer} navigation={this.props.navigation} />
+        <Tab.Screen name="signup" options={{headerShown: false, tabBarVisible:false}} component={SignupContainer} navigation={this.props.navigation} />
         </>
       )}
       </Tab.Navigator>
