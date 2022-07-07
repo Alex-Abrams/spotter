@@ -73,9 +73,6 @@ class DrawerScreenNavigator extends React.Component {
 
   render() {
     const { loggedIn, nav, navigationRef } = this.props;
-    // console.log("", nav);
-    // console.log("", navigationRef);
-    // console.log("titleheader!", this.state.title_header );
 
     const CustomDrawerContent = (props, {navigation}) => {
 
@@ -103,13 +100,6 @@ class DrawerScreenNavigator extends React.Component {
       );
     }
 
-// <Text style={{paddingRight: 120}}>hello</Text>
-// headerRight: () => (
-//   <TouchableOpacity style={styles.headerLeft}>
-//     <Text style={{paddingRight: 120}}>hello</Text>
-//   </TouchableOpacity>
-//
-// ),
     return(
       <Drawer.Navigator
         screenOptions={({ navigation }) => ({

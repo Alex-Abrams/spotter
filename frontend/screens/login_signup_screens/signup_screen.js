@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Keyboard, TextInput, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-// import { AsyncStorage } from "@react-native-async-storage/async-storage";
 import SplashScreen from './splash_screen';
 
 class Signup extends React.Component {
