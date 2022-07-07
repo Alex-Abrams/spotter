@@ -43,7 +43,7 @@
   * Login Screen
   * Signup Screen
  
-  * TabScreenNavigator
+  * BottomTabNavigator
     * HomeStackNavigator
       * HomeScreen
       * LastWorkoutItem

@@ -13,7 +13,8 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
-import BottomTabNavigator from './tab_screen_navigator';
+// import BottomTabNavigator from './tab_screen_navigator';
+import BottomTabNavigatorContainer from '../containers/tab_screen_container';
 
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
@@ -116,7 +117,7 @@ class DrawerScreenNavigator extends React.Component {
       >
       {(loggedIn == true) ? (
         <>
-        <Drawer.Screen name={screens.HomeTab} component={BottomTabNavigator} options={({route}) => ({
+        <Drawer.Screen name={screens.HomeTab} component={BottomTabNavigatorContainer} options={({route}) => ({
             headerTitle: '',
           })}/>
       </>

@@ -16,6 +16,9 @@ import JournalStackNavigator from './journal_stack_navigator';
 import LoginSignupStack from './login_signup_stack';
 import WorkoutNavigator from './workout_navigator';
 
+import LoginContainer from '../containers/login_screen_container';
+import SignupContainer from '../containers/signup_container';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -47,10 +50,28 @@ class BottomTabNavigator extends React.Component {
     super(props);
   }
 
+  userLogout = async () => {
+    try {
+      // logging out will trigger these store actions to wipe the store
+      this.props.authActions.logoutCurrentUser();
+      this.props.userActions.resetUser();
+      this.props.journalActions.resetJournalExercises(); //
+      this.props.journalActions.resetWorkouts();
+      this.props.chartActions.resetChartExercises();
+
+    } catch (error) {
+      // Error saving data
+      return null;
+    }
+  };
+
   render() {
+    const { loggedIn } = this.props;
     return(
       <Tab.Navigator screenOptions={{headerShown: false}}>
 
+        {(loggedIn == true) ? (
+          <>
         <Tab.Screen name="HomeStack" component={HomeWelcomeScreenContainer} options={{
           tabBarIcon: ({ focused }) => (
             <FontAwesome name='home' size={30} color={focused ? '#3f87d9' : '#000'} />
@@ -95,10 +116,15 @@ class BottomTabNavigator extends React.Component {
         options={{
             tabBarButton: () => null,
             tabBarVisible:false //hide tab bar on this screen
-
         }}
-    />
-
+        />
+      </>
+      ) : (
+        <>
+        <Tab.Screen name="login" options={{headerShown: false, swipeEnabled: false}} component={LoginContainer} navigation={this.props.navigation} />
+        <Tab.Screen name="signup" options={{headerShown: false, swipeEnabled: false}} component={SignupContainer} navigation={this.props.navigation} />
+        </>
+      )}
       </Tab.Navigator>
     );
   }

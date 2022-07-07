@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import BottomTabNavigator from '../app_navigators/drawer_screen_navigator';
+import BottomTabNavigator from '../app_navigators/tab_screen_navigator';
 import * as authActions from '../actions/auth_actions';
 import * as userActions from '../actions/user_actions';
 import * as journalActions from '../actions/prev_workout_actions';
