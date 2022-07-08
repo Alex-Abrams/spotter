@@ -8,7 +8,7 @@ import { faDumbbell, faCalendar, faChartLine } from '@fortawesome/free-solid-svg
 
 
 import { routes, screens } from './route_items';
-import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container'; //
+// import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container'; //
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 import CalendarStackNavigator from './calendar_stack_navigator';
@@ -19,6 +19,7 @@ import WorkoutNavigator from './workout_navigator';
 import LoginContainer from '../containers/login_screen_container';
 import SignupContainer from '../containers/signup_container';
 
+import HomeStackNavigator from './home_stack_navigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -72,7 +73,7 @@ class BottomTabNavigator extends React.Component {
 
         {(loggedIn == true) ? (
           <>
-        <Tab.Screen name="HomeStack" component={HomeWelcomeScreenContainer} options={{
+        <Tab.Screen name="HomeStack" component={HomeStackNavigator} options={{
           tabBarIcon: ({ focused }) => (
             <FontAwesome name='home' size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
