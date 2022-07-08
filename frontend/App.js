@@ -49,6 +49,7 @@ function configureStore(initialState = {}) {
 
 let app_store = configureStore();
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -93,15 +94,3 @@ export default class App extends React.Component {
     );
   }
 };
-
-// const App = () => {
-//   return (
-//     <Provider store={app_store}>
-//       <NavigationContainer>
-//         <StackNavigatorContainer />
-//       </NavigationContainer>
-//     </Provider>
-//   );
-// };
-//
-// export default App;

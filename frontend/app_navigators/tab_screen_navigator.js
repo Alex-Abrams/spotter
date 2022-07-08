@@ -28,7 +28,7 @@ const tabOptions = ({ route }) => {
   if (!item.showInTab) { // hide this tab
     return {
       tabBarButton: () => <View style={{ width: 0 }} />,
-      headerShown: false,
+      // headerShown: true,
       tabBarStyle: styles.tabContainer,
       title: item.title,
     };
@@ -39,7 +39,7 @@ const tabOptions = ({ route }) => {
     tabBarLabel: () => (
       <Text style={styles.tabBarLabel}>{item.title || ''}</Text>
     ),
-    headerShown: false,
+    // headerShown: true,
     tabBarStyle: styles.tabContainer,
     title: item.title,
   }
@@ -68,7 +68,7 @@ class BottomTabNavigator extends React.Component {
   render() {
     const { loggedIn } = this.props;
     return(
-      <Tab.Navigator screenOptions={{headerShown: false}}>
+      <Tab.Navigator screenOptions={{}}>
 
         {(loggedIn == true) ? (
           <>

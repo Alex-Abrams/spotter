@@ -14,7 +14,7 @@ class HomeStackNavigator extends React.Component {
   render() {
     return(
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeWelcomeScreenContainer} />
+        <Stack.Screen name={"Home"} options={{ title: 'My home' }} component={HomeWelcomeScreenContainer} />
       </Stack.Navigator>
     );
   }
