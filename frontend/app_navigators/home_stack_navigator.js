@@ -7,7 +7,7 @@ import { faEllipsisv } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
-import Ellipse from '../screens/verticle_ell';
+import Ellipse from './headers/verticle_ell';
 
 const Stack = createStackNavigator();
 
