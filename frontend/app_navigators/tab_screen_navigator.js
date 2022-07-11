@@ -6,9 +6,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faDumbbell, faCalendar, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
-
 import { routes, screens } from './route_items';
-// import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container'; //
+
 import SelectWorkoutContainer from '../containers/select_workout_container';
 import ChartMenuScreenContainer from '../containers/chart_menu_screen_container';
 import CalendarStackNavigator from './calendar_stack_navigator';
