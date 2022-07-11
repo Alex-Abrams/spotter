@@ -28,6 +28,13 @@ class Settings extends React.Component {
       <View>
         <View>
           <Text>Settings Page</Text>
+          <View style={{paddingLeft: 10, paddingRight: 10}}>
+            <Button
+              raised
+              title="Logout"
+              onPress={() => this.userLogout()}>
+            </Button>
+          </View>
           <Text></Text>
           <Text></Text>
         </View>

@@ -19,7 +19,8 @@ import LoginContainer from '../containers/login_screen_container';
 import SignupContainer from '../containers/signup_container';
 
 import HomeStackNavigator from './home_stack_navigator';
-import SettingsContainer from '../containers/settings_container';
+// import SettingsContainer from '../containers/settings_container';
+import SettingsNavigator from './settings_navigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -119,7 +120,7 @@ class BottomTabNavigator extends React.Component {
             tabBarVisible:false //hide tab bar on this screen
         }}
         />
-      <Tab.Screen name="Settings" component={SettingsContainer} options={{
+      <Tab.Screen name="Settings" component={SettingsNavigator} options={{
           tabBarIcon: ({ focused }) => (
             <EvilIcons name={'gear'} size={30} color={focused ? '#3f87d9' : '#000'} />
           ),
