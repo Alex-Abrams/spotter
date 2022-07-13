@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class HeaderRightModal extends React.Comonent {
+class HeaderRightModal extends React.Component {
   constructor(props) {
     super(props);
   }

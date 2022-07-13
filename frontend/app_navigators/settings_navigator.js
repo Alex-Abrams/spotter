@@ -12,7 +12,9 @@ class SettingsNavigator extends React.Component {
     const Stack = createStackNavigator();
     return(
       <Stack.Navigator>
-        <Stack.Screen name="Journal" component={SettingsContainer} options={{headerShown: true}} navigation={this.props.navigation} />
+        <Stack.Screen name="Settings Screen" component={SettingsContainer}
+          options={{headerShown: true, headerTitle: 'Settings'}}
+          navigation={this.props.navigation} />
       </Stack.Navigator>
     );
   }
