@@ -10,6 +10,7 @@ import prevExercisesReducer from './prev_exercises_reducer';
 import chartsReducer from './charts_reducer';
 import copyWorkoutReducer from './copy_workout_reducer';
 import loadingScreenReducer from './loading_reducer';
+import headerReducer from './header_reducer';
 
 //
 const entitiesReducer = combineReducers({
@@ -23,6 +24,7 @@ const entitiesReducer = combineReducers({
   chart_exercises: chartsReducer,
   copied_workout: copyWorkoutReducer,
   loading: loadingScreenReducer,
+  header: headerReducer,
 });
 
 export default entitiesReducer;
