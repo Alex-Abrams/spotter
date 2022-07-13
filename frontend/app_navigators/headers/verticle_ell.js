@@ -8,9 +8,12 @@ class Ellipse extends React.Component {
   }
 
   render() {
+    const { header_modal } = this.props;
+    console.log(this.props);
+    console.log('HEADER!', header_modal);
     return(
     <View style={styles.dot_container}>
-      <TouchableOpacity onPress={() => console.log('dah ellipse')}>
+      <TouchableOpacity onPress={() => this.props.headerActions.receiveEllipseClick(!header_modal[0])}>
         <View style={styles.dot}></View>
         <View style={styles.dot}></View>
         <View style={styles.dot}></View>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsContainer from '../containers/settings_container';
-import Ellipse from './headers/verticle_ell';
+import EllipseContainer from '../containers/ellipse_container';
 
 class SettingsNavigator extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class SettingsNavigator extends React.Component {
             headerShown: true,
             headerTitle: 'Settings',
             headerRight: () => (
-            <Ellipse />
+            <EllipseContainer />
           ),
         }}
           navigation={this.props.navigation} />

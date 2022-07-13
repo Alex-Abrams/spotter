@@ -19,3 +19,5 @@ export const selectMostRecentWorkout = (state) => {
 };
 
 export const selectIsLoading = state => (state.entities.loading)["is_loading"];
+
+export const selectHeaderBoolean = state => Object.values(state.entities.header);
