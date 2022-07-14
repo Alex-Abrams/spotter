@@ -7,7 +7,7 @@ import { faEllipsisv } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 import HomeWelcomeScreenContainer from '../containers/home_welcome_screen_container';
-import Ellipse from './headers/verticle_ell';
+import EllipseContainer from '../containers/ellipse_container';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +24,7 @@ class HomeStackNavigator extends React.Component {
           options={{
             headerTitle: "Home",
             headerRight: () => (
-              <Ellipse />
+              <EllipseContainer />
             ),
           }}
            />

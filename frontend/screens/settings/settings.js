@@ -25,6 +25,29 @@ class Settings extends React.Component {
     }
   };
 
+  ddisplayModal() {
+    return(
+      <View style={styles.container}>
+        <View>
+          <Text>Profile</Text>
+
+          <View style={styles.modal}>
+          </View>
+
+          <View style={styles.logout_button}>
+            <Button
+              raised
+              title="Logout"
+              onPress={() => this.userLogout()}>
+            </Button>
+          </View>
+          <Text></Text>
+          <Text></Text>
+        </View>
+      </View>
+    );
+  }
+
   render() {
     return(
       <View style={styles.container}>
