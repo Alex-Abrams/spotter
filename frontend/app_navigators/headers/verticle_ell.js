@@ -13,11 +13,7 @@ class Ellipse extends React.Component {
 
   render() {
     const { header_modal } = this.props;
-    // console.log(this.props);
-    // console.log('HEADER!',  typeof header_modal); // object
-
-    // console.log(header_modal[0]);
-
+    // on click of the 3 dots, a modal will pop up (header_right_modal.js)
     return(
     <View style={styles.dot_container}>
       <TouchableOpacity onPress={() => this.props.headerActions.receiveEllipseClick(!header_modal[0])}>

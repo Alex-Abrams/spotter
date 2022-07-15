@@ -16,7 +16,7 @@ class SetShowEditPopup extends React.Component {
 
 
   render() {
-  
+    // simple 2 text inputs for adding in weight
     return(
       <View>
         <View>

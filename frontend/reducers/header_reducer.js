@@ -13,6 +13,7 @@ const headerReducer = (state = _start_state, action) => {
 
   switch(action.type) {
     case RECEIVE_ELLIPSE_CLICK:
+      // thee action here (clicked) will always be a boolean
       return merge({}, state, {header_modal: action.clicked});
     default:
       return state;

@@ -12,6 +12,7 @@ class ExerciseItem extends React.Component {
 
   displayExerciseItems() {
     const { sets } = this.props;
+    // below i am giving the key such a high value that they should never lap particularly if i delete old ones 
     return(
       <View style={styles.container}>
         {sets.map((set, i) =>

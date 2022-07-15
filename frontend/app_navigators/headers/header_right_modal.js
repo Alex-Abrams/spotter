@@ -10,9 +10,9 @@ class HeaderRightModal extends React.Component {
 
 
   render() {
-    const { headerModal } = this.props;
-    console.log('oandowanond', headerModal);
+    const { headerModal } = this.props;  // this is a true of false for if the dots have been toggled
 
+    // if the display is not toggled (false) then the modal will not be rendered 
     const display_modal_or_null = (headerModal) ? (
       <View style={styles.modal}>
         <View>
@@ -36,12 +36,12 @@ class HeaderRightModal extends React.Component {
 const styles = StyleSheet.create({
   modal: {
     borderColor: 'black',
-    height: 95,
-    width: 95,
+    height: 115,
+    width: 115,
     backgroundColor: 'yellow',
     position: 'absolute',
     right: 0,
-    top: -20,
+    top: -80,
     elevation: 2,
     zIndex: 2,
   },
